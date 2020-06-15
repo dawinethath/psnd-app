@@ -1,4 +1,4 @@
-package kh.com.sdnd;
+package kh.com.psnd;
 
 import org.junit.Test;
 
