@@ -1,4 +1,4 @@
-package kh.com.psnd;
+package kh.com.psnd.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import kh.com.psnd.R;
 
 public class MainActivity extends AppCompatActivity {
 
