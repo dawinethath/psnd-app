@@ -1,0 +1,45 @@
+<resources>
+    <string name="test_screen">mdpi</string>
+    <dimen name="text_size_08sp">8dp</dimen>
+    <dimen name="text_size_09sp">9sp</dimen>
+    <dimen name="text_size_10sp">10sp</dimen>
+    <dimen name="text_size_11sp">11sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_13sp">13sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_17sp">17sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_19sp">19sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_21sp">21sp</dimen>
+    <dimen name="text_size_23sp">23sp</dimen>
+    <dimen name="text_size_25sp">25sp</dimen>
+    <dimen name="text_size_27sp">27sp</dimen>
+    <dimen name="text_size_29sp">29sp</dimen>
+    <dimen name="space_02dp">2dp</dimen>
+    <dimen name="space_04dp">4dp</dimen>
+    <dimen name="space_06dp">6dp</dimen>
+    <dimen name="space_08dp">8dp</dimen>
+    <dimen name="space_10dp">10dp</dimen>
+    <dimen name="space_12dp">12dp</dimen>
+    <dimen name="space_14dp">14dp</dimen>
+    <dimen name="space_16dp">16dp</dimen>
+    <dimen name="space_18dp">18dp</dimen>
+    <dimen name="space_20dp">20dp</dimen>
+    <dimen name="space_22dp">22dp</dimen>
+    <dimen name="space_24dp">24dp</dimen>
+    <dimen name="space_26dp">26dp</dimen>
+    <dimen name="space_28dp">28dp</dimen>
+    <dimen name="space_30dp">30dp</dimen>
+    <dimen name="space_32dp">32dp</dimen>
+    <dimen name="bottom_navigation_height">56dp</dimen>
+    <dimen name="bottom_navigation_icon_height">24dp</dimen>
+    <dimen name="padding_toolbar_icon">11dp</dimen>
+    <dimen name="footer_recyclerview_empty_height">60dp</dimen>
+    <dimen name="navigation_view_width">280dp</dimen>
+
+    <dimen name="width_button_selection">60dp</dimen>
+    <dimen name="image_size_button_selection">18dp</dimen>
+</resources>
