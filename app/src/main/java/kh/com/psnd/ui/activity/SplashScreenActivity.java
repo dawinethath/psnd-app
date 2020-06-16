@@ -6,7 +6,7 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 
 import kh.com.psnd.R;
-import kh.com.psnd.base.BaseActivity;
+import core.lib.base.BaseActivity;
 import kh.com.psnd.helper.ActivityHelper;
 
 public class SplashScreenActivity extends BaseActivity {

@@ -1,11 +1,11 @@
-package kh.com.psnd.base;
+package core.lib.base;
 
 import android.content.Context;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import kh.com.psnd.R;
+import kmobile.logger.R;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected Context context = this;

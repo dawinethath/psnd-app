@@ -1,2 +1,3 @@
 include ':app'
+include ':base-lib'
 rootProject.name = "SDBD System"
