@@ -10,5 +10,10 @@
 
     <color name="mainBackground">#B5B5B5</color>
 
-    <color name="textMainColor">#0F042B</color>
+    <color name="textViewHeaderColor">#425c7b</color>
+    <color name="textViewColor">#879cb2</color>
+
+    <color name="noData">#425c7b</color>
+
+    <color name="recyclerDivider">#a5b6c9</color>
 </resources>

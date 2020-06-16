@@ -10,4 +10,20 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
+    <style name="NoDataTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:text">@string/noData</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:textColor">@color/noData</item>
+        <item name="android:textSize">@dimen/text_size_17sp</item>
+    </style>
+
+    <style name="progressBarStyle" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:visibility">gone</item>
+    </style>
 </resources>

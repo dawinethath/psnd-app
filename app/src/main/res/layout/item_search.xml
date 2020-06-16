@@ -18,7 +18,7 @@
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/textMainColor"
+        android:textColor="@color/textViewHeaderColor"
         android:textSize="@dimen/text_size_15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/image"
