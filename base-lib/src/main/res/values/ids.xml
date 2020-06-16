@@ -1,0 +1,4 @@
+<resources>
+    <item name="contentFragment" type="id" />
+    <item name="toolbar" type="id" />
+</resources>

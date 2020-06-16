@@ -6,10 +6,10 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 
 import kh.com.psnd.R;
-import core.lib.base.BaseActivity;
+import core.lib.base.BaseFragmentActivity;
 import kh.com.psnd.helper.ActivityHelper;
 
-public class SplashScreenActivity extends BaseActivity {
+public class SplashScreenActivity extends BaseFragmentActivity {
 
     private Handler  handler  = new Handler();
     private Runnable runnable = () -> {
