@@ -6,10 +6,13 @@ import android.graphics.drawable.Drawable;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import core.lib.network.base.ConstNetwork;
 
 public abstract class BaseApp extends MultiDexApplication {
 
@@ -46,5 +49,9 @@ public abstract class BaseApp extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         context = this;
+        Fresco.initialize(this);
+        ConstNetwork.BASE_URL = getBaseUrl();
     }
+
+    public abstract String getBaseUrl();
 }

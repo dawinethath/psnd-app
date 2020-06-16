@@ -8,7 +8,14 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import core.lib.base.BaseFragment;
+import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutSearchBarBinding;
+import kh.com.psnd.network.request.RequestLogin;
+import kh.com.psnd.network.response.ResponseLogin;
+import kh.com.psnd.network.task.TaskLogin;
+import lombok.val;
+import retrofit2.Response;
 
 public class SearchBarView extends FrameLayout {
     private LayoutSearchBarBinding binding  = null;
@@ -37,8 +44,34 @@ public class SearchBarView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull Callback callback) {
+    public void setupUI(@NonNull BaseFragment fragment, @NonNull Callback callback) {
         this.callback = callback;
+
+    }
+
+    private void doSearch(@NonNull BaseFragment fragment, String search) {
+        val task = new TaskLogin(new RequestLogin("username", "pwd"));
+        fragment.getCompositeDisposable().add(task.start(task.new SimpleObserver() {
+
+            @Override
+            public Class<?> clazzResponse() {
+                return ResponseLogin.class;
+            }
+
+            @Override
+            public void onReceiveResult(RequestLogin request, Response result) throws Exception {
+                Log.i("LOG >> onNext >> result : " + result);
+                if (result.isSuccessful()) {
+
+                }
+                setVisibility(GONE);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(e);
+            }
+        }));
     }
 
     public abstract static class Callback {

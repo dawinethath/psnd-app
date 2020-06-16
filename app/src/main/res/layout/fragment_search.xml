@@ -14,8 +14,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <core.lib.helper.CoreRecyclerView
-            android:id="@+id/text_home"
+        <kh.com.psnd.ui.view.SearchResultView
+            android:id="@+id/searchResult"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

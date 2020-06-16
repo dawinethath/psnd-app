@@ -1,28 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/heightItemSearch"
-    android:padding="@dimen/space_08dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/image"
-        android:layout_width="@dimen/widthImageSearch"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:placeholderImage="@color/colorPrimary" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightItemSearch"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/space_08dp">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/textViewHeaderColor"
-        android:textSize="@dimen/text_size_15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toTopOf="@id/image"
-        tools:text="Chear Chanrotanak" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/image"
+            android:layout_width="@dimen/widthImageSearch"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholderImage="@color/textViewColor" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_08dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Chear Chanrotanak"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toTopOf="@id/image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="90193"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toTopOf="@id/department"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/department"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Personal Department"
+            android:textColor="@color/textViewColor"
+            android:textSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/name" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/textViewColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_forward_ios_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

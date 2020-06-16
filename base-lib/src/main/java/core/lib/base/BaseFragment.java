@@ -21,10 +21,10 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     public static final String              PAGE_UNKNOWN         = "Unknown";
     private             CompositeDisposable mCompositeDisposable = null;
     public              boolean             isAlive              = true;
-    protected           T                   mBinding             = null;
+    protected           T                   binding              = null;
 
     public T getBinding() {
-        return mBinding;
+        return binding;
     }
 
     public BaseFragmentActivity getBaseFragmentActivity() {
@@ -49,8 +49,8 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         if (layoutId() == 0) {
             throw new RuntimeException("You need to setup layout ID");
         }
-        mBinding = DataBindingUtil.inflate(inflater, layoutId(), container, false);
-        return mBinding.getRoot();
+        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -119,7 +119,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     }
 
     private void setupToolbar() {
-        if (mBinding != null && mBinding.getRoot().findViewById(R.id.toolbar) != null) {
+        if (binding != null && binding.getRoot().findViewById(R.id.toolbar) != null) {
 //            txtTitle = mBinding.getRoot().findViewById(R.id.txtTitle);
 //            txtSubTitle = mBinding.getRoot().findViewById(R.id.txtSubTitle);
         }
