@@ -12,4 +12,6 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="labelSearch">ID / Name</string>
+    <string name="search">Search</string>
+    <string name="general_department">អង្គភាពថ្នាក់ស្មើអគ្គ</string>
 </resources>

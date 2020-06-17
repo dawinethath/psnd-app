@@ -1,6 +1,7 @@
 package kh.com.psnd.ui.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -20,12 +21,10 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutSearchBarBinding;
-import kh.com.psnd.network.request.RequestLogin;
 import kh.com.psnd.network.request.RequestSearch;
-import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseSearch;
-import kh.com.psnd.network.task.TaskLogin;
 import kh.com.psnd.network.task.TaskSearch;
+import kh.com.psnd.ui.activity.SearchBySectionActivity;
 import lombok.Setter;
 import lombok.val;
 import retrofit2.Response;
@@ -68,7 +67,8 @@ public class SearchBarView extends FrameLayout {
         binding.textField.setStartIconOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(view);
+                val intent = new Intent(getContext(), SearchBySectionActivity.class);
+                fragment.startActivity(intent);
             }
         });
         binding.txtSearch.addTextChangedListener(onTextChangeListener);
