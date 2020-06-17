@@ -11,8 +11,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/heightItemSearch"
-            android:padding="@dimen/space_08dp">
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/space_12dp"
+            android:paddingTop="@dimen/space_14dp"
+            android:paddingEnd="@dimen/space_12dp"
+            android:paddingBottom="@dimen/space_14dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textField"
@@ -22,10 +25,12 @@
                 android:hint="@string/labelSearch"
                 android:textColorHint="@color/textViewHeaderColor"
                 app:boxStrokeColor="@color/textViewHeaderColor"
-                app:endIconDrawable="@drawable/ic_clear_black_24"
+                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/textViewHeaderColor"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_baseline_filter_list_24"
+                app:startIconTint="@color/textViewHeaderColor">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtSearch"

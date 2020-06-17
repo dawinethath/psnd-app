@@ -1,3 +1,4 @@
 <resources>
     <string name="noData">No data</string>
+    <string name="noInternetConnection">No Internet connection</string>
 </resources>

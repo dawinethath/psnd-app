@@ -29,6 +29,7 @@ import androidx.annotation.NonNull;
 
 import java.util.TimeZone;
 
+import core.lib.base.BaseApp;
 import kmobile.logger.BuildConfig;
 import lombok.val;
 
@@ -52,8 +53,8 @@ public class ApplicationUtil {
 
     public static String getNetworkType(Context context) {
         try {
-            TelephonyManager teleMan     = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            int              networkType = teleMan.getNetworkType();
+            TelephonyManager teleMan = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            int networkType = teleMan.getNetworkType();
             switch (networkType) {
                 case TelephonyManager.NETWORK_TYPE_1xRTT:
                     return "1xRTT";
@@ -98,8 +99,7 @@ public class ApplicationUtil {
         if (isFullScreen) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
             activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        }
-        else {
+        } else {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
             activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
@@ -153,8 +153,8 @@ public class ApplicationUtil {
     }
 
     public static int getMnc(Context context) {
-        TelephonyManager tel             = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String           networkOperator = tel.getNetworkOperator();
+        TelephonyManager tel = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String networkOperator = tel.getNetworkOperator();
         try {
             if (networkOperator != null) {
                 int mnc = Integer.parseInt(networkOperator.substring(3));
@@ -166,8 +166,8 @@ public class ApplicationUtil {
     }
 
     public static int getMcc(Context context) {
-        TelephonyManager tel             = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String           networkOperator = tel.getNetworkOperator();
+        TelephonyManager tel = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String networkOperator = tel.getNetworkOperator();
         try {
             if (networkOperator != null) {
                 int mcc = Integer.parseInt(networkOperator.substring(0, 3));
@@ -196,14 +196,14 @@ public class ApplicationUtil {
     }
 
     public static void CancelNotification(Context ctx, long notifyId) {
-        val ns   = Context.NOTIFICATION_SERVICE;
+        val ns = Context.NOTIFICATION_SERVICE;
         val nMgr = (NotificationManager) ctx.getSystemService(ns);
         nMgr.cancel((int) notifyId);
     }
 
     public static String getCurrentActivityName(Activity activity) {
-        val am               = (ActivityManager) activity.getSystemService(Activity.ACTIVITY_SERVICE);
-        val taskInfo         = am.getRunningTasks(1);
+        val am = (ActivityManager) activity.getSystemService(Activity.ACTIVITY_SERVICE);
+        val taskInfo = am.getRunningTasks(1);
         val currentClassName = taskInfo.get(0).topActivity.getClassName();
         return currentClassName;
     }
@@ -233,20 +233,25 @@ public class ApplicationUtil {
         }
     }
 
+    @Deprecated
     public static boolean isOnline(Context context) {
-        val connMgr     = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        val connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         val networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
 
+    public static boolean isOnline() {
+        return isOnline(BaseApp.context);
+    }
+
     public static boolean isOnlineMobile(Context context) {
-        val connMgr     = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        val connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         val networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         return (networkInfo != null && networkInfo.isConnected());
     }
 
     public static boolean isOnlineWiFi(Context context) {
-        val connMgr     = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        val connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         val networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         return (networkInfo != null && networkInfo.isConnected());
     }
@@ -281,14 +286,14 @@ public class ApplicationUtil {
 
     private static DisplayMetrics getDisplayMetrics(Context context) {
         val displayMetrics = new DisplayMetrics();
-        val wm             = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        val wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         wm.getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics;
     }
 
     public static boolean isApplicationRunning(Context context) {
         val activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        val tasks           = activityManager.getRunningTasks(Integer.MAX_VALUE);
+        val tasks = activityManager.getRunningTasks(Integer.MAX_VALUE);
 
         for (RunningTaskInfo task : tasks) {
             if (context.getPackageName().equalsIgnoreCase(task.baseActivity.getPackageName())) {
@@ -379,8 +384,7 @@ public class ApplicationUtil {
     public static void openSystemPermission(Context context) {
         if (MIUIUtils.isMIUI()) {
             MIUIUtils.openSystemPermission(context);
-        }
-        else {
+        } else {
             context.startActivity(getIntentSystemPermission(context));
         }
     }
@@ -390,7 +394,7 @@ public class ApplicationUtil {
     }
 
     public static boolean checkIntentHandleByActivity(Context context, String action) {
-        val            intent         = new Intent(action);
+        val intent = new Intent(action);
         PackageManager packageManager = context.getPackageManager();
         if (intent.resolveActivity(packageManager) != null) {
             return true;
