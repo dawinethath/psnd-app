@@ -3,40 +3,31 @@ package kh.com.psnd.ui.activity;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import core.lib.base.BaseFragmentActivity;
-import core.lib.base.PagerAdapter;
+import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivitySearchBySectionBinding;
-import kh.com.psnd.ui.fragment.SelectSectionFragment;
+import kh.com.psnd.mock.MockDepartment;
+import kh.com.psnd.ui.view.AutoCompleteDropdownView;
 
 public class SearchBySectionActivity extends BaseFragmentActivity {
 
     private ActivitySearchBySectionBinding binding;
-    private List<Fragment> fragments = new ArrayList<>();
-    private PagerAdapter adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search_by_section);
 
-        fragments.add(SelectSectionFragment.newInstance());
-        fragments.add(SelectSectionFragment.newInstance());
-        fragments.add(SelectSectionFragment.newInstance());
-        fragments.add(SelectSectionFragment.newInstance());
-        fragments.add(SelectSectionFragment.newInstance());
-        fragments.add(SelectSectionFragment.newInstance());
-        fragments.add(SelectSectionFragment.newInstance());
-        fragments.add(SelectSectionFragment.newInstance());
+        binding.toolbar.setTitle(R.string.search_detail_label_1);
 
-        adapter = new PagerAdapter(context, getSupportFragmentManager(), fragments, null);
-        binding.viewPager.setAdapter(adapter);
-        binding.toolbar.setTitle(R.string.general_department);
+        binding.searchSelect1.setupUI(MockDepartment.getDepartment(), new AutoCompleteDropdownView.Callback() {
+            @Override
+            public void onSelected(Object object) {
+                Log.i(object);
+            }
+        });
     }
 
 }

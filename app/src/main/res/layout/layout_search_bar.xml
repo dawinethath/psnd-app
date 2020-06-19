@@ -5,7 +5,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2211"
+        android:background="@color/silver"
         android:elevation="8dp"
         app:elevation="8dp">
 
@@ -19,18 +19,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textField"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/labelSearch"
-                android:textColorHint="@color/textViewHeaderColor"
-                app:boxStrokeColor="@color/textViewHeaderColor"
                 app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/textViewHeaderColor"
                 app:layout_constraintTop_toTopOf="parent"
-                app:startIconDrawable="@drawable/ic_baseline_filter_list_24"
-                app:startIconTint="@color/textViewHeaderColor">
+                app:startIconDrawable="@drawable/ic_baseline_filter_list_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtSearch"

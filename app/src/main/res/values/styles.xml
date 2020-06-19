@@ -1,4 +1,17 @@
 <resources>
 
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault">
+        <item name="android:textColorHint">@color/textViewHeaderColor</item>
+        <item name="boxStrokeColor">@color/textViewHeaderColor</item>
+        <item name="endIconTint">@color/textViewHeaderColor</item>
+        <item name="startIconTint">@color/textViewHeaderColor</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu.AppDefault">
+        <item name="android:textColorHint">@color/textViewHeaderColor</item>
+        <item name="boxStrokeColor">@color/textViewHeaderColor</item>
+        <item name="endIconTint">@color/textViewHeaderColor</item>
+        <item name="startIconTint">@color/textViewHeaderColor</item>
+    </style>
 
 </resources>

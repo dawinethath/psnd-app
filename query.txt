@@ -1,0 +1,6 @@
+
+- Select department type
+    # SELECT * from department_types WHERE department_types.department_type_id in (SELECT department_type_id FROM `departments` WHERE `general_commissariat_id` = 2)
+
+- Select
+    # SELECT * FROM `departments` WHERE `general_commissariat_id` = 2 AND `department_type_id` = 5 ORDER BY `department_name` ASC

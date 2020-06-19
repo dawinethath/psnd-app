@@ -13,5 +13,14 @@
 
     <string name="labelSearch">ID / Name</string>
     <string name="search">Search</string>
-    <string name="general_department">អង្គភាពថ្នាក់ស្មើអគ្គ</string>
+    <string name="search_detail_label_1">អង្គភាពថ្នាក់ស្មើអគ្គ</string>
+    <string name="search_detail_label_2">នាយកដ្ឋានកណ្ដាល</string>
+    <string name="search_detail_label_3">នាយកដ្ឋាន/ស្នងការដ្ឋាន</string>
+    <string name="search_detail_label_4">Unknown</string>
+    <string name="search_detail_label_5">ការិយាល័យ/អធិការដ្ឋាន </string>
+    <string name="search_detail_label_6">Unknown</string>
+    <string name="search_detail_label_7">ផ្នែក/ប៉ុស្តិ៍</string>
+    <string name="search_detail_label_8">ឋានន្តរសក្</string>
+    <string name="search_detail_label_9">មុខតំណែង</string>
+    <string name="search_detail_label_10">តួនាទីបន្ថែម</string>
 </resources>
