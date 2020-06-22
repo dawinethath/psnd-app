@@ -49,6 +49,21 @@
                     android:id="@+id/layoutDetail_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+                <kh.com.psnd.ui.view.DetailAdapterView
+                    android:id="@+id/adapterView_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <kh.com.psnd.ui.view.DetailAdapterView
+                    android:id="@+id/adapterView_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <kh.com.psnd.ui.view.DetailAdapterView
+                    android:id="@+id/adapterView_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

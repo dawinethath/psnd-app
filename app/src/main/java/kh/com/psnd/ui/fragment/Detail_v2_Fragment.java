@@ -28,6 +28,9 @@ public class Detail_v2_Fragment extends BaseFragment<FragmentDetailV2Binding> {
             Log.i(search);
         }
 
+        binding.adapterView1.setupUI(this, R.string.detail_label_1);
+        binding.adapterView2.setupUI(this, R.string.detail_label_2);
+        binding.adapterView3.setupUI(this, R.string.detail_label_change_position);
     }
 
     @Override
