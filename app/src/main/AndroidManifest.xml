@@ -25,6 +25,9 @@
             android:name="kh.com.psnd.ui.activity.MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="kh.com.psnd.ui.activity.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="kh.com.psnd.ui.activity.SearchBySectionActivity"
             android:screenOrientation="portrait" />
     </application>

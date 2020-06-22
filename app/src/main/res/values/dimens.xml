@@ -6,6 +6,10 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="logo_header_width_height">64dp</dimen>
+    <dimen name="detail_logo_width">100dp</dimen>
+    <dimen name="detail_logo_height">110dp</dimen>
+
     <dimen name="heightItemSearch">100dp</dimen>
     <dimen name="widthImageSearch">70dp</dimen>
 </resources>

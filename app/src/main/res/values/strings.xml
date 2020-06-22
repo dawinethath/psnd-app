@@ -23,4 +23,19 @@
     <string name="search_detail_label_8">ឋានន្តរសក្</string>
     <string name="search_detail_label_9">មុខតំណែង</string>
     <string name="search_detail_label_10">តួនាទីបន្ថែម</string>
+
+    <!--    Detail-->
+    <string name="detail_cv_title">ជីវប្រវត្តិមន្ត្រីនគរបាលជាតិ</string>
+    <string name="detail_first_name_last_name">គោត្តនាម​ និងនាម</string>
+    <string name="detail_first_name_last_name_latin">អក្សរឡាតាំង</string>
+
+    <!--    Detail Tab-->
+    <string name="detail_label_tab_1">ព័ត៌មានផ្ទាល់ខ្លួន</string>
+    <string name="detail_label_tab_2">កម្រិតវប្បធម៍</string>
+    <string name="detail_label_tab_3">ភាសាបរទេស</string>
+    <string name="detail_label_tab_4">កម្រិតបណ្តុះបណ្តាលវិជ្ជាជីវ</string>
+    <string name="detail_label_tab_5">ប្រវត្តិការងារ</string>
+    <string name="detail_label_tab_6">ការលើកសរសើរ</string>
+    <string name="detail_label_tab_7">ប្រវត្តិដាក់វិន័យ</string>
+    <string name="detail_label_tab_8">ព័ត៌មានគ្រួសារ</string>
 </resources>

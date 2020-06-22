@@ -40,4 +40,5 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
         super.onPause();
         binding.searchBar.onPause();
     }
+
 }

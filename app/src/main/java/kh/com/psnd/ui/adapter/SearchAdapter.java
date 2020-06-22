@@ -20,7 +20,7 @@ public class SearchAdapter extends BaseRecyclerView<BaseFragment, SearchHolder, 
 
     @Override
     public SearchHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new SearchHolder(activity, ItemSearchBinding.inflate(LayoutInflater.from(context), parent, false));
+        return new SearchHolder(fragment, ItemSearchBinding.inflate(LayoutInflater.from(context), parent, false));
     }
 
     @Override

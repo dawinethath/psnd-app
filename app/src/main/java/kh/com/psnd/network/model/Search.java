@@ -9,6 +9,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class Search extends BaseGson {
+    public static final String EXTRA = "Search";
+
     @SerializedName("search")
     private String search;
 }

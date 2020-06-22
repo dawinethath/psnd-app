@@ -4,3 +4,9 @@
 
 - Select
     # SELECT * FROM `departments` WHERE `general_commissariat_id` = 2 AND `department_type_id` = 5 ORDER BY `department_name` ASC
+
+    SELECT * FROM `departments` WHERE `general_commissariat_id` = 2 AND `department_type_id` = 1 ORDER BY `department_name` ASC
+
+    SELECT * FROM `offices` WHERE `department_id` = 38 AND office_type_id = 2
+
+    SELECT * FROM `sectors` WHERE `office_id` = 15 AND `sector_type_id` = 1

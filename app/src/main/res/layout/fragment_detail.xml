@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.DetailFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/labelCV_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/detail_cv_title"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imageProfile"
+                android:layout_width="@dimen/detail_logo_width"
+                android:layout_height="@dimen/detail_logo_height"
+                android:layout_marginStart="@dimen/space_16dp"
+                android:layout_marginTop="@dimen/space_16dp"
+                android:background="@color/textViewHeaderColor"
+                app:actualImageScaleType="fitXY"
+                app:failureImage="@drawable/ic_person"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholderImage="@drawable/ic_person" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/firstNameKH"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16dp"
+                android:layout_marginEnd="@dimen/space_16dp"
+                android:text="យ៉ាវ ណាលីនដាវីដ"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/textViewHeaderColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageProfile"
+                app:layout_constraintTop_toTopOf="@id/imageProfile" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/firstNameLatin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:text="YAV NALINDAVID"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/textViewHeaderColor"
+                app:layout_constraintEnd_toEndOf="@id/firstNameKH"
+                app:layout_constraintStart_toStartOf="@id/firstNameKH"
+                app:layout_constraintTop_toBottomOf="@id/firstNameKH" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageProfile"
+                tools:background="#999">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    app:tabGravity="start"
+                    app:tabMode="scrollable" />
+
+            </androidx.viewpager.widget.ViewPager>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>
