@@ -14,11 +14,11 @@ import core.lib.base.BaseFragment;
 import core.lib.base.PagerAdapter;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
-import kh.com.psnd.databinding.FragmentDetailBinding;
+import kh.com.psnd.databinding.FragmentDetailV1Binding;
 import kh.com.psnd.network.model.Search;
 import lombok.val;
 
-public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
+public class Detail_v1_Fragment extends BaseFragment<FragmentDetailV1Binding> {
 
     private PagerAdapter   adapter;
     @ArrayRes
@@ -31,11 +31,11 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
                     R.string.detail_label_tab_5,
                     R.string.detail_label_tab_6,
                     R.string.detail_label_tab_7
-                    ));
+            ));
     private List<Fragment> fragments = new ArrayList<>();
 
-    public static DetailFragment newInstance(@NonNull Search search) {
-        val fragment = new DetailFragment();
+    public static Detail_v1_Fragment newInstance(@NonNull Search search) {
+        val fragment = new Detail_v1_Fragment();
         val bundle   = new Bundle();
         bundle.putSerializable(Search.EXTRA, search);
         fragment.setArguments(bundle);
@@ -50,12 +50,12 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         }
 
         fragments.add(new DetailProfile_1_Fragment());
-        fragments.add(new DetailProfile_1_Fragment());
-        fragments.add(new DetailProfile_1_Fragment());
-        fragments.add(new DetailProfile_1_Fragment());
-        fragments.add(new DetailProfile_1_Fragment());
-        fragments.add(new DetailProfile_1_Fragment());
-        fragments.add(new DetailProfile_1_Fragment());
+        fragments.add(new DetailProfile_2_Fragment());
+        fragments.add(new DetailProfile_3_Fragment());
+        fragments.add(new DetailProfile_4_Fragment());
+        fragments.add(new DetailProfile_5_Fragment());
+        fragments.add(new DetailProfile_6_Fragment());
+        fragments.add(new DetailProfile_7_Fragment());
 
         adapter = new PagerAdapter(getContext(), getChildFragmentManager(), fragments, titles);
         binding.viewPager.setAdapter(adapter);
@@ -69,7 +69,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
     @Override
     protected int layoutId() {
-        return R.layout.fragment_detail;
+        return R.layout.fragment_detail_v1;
     }
 
 }

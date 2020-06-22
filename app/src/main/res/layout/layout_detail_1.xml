@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardImageProfile"
+            android:layout_width="@dimen/detail_logo_width"
+            android:layout_height="@dimen/detail_logo_height"
+            android:layout_marginStart="@dimen/space_16dp"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:layout_marginBottom="@dimen/space_16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="false"
+            app:contentPadding="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/silver"
+            app:strokeWidth="3dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imageProfile"
+                android:layout_width="@dimen/detail_logo_width"
+                android:layout_height="@dimen/detail_logo_height"
+                app:actualImageScaleType="fitXY"
+                app:failureImage="@drawable/ic_person"
+                app:placeholderImage="@drawable/ic_person"
+                app:placeholderImageScaleType="centerCrop" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/firstNameKH"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16dp"
+            android:layout_marginEnd="@dimen/space_16dp"
+            android:ellipsize="end"
+            android:fontFamily="@string/font_family_medium"
+            android:maxLines="2"
+            android:text="យ៉ាវ ណាលីនដាវីដ"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_23sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_23sp"
+            app:autoSizeMinTextSize="@dimen/text_size_13sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardImageProfile"
+            app:layout_constraintTop_toTopOf="@id/cardImageProfile" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/staffId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_12dp"
+            android:fontFamily="@string/font_family_medium"
+            android:text="67783"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_21sp"
+            app:layout_constraintEnd_toEndOf="@id/firstNameKH"
+            app:layout_constraintStart_toStartOf="@id/firstNameKH"
+            app:layout_constraintTop_toBottomOf="@id/firstNameKH" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="label_1, label_2,label_3, label_4,label_5, label_6,label_7, label_8,label_9, label_10"
+            app:layout_constraintTop_toBottomOf="@id/cardImageProfile" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_1"
+            style="@style/DetailLabel"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:text="@string/detail_label_1"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_1"
+            app:layout_constraintEnd_toStartOf="@id/barrier"
+            app:layout_constraintStart_toStartOf="@id/cardImageProfile"
+            app:layout_constraintTop_toBottomOf="@id/cardImageProfile" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_2"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_2"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_2"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_3"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_3"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_3"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_2" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_4"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_4"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_4"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_3" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_5"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_5"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_5"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_4" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_6"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_6"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_6"
+            app:layout_constraintEnd_toStartOf="@id/barrier"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_5" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_7"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_7"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_7"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_6" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_8"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_8"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_8"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_7" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_9"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_9"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_9"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_8" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_10"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_10"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_10"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_9" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_1"
+            style="@style/DetailValueLabel"
+            android:text="អនុសេនីយ៍ត្រី"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_2"
+            style="@style/DetailValueLabel"
+            android:text="នាយកដ្ឋានបុគ្គលិក"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_2" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_3"
+            style="@style/DetailValueLabel"
+            android:text="29/05/1987"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_3" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_4"
+            style="@style/DetailValueLabel"
+            android:text="ប្រុស"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_4" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_5"
+            style="@style/DetailValueLabel"
+            android:text="ការិយាល័យគ្រប់គ្រងឯកសារ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_5" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_6"
+            style="@style/DetailValueLabel"
+            android:text="បំរើការងារ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_6" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_7"
+            style="@style/DetailValueLabel"
+            android:text="បរិញ្ញាប័ត្រ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_7" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_8"
+            style="@style/DetailValueLabel"
+            android:text="Asia Pacific International University International University International University"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_8" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_9"
+            style="@style/DetailValueLabel"
+            android:text="099990202"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_9" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_10"
+            style="@style/DetailValueLabel"
+            android:text="ផ្ទះលេខ ១២៥ហ្ស៊ី, ផ្លូវ២៥៥ហ្សិត,​​​ ភូមិ៣, សង្កាត់បឹងសាឡាង, ខណ្ឌទួលគោក,​ រាជធានីភ្នំពេញ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

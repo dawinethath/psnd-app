@@ -7,6 +7,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="noData">គ្មានទិន័យ</string>
+    <string name="noInternetConnection">គ្មានអ៊ីនធើណេត សូមធ្វើការពិនិត្យឡើងវិញ</string>
+
     <string name="menu_search">Search</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -28,6 +31,16 @@
     <string name="detail_cv_title">ជីវប្រវត្តិមន្ត្រីនគរបាលជាតិ</string>
     <string name="detail_first_name_last_name">គោត្តនាម​ និងនាម</string>
     <string name="detail_first_name_last_name_latin">អក្សរឡាតាំង</string>
+    <string name="detail_label_1">ឋានន្តរសក្</string>
+    <string name="detail_label_2">ឋានៈ</string>
+    <string name="detail_label_3">ឆ្នាំកំណើត</string>
+    <string name="detail_label_4">ភេទ</string>
+    <string name="detail_label_5">អង្គភាព</string>
+    <string name="detail_label_6">ស្ថានភាពការងារ</string>
+    <string name="detail_label_7">កម្រិតវប្បធម៍</string>
+    <string name="detail_label_8">ជំនាញ</string>
+    <string name="detail_label_9">ទូរស័ព្ទ</string>
+    <string name="detail_label_10">អាស័យដ្ឋាន</string>
 
     <!--    Detail Tab-->
     <string name="detail_label_tab_1">ព័ត៌មានផ្ទាល់ខ្លួន</string>

@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.fragment.DetailFragment">
+        tools:context=".ui.fragment.Detail_v1_Fragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
