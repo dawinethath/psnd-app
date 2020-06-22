@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -98,8 +99,8 @@ public class CoreRecyclerView extends FrameLayout {
     }
 
     public void nestedScrollingEnabled(boolean enabled) {
-        binding.recyclerView.setNestedScrollingEnabled(enabled);
-        // binding.recyclerView.setHasFixedSize(enabled);
+        ViewCompat.setNestedScrollingEnabled(binding.recyclerView, enabled);
+        binding.recyclerView.setHasFixedSize(enabled);
     }
 
     public void removeItemDecoration() {

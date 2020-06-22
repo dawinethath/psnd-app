@@ -20,7 +20,7 @@
             app:contentPadding="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/silver"
+            app:strokeColor="@color/textViewColor"
             app:strokeWidth="3dp">
 
             <com.facebook.drawee.view.SimpleDraweeView

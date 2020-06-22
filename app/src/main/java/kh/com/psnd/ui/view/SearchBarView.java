@@ -106,6 +106,7 @@ public class SearchBarView extends FrameLayout {
         }
         Log.i("Sent request to server...");
         val compositeDisposable = fragment.getCompositeDisposable();
+        compositeDisposable.clear();
         val task = new TaskSearch(new RequestSearch(search));
         compositeDisposable.add(task.start(task.new SimpleObserver() {
 

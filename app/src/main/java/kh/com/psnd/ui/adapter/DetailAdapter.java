@@ -31,6 +31,6 @@ public class DetailAdapter extends BaseRecyclerView<BaseFragment, DetailHolder, 
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 3;
     }
 }
