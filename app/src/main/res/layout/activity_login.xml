@@ -8,11 +8,10 @@
         android:layout_height="match_parent">
 
         <fragment
-            android:id="@+id/detailFragment"
-            android:name="kh.com.psnd.ui.fragment.Detail_v2_Fragment"
+            android:id="@+id/loginFragment"
+            android:name="kh.com.psnd.ui.fragment.LoginFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

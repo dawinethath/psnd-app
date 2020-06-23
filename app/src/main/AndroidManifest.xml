@@ -30,6 +30,10 @@
         <activity
             android:name="kh.com.psnd.ui.activity.SearchBySectionActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="kh.com.psnd.ui.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

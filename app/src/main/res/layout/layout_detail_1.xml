@@ -9,18 +9,15 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardImageProfile"
+            style="@style/Widget.MaterialComponents.CardView.Default"
             android:layout_width="@dimen/detail_logo_width"
             android:layout_height="@dimen/detail_logo_height"
             android:layout_marginStart="@dimen/space_16dp"
             android:layout_marginTop="@dimen/space_16dp"
             android:layout_marginBottom="@dimen/space_16dp"
-            app:cardCornerRadius="@dimen/cardCornerRadius"
-            app:cardElevation="@dimen/cardElevation"
-            app:cardUseCompatPadding="false"
             app:contentPadding="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/textViewColor"
             app:strokeWidth="3dp">
 
             <com.facebook.drawee.view.SimpleDraweeView

@@ -37,12 +37,26 @@
 
     <style name="Widget.MaterialComponents.Button.OutlinedButton.Default">
         <item name="android:textColor">@color/textViewHeaderColor</item>
+        <item name="android:textSize">@dimen/text_size_17sp</item>
         <item name="cornerRadius">@dimen/button_radius</item>
+        <item name="iconGravity">textStart</item>
         <item name="iconSize">@dimen/space_24dp</item>
         <item name="iconTint">@color/textViewHeaderColor</item>
         <item name="strokeColor">@color/textViewHeaderColor</item>
         <item name="strokeWidth">1dp</item>
         <item name="shapeAppearance">@style/MaterialButtonAppearance</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.TextButton.Default">
+        <item name="shapeAppearance">@style/MaterialButtonAppearance</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.CardView.Default">
+        <item name="cardCornerRadius">@dimen/cardCornerRadius</item>
+        <item name="cardElevation">@dimen/cardElevation</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="strokeColor">@color/textViewColor</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
 </resources>

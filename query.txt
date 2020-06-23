@@ -10,3 +10,9 @@
     SELECT * FROM `offices` WHERE `department_id` = 38 AND office_type_id = 2
 
     SELECT * FROM `sectors` WHERE `office_id` = 15 AND `sector_type_id` = 1
+
+
+    ==================================== Full text search ====================================
+
+    SELECT * FROM departments WHERE MATCH(department_name) AGAINST('សរុប' IN NATURAL LANGUAGE MODE)
+    SELECT * FROM departments WHERE MATCH(department_name) AGAINST('សរុប' IN BOOLEAN MODE)

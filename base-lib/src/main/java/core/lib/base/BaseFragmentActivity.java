@@ -2,8 +2,12 @@ package core.lib.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,16 +16,25 @@ import kmobile.logger.BuildConfig;
 import kmobile.logger.R;
 import lombok.val;
 
-public abstract class BaseFragmentActivity extends AppCompatActivity {
+public abstract class BaseFragmentActivity<T extends ViewDataBinding> extends AppCompatActivity {
+    protected       T        binding         = null;
     protected       Context  context         = this;
     public          Fragment currentFragment = null;
     protected final String   MY_FRG          = "MY_FRG";
     public static   String   currentPage     = BaseFragment.PAGE_UNKNOWN;
 
+    abstract protected int layoutId();
+
     @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
         overridePendingTransition(R.anim.fade_in_quick, R.anim.fade_out_quick);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, layoutId());
     }
 
     public void showContentFragment(Fragment fragment, String tagFragment, String whatPage, boolean clearBackStack, boolean showAnimate) {

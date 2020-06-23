@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import kh.com.psnd.network.model.Search;
 import kh.com.psnd.ui.activity.DetailActivity;
+import kh.com.psnd.ui.activity.LoginActivity;
 import kh.com.psnd.ui.activity.MainActivity;
 import lombok.val;
 
@@ -20,6 +21,11 @@ public class ActivityHelper {
 
     public static void openDetailActivity(@NonNull Context context, @NonNull Search search) {
         val intent = new Intent(context, DetailActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void openLoginActivity(@NonNull Context context) {
+        val intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
 

@@ -14,6 +14,14 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
+    <!--    Login -->
+    <string name="login">Login</string>
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="label_commissariat">អគ្គស្នងការដ្ឋាននគរបាលជាតិ</string>
+    <string name="label_personnel_department">នាយកដ្ឋានបុគ្គលិក</string>
+
     <string name="labelSearch">ID / Name</string>
     <string name="search">Search</string>
     <string name="search_detail_label_1">អង្គភាពថ្នាក់ស្មើអគ្គ</string>
