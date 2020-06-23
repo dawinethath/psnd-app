@@ -27,6 +27,7 @@
                 android:id="@+id/imageProfile"
                 android:layout_width="@dimen/detail_logo_width"
                 android:layout_height="@dimen/detail_logo_height"
+                android:tint="@color/textViewColor"
                 app:actualImageScaleType="fitXY"
                 app:failureImage="@drawable/ic_person"
                 app:placeholderImage="@drawable/ic_person"
@@ -44,8 +45,8 @@
             android:maxLines="2"
             android:text="យ៉ាវ ណាលីនដាវីដ"
             android:textColor="@color/textViewHeaderColor"
-            android:textSize="@dimen/text_size_23sp"
-            app:autoSizeMaxTextSize="@dimen/text_size_23sp"
+            android:textSize="@dimen/text_size_29sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_29sp"
             app:autoSizeMinTextSize="@dimen/text_size_13sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +61,7 @@
             android:fontFamily="@string/font_family_medium"
             android:text="67783"
             android:textColor="@color/textViewHeaderColor"
-            android:textSize="@dimen/text_size_21sp"
+            android:textSize="@dimen/text_size_25sp"
             app:layout_constraintEnd_toEndOf="@id/firstNameKH"
             app:layout_constraintStart_toStartOf="@id/firstNameKH"
             app:layout_constraintTop_toBottomOf="@id/firstNameKH" />
@@ -215,7 +216,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_8"
             style="@style/DetailValueLabel"
-            android:text="Asia Pacific International University International University International University"
+            android:text="Asia Pacific International University"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_8" />

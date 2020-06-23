@@ -18,9 +18,8 @@ public class ActivityHelper {
         context.startActivity(intent);
     }
 
-    public static void openDetailActivity(@NonNull Context context,@NonNull Search search) {
+    public static void openDetailActivity(@NonNull Context context, @NonNull Search search) {
         val intent = new Intent(context, DetailActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
 
