@@ -21,6 +21,8 @@
     <string name="forget_password">Forget Password?</string>
     <string name="label_commissariat">អគ្គស្នងការដ្ឋាននគរបាលជាតិ</string>
     <string name="label_personnel_department">នាយកដ្ឋានបុគ្គលិក</string>
+    <string name="username_error">ត្រូវការ User Name</string>
+    <string name="password_error">ត្រូវការ Password</string>
 
     <string name="labelSearch">ID / Name</string>
     <string name="search">Search</string>

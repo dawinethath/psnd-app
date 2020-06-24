@@ -45,12 +45,11 @@
             android:id="@+id/labelDepartment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space_28dp"
             android:elevation="99dp"
             android:text="@string/label_personnel_department"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_29sp"
-            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintBottom_toTopOf="@id/guideline2"
             app:layout_constraintEnd_toEndOf="@id/layoutTop"
             app:layout_constraintStart_toStartOf="@id/layoutTop" />
 
@@ -63,6 +62,15 @@
             app:layout_constraintGuide_percent=".45"
             app:layout_constraintTop_toTopOf="@id/layoutTop" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/layoutTop"
+            app:layout_constraintGuide_percent=".425"
+            app:layout_constraintTop_toTopOf="@id/layoutTop" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardLogin"
             style="@style/Widget.MaterialComponents.CardView.Default"
@@ -70,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_28dp"
             android:layout_marginEnd="@dimen/space_28dp"
-            app:contentPaddingBottom="50dp"
+            app:contentPaddingBottom="44dp"
             app:contentPaddingLeft="@dimen/space_32dp"
             app:contentPaddingRight="@dimen/space_32dp"
             app:contentPaddingTop="@dimen/space_24dp"
@@ -101,12 +109,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_16dp"
                     android:elevation="99dp"
-                    android:hint="@string/username">
+                    android:hint="@string/username"
+                    app:errorEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
                         android:textColor="@color/textViewHeaderColor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -116,9 +126,10 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_16dp"
+                    android:layout_marginTop="@dimen/space_08dp"
                     android:elevation="99dp"
                     android:hint="@string/password"
+                    app:errorEnabled="true"
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -126,6 +137,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
+                        android:maxLines="1"
                         android:textColor="@color/textViewHeaderColor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
