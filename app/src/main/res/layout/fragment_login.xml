@@ -116,7 +116,8 @@
                         android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLines="1"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
                         android:textColor="@color/textViewHeaderColor" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -136,6 +137,7 @@
                         android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:textColor="@color/textViewHeaderColor" />

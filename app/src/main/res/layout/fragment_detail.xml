@@ -45,22 +45,22 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <kh.com.psnd.ui.view.LayoutDetail_1_View
+                <kh.com.psnd.ui.view.LayoutDetailHeaderView
                     android:id="@+id/layoutDetail_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <kh.com.psnd.ui.view.DetailAdapterView
+                <kh.com.psnd.ui.view.DetailSectionView
                     android:id="@+id/adapterView_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <kh.com.psnd.ui.view.DetailAdapterView
+                <kh.com.psnd.ui.view.DetailSectionView
                     android:id="@+id/adapterView_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <kh.com.psnd.ui.view.DetailAdapterView
+                <kh.com.psnd.ui.view.DetailSectionView
                     android:id="@+id/adapterView_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

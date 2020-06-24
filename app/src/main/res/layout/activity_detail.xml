@@ -9,10 +9,9 @@
 
         <fragment
             android:id="@+id/detailFragment"
-            android:name="kh.com.psnd.ui.fragment.Detail_v2_Fragment"
+            android:name="kh.com.psnd.ui.fragment.DetailFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

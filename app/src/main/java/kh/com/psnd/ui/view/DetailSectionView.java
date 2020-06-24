@@ -12,31 +12,31 @@ import androidx.annotation.StringRes;
 
 import core.lib.base.BaseFragment;
 import kh.com.psnd.R;
-import kh.com.psnd.databinding.LayoutDetailAdapterBinding;
+import kh.com.psnd.databinding.LayoutDetailSectionBinding;
 import kh.com.psnd.network.model.ItemDetail;
 import lombok.val;
 
-public class DetailAdapterView extends FrameLayout {
+public class DetailSectionView extends FrameLayout {
 
-    private LayoutDetailAdapterBinding binding = null;
+    private LayoutDetailSectionBinding binding = null;
 
-    public DetailAdapterView(@NonNull Context context) {
+    public DetailSectionView(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public DetailAdapterView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public DetailSectionView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public DetailAdapterView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DetailSectionView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init() {
-        binding = LayoutDetailAdapterBinding.inflate(LayoutInflater.from(getContext()), this, true);
+        binding = LayoutDetailSectionBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
     public void setupUI(@NonNull BaseFragment fragment, @IntRange(from = 1) @StringRes int labelHeader_1) {

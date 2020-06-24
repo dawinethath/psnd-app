@@ -7,14 +7,14 @@ import androidx.annotation.NonNull;
 import core.lib.base.BaseFragment;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
-import kh.com.psnd.databinding.FragmentDetailV2Binding;
+import kh.com.psnd.databinding.FragmentDetailBinding;
 import kh.com.psnd.network.model.Search;
 import lombok.val;
 
-public class Detail_v2_Fragment extends BaseFragment<FragmentDetailV2Binding> {
+public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
-    public static Detail_v2_Fragment newInstance(@NonNull Search search) {
-        val fragment = new Detail_v2_Fragment();
+    public static DetailFragment newInstance(@NonNull Search search) {
+        val fragment = new DetailFragment();
         val bundle   = new Bundle();
         bundle.putSerializable(Search.EXTRA, search);
         fragment.setArguments(bundle);
@@ -40,7 +40,7 @@ public class Detail_v2_Fragment extends BaseFragment<FragmentDetailV2Binding> {
 
     @Override
     protected int layoutId() {
-        return R.layout.fragment_detail_v2;
+        return R.layout.fragment_detail;
     }
 
 }
