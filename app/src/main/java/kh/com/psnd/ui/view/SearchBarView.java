@@ -24,7 +24,7 @@ import kh.com.psnd.databinding.LayoutSearchBarBinding;
 import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.response.ResponseSearch;
 import kh.com.psnd.network.task.TaskSearch;
-import kh.com.psnd.ui.activity.SearchBySectionActivity;
+import kh.com.psnd.ui.activity.SearchOptionActivity;
 import lombok.Setter;
 import lombok.val;
 import retrofit2.Response;
@@ -67,7 +67,7 @@ public class SearchBarView extends FrameLayout {
         binding.textField.setStartIconOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                val intent = new Intent(getContext(), SearchBySectionActivity.class);
+                val intent = new Intent(getContext(), SearchOptionActivity.class);
                 fragment.startActivity(intent);
             }
         });

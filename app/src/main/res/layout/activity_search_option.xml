@@ -5,16 +5,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <core.lib.helper.CoreRecyclerView
-            android:id="@+id/recyclerView"
+        <fragment
+            android:id="@+id/searchOptionFragment"
+            android:name="kh.com.psnd.ui.fragment.SearchOptionFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            android:padding="@dimen/space_12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="#aaa" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
