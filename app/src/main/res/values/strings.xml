@@ -8,9 +8,12 @@
     <string name="noData">គ្មានទិន័យ</string>
     <string name="noInternetConnection">គ្មានអ៊ីនធើណេត សូមធ្វើការពិនិត្យឡើងវិញ</string>
 
-    <string name="menu_search">Search</string>
-    <string name="menu_about">About</string>
+    <string name="menu_search">ស្វែងរក</string>
+    <string name="menu_about">អំពីកម្មវិធី</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <!--    About-->
+    <string name="develop_by">បង្កើតឡើងដោយ</string>
 
     <!--    Login -->
     <string name="logout">Logout</string>
@@ -20,6 +23,7 @@
     <string name="forget_password">Forget Password?</string>
     <string name="label_commissariat">អគ្គស្នងការដ្ឋាននគរបាលជាតិ</string>
     <string name="label_personnel_department">នាយកដ្ឋានបុគ្គលិក</string>
+    <string name="label_document_office_personnel_department">ការិយាល័យគ្រប់គ្រង​​ឯកសារ (ក៨)</string>
     <string name="username_error">ត្រូវការ User Name</string>
     <string name="password_error">ត្រូវការ Password</string>
     <string name="last_login">Last login: %s</string>

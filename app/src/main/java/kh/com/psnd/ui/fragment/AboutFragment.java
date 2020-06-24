@@ -10,7 +10,7 @@ public class AboutFragment extends BaseFragment<FragmentAboutBinding> {
     @Override
     public void setupUI() {
         String version = "v" + ApplicationUtil.getVersionApp(getContext());
-        binding.txtVersion.setText(version);
+        binding.version.setText(version);
     }
 
     @Override

@@ -5,34 +5,102 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtVersion"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/space_16dp"
-            android:text="v1.0.0"
-            android:textColor="@color/textViewHeaderColor"
-            android:textSize="@dimen/text_size_13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintWidth_percent=".4"
+            app:srcCompat="@drawable/logo_splashscreen" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtTime"
-            android:layout_width="0dp"
+            android:id="@+id/commissariat"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="end"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:layout_marginBottom="@dimen/space_16dp"
             android:padding="@dimen/space_16dp"
-            android:text="@string/last_login"
+            android:singleLine="true"
+            android:text="@string/label_commissariat"
             android:textColor="@color/textViewHeaderColor"
-            android:textSize="@dimen/text_size_13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/text_size_29sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_29sp"
+            app:autoSizeMinTextSize="@dimen/text_size_15sp"
+            app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/txtVersion"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/commissariat" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:text="v1.0.0"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appName" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/developBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:text="@string/develop_by"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/version" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:text="@string/label_personnel_department"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/developBy" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/office"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:text="@string/label_document_office_personnel_department"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/developer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
