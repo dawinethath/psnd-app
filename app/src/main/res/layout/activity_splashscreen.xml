@@ -7,15 +7,51 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".15" />
+
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline"
             app:layout_constraintWidth_percent=".7"
             app:srcCompat="@drawable/logo_splashscreen" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/labelCommissariat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:layout_marginBottom="@dimen/space_16dp"
+            android:singleLine="true"
+            android:text="@string/label_commissariat"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_29sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_29sp"
+            app:autoSizeMinTextSize="@dimen/text_size_15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/labelDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:text="@string/label_personnel_department"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_29sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCommissariat" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

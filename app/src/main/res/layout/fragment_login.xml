@@ -37,6 +37,8 @@
             android:text="@string/label_commissariat"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_29sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_29sp"
+            app:autoSizeMinTextSize="@dimen/text_size_15sp"
             app:layout_constraintBottom_toTopOf="@id/labelDepartment"
             app:layout_constraintEnd_toEndOf="@id/layoutTop"
             app:layout_constraintStart_toStartOf="@id/layoutTop" />
