@@ -51,6 +51,9 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         header.username.setText(profile.getUsername());
         header.userId.setText(profile.getId());
         header.imageProfile.setImageURI(profile.getImage());
+        header.getRoot().setOnClickListener(__ -> {
+            Log.i("");
+        });
     }
 
     @Override

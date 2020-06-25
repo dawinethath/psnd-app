@@ -1,3 +1,7 @@
+def core_lib = file('\\..\\psnd-core-lib')
+def root = settings.rootProject
+settings.createProjectDescriptor(root, 'core-lib', core_lib)
+
 include ':app'
-include ':base-lib'
+include ':core-lib'
 rootProject.name = "SDBD System"
