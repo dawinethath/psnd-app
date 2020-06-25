@@ -8,10 +8,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import core.lib.base.BaseFragmentActivity;
+import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityMainBinding;
 import kh.com.psnd.helper.ActivityHelper;
-import lombok.val;
 
 public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
     @Override
@@ -20,6 +20,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
     }
 
     private AppBarConfiguration mAppBarConfiguration;
+    private NavController       navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_search, R.id.nav_about)
                 .setDrawerLayout(binding.drawerLayout)
                 .build();
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
@@ -37,7 +38,18 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.i("");
+        if (navController.getCurrentDestination().getId() != R.id.nav_search) {
+            navController.popBackStack(navController.getCurrentDestination().getId(), true);
+            navController.navigate(R.id.nav_search);
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 }
