@@ -26,6 +26,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="kh.com.psnd.ui.activity.DetailActivity"
+            android:theme="@style/AppTheme.TranslucentStatusBar"
             android:screenOrientation="portrait" />
         <activity
             android:name="kh.com.psnd.ui.activity.SearchOptionActivity"

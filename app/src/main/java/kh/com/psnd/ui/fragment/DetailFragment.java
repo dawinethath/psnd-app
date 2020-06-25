@@ -1,8 +1,11 @@
 package kh.com.psnd.ui.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
+
+import com.kelin.translucentbar.library.TranslucentBarManager;
 
 import core.lib.base.BaseFragment;
 import core.lib.utils.Log;
@@ -19,6 +22,13 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         bundle.putSerializable(Search.EXTRA, search);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        val translucentBarManager = new TranslucentBarManager(this);
+        translucentBarManager.transparent(this, view, R.color.colorPrimaryDark);
     }
 
     @Override

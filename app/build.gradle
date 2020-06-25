@@ -52,6 +52,8 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':core-lib')
 
+    api 'com.kelin.translucentbar:library:0.8.0'
+
     annotationProcessor "org.projectlombok:lombok:$rootProject.ext.lombok"
     annotationProcessor "androidx.databinding:databinding-compiler:$rootProject.ext.databinding"
 }

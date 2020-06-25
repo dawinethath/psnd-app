@@ -9,29 +9,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import core.lib.base.BaseFragment;
-import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
+import kh.com.psnd.databinding.LayoutDetailBodyBinding;
 
-public class LayoutDetailHeaderView extends FrameLayout {
+public class DetailBodyView extends FrameLayout {
 
-    private LayoutDetailHeaderBinding binding = null;
+    private LayoutDetailBodyBinding binding = null;
 
-    public LayoutDetailHeaderView(@NonNull Context context) {
+    public DetailBodyView(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public LayoutDetailHeaderView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public DetailBodyView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public LayoutDetailHeaderView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DetailBodyView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init() {
-        binding = LayoutDetailHeaderBinding.inflate(LayoutInflater.from(getContext()), this, true);
+        binding = LayoutDetailBodyBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
     public void setupUI(@NonNull BaseFragment fragment) {

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_toolbar_height"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/space_16dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imageProfile"
+            android:layout_width="@dimen/detail_toolbar_logo"
+            android:layout_height="@dimen/detail_toolbar_logo"
+            app:actualImageScaleType="centerCrop"
+            app:failureImage="@drawable/ic_person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:placeholderImage="@drawable/ic_person"
+            app:placeholderImageScaleType="centerCrop"
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@android:color/white"
+            app:roundingBorderWidth="1dp"
+            tools:tint="@color/textViewColor" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/firstNameKH"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16dp"
+            android:layout_marginEnd="@dimen/space_16dp"
+            android:ellipsize="end"
+            android:fontFamily="@string/font_family_medium"
+            android:maxLines="2"
+            android:text="យ៉ាវ ណាលីនដាវីដ"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_23sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_23sp"
+            app:autoSizeMinTextSize="@dimen/text_size_13sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageProfile"
+            app:layout_constraintTop_toTopOf="@id/imageProfile" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/staffId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_12dp"
+            android:fontFamily="@string/font_family_medium"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="67783"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_21sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_21sp"
+            app:autoSizeMinTextSize="@dimen/text_size_15sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@id/imageProfile"
+            app:layout_constraintEnd_toEndOf="@id/firstNameKH"
+            app:layout_constraintStart_toStartOf="@id/firstNameKH" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
