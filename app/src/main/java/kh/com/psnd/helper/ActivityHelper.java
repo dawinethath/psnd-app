@@ -30,7 +30,4 @@ public class ActivityHelper {
         context.startActivity(intent);
     }
 
-    public static void logout(BaseFragmentActivity activity){
-
-    }
 }

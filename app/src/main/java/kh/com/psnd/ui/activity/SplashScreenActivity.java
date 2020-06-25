@@ -9,6 +9,7 @@ import kh.com.psnd.R;
 import core.lib.base.BaseFragmentActivity;
 import kh.com.psnd.databinding.ActivitySplashscreenBinding;
 import kh.com.psnd.helper.ActivityHelper;
+import kh.com.psnd.helper.LoginManager;
 
 public class SplashScreenActivity extends BaseFragmentActivity<ActivitySplashscreenBinding> {
     @Override
@@ -19,8 +20,12 @@ public class SplashScreenActivity extends BaseFragmentActivity<ActivitySplashscr
     private Handler  handler  = new Handler();
     private Runnable runnable = () -> {
         finish();
-//        ActivityHelper.openMainActivity(context);
-        ActivityHelper.openLoginActivity(context);
+        if (LoginManager.isLoggedIn()) {
+            ActivityHelper.openMainActivity(context);
+        }
+        else {
+            ActivityHelper.openLoginActivity(context);
+        }
     };
 
     @Override

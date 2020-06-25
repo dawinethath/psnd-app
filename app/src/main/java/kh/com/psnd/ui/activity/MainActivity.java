@@ -11,7 +11,11 @@ import core.lib.base.BaseFragmentActivity;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityMainBinding;
+import kh.com.psnd.databinding.NavHeaderMainBinding;
 import kh.com.psnd.helper.ActivityHelper;
+import kh.com.psnd.helper.LoginManager;
+import kh.com.psnd.network.model.UserProfile;
+import lombok.val;
 
 public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
     @Override
@@ -25,6 +29,10 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!LoginManager.isLoggedIn()) {
+            finish();
+            ActivityHelper.openLoginActivity(this);
+        }
         setSupportActionBar(binding.appBarMain.toolbar);
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_search, R.id.nav_about)
                 .setDrawerLayout(binding.drawerLayout)
@@ -33,7 +41,16 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        binding.logout.setOnClickListener(__ -> ActivityHelper.logout(this));
+        binding.logout.setOnClickListener(__ -> LoginManager.logout(this));
+
+        UserProfile profile = LoginManager.getUserProfile();
+
+        Log.i(profile);
+
+        val header = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0));
+        header.username.setText(profile.getUsername());
+        header.userId.setText(profile.getId());
+        header.imageProfile.setImageURI(profile.getImage());
     }
 
     @Override
