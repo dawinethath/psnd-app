@@ -9,7 +9,7 @@ import android.view.Window;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import kmobile.logger.R;
+import core.lib.R;
 
 public class DialogProgress extends Dialog {
 

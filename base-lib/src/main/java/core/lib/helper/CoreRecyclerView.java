@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import core.lib.utils.Log;
-import kmobile.logger.databinding.LayoutRecyclerViewBinding;
+import core.lib.databinding.LayoutRecyclerViewBinding;
 
 public class CoreRecyclerView extends FrameLayout {
     private LayoutRecyclerViewBinding               binding                     = null;

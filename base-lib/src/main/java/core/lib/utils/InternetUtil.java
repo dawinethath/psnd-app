@@ -6,7 +6,7 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 import core.lib.base.BaseApp;
-import kmobile.logger.R;
+import core.lib.R;
 
 public class InternetUtil {
     /**

@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import core.lib.utils.Log;
-import kmobile.logger.BuildConfig;
-import kmobile.logger.R;
+import core.lib.BuildConfig;
+import core.lib.R;
 import lombok.val;
 
 public abstract class BaseFragmentActivity<T extends ViewDataBinding> extends AppCompatActivity {

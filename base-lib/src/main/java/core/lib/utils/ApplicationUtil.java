@@ -30,7 +30,7 @@ import androidx.annotation.NonNull;
 import java.util.TimeZone;
 
 import core.lib.base.BaseApp;
-import kmobile.logger.BuildConfig;
+import core.lib.BuildConfig;
 import lombok.val;
 
 public class ApplicationUtil {

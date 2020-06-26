@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
-import kmobile.logger.R;
+import core.lib.R;
 
 public class DividerItemDecorationHelper extends DividerItemDecoration {
     public DividerItemDecorationHelper(Context context) {

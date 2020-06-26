@@ -37,7 +37,7 @@ public class DetailSectionView extends FrameLayout {
         binding = LayoutDetailSectionBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
-    public void setupUI(@NonNull BaseFragment fragment, @IntRange(from = 1) @StringRes int labelHeader_1) {
+    public void setupUI(@NonNull BaseFragment fragment, @IntRange(from = 1) @StringRes int labelHeader_1, @Nullable ItemDetailSectionView.Callback callback) {
         {
             val header_1 = getContext().getString(labelHeader_1);
             val view     = new ItemDetailSectionHeaderView(getContext());
@@ -47,7 +47,7 @@ public class DetailSectionView extends FrameLayout {
 
         for (int i = 0; i < 3; i++) {
             val view = new ItemDetailSectionView(getContext());
-            view.bind(null);
+            view.bind(null, callback);
             binding.recyclerView.addView(view);
         }
     }

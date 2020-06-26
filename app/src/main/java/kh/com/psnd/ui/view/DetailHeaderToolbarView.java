@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailHeaderToolbarBinding;
+import kh.com.psnd.mock.MockData;
 
 public class DetailHeaderToolbarView extends FrameLayout {
 
@@ -33,7 +34,7 @@ public class DetailHeaderToolbarView extends FrameLayout {
     private void init() {
         binding = LayoutDetailHeaderToolbarBinding.inflate(LayoutInflater.from(getContext()), this, true);
         if (!isInEditMode()) {
-            binding.imageProfile.setImageURI(DetailHeaderView.TEST_IMAGE);
+            binding.imageProfile.setImageURI(MockData.TEST_IMAGE);
         }
     }
 

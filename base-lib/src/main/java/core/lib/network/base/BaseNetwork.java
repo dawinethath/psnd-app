@@ -24,7 +24,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
-import kmobile.logger.BuildConfig;
+import core.lib.BuildConfig;
 import lombok.Getter;
 import lombok.Setter;
 import okhttp3.HttpUrl;

@@ -15,7 +15,6 @@ public class DetailActivity extends BaseFragmentActivity<ActivityDetailBinding> 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
 }

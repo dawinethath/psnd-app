@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import io.reactivex.disposables.CompositeDisposable;
-import kmobile.logger.R;
+import core.lib.R;
 
 public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
 

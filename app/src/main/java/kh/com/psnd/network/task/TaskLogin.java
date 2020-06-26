@@ -8,7 +8,7 @@ import core.lib.utils.Log;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestLogin;
 import kh.com.psnd.network.response.ResponseLogin;
-import kmobile.logger.BuildConfig;
+import core.lib.BuildConfig;
 import lombok.val;
 import retrofit2.Call;
 import retrofit2.Response;

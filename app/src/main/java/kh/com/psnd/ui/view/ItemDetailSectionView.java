@@ -5,7 +5,6 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,7 +35,7 @@ public class ItemDetailSectionView extends FrameLayout {
         binding = ItemDetailSectionBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
-    public void bind(@NonNull ItemDetail itemDetail) {
+    public void bind(@NonNull ItemDetail itemDetail, @Nullable Callback callback) {
         if (itemDetail != null) {
             binding.position.setText(itemDetail.getLabel());
             binding.docNumber.setText(itemDetail.getDocNumber());
@@ -44,9 +43,10 @@ public class ItemDetailSectionView extends FrameLayout {
         }
 
         binding.docNumber.setPaintFlags(binding.docNumber.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        binding.docNumber.setOnClickListener(__ -> {
-            Toast.makeText(getContext(), "Clicked on doc", Toast.LENGTH_SHORT).show();
-        });
+        binding.docNumber.setOnClickListener(__ -> callback.clickedDownloadPdf(itemDetail));
     }
 
+    public interface Callback {
+        void clickedDownloadPdf(ItemDetail itemDetail);
+    }
 }

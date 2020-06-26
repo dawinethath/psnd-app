@@ -2,7 +2,7 @@ package core.lib.utils;
 
 import android.text.TextUtils;
 
-import kmobile.logger.BuildConfig;
+import core.lib.BuildConfig;
 import retrofit2.Call;
 import retrofit2.Response;
 

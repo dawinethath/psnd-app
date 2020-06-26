@@ -16,6 +16,8 @@ public class ItemDetail extends BaseGson {
     private String label;
     @SerializedName("docNumber")
     private String docNumber;
+    @SerializedName("docUrl")
+    private String docUrl;
     @SerializedName("date")
     private String date;
 }

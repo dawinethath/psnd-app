@@ -5,11 +5,11 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import core.lib.base.BaseFragmentActivity;
 import kh.com.psnd.network.model.Search;
 import kh.com.psnd.ui.activity.DetailActivity;
 import kh.com.psnd.ui.activity.LoginActivity;
 import kh.com.psnd.ui.activity.MainActivity;
+import kh.com.psnd.ui.activity.PdfActivity;
 import lombok.val;
 
 public class ActivityHelper {
@@ -27,6 +27,12 @@ public class ActivityHelper {
 
     public static void openLoginActivity(@NonNull Context context) {
         val intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void openPdfActivity(@NonNull Context context, @NonNull String pdfUri) {
+        val intent = new Intent(context, PdfActivity.class);
+        intent.putExtra(PdfActivity.EXTRA_PDF_URI, pdfUri);
         context.startActivity(intent);
     }
 

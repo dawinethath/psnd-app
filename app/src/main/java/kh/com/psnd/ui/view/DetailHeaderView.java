@@ -10,11 +10,11 @@ import androidx.annotation.Nullable;
 
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
+import kh.com.psnd.mock.MockData;
 
 public class DetailHeaderView extends FrameLayout {
 
-    public static final String                    TEST_IMAGE = "https://psnd.app/Uploads/cards/2020/6/3d22d39b-7baa-4396-90d0-39efa0da5a5c.jpg";
-    private             LayoutDetailHeaderBinding binding    = null;
+    private LayoutDetailHeaderBinding binding = null;
 
     public DetailHeaderView(@NonNull Context context) {
         super(context);
@@ -34,7 +34,7 @@ public class DetailHeaderView extends FrameLayout {
     private void init() {
         binding = LayoutDetailHeaderBinding.inflate(LayoutInflater.from(getContext()), this, true);
         if (!isInEditMode()) {
-            binding.imageProfile.setImageURI(TEST_IMAGE);
+            binding.imageProfile.setImageURI(MockData.TEST_IMAGE);
         }
     }
 

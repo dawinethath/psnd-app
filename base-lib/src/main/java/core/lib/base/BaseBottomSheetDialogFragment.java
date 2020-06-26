@@ -20,7 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import io.reactivex.disposables.CompositeDisposable;
-import kmobile.logger.R;
+import core.lib.R;
 
 public abstract class BaseBottomSheetDialogFragment<T extends ViewDataBinding> extends BottomSheetDialogFragment {
 
