@@ -13,7 +13,7 @@ import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
 
 public class DetailHeaderView extends FrameLayout {
 
-    public static final String                    TEST_IMAGE = "https://psnd.app/Uploads/cards/2020/3/c8de91a6-1957-4524-bbd0-db55ca3b3791.jpg";
+    public static final String                    TEST_IMAGE = "https://psnd.app/Uploads/cards/2020/6/3d22d39b-7baa-4396-90d0-39efa0da5a5c.jpg";
     private             LayoutDetailHeaderBinding binding    = null;
 
     public DetailHeaderView(@NonNull Context context) {

@@ -18,7 +18,7 @@ import kh.com.psnd.ui.adapter.SearchAdapter;
 public class SearchResultView extends FrameLayout {
 
     private LayoutSearchResultBinding binding = null;
-    private SearchAdapter adapter = null;
+    private SearchAdapter             adapter = null;
 
     public SearchResultView(@NonNull Context context) {
         super(context);
@@ -46,7 +46,7 @@ public class SearchResultView extends FrameLayout {
     public void setupUI(@NonNull BaseFragment fragment) {
         Log.i(fragment);
         adapter = new SearchAdapter(fragment);
-        binding.recyclerView.setupUI(new CoreRecyclerView.Callback() {
+        binding.recyclerView.setupUI(false, new CoreRecyclerView.Callback() {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 Log.i("Page : " + page + "    totalItemsCount : " + totalItemsCount);

@@ -33,6 +33,7 @@
             android:id="@+id/docNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
             android:padding="@dimen/space_08dp"
             android:text="ប្រក 383"
             android:textColor="@color/textViewHeaderColor"

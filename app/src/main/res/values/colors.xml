@@ -12,5 +12,6 @@
     <color name="endColor">#1F2371</color>
 
     <color name="silver">#CACACA</color>
+    <color name="gray_light">#E6E6E6</color>
 
 </resources>

@@ -11,9 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 import core.lib.base.BaseFragment;
-import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutDetailSectionBinding;
-import kh.com.psnd.network.model.ItemDetail;
 import lombok.val;
 
 public class DetailSectionView extends FrameLayout {
@@ -41,18 +39,14 @@ public class DetailSectionView extends FrameLayout {
 
     public void setupUI(@NonNull BaseFragment fragment, @IntRange(from = 1) @StringRes int labelHeader_1) {
         {
-            val header_1   = getContext().getString(labelHeader_1);
-            val header_2   = getContext().getString(R.string.detail_header_2);
-            val header_3   = getContext().getString(R.string.detail_header_3);
-            val itemDetail = new ItemDetail(header_1, header_2, header_3);
-
-            val view = new ItemDetailView(getContext());
-            view.bind(itemDetail);
+            val header_1 = getContext().getString(labelHeader_1);
+            val view     = new ItemDetailSectionHeaderView(getContext());
+            view.bind(header_1);
             binding.recyclerView.addView(view);
         }
 
         for (int i = 0; i < 3; i++) {
-            val view = new ItemDetailView(getContext());
+            val view = new ItemDetailSectionView(getContext());
             view.bind(null);
             binding.recyclerView.addView(view);
         }

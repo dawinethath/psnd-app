@@ -8,11 +8,13 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/header_1"
+            android:id="@+id/headerPosition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/gray_light"
+            android:gravity="center"
             android:padding="@dimen/space_08dp"
-            android:text="@string/detail_label_1"
+            android:text="អនុសេនីយ៍ទោ"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_17sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +27,16 @@
             android:layout_height="0dp"
             android:background="@color/textViewColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/docNumber"
-            app:layout_constraintStart_toEndOf="@+id/header_1"
+            app:layout_constraintEnd_toStartOf="@+id/headerDocNumber"
+            app:layout_constraintStart_toEndOf="@+id/headerPosition"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/header_2"
+            android:id="@+id/headerDocNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/gray_light"
+            android:gravity="center"
             android:padding="@dimen/space_08dp"
             android:text="@string/detail_header_2"
             android:textColor="@color/textViewHeaderColor"
@@ -40,7 +44,7 @@
             app:layout_constraintEnd_toStartOf="@+id/line_2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/line_1"
-            app:layout_constraintTop_toTopOf="@id/header_1"
+            app:layout_constraintTop_toTopOf="@id/headerPosition"
             app:layout_constraintWidth_percent=".33" />
 
         <FrameLayout
@@ -49,23 +53,32 @@
             android:layout_height="0dp"
             android:background="@color/textViewColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/header_3"
-            app:layout_constraintStart_toEndOf="@+id/header_2"
+            app:layout_constraintEnd_toStartOf="@+id/headerDate"
+            app:layout_constraintStart_toEndOf="@+id/headerDocNumber"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/header_3"
+            android:id="@+id/headerDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/gray_light"
+            android:gravity="center"
             android:padding="@dimen/space_08dp"
             android:text="@string/detail_header_3"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/line_2"
-            app:layout_constraintTop_toTopOf="@id/header_1"
+            app:layout_constraintTop_toTopOf="@id/headerPosition"
             app:layout_constraintWidth_percent=".33"
             tools:layout_editor_absoluteY="0dp" />
+
+        <FrameLayout
+            android:id="@+id/line_3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textViewColor"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

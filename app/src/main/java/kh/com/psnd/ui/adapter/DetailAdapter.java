@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import core.lib.base.BaseFragment;
 import core.lib.base.BaseRecyclerView;
-import kh.com.psnd.databinding.ItemDetailBinding;
+import kh.com.psnd.databinding.ItemDetailSectionBinding;
 import kh.com.psnd.network.model.Search;
 import kh.com.psnd.ui.adapter.holder.DetailHolder;
 
@@ -20,7 +20,7 @@ public class DetailAdapter extends BaseRecyclerView<BaseFragment, DetailHolder, 
 
     @Override
     public DetailHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DetailHolder(fragment, ItemDetailBinding.inflate(LayoutInflater.from(context), parent, false));
+        return new DetailHolder(fragment, ItemDetailSectionBinding.inflate(LayoutInflater.from(context), parent, false));
     }
 
     @Override
