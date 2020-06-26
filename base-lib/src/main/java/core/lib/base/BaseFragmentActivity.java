@@ -11,9 +11,9 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import core.lib.utils.Log;
 import core.lib.BuildConfig;
 import core.lib.R;
+import core.lib.utils.Log;
 import lombok.val;
 
 public abstract class BaseFragmentActivity<T extends ViewDataBinding> extends AppCompatActivity {

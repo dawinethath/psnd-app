@@ -25,6 +25,7 @@ public class PdfFragment extends BaseFragment<FragmentPdfBinding> {
                     Log.i("nbPages : " + nbPages);
                     binding.progressBar.setVisibility(View.GONE);
                 })
+                .spacing(3)
                 .load();
     }
 

@@ -14,6 +14,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import core.lib.BuildConfig;
 import core.lib.base.BaseApp;
 import core.lib.network.response.BaseResponse;
 import core.lib.utils.Log;
@@ -24,7 +25,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
-import core.lib.BuildConfig;
 import lombok.Getter;
 import lombok.Setter;
 import okhttp3.HttpUrl;

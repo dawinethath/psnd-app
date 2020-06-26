@@ -29,8 +29,8 @@ import androidx.annotation.NonNull;
 
 import java.util.TimeZone;
 
-import core.lib.base.BaseApp;
 import core.lib.BuildConfig;
+import core.lib.base.BaseApp;
 import lombok.val;
 
 public class ApplicationUtil {

@@ -5,8 +5,8 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import core.lib.base.BaseApp;
 import core.lib.R;
+import core.lib.base.BaseApp;
 
 public class InternetUtil {
     /**

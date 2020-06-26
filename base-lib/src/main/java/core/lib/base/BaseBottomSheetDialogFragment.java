@@ -17,10 +17,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import core.lib.R;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import io.reactivex.disposables.CompositeDisposable;
-import core.lib.R;
 
 public abstract class BaseBottomSheetDialogFragment<T extends ViewDataBinding> extends BottomSheetDialogFragment {
 
