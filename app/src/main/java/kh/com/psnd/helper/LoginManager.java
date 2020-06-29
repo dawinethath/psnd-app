@@ -32,6 +32,7 @@ public class LoginManager {
     public static void logout(BaseFragmentActivity activity) {
         FileManager.writeTextToFileInContext(BaseApp.context, SECRET, "");
         ActivityHelper.openLoginActivity(activity);
+        activity.finish();
     }
 
     public static boolean isLoggedIn() {

@@ -11,15 +11,15 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/imageProfile"
-            android:layout_width="@dimen/detail_toolbar_logo"
-            android:layout_height="@dimen/detail_toolbar_logo"
+            android:layout_width="@dimen/detail_toolbar_logo_width"
+            android:layout_height="@dimen/detail_toolbar_logo_height"
             app:actualImageScaleType="centerCrop"
             app:failureImage="@drawable/ic_person"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:placeholderImage="@drawable/ic_person"
             app:placeholderImageScaleType="centerCrop"
-            app:roundAsCircle="true"
+            app:roundedCornerRadius="@dimen/cardCornerRadius"
             app:roundingBorderColor="@android:color/white"
             app:roundingBorderWidth="1dp"
             tools:tint="@color/textViewColor" />

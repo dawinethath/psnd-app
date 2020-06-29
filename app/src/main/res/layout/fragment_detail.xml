@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".ui.fragment.Detail_v1_Fragment">
+        tools:context=".ui.fragment.DetailFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:expandedTitleGravity="top"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <kh.com.psnd.ui.view.DetailHeaderView
                     android:id="@+id/detailHeader"
@@ -28,22 +28,27 @@
                     android:layout_height="wrap_content" />
 
                 <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/AppBar"
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/detail_toolbar_height"
+                    android:alpha="0"
                     android:contentInsetStart="0dp"
                     android:contentInsetLeft="0dp"
                     android:contentInsetEnd="0dp"
                     android:contentInsetRight="0dp"
+                    android:elevation="@dimen/cardElevation"
                     app:contentInsetEnd="0dp"
                     app:contentInsetLeft="0dp"
                     app:contentInsetRight="0dp"
                     app:contentInsetStart="0dp"
-                    app:layout_collapseMode="pin">
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    tools:alpha="1">
 
-<!--                    <kh.com.psnd.ui.view.DetailHeaderToolbarView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content" />-->
+                    <kh.com.psnd.ui.view.DetailHeaderToolbarView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
                 </com.google.android.material.appbar.MaterialToolbar>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>

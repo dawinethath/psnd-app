@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.kelin.translucentbar.library.TranslucentBarManager;
 
 import org.apache.commons.io.FilenameUtils;
@@ -52,6 +53,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getBaseFragmentActivity().setSupportActionBar(binding.toolbar);
         val translucentBarManager = new TranslucentBarManager(this);
         translucentBarManager.transparent(this, view, R.color.colorPrimaryDark);
     }
@@ -63,6 +65,16 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
             Log.i(search);
         }
         binding.detailHeader.setupUI(this);
+        binding.appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                float offsetAlpha = (appBarLayout.getY() / binding.appBarLayout.getTotalScrollRange());
+                offsetAlpha = (offsetAlpha * -1);
+                Log.i("offsetAlpha : " + offsetAlpha);
+                binding.toolbar.setAlpha(offsetAlpha);
+            }
+        });
 
         progress = new DialogProgress(getContext(), false, null);
         binding.adapterView1.setupUI(this, R.string.detail_label_1, callback);
