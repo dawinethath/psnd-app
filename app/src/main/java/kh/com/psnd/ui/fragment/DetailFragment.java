@@ -62,6 +62,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
             val search = (Search) getArguments().getSerializable(Search.EXTRA);
             Log.i(search);
         }
+        binding.detailHeader.setupUI(this);
 
         progress = new DialogProgress(getContext(), false, null);
         binding.adapterView1.setupUI(this, R.string.detail_label_1, callback);

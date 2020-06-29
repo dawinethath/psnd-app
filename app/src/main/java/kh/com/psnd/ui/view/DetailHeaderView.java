@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
+import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.mock.MockData;
 
 public class DetailHeaderView extends FrameLayout {
@@ -39,7 +40,7 @@ public class DetailHeaderView extends FrameLayout {
     }
 
     public void setupUI(@NonNull BaseFragment fragment) {
-
+        binding.cardImageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), MockData.TEST_IMAGE));
     }
 
 }

@@ -38,6 +38,9 @@
         <activity
             android:name="kh.com.psnd.ui.activity.PdfActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="kh.com.psnd.ui.activity.ImagePreviewActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

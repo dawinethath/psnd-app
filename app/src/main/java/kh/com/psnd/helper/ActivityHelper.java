@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import kh.com.psnd.network.model.Search;
 import kh.com.psnd.ui.activity.DetailActivity;
+import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.LoginActivity;
 import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.ui.activity.PdfActivity;
@@ -33,6 +34,12 @@ public class ActivityHelper {
     public static void openPdfActivity(@NonNull Context context, @NonNull String pdfUri) {
         val intent = new Intent(context, PdfActivity.class);
         intent.putExtra(PdfActivity.EXTRA_PDF_URI, pdfUri);
+        context.startActivity(intent);
+    }
+
+    public static void openImagePreviewActivity(@NonNull Context context, @NonNull String imageUri) {
+        val intent = new Intent(context, ImagePreviewActivity.class);
+        intent.putExtra(ImagePreviewActivity.EXTRA_IMAGE_URI, imageUri);
         context.startActivity(intent);
     }
 
