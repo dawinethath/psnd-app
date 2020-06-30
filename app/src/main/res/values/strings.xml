@@ -10,12 +10,14 @@
 
     <string name="menu_search">ស្វែងរក</string>
     <string name="menu_about">អំពីកម្មវិធី</string>
+    <string name="menu_history">ប្រវត្តិធ្លាប់មើល</string>
     <string name="menu_slideshow">Slideshow</string>
 
     <!--    About-->
     <string name="develop_by">បង្កើតឡើងដោយ</string>
 
     <!--    Login -->
+    <string name="cancel">Cancel</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
     <string name="username">User Name</string>
@@ -27,6 +29,7 @@
     <string name="username_error">ត្រូវការ User Name</string>
     <string name="password_error">ត្រូវការ Password</string>
     <string name="last_login">Last login: %s</string>
+    <string name="msg_ask_logout">Do you want to logout?</string>
 
     <string name="labelSearch">ID / Name</string>
     <string name="search">Search</string>
@@ -40,6 +43,9 @@
     <string name="search_detail_label_8">ឋានន្តរសក្</string>
     <string name="search_detail_label_9">មុខតំណែង</string>
     <string name="search_detail_label_10">តួនាទីបន្ថែម</string>
+
+    <!--    History-->
+    <string name="history">History</string>
 
     <!--    Detail-->
     <string name="detail_cv_title">ជីវប្រវត្តិមន្ត្រីនគរបាលជាតិ</string>
@@ -69,4 +75,10 @@
     <string name="detail_header_2">លេខឯកសារ</string>
     <string name="detail_header_3">កាលបរិច្ឆេទ</string>
     <string name="detail_label_change_position">ផ្ទេរភារៈកិច្ច</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="language_choice">Language Choice</string>
+    <string name="language_khmer">Khmer</string>
+    <string name="security">Security</string>
+    <string name="auto_logout_after_1_minute">Auto-logout after 1 minute</string>
+    <string name="enable_fingerprint">Enable Fingerprint</string>
 </resources>

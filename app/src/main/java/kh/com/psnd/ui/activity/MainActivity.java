@@ -2,10 +2,13 @@ package kh.com.psnd.ui.activity;
 
 import android.os.Bundle;
 
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import core.lib.base.BaseFragmentActivity;
 import core.lib.utils.Log;
@@ -34,14 +37,21 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
             ActivityHelper.openLoginActivity(this);
         }
         setSupportActionBar(binding.appBarMain.toolbar);
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_search, R.id.nav_about)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_search, R.id.nav_history, R.id.nav_about)
                 .setDrawerLayout(binding.drawerLayout)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        binding.logout.setOnClickListener(__ -> LoginManager.logout(this));
+        binding.logout.setOnClickListener(__ -> {
+            new MaterialAlertDialogBuilder(context)
+                    .setIcon(R.drawable.ic_outline_exit_to_app_24)
+                    .setTitle(R.string.logout)
+                    .setMessage(R.string.msg_ask_logout)
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.logout, (dialogInterface, i) -> LoginManager.logout(MainActivity.this)).show();
+        });
 
         UserProfile profile = LoginManager.getUserProfile();
 
@@ -51,9 +61,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         header.username.setText(profile.getUsername());
         header.userId.setText(profile.getId());
         header.imageProfile.setImageURI(profile.getImage());
-        header.getRoot().setOnClickListener(__ -> {
-            Log.i("");
-        });
+        header.getRoot().setOnClickListener(__ -> ActivityHelper.openProfileActivity(context));
     }
 
     @Override
@@ -64,7 +72,10 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
     @Override
     public void onBackPressed() {
         Log.i("");
-        if (navController.getCurrentDestination().getId() != R.id.nav_search) {
+        if (binding.drawerLayout.isOpen()) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else if (navController.getCurrentDestination().getId() != R.id.nav_search) {
             navController.popBackStack(navController.getCurrentDestination().getId(), true);
             navController.navigate(R.id.nav_search);
         }

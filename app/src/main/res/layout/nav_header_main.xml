@@ -19,8 +19,8 @@
             android:layout_height="@dimen/logo_header_width_height"
             android:contentDescription="@string/nav_header_desc"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:failureImage="@drawable/logo_splashscreen"
-            app:placeholderImage="@drawable/logo_splashscreen"
+            app:failureImage="@drawable/ic_person"
+            app:placeholderImage="@drawable/ic_person"
             app:roundAsCircle="true" />
 
         <com.google.android.material.textview.MaterialTextView

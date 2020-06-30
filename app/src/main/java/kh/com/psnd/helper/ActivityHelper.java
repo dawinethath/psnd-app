@@ -11,6 +11,7 @@ import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.LoginActivity;
 import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.ui.activity.PdfActivity;
+import kh.com.psnd.ui.activity.ProfileActivity;
 import lombok.val;
 
 public class ActivityHelper {
@@ -28,6 +29,12 @@ public class ActivityHelper {
 
     public static void openLoginActivity(@NonNull Context context) {
         val intent = new Intent(context, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    public static void openProfileActivity(@NonNull Context context) {
+        val intent = new Intent(context, ProfileActivity.class);
         context.startActivity(intent);
     }
 

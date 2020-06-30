@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.ProfileFragment">
+
+        <FrameLayout
+            android:id="@+id/bg_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_header_height"
+            android:background="@drawable/bg_gradient"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/labelCommissariat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:layout_marginBottom="@dimen/space_16dp"
+            android:singleLine="true"
+            android:text="@string/label_commissariat"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_29sp"
+            app:autoSizeMaxTextSize="@dimen/text_size_29sp"
+            app:autoSizeMinTextSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toTopOf="@id/labelDepartment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/labelDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_08dp"
+            android:text="@string/label_personnel_department"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_29sp"
+            app:layout_constraintBottom_toTopOf="@id/imageProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCommissariat" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imageProfile"
+            android:layout_width="@dimen/logo_profile_width_height"
+            android:layout_height="@dimen/logo_profile_width_height"
+            android:contentDescription="@string/nav_header_desc"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:failureImage="@drawable/ic_person"
+            app:layout_constraintBottom_toBottomOf="@id/bg_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_header"
+            app:placeholderImage="@drawable/ic_person"
+            app:roundAsCircle="true"
+            app:roundingBorderColor="@android:color/white"
+            app:roundingBorderWidth="2dp" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/space_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageProfile">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/SettingCaption"
+                    android:text="@string/personal_information" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/username"
+                    style="@style/SettingItem"
+                    android:text="Sondia Kong"
+                    app:drawableLeftCompat="@drawable/ic_outline_perm_identity_24" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/userId"
+                    style="@style/SettingItem"
+                    android:text="88814"
+                    app:drawableLeftCompat="@drawable/ic_outline_featured_video_24" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/SettingCaption"
+                    android:text="@string/language_choice" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/language"
+                    style="@style/SettingItem"
+                    android:text="@string/language_khmer"
+                    app:drawableLeftCompat="@drawable/ic_outline_language_24" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/SettingCaption"
+                    android:text="@string/security" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/autoLogout"
+                    style="@style/SettingItem"
+                    android:text="@string/auto_logout_after_1_minute"
+                    app:drawableLeftCompat="@drawable/ic_outline_access_time_24" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/fingerprint"
+                    style="@style/SettingItem"
+                    android:text="@string/enable_fingerprint"
+                    app:drawableLeftCompat="@drawable/ic_outline_fingerprint_24" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

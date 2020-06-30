@@ -9,12 +9,16 @@
             android:icon="@drawable/ic_baseline_search_black_24"
             android:title="@string/menu_search" />
         <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_outline_history_24"
+            android:title="@string/menu_history" />
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_baseline_apps_24"
             android:title="@string/menu_about" />
-<!--        <item-->
-<!--            android:id="@+id/nav_slideshow"-->
-<!--            android:icon="@drawable/ic_menu_slideshow"-->
-<!--            android:title="@string/menu_slideshow" />-->
+        <!--        <item-->
+        <!--            android:id="@+id/nav_slideshow"-->
+        <!--            android:icon="@drawable/ic_menu_slideshow"-->
+        <!--            android:title="@string/menu_slideshow" />-->
     </group>
 </menu>
