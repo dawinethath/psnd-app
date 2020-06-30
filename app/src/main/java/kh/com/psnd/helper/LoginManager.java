@@ -2,6 +2,8 @@ package kh.com.psnd.helper;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.Gson;
 
 import core.lib.base.BaseApp;
@@ -17,12 +19,13 @@ public class LoginManager {
 
     private static final String SECRET = "login.bin";
 
-    public static void loggedIn(UserProfile login) {
-        if (login == null) {
+
+    public static void loggedIn(@NonNull UserProfile userProfile) {
+        if (userProfile == null) {
             throw new RuntimeException("Login cannot null");
         }
         try {
-            val encrypt = CryptoUtil.encryptMsg(login.toJson(), MobileInternal.secret());
+            val encrypt = CryptoUtil.encryptMsg(userProfile.toJson(), MobileInternal.secret());
             FileManager.writeTextToFileInContext(BaseApp.context, SECRET, encrypt);
         } catch (Throwable e) {
             Log.e(e);
@@ -37,6 +40,10 @@ public class LoginManager {
 
     public static boolean isLoggedIn() {
         return getUserProfile() != null;
+    }
+
+    public static void updateUserProfile(@NonNull UserProfile userProfile) {
+        loggedIn(userProfile);
     }
 
     public static UserProfile getUserProfile() {

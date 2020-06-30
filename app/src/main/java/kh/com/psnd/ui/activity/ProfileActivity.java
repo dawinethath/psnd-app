@@ -7,6 +7,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends BaseFragmentActivity<ActivityProfileBinding> {
+
     @Override
     protected int layoutId() {
         return R.layout.activity_profile;
@@ -15,6 +16,8 @@ public class ProfileActivity extends BaseFragmentActivity<ActivityProfileBinding
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
 
 }

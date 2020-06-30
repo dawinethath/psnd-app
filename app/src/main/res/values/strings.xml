@@ -75,10 +75,15 @@
     <string name="detail_header_2">លេខឯកសារ</string>
     <string name="detail_header_3">កាលបរិច្ឆេទ</string>
     <string name="detail_label_change_position">ផ្ទេរភារៈកិច្ច</string>
+
+    <!--    Profile-->
     <string name="personal_information">Personal Information</string>
     <string name="language_choice">Language Choice</string>
     <string name="language_khmer">Khmer</string>
     <string name="security">Security</string>
     <string name="auto_logout_after_1_minute">Auto-logout after 1 minute</string>
-    <string name="enable_fingerprint">Enable Fingerprint</string>
+    <string name="enable_fingerprint">Enable fingerprint</string>
+
+    <string name="fingerprint_title">Verify your identity</string>
+    <string name="fingerprint_description">Use your fingerprint to verify your identity</string>
 </resources>

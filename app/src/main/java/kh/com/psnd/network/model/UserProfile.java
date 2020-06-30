@@ -10,11 +10,13 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class UserProfile extends BaseGson {
     @SerializedName("username")
-    private String username;
+    private String  username;
     @SerializedName("id")
-    private String id;
+    private String  id;
     @SerializedName("token")
-    private String token;
+    private String  token;
     @SerializedName("image")
-    private String image;
+    private String  image;
+    @SerializedName("enabledFingerprint")
+    private boolean enabledFingerprint;
 }
