@@ -57,9 +57,11 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
         Log.i(profile);
 
+        val userId = getString(R.string.user_id, profile.getId());
+
         val header = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0));
         header.username.setText(profile.getUsername());
-        header.userId.setText(profile.getId());
+        header.userId.setText(userId);
         header.imageProfile.setImageURI(profile.getImage());
         header.getRoot().setOnClickListener(__ -> ActivityHelper.openProfileActivity(context));
     }

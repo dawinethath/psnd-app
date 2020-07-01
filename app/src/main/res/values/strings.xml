@@ -77,12 +77,18 @@
     <string name="detail_label_change_position">ផ្ទេរភារៈកិច្ច</string>
 
     <!--    Profile-->
+    <string name="user_id">User ID : %s</string>
     <string name="personal_information">Personal Information</string>
     <string name="language_choice">Language Choice</string>
     <string name="language_khmer">Khmer</string>
+    <string name="language_english">English</string>
     <string name="security">Security</string>
-    <string name="auto_logout_after_1_minute">Auto-logout after 1 minute</string>
     <string name="enable_fingerprint">Enable fingerprint</string>
+    <string name="auto_logout_after">Auto-logout after</string>
+    <string name="second_30">30 seconds</string>
+    <string name="minute_1">1 minute</string>
+    <string name="minute_2">2 minutes</string>
+    <string name="minute_3">3 minutes</string>
 
     <string name="fingerprint_title">Verify your identity</string>
     <string name="fingerprint_description">Use your fingerprint to verify your identity</string>

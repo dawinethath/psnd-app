@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="autologout">
+        <item>@string/second_30</item>
+        <item>@string/minute_1</item>
+        <item>@string/minute_2</item>
+        <item>@string/minute_3</item>
+    </string-array>
+    <string-array name="languages">
+        <item>@string/language_khmer</item>
+        <item>@string/language_english</item>
+    </string-array>
+
+</resources>
