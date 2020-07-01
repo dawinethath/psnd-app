@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="autologout">
+    <string-array name="autoLogout">
         <item>@string/second_30</item>
         <item>@string/minute_1</item>
         <item>@string/minute_2</item>
         <item>@string/minute_3</item>
     </string-array>
+    <integer-array name="autoLogoutValue">
+        <item>30000</item>
+        <item>60000</item>
+        <item>120000</item>
+        <item>180000</item>
+    </integer-array>
     <string-array name="languages">
         <item>@string/language_khmer</item>
         <item>@string/language_english</item>

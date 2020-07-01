@@ -39,4 +39,6 @@ public class UserProfile extends BaseGson {
      */
     @SerializedName("language")
     private int     language   = 0; // store position of arrays.xml
+    @SerializedName("timeLeave")
+    private long    timeLeave  = 0;
 }

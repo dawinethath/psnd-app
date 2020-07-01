@@ -45,7 +45,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
 
         if (userProfile.isEnabledFingerprint() && goldfinger.canAuthenticate()) {
             binding.lockBackground.setVisibility(View.VISIBLE);
-            goldfinger.authenticate(FingerPrintManager.getPromptParams(this), new Goldfinger.Callback() {
+            goldfinger.authenticate(FingerPrintManager.getPromptParams(getBaseFragmentActivity()), new Goldfinger.Callback() {
                 @Override
                 public void onResult(@NonNull Goldfinger.Result result) {
                     Log.i(new Gson().toJson(result));
@@ -77,7 +77,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
         val languages = getResources().getStringArray(R.array.languages);
         binding.language.setText(languages[userProfile.getLanguage()]);
 
-        val autoLogout    = getResources().getStringArray(R.array.autologout);
+        val autoLogout    = getResources().getStringArray(R.array.autoLogout);
         val strAutoLogout = getString(R.string.auto_logout_after) + " " + autoLogout[userProfile.getAutoLogout()];
         binding.autoLogout.setText(strAutoLogout);
 
@@ -89,7 +89,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
             binding.fingerprint.setOnCheckedChangeListener(null);
             if (goldfinger.canAuthenticate() && isChecked) {
                 binding.fingerprint.setChecked(false);
-                goldfinger.authenticate(FingerPrintManager.getPromptParams(ProfileFragment.this), new Goldfinger.Callback() {
+                goldfinger.authenticate(FingerPrintManager.getPromptParams(getBaseFragmentActivity()), new Goldfinger.Callback() {
                     @Override
                     public void onResult(@NonNull Goldfinger.Result result) {
                         Log.i(new Gson().toJson(result));
@@ -123,7 +123,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     private void doAutoLogout() {
         new MaterialAlertDialogBuilder(getContext())
                 .setTitle(R.string.auto_logout_after)
-                .setSingleChoiceItems(R.array.autologout, userProfile.getAutoLogout(), (dialogInterface, position) -> {
+                .setSingleChoiceItems(R.array.autoLogout, userProfile.getAutoLogout(), (dialogInterface, position) -> {
                     userProfile.setAutoLogout(position);
                     LoginManager.updateUserProfile(userProfile);
                     updateUI();
