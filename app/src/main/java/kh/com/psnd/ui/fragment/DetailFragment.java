@@ -25,7 +25,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentDetailBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.mock.MockData;
-import kh.com.psnd.network.model.ItemDetail;
+import kh.com.psnd.network.model.StaffRecord;
 import kh.com.psnd.network.model.Search;
 import kh.com.psnd.ui.view.ItemDetailSectionView;
 import kh.com.psnd.utils.PdfUtil;
@@ -84,8 +84,8 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
     private ItemDetailSectionView.Callback callback = new ItemDetailSectionView.Callback() {
         @Override
-        public void clickedDownloadPdf(ItemDetail itemDetail) {
-            Log.i(itemDetail);
+        public void clickedDownloadPdf(StaffRecord staffRecord) {
+            Log.i(staffRecord);
             val url      = MockData.getUrlPDF;
             val filename = FilenameUtils.getName(MockData.getUrlPDF);
             val pdfFile  = new File(PdfUtil.getPathPdf() + filename);

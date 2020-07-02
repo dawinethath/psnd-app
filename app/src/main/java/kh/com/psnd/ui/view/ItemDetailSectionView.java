@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import kh.com.psnd.databinding.ItemDetailSectionBinding;
-import kh.com.psnd.network.model.ItemDetail;
+import kh.com.psnd.network.model.StaffRecord;
 
 public class ItemDetailSectionView extends FrameLayout {
 
@@ -35,18 +35,18 @@ public class ItemDetailSectionView extends FrameLayout {
         binding = ItemDetailSectionBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
-    public void bind(@NonNull ItemDetail itemDetail, @Nullable Callback callback) {
-        if (itemDetail != null) {
-            binding.position.setText(itemDetail.getLabel());
-            binding.docNumber.setText(itemDetail.getDocNumber());
-            binding.date.setText(itemDetail.getDate());
+    public void bind(@NonNull StaffRecord staffRecord, @Nullable Callback callback) {
+        if (staffRecord != null) {
+            binding.position.setText(staffRecord.getPosition());
+            binding.docNumber.setText(staffRecord.getAnnounceLabel());
+            binding.date.setText(staffRecord.getDateAnnounce());
         }
 
         binding.docNumber.setPaintFlags(binding.docNumber.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        binding.docNumber.setOnClickListener(__ -> callback.clickedDownloadPdf(itemDetail));
+        binding.docNumber.setOnClickListener(__ -> callback.clickedDownloadPdf(staffRecord));
     }
 
     public interface Callback {
-        void clickedDownloadPdf(ItemDetail itemDetail);
+        void clickedDownloadPdf(StaffRecord staffRecord);
     }
 }

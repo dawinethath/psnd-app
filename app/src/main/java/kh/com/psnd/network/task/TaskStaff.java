@@ -5,24 +5,24 @@ import core.lib.network.base.BaseNetwork;
 import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
 import kh.com.psnd.network.adapter.PsndService;
-import kh.com.psnd.network.request.RequestLogin;
-import kh.com.psnd.network.response.ResponseLogin;
+import kh.com.psnd.network.request.RequestStaff;
+import kh.com.psnd.network.response.ResponseStaff;
 import lombok.val;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class TaskLogin extends BaseTask<RequestLogin, Response, ResponseLogin> {
+public class TaskStaff extends BaseTask<RequestStaff, Response, ResponseStaff> {
 
-    public TaskLogin(RequestLogin requestLogin) {
+    public TaskStaff(RequestStaff requestStaff) {
         super(new HttpHeader(BaseNetwork.getToken()));
-        setData(requestLogin);
+        setData(requestStaff);
     }
 
     @Override
-    protected Response onExecute(Retrofit retrofit, RequestLogin param) throws Exception {
+    protected Response onExecute(Retrofit retrofit, RequestStaff param) throws Exception {
         val          service = retrofit.create(PsndService.class);
-        Call<Response> call    = service.login(param);
+        Call<Response> call    = service.getStaff(param);
         return call.execute();
     }
 }

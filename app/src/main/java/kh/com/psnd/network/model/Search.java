@@ -7,10 +7,17 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Search extends BaseGson {
     public static final String EXTRA = "Search";
 
-    @SerializedName("search")
-    private String search;
+    @SerializedName("staffID")
+    private int    staffId;
+    @SerializedName("staffNumber")
+    private int    staffNumber;
+    @SerializedName("fullName")
+    private String fullName;
+    @SerializedName("photo")
+    private String photo;
+
 }

@@ -9,12 +9,10 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class RequestSearch extends BaseParam {
+@EqualsAndHashCode(callSuper=false)
+public class RequestStaff extends BaseParam {
 
-    @SerializedName("search")
-    private CharSequence search;
-    @SerializedName("page")
-    private int          page;
+    @SerializedName("staffID")
+    private int staffId;
 
 }

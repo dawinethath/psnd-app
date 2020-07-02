@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class UserProfile extends BaseGson {
+
     @SerializedName("username")
     private String username;
     @SerializedName("id")

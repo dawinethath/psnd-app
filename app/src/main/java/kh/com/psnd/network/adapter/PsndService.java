@@ -1,19 +1,27 @@
 package kh.com.psnd.network.adapter;
 
 
-import okhttp3.ResponseBody;
+import core.lib.network.request.BaseParam;
+import kh.com.psnd.network.request.RequestLogin;
+import kh.com.psnd.network.request.RequestSearch;
+import kh.com.psnd.network.request.RequestStaff;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Url;
 
 public interface PsndService {
 
     @POST("search")
-    Call<String> search(@Body String base64);
+    Call<Response> search(@Body RequestSearch requestSearch);
 
     @POST("login")
-    Call<String> login(@Body String base64);
+    Call<Response> login(@Body RequestLogin requestLogin);
+
+    @POST("general_comm")
+    Call<Response> generalComm(@Body BaseParam baseParam);
+
+    @POST("get_staff")
+    Call<Response> getStaff(@Body RequestStaff requestStaff);
 
 }

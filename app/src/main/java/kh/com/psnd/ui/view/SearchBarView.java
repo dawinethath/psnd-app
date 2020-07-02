@@ -31,12 +31,12 @@ import retrofit2.Response;
 
 public class SearchBarView extends FrameLayout {
 
-    private final long TIME_DELAY = 1_000L;
-    private LayoutSearchBarBinding binding = null;
-    private Callback callback = null;
-    private BaseFragment fragment = null;
-    private Handler handler = new Handler();
-    private MyRunnable runnable = new MyRunnable();
+    private final long                   TIME_DELAY = 1_000L;
+    private       LayoutSearchBarBinding binding    = null;
+    private       Callback               callback   = null;
+    private       BaseFragment           fragment   = null;
+    private       Handler                handler    = new Handler();
+    private       MyRunnable             runnable   = new MyRunnable();
 
     public SearchBarView(@NonNull Context context) {
         super(context);
@@ -107,7 +107,7 @@ public class SearchBarView extends FrameLayout {
         Log.i("Sent request to server...");
         val compositeDisposable = fragment.getCompositeDisposable();
         compositeDisposable.clear();
-        val task = new TaskSearch(new RequestSearch(search));
+        val task = new TaskSearch(new RequestSearch(search, 1));
         compositeDisposable.add(task.start(task.new SimpleObserver() {
 
             @Override

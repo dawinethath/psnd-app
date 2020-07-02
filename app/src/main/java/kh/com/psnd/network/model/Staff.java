@@ -13,8 +13,36 @@ public class Staff extends BaseGson {
     public static final String EXTRA = "Staff";
 
     @SerializedName("id")
-    private String id;
-    @SerializedName("name")
-    private String name;
+    private String       id;
+    @SerializedName("fullName")
+    private String       fullName;
+    @SerializedName("dob")
+    private String       dateOfBirth;
+    @SerializedName("sex")
+    private String       sex;
+    @SerializedName("education")
+    private String       education;
+    @SerializedName("skill")
+    private String       skill;
+    @SerializedName("tel")
+    private String       telephone;
+    @SerializedName("addr")
+    private String       address;
+    @SerializedName("general_commissariat")
+    private String       generalCommissariat;
+    @SerializedName("department")
+    private String       department;
+    @SerializedName("office")
+    private String       office;
+    @SerializedName("sector")
+    private String       sector;
+    @SerializedName("rank")
+    private String       rank;
+    @SerializedName("position")
+    private String       position;
+    @SerializedName("status")
+    private String       status;
+    @SerializedName("staHistories")
+    private StaffHistory staffHistories;
 
 }
