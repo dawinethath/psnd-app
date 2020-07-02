@@ -36,37 +36,45 @@
             android:id="@+id/labelDepartment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space_08dp"
+            android:layout_marginBottom="@dimen/space_16dp"
             android:text="@string/label_personnel_department"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_29sp"
-            app:layout_constraintBottom_toTopOf="@id/imageProfile"
+            app:layout_constraintBottom_toTopOf="@id/cardImageProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelCommissariat" />
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/imageProfile"
-            android:layout_width="@dimen/logo_profile_width_height"
-            android:layout_height="@dimen/logo_profile_width_height"
-            android:contentDescription="@string/nav_header_desc"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:failureImage="@drawable/ic_person"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardImageProfile"
+            style="@style/Widget.MaterialComponents.CardView.Default"
+            android:layout_width="@dimen/logo_profile_width"
+            android:layout_height="@dimen/logo_profile_height"
+            android:layout_marginTop="@dimen/status_bar_height_portrait"
+            app:contentPadding="0dp"
             app:layout_constraintBottom_toBottomOf="@id/bg_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bg_header"
-            app:placeholderImage="@drawable/ic_person"
-            app:roundAsCircle="true"
-            app:roundingBorderColor="@android:color/white"
-            app:roundingBorderWidth="3dp" />
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="3dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imageProfile"
+                android:layout_width="@dimen/logo_profile_width"
+                android:layout_height="@dimen/logo_profile_height"
+                app:actualImageScaleType="fitXY"
+                app:failureImage="@drawable/ic_person"
+                app:placeholderImage="@drawable/ic_person"
+                tools:tint="@color/textViewColor" />
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/space_16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageProfile">
+            app:layout_constraintTop_toBottomOf="@id/cardImageProfile">
 
             <LinearLayout
                 android:layout_width="match_parent"

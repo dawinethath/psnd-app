@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_header_height"
         android:background="@drawable/bg_gradient"
@@ -13,30 +13,49 @@
         android:padding="@dimen/space_16dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/imageProfile"
-            android:layout_width="@dimen/logo_header_width_height"
-            android:layout_height="@dimen/logo_header_width_height"
-            android:contentDescription="@string/nav_header_desc"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:failureImage="@drawable/ic_person"
-            app:placeholderImage="@drawable/ic_person"
-            app:roundAsCircle="true" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardImageProfile"
+            style="@style/Widget.MaterialComponents.CardView.Default"
+            android:layout_width="@dimen/logo_header_width"
+            android:layout_height="@dimen/logo_header_height"
+            android:layout_marginTop="@dimen/status_bar_height_portrait"
+            app:contentPadding="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="1dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imageProfile"
+                android:layout_width="@dimen/logo_header_width"
+                android:layout_height="@dimen/logo_header_height"
+                app:actualImageScaleType="fitXY"
+                app:failureImage="@drawable/ic_person"
+                app:placeholderImage="@drawable/ic_person"
+                tools:tint="@color/textViewColor" />
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/username"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_08dp"
+            android:layout_marginStart="@dimen/space_16dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardImageProfile"
+            app:layout_constraintTop_toTopOf="@id/cardImageProfile"
             tools:text="User Name" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/userId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_08dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/username"
+            app:layout_constraintTop_toBottomOf="@id/username"
             tools:text="user.email@gmail.com" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
