@@ -21,8 +21,8 @@ public class TaskGeneralComm extends BaseTask<BaseParam, Response, ResponseGener
 
     @Override
     protected Response onExecute(Retrofit retrofit, BaseParam param) throws Exception {
-        val            service = retrofit.create(PsndService.class);
-        Call<Response> call    = service.generalComm(param);
+        val                       service = retrofit.create(PsndService.class);
+        Call<ResponseGeneralComm> call    = service.generalComm(param);
         return call.execute();
     }
 }

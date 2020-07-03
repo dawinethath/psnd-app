@@ -49,8 +49,8 @@ ext {
     lombok = "1.18.8"
     databinding = "3.6.0-alpha12"
     permissionsdispatcher = "4.6.0"
-    okhttp3 = "4.2.2"
-    retrofit = "2.6.2"
+    okhttp3 = "4.7.2"
+    retrofit = "2.9.0"
     commons_lang3 = "3.9"
 }
 

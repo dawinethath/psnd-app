@@ -22,7 +22,7 @@ public class TaskLogin extends BaseTask<RequestLogin, Response, ResponseLogin> {
     @Override
     protected Response onExecute(Retrofit retrofit, RequestLogin param) throws Exception {
         val          service = retrofit.create(PsndService.class);
-        Call<Response> call    = service.login(param);
+        Call<ResponseLogin> call    = service.login(param);
         return call.execute();
     }
 }

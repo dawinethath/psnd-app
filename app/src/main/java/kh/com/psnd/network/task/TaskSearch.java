@@ -22,7 +22,7 @@ public class TaskSearch extends BaseTask<RequestSearch, Response, ResponseSearch
     @Override
     protected Response onExecute(Retrofit retrofit, RequestSearch param) throws Exception {
         val          service = retrofit.create(PsndService.class);
-        Call<Response> call    = service.search(param);
+        Call<ResponseSearch> call    = service.search(param);
         return call.execute();
     }
 }

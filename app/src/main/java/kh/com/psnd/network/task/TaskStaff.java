@@ -22,7 +22,7 @@ public class TaskStaff extends BaseTask<RequestStaff, Response, ResponseStaff> {
     @Override
     protected Response onExecute(Retrofit retrofit, RequestStaff param) throws Exception {
         val          service = retrofit.create(PsndService.class);
-        Call<Response> call    = service.getStaff(param);
+        Call<ResponseStaff> call    = service.getStaff(param);
         return call.execute();
     }
 }
