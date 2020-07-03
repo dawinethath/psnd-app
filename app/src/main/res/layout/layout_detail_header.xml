@@ -65,8 +65,6 @@
                 android:id="@+id/imageProfile"
                 android:layout_width="@dimen/detail_logo_width"
                 android:layout_height="@dimen/detail_logo_height"
-                app:actualImageScaleType="fitXY"
-                app:failureImage="@drawable/ic_person"
                 app:placeholderImage="@drawable/ic_person"
                 app:placeholderImageScaleType="centerCrop"
                 tools:tint="@color/textViewColor" />

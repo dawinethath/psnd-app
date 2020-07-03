@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
 import kh.com.psnd.helper.ActivityHelper;
-import kh.com.psnd.mock.MockData;
+import kh.com.psnd.network.model.Staff;
 
 public class DetailHeaderView extends FrameLayout {
 
@@ -35,12 +35,16 @@ public class DetailHeaderView extends FrameLayout {
     private void init() {
         binding = LayoutDetailHeaderBinding.inflate(LayoutInflater.from(getContext()), this, true);
         if (!isInEditMode()) {
-            binding.imageProfile.setImageURI(MockData.TEST_IMAGE);
         }
     }
 
-    public void setupUI(@NonNull BaseFragment fragment) {
-        binding.cardImageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), MockData.TEST_IMAGE));
+    public void setupUI(@NonNull BaseFragment fragment, @NonNull Staff staff) {
+        binding.imageProfile.setImageURI(staff.getPhoto());
+        binding.firstNameKH.setText(staff.getFullName());
+        binding.staffId.setText(staff.getId());
+        binding.headerTitle.setText(staff.getDepartment());
+
+        binding.cardImageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff.getPhoto()));
     }
 
 }

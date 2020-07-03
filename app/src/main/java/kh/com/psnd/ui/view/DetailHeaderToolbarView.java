@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailHeaderToolbarBinding;
 import kh.com.psnd.mock.MockData;
+import kh.com.psnd.network.model.Staff;
 
 public class DetailHeaderToolbarView extends FrameLayout {
 
@@ -34,12 +35,13 @@ public class DetailHeaderToolbarView extends FrameLayout {
     private void init() {
         binding = LayoutDetailHeaderToolbarBinding.inflate(LayoutInflater.from(getContext()), this, true);
         if (!isInEditMode()) {
-            binding.imageProfile.setImageURI(MockData.TEST_IMAGE);
         }
     }
 
-    public void setupUI(@NonNull BaseFragment fragment) {
-
+    public void setupUI(@NonNull BaseFragment fragment, @NonNull Staff staff) {
+        binding.imageProfile.setImageURI(staff.getPhoto());
+        binding.firstNameKH.setText(staff.getFullName());
+        binding.staffId.setText(staff.getId());
     }
 
 }

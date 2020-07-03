@@ -46,6 +46,7 @@
                     tools:alpha="1">
 
                     <kh.com.psnd.ui.view.DetailHeaderToolbarView
+                        android:id="@+id/headerToolbarView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -67,7 +68,7 @@
                 android:orientation="vertical">
 
                 <kh.com.psnd.ui.view.DetailBodyView
-                    android:id="@+id/layoutDetail_1"
+                    android:id="@+id/layoutDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

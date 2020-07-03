@@ -1,15 +1,13 @@
 package kh.com.psnd.ui.adapter.holder;
 
-import core.lib.base.BaseFragment;
 import core.lib.base.BaseViewHolder;
-import core.lib.utils.Log;
 import kh.com.psnd.databinding.ItemSearchBinding;
-import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
+import kh.com.psnd.ui.fragment.SearchFragment;
 
-public class SearchHolder extends BaseViewHolder<BaseFragment, ItemSearchBinding, Search> {
+public class SearchHolder extends BaseViewHolder<SearchFragment, ItemSearchBinding, Search> {
 
-    public SearchHolder(BaseFragment fragment, ItemSearchBinding binding) {
+    public SearchHolder(SearchFragment fragment, ItemSearchBinding binding) {
         super(fragment, binding);
     }
 
@@ -18,10 +16,8 @@ public class SearchHolder extends BaseViewHolder<BaseFragment, ItemSearchBinding
         super.bind(item);
         binding.image.setImageURI(item.getPhoto());
         binding.name.setText(item.getFullName());
+        binding.department.setText(item.getDepartment());
         binding.id.setText(item.getStaffNumber());
-        binding.getRoot().setOnClickListener(__ -> {
-            Log.i(item);
-            ActivityHelper.openDetailActivity(context, item);
-        });
+        binding.getRoot().setOnClickListener(__ -> fragment.onClickedItem(item));
     }
 }

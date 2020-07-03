@@ -36,11 +36,9 @@ public class ItemDetailSectionView extends FrameLayout {
     }
 
     public void bind(@NonNull StaffRecord staffRecord, @Nullable Callback callback) {
-        if (staffRecord != null) {
-            binding.position.setText(staffRecord.getPosition());
-            binding.docNumber.setText(staffRecord.getAnnounceLabel());
-            binding.date.setText(staffRecord.getDateAnnounce());
-        }
+        binding.position.setText(staffRecord.getName());
+        binding.docNumber.setText(staffRecord.getAnnounceNumber());
+        binding.date.setText(staffRecord.getDateAnnounce());
 
         binding.docNumber.setPaintFlags(binding.docNumber.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         binding.docNumber.setOnClickListener(__ -> callback.clickedDownloadPdf(staffRecord));

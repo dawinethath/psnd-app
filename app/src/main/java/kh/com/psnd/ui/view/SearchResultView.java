@@ -18,6 +18,7 @@ import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.response.ResponseSearch;
 import kh.com.psnd.network.task.TaskSearch;
 import kh.com.psnd.ui.adapter.SearchAdapter;
+import kh.com.psnd.ui.fragment.SearchFragment;
 import lombok.val;
 import retrofit2.Response;
 
@@ -51,7 +52,7 @@ public class SearchResultView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull BaseFragment fragment, @NonNull LayoutSearchBarBinding searchBarBinding) {
+    public void setupUI(@NonNull SearchFragment fragment, @NonNull LayoutSearchBarBinding searchBarBinding) {
         this.fragment = fragment;
         this.searchBarBinding = searchBarBinding;
         adapter = new SearchAdapter(fragment);
@@ -85,7 +86,7 @@ public class SearchResultView extends FrameLayout {
 
             @Override
             public Class<?> clazzResponse() {
-                return ResponseSearch.class;
+                return null;
             }
 
             @Override

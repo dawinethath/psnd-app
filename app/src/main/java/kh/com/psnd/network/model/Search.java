@@ -17,6 +17,8 @@ public class Search extends BaseGson {
     private String staffNumber;
     @SerializedName("fullName")
     private String fullName;
+    @SerializedName("department")
+    private String department;
     @SerializedName("photo")
     private String photo;
 

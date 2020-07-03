@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.Staff;
 import kh.com.psnd.ui.activity.DetailActivity;
 import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.LoginActivity;
@@ -23,8 +23,9 @@ public class ActivityHelper {
         context.startActivity(intent);
     }
 
-    public static void openDetailActivity(@NonNull Context context, @NonNull Search search) {
+    public static void openDetailActivity(@NonNull Context context, @NonNull Staff staff) {
         val intent = new Intent(context, DetailActivity.class);
+        intent.putExtra(Staff.EXTRA, staff);
         context.startActivity(intent);
     }
 

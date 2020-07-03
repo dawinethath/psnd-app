@@ -92,4 +92,7 @@
 
     <string name="fingerprint_title">Verify your identity</string>
     <string name="fingerprint_description">Use your fingerprint to verify your identity</string>
+
+    <!--    PDF-->
+    <string name="file_not_found">File not found!</string>
 </resources>

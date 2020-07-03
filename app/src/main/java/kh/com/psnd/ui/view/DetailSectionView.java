@@ -10,8 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
+import java.util.List;
+
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailSectionBinding;
+import kh.com.psnd.network.model.StaffRecord;
 import lombok.val;
 
 public class DetailSectionView extends FrameLayout {
@@ -35,9 +38,17 @@ public class DetailSectionView extends FrameLayout {
 
     private void init() {
         binding = LayoutDetailSectionBinding.inflate(LayoutInflater.from(getContext()), this, true);
+        if (!isInEditMode()) {
+            setVisibility(GONE);
+        }
     }
 
-    public void setupUI(@NonNull BaseFragment fragment, @IntRange(from = 1) @StringRes int labelHeader_1, @Nullable ItemDetailSectionView.Callback callback) {
+    public void setupUI(@NonNull BaseFragment fragment, List<StaffRecord> staffRecords, @IntRange(from = 1) @StringRes int labelHeader_1, @Nullable ItemDetailSectionView.Callback callback) {
+        if (staffRecords == null || staffRecords.size() == 0) {
+            setVisibility(GONE);
+            return;
+        }
+        setVisibility(VISIBLE);
         {
             val header_1 = getContext().getString(labelHeader_1);
             val view     = new ItemDetailSectionHeaderView(getContext());
@@ -45,9 +56,9 @@ public class DetailSectionView extends FrameLayout {
             binding.recyclerView.addView(view);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (val item : staffRecords) {
             val view = new ItemDetailSectionView(getContext());
-            view.bind(null, callback);
+            view.bind(item, callback);
             binding.recyclerView.addView(view);
         }
     }
