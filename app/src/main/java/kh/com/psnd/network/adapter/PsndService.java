@@ -15,7 +15,7 @@ import retrofit2.http.POST;
 
 public interface PsndService {
 
-    @POST("search")
+    @POST("search_staffs")
     Call<ResponseSearch> search(@Body RequestSearch requestSearch);
 
     @POST("login")

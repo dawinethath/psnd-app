@@ -12,6 +12,7 @@ import kh.com.psnd.ui.activity.LoginActivity;
 import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.ui.activity.PdfActivity;
 import kh.com.psnd.ui.activity.ProfileActivity;
+import kh.com.psnd.ui.activity.SearchOptionActivity;
 import lombok.val;
 
 public class ActivityHelper {
@@ -30,6 +31,11 @@ public class ActivityHelper {
     public static void openLoginActivity(@NonNull Context context) {
         val intent = new Intent(context, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    public static void openSearchOptionActivity(@NonNull Context context) {
+        val intent = new Intent(context, SearchOptionActivity.class);
         context.startActivity(intent);
     }
 

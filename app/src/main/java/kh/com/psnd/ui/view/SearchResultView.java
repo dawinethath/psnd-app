@@ -12,13 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import core.lib.base.BaseFragment;
 import core.lib.helper.CoreRecyclerView;
 import core.lib.utils.Log;
+import kh.com.psnd.databinding.LayoutSearchBarBinding;
 import kh.com.psnd.databinding.LayoutSearchResultBinding;
+import kh.com.psnd.network.request.RequestSearch;
+import kh.com.psnd.network.response.ResponseSearch;
+import kh.com.psnd.network.task.TaskSearch;
 import kh.com.psnd.ui.adapter.SearchAdapter;
+import lombok.val;
+import retrofit2.Response;
 
 public class SearchResultView extends FrameLayout {
 
-    private LayoutSearchResultBinding binding = null;
-    private SearchAdapter             adapter = null;
+    private LayoutSearchResultBinding binding          = null;
+    private SearchAdapter             adapter          = null;
+    private BaseFragment              fragment         = null;
+    private RequestSearch             requestSearch    = null;
+    private LayoutSearchBarBinding    searchBarBinding = null;
 
     public SearchResultView(@NonNull Context context) {
         super(context);
@@ -37,22 +46,77 @@ public class SearchResultView extends FrameLayout {
 
     private void init() {
         binding = LayoutSearchResultBinding.inflate(LayoutInflater.from(getContext()), this, true);
-
         if (isInEditMode()) {
 
         }
     }
 
-    public void setupUI(@NonNull BaseFragment fragment) {
-        Log.i(fragment);
+    public void setupUI(@NonNull BaseFragment fragment, @NonNull LayoutSearchBarBinding searchBarBinding) {
+        this.fragment = fragment;
+        this.searchBarBinding = searchBarBinding;
         adapter = new SearchAdapter(fragment);
         binding.recyclerView.setupUI(false, new CoreRecyclerView.Callback() {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                Log.i("Page : " + page + "    totalItemsCount : " + totalItemsCount);
+                Log.i("Page : " + page + "    totalItemsCount : " + totalItemsCount + "   " + requestSearch);
+                if (requestSearch != null) {
+                    loadMore(requestSearch.getSearch(), requestSearch.getPage() + 1);
+                }
             }
         });
         binding.recyclerView.setAdapter(adapter);
+    }
+
+    public void cleanList() {
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+        searchBarBinding.progressBar.setVisibility(GONE);
+    }
+
+    public void loadMore(String search, int page) {
+        Log.i("Sent request to server...");
+        requestSearch = new RequestSearch(search, page);
+
+        val compositeDisposable = fragment.getCompositeDisposable();
+        compositeDisposable.clear();
+        val task = new TaskSearch(requestSearch);
+        searchBarBinding.progressBar.setVisibility(VISIBLE);
+        compositeDisposable.add(task.start(task.new SimpleObserver() {
+
+            @Override
+            public Class<?> clazzResponse() {
+                return ResponseSearch.class;
+            }
+
+            @Override
+            public void onNext(@io.reactivex.annotations.NonNull Response result) {
+                Log.i("LOG >> onNext >> result : " + result);
+                if (result.isSuccessful()) {
+                    val data = (ResponseSearch) result.body();
+                    Log.i(data);
+                    if (data != null) {
+                        if (requestSearch.getPage() == 1) {
+                            adapter.clear();
+                        }
+                        if (data.getResult() != null) {
+                            Log.i("data.getResult() : " + data.getResult().size());
+                            for (val item : data.getResult()) {
+                                adapter.addItem(item);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                    binding.recyclerView.checkList();
+                    searchBarBinding.progressBar.setVisibility(GONE);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(e);
+                searchBarBinding.progressBar.setVisibility(GONE);
+            }
+        }));
     }
 
 }

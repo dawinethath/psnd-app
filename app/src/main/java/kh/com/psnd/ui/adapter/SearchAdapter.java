@@ -25,12 +25,11 @@ public class SearchAdapter extends BaseRecyclerView<BaseFragment, SearchHolder, 
 
     @Override
     public void onBindViewHolder(SearchHolder holder, int position) {
-        // holder.bind(getItemPosition(position));
-        holder.bind(null);
+         holder.bind(getItemPosition(position));
     }
 
-    @Override
-    public int getItemCount() {
-        return 20;
-    }
+//    @Override
+//    public int getItemCount() {
+//        return 20;
+//    }
 }

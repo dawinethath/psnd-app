@@ -13,8 +13,8 @@ import lombok.EqualsAndHashCode;
 public class RequestSearch extends BaseParam {
 
     @SerializedName("search")
-    private CharSequence search;
+    private String search;
     @SerializedName("page")
-    private int          page;
+    private int    page;
 
 }

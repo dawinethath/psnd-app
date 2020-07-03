@@ -8,7 +8,7 @@
 
         <core.lib.helper.CoreRecyclerView
             android:id="@+id/recyclerView"
-            app:core_paddingTop="@{@dimen/space_16dp}"
+            app:core_paddingTop="@{@dimen/space_08dp}"
             app:core_paddingBottom="@{@dimen/space_32dp}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
