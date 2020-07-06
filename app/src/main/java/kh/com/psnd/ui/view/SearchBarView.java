@@ -54,6 +54,18 @@ public class SearchBarView extends FrameLayout {
         }
     }
 
+    public void onResume() {
+        binding.txtSearch.setSelection(binding.txtSearch.getText().length());
+        binding.searchHistory.setupUI(str -> {
+            binding.txtSearch.setText(str);
+            binding.txtSearch.setSelection(binding.txtSearch.getText().length());
+        });
+    }
+
+    public String getSearchString() {
+        return binding.txtSearch.getText().toString();
+    }
+
     public void setupUI(@NonNull BaseFragment fragment, @NonNull Callback callback) {
         this.fragment = fragment;
         this.callback = callback;

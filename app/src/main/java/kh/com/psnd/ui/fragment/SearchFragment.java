@@ -11,6 +11,7 @@ import core.lib.dialog.DialogProgress;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
+import kh.com.psnd.dao.SearchHistory;
 import kh.com.psnd.databinding.FragmentSearchBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
@@ -29,6 +30,12 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
         progress = new DialogProgress(getContext(), true, dialogInterface -> getCompositeDisposable().clear());
         binding.searchBar.setupUI(this, callback);
         binding.searchResult.setupUI(this, binding.searchBar.getBinding());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        binding.searchBar.onResume();
     }
 
     private SearchBarView.Callback callback = new SearchBarView.Callback() {
@@ -86,6 +93,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
                     val data = (ResponseStaff) result.body();
                     Log.i(data);
                     ActivityHelper.openDetailActivity(getContext(), data.getResult());
+                    SearchHistory.addSearch(binding.searchBar.getSearchString());
                 }
                 progress.dismiss();
             }

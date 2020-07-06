@@ -12,6 +12,7 @@
         android:elevation="8dp"
         android:orientation="vertical"
         android:outlineProvider="bounds"
+        android:paddingBottom="@dimen/space_14dp"
         app:elevation="8dp">
 
         <me.zhanghai.android.materialprogressbar.MaterialProgressBar
@@ -26,40 +27,41 @@
             app:mpb_useIntrinsicPadding="false"
             tools:visibility="visible" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/labelSearch"
             android:paddingStart="@dimen/space_12dp"
             android:paddingTop="@dimen/space_14dp"
             android:paddingEnd="@dimen/space_12dp"
-            android:paddingBottom="@dimen/space_14dp"
-            app:layout_constraintTop_toTopOf="parent">
+            app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
+            app:endIconMode="clear_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_filter_list_24">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/labelSearch"
-                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
-                app:endIconMode="clear_text"
-                app:layout_constraintTop_toTopOf="parent"
-                app:startIconDrawable="@drawable/ic_baseline_filter_list_24">
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:textColor="@color/textViewHeaderColor"
+                android:textColorHint="@color/textViewColor"
+                android:textSize="@dimen/text_size_15sp" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionSearch"
-                    android:singleLine="true"
-                    android:textColor="@color/textViewHeaderColor"
-                    android:textColorHint="@color/textViewColor"
-                    android:textSize="@dimen/text_size_15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <kh.com.psnd.ui.view.SearchHistoryChipGroupView
+            android:id="@+id/searchHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textField" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
