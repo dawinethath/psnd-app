@@ -18,6 +18,8 @@
     <dimen name="detail_toolbar_logo_height">64dp</dimen>
     <dimen name="detail_toolbar_logo_width">50dp</dimen>
     <dimen name="detail_toolbar_height">100dp</dimen>
+    
+    <dimen name="photo_viewAspectRatio">0.76666666666</dimen>
 
     <dimen name="heightItemSearch">100dp</dimen>
     <dimen name="widthImageSearch">70dp</dimen>

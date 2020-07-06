@@ -40,7 +40,7 @@ public class DetailBodyView extends FrameLayout {
         binding.valueLabel2.setText(staff.getPosition());
         binding.valueLabel3.setText(staff.getDateOfBirth());
         binding.valueLabel4.setText(staff.getSex());
-        binding.valueLabel5.setText(staff.getGeneralCommissariat());
+        binding.valueLabel5.setText(staff.getDepartment());
         binding.valueLabel6.setText(staff.getStatus());
         binding.valueLabel7.setText(staff.getEducation());
         binding.valueLabel8.setText(staff.getSkill());

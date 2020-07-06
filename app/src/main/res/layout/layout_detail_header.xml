@@ -63,10 +63,9 @@
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageProfile"
+                style="@style/ProfilePhoto"
                 android:layout_width="@dimen/detail_logo_width"
-                android:layout_height="@dimen/detail_logo_height"
-                app:placeholderImage="@drawable/ic_person"
-                app:placeholderImageScaleType="centerCrop"
+                android:layout_height="wrap_content"
                 tools:tint="@color/textViewColor" />
         </com.google.android.material.card.MaterialCardView>
 

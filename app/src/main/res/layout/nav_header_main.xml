@@ -31,6 +31,7 @@
                 android:layout_width="@dimen/logo_header_width"
                 android:layout_height="@dimen/logo_header_height"
                 app:actualImageScaleType="fitXY"
+                app:failureImageScaleType="fitXY"
                 app:failureImage="@drawable/ic_person"
                 app:placeholderImage="@drawable/ic_person"
                 tools:tint="@color/textViewColor" />

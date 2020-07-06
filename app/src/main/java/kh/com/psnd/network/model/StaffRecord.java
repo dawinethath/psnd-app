@@ -16,7 +16,7 @@ public class StaffRecord extends BaseGson {
     private String name;
     @SerializedName("announce_number")
     private String announceNumber;
-    @SerializedName("date_ann")
+    @SerializedName("announce_date")
     private String dateAnnounce;
     @SerializedName("pdfUrl")
     private String pdfUrl;

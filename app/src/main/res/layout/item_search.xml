@@ -10,14 +10,15 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/image"
+            style="@style/ProfilePhoto"
             android:layout_width="@dimen/widthImageSearch"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_08dp"
             android:layout_marginTop="@dimen/space_08dp"
             android:layout_marginBottom="@dimen/space_08dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:placeholderImage="@color/textViewColor"
             app:roundedCornerRadius="@dimen/cardCornerRadius" />
 
         <com.google.android.material.textview.MaterialTextView

@@ -58,4 +58,13 @@
         <item name="android:paddingTop">@dimen/space_16dp</item>
         <item name="android:paddingBottom">@dimen/space_16dp</item>
     </style>
+
+    <style name="ProfilePhoto">
+        <item name="backgroundImage">@color/textViewColor</item>
+        <item name="viewAspectRatio">@dimen/photo_viewAspectRatio</item>
+        <item name="failureImage">@drawable/ic_person</item>
+        <item name="placeholderImage">@drawable/ic_person</item>
+        <item name="roundedCornerRadius">@dimen/cardCornerRadius</item>
+        <item name="roundingBorderColor">@android:color/white</item>
+    </style>
 </resources>
