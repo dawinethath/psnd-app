@@ -29,7 +29,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
     public void setupUI() {
         progress = new DialogProgress(getContext(), true, dialogInterface -> getCompositeDisposable().clear());
         binding.searchBar.setupUI(this, callback);
-        binding.searchResult.setupUI(this, binding.searchBar.getBinding());
+        binding.searchResult.setupUI(this, binding.searchBar);
     }
 
     @Override

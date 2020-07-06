@@ -7,11 +7,13 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import core.lib.base.BaseFragment;
 import core.lib.helper.CoreRecyclerView;
 import core.lib.utils.Log;
+import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutSearchBarBinding;
 import kh.com.psnd.databinding.LayoutSearchResultBinding;
 import kh.com.psnd.network.request.RequestSearch;
@@ -52,9 +54,9 @@ public class SearchResultView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull SearchFragment fragment, @NonNull LayoutSearchBarBinding searchBarBinding) {
+    public void setupUI(@NonNull SearchFragment fragment, @NonNull SearchBarView searchBarView) {
         this.fragment = fragment;
-        this.searchBarBinding = searchBarBinding;
+        this.searchBarBinding = searchBarView.getBinding();
         adapter = new SearchAdapter(fragment);
         binding.recyclerView.setupUI(false, new CoreRecyclerView.Callback() {
             @Override
@@ -66,6 +68,20 @@ public class SearchResultView extends FrameLayout {
             }
         });
         binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (binding.recyclerView.getLayoutManagerHelper().findFirstCompletelyVisibleItemPosition() == 0) {
+                    Log.i("findFirstCompletelyVisibleItemPosition");
+                    ViewCompat.setElevation(searchBarView, 0);
+                }
+                else {
+                    val elevation = getResources().getDimension(R.dimen.cardElevation);
+                    ViewCompat.setElevation(searchBarView, elevation);
+                }
+            }
+        });
     }
 
     public void cleanList() {
