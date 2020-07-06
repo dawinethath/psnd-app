@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import core.lib.base.BaseFragment;
 import core.lib.listener.MyTextWatcher;
+import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutSearchBarBinding;
 import kh.com.psnd.helper.ActivityHelper;
@@ -56,17 +57,22 @@ public class SearchBarView extends FrameLayout {
     public void setupUI(@NonNull BaseFragment fragment, @NonNull Callback callback) {
         this.fragment = fragment;
         this.callback = callback;
+        binding.txtSearch.requestFocus();
+        binding.txtSearch.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.txtSearch), 600);
         binding.textField.setStartIconOnClickListener(__ -> ActivityHelper.openSearchOptionActivity(getContext()));
         binding.textField.setEndIconOnClickListener(__ -> {
             binding.txtSearch.setText("");
+            ApplicationUtil.showKeyboard(getContext(), binding.txtSearch);
             callback.onClickedClear();
         });
         binding.txtSearch.addTextChangedListener(onTextChangeListener);
         binding.txtSearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                handler.removeCallbacks(runnable);
-                handler.postDelayed(runnable, TIME_DELAY);
-                return true;
+            switch (actionId) {
+                case EditorInfo.IME_ACTION_DONE:
+                case EditorInfo.IME_ACTION_SEARCH:
+                    handler.removeCallbacks(runnable);
+                    handler.postDelayed(runnable, TIME_DELAY);
+                    return true;
             }
             return false;
         });

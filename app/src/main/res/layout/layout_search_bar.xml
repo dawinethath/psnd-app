@@ -50,7 +50,7 @@
                     android:id="@+id/txtSearch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
+                    android:imeOptions="actionSearch"
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor"
                     android:textColorHint="@color/textViewColor"
