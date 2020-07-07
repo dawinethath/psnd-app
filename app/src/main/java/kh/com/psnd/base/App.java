@@ -17,7 +17,10 @@ import kh.com.psnd.BuildConfig;
 import kh.com.psnd.helper.FingerPrintManager;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.internal.MobileInternal;
+import kh.com.psnd.ui.activity.DetailActivity;
+import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.MainActivity;
+import kh.com.psnd.ui.activity.PdfActivity;
 import lombok.val;
 
 public class App extends BaseApp implements Application.ActivityLifecycleCallbacks {
@@ -85,11 +88,17 @@ public class App extends BaseApp implements Application.ActivityLifecycleCallbac
     }
 
     private boolean checkActivitiesToDetectFingerprint(@NonNull Activity activity) {
-//            activity instanceof ProfileActivity ||
-//            activity instanceof DetailActivity ||
-//            activity instanceof PdfActivity ||
-//            activity instanceof ImagePreviewActivity
-        return activity instanceof MainActivity;
+        return activity instanceof PdfActivity
+                || activity instanceof MainActivity
+                || activity instanceof DetailActivity
+                || activity instanceof ImagePreviewActivity;
+    }
+
+    private boolean checkActivitiesToResetTime(@NonNull Activity activity) {
+        return activity instanceof PdfActivity
+                || activity instanceof MainActivity
+                || activity instanceof DetailActivity
+                || activity instanceof ImagePreviewActivity;
     }
 
     private void updateTimeInOut(@NonNull Activity activity) {
@@ -136,6 +145,7 @@ public class App extends BaseApp implements Application.ActivityLifecycleCallbac
     @Override
     public void onActivityDestroyed(@NonNull Activity activity) {
         Log.i(activity);
+        updateTimeInOut(activity);
     }
 
 }
