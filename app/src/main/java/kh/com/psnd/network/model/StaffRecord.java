@@ -2,10 +2,16 @@ package kh.com.psnd.network.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.apache.commons.io.FilenameUtils;
+
+import java.io.File;
+
 import core.lib.network.model.BaseGson;
+import kh.com.psnd.utils.PdfUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.val;
 
 @Data
 @AllArgsConstructor
@@ -20,4 +26,14 @@ public class StaffRecord extends BaseGson {
     private String dateAnnounce;
     @SerializedName("pdfUrl")
     private String pdfUrl;
+
+    public File getLocalPdfFile() {
+        val filename = FilenameUtils.getName(pdfUrl);
+        val pdfFile  = new File(PdfUtil.getPathPdf() + filename);
+        return pdfFile;
+    }
+
+    public boolean deleteLocalPdf(){
+        return getLocalPdfFile().delete();
+    }
 }

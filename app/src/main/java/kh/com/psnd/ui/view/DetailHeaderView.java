@@ -65,7 +65,14 @@ public class DetailHeaderView extends FrameLayout {
         binding.firstNameKH.setText(staff.getFullName());
         binding.staffId.setText(staff.getId());
         binding.headerTitle.setText(staff.getGeneralCommissariat());
-
+        binding.exportPdf.setOnClickListener(__ -> {
+//            View view = fragment.getBinding().getRoot();
+////            view.buildLayer();
+////            view.buildDrawingCache();
+//            Bitmap bitmap   = view.getDrawingCache();
+//            String filePath = fragment.getActivity().getCacheDir().getPath() + File.separator + "test.jpg";
+//            FileManager.saveImageJPG(bitmap, filePath);
+        });
     }
 
 }

@@ -7,9 +7,6 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.kelin.translucentbar.library.TranslucentBarManager;
 
-import org.apache.commons.io.FilenameUtils;
-
-import java.io.File;
 import java.io.IOException;
 
 import core.lib.base.BaseFragment;
@@ -22,7 +19,6 @@ import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Staff;
 import kh.com.psnd.network.model.StaffRecord;
 import kh.com.psnd.ui.view.ItemDetailSectionView;
-import kh.com.psnd.utils.PdfUtil;
 import lombok.val;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -88,19 +84,17 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         @Override
         public void clickedDownloadPdf(StaffRecord staffRecord) {
             Log.i(staffRecord);
-            val url      = staffRecord.getPdfUrl();
-            val filename = FilenameUtils.getName(url);
-            val pdfFile  = new File(PdfUtil.getPathPdf() + filename);
-
+            val pdfFile = staffRecord.getLocalPdfFile();
             Log.i("pdfFile : " + pdfFile);
 
-            if (pdfFile.exists()) {
+            if (pdfFile.exists() && pdfFile.length() > 0) {
                 ActivityHelper.openPdfActivity(getContext(), pdfFile.getPath());
             }
             else {
+                staffRecord.deleteLocalPdf();
                 OkHttpUtils.cancelCallWithTag(client, TAG_PDF);
                 val request = new Request.Builder()
-                        .url(url)
+                        .url(staffRecord.getPdfUrl())
                         .tag(TAG_PDF)
                         .build();
                 progress.show();
@@ -113,14 +107,19 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
                     }
 
                     @Override
-                    public void onResponse(Call call, Response response) throws IOException {
+                    public void onResponse(Call call, Response response) {
                         if (response.isSuccessful()) {
-                            BufferedSink sink = Okio.buffer(Okio.sink(pdfFile));
-                            sink.writeAll(response.body().source());
-                            sink.close();
-                            ActivityHelper.openPdfActivity(getContext(), pdfFile.getPath());
+                            try {
+                                BufferedSink sink = Okio.buffer(Okio.sink(pdfFile));
+                                sink.writeAll(response.body().source());
+                                sink.close();
+                                ActivityHelper.openPdfActivity(getContext(), pdfFile.getPath());
+                            } catch (Exception e) {
+                                staffRecord.deleteLocalPdf();
+                            }
                         }
                         else {
+                            staffRecord.deleteLocalPdf();
                             Snackbar.make(binding.getRoot(), R.string.file_not_found, Snackbar.LENGTH_LONG).show();
                         }
                         progress.dismiss();
