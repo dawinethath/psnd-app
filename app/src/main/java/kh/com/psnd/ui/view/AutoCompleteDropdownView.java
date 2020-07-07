@@ -14,9 +14,9 @@ import androidx.databinding.BindingAdapter;
 
 import java.util.List;
 
-import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutAutocompleteDropdownBinding;
+import lombok.val;
 
 public class AutoCompleteDropdownView extends FrameLayout {
 
@@ -43,14 +43,21 @@ public class AutoCompleteDropdownView extends FrameLayout {
     }
 
     public <T> void setupUI(@NonNull List<T> list, @NonNull Callback callback) {
-        ArrayAdapter<T> adapter = new ArrayAdapter<T>(getContext(), R.layout.dropdown_menu_popup_item, R.id.item, list);
+        this.callback = callback;
+        val adapter = new ArrayAdapter<T>(getContext(), R.layout.dropdown_menu_popup_item, R.id.item, list);
         binding.dropdown.setAdapter(adapter);
-        binding.dropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i(adapterView.getSelectedItem());
-            }
-        });
+        enabledItemClickListener(true);
+    }
+
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            callback.onSelected(adapterView.getItemAtPosition(position));
+        }
+    };
+
+    public void enabledItemClickListener(boolean enabled) {
+        binding.dropdown.setOnItemClickListener(enabled ? onItemClickListener : null);
     }
 
     @BindingAdapter("hint")

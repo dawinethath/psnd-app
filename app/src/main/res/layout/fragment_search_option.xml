@@ -12,7 +12,8 @@
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -23,11 +24,23 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
+            app:mpb_progressStyle="horizontal"
+            app:mpb_useIntrinsicPadding="false"
+            tools:visibility="visible" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@android:color/white"
-            android:padding="@dimen/space_12dp"
+            android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btnSearch"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +52,8 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/space_12dp">
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect1"
@@ -53,63 +67,81 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_2}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_2}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_3}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_3}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_4}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_4}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_5}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_5}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_6}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_6}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_7}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_7}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_8}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_8}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_12dp"
-                    app:hint="@{@string/search_detail_label_9}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_9}"
+                    tools:visibility="visible" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/space_20dp"
-                    app:hint="@{@string/search_detail_label_10}" />
+                    android:visibility="gone"
+                    app:hint="@{@string/search_detail_label_10}"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 
