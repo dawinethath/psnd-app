@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.snackbar.Snackbar;
 import com.kelin.translucentbar.library.TranslucentBarManager;
 
 import org.apache.commons.io.FilenameUtils;
@@ -60,7 +61,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
             getActivity().finish();
             return;
         }
-        progress = new DialogProgress(getContext(), false, null);
+        progress = new DialogProgress(getContext(), true, dialogInterface -> OkHttpUtils.cancelCallWithTag(client, TAG_PDF));
 
         binding.headerToolbarView.setupUI(this, staff);
         binding.detailHeader.setupUI(this, staff);
@@ -118,6 +119,9 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
                             sink.writeAll(response.body().source());
                             sink.close();
                             ActivityHelper.openPdfActivity(getContext(), pdfFile.getPath());
+                        }
+                        else {
+                            Snackbar.make(binding.getRoot(), R.string.file_not_found, Snackbar.LENGTH_LONG).show();
                         }
                         progress.dismiss();
                     }
