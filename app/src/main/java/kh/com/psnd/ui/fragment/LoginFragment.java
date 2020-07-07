@@ -113,13 +113,13 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                         }
 
                         @Override
-                        public void onReceiveResult(RequestLogin request, Response result) throws Exception {
+                        public void onNext(Response result) {
                             Log.i("LOG >> onNext >> result : " + result);
-                            if (result.isSuccessful()) {
-                                LoginManager.loggedIn(profile);
-                                ActivityHelper.openMainActivity(getContext());
-                                getActivity().finish();
-                            }
+                            // if (result.isSuccessful()) {
+                            LoginManager.loggedIn(profile);
+                            ActivityHelper.openMainActivity(getContext());
+                            getActivity().finish();
+//                            }
                             progress.dismiss();
                         }
 
