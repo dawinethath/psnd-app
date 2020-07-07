@@ -5,8 +5,9 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
-import kh.com.psnd.R;
 import core.lib.base.BaseFragmentActivity;
+import core.lib.utils.ApplicationUtil;
+import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivitySplashscreenBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
@@ -31,6 +32,9 @@ public class SplashScreenActivity extends BaseFragmentActivity<ActivitySplashscr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String version = "v" + ApplicationUtil.getVersionApp(context);
+        binding.version.setText(version);
+
         handler.postDelayed(runnable, 1000);
     }
 

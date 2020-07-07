@@ -1,8 +1,11 @@
 package kh.com.psnd.ui.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -11,6 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import core.lib.base.BaseFragmentActivity;
+import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityMainBinding;
@@ -64,6 +68,28 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         header.userId.setText(userId);
         header.imageProfile.setImageURI(profile.getImage());
         header.getRoot().setOnClickListener(__ -> ActivityHelper.openProfileActivity(context));
+
+        binding.drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+                ApplicationUtil.dismissKeyboard(MainActivity.this);
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+                ApplicationUtil.dismissKeyboard(MainActivity.this);
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
     }
 
     @Override
