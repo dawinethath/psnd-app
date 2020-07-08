@@ -11,8 +11,14 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class DepartmentType_label_2 extends BaseGson {
-    @SerializedName("id")
-    private String id;
-    @SerializedName("label")
-    private String label;
+
+    @SerializedName("dTypeID")
+    private int    departmentTypeId;
+    @SerializedName("dType")
+    private String departmentType;
+
+    @Override
+    public String toString() {
+        return departmentType;
+    }
 }

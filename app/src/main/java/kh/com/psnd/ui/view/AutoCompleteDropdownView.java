@@ -45,7 +45,9 @@ public class AutoCompleteDropdownView extends FrameLayout {
     public <T> void setupUI(@NonNull List<T> list, @NonNull Callback callback) {
         this.callback = callback;
         val adapter = new ArrayAdapter<T>(getContext(), R.layout.dropdown_menu_popup_item, R.id.item, list);
+        binding.dropdown.setText("");
         binding.dropdown.setAdapter(adapter);
+        binding.textInputLayout.invalidate();
         enabledItemClickListener(true);
     }
 

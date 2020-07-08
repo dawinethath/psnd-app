@@ -10,9 +10,12 @@ import lombok.EqualsAndHashCode;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class RequestDepartmentType_label_2 extends BaseParam {
+public class RequestSectorName_label_7 extends BaseParam {
 
-    @SerializedName("general_id")
-    private int generalId;
+    @SerializedName("offID")
+    private int officeId;
+
+    @SerializedName("secTypeID")
+    private int sectorTypeId;
 
 }

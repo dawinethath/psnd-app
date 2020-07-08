@@ -44,6 +44,8 @@ public class Staff extends BaseGson {
     private String       position;
     @SerializedName("status")
     private String       status;
+    @SerializedName("statusColor")
+    private String       statusColor;
     @SerializedName("staHistories")
     private StaffHistory staffHistories;
 

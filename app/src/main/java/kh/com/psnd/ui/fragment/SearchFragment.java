@@ -30,6 +30,27 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
         progress = new DialogProgress(getContext(), true, dialogInterface -> getCompositeDisposable().clear());
         binding.searchBar.setupUI(this, callback);
         binding.searchResult.setupUI(this, binding.searchBar);
+
+//        new FancyShowCaseView.Builder(getActivity())
+//                .focusOn(binding.searchBar.findViewById(R.id.text_input_start_icon))
+//                .title("Focus on View")
+//                .showOnce("text_input_start_icon")
+//                .fitSystemWindows(true)
+//                .dismissListener(new DismissListener() {
+//                    @Override
+//                    public void onDismiss(@Nullable String s) {
+//                        Log.i(s);
+//                    }
+//
+//                    @Override
+//                    public void onSkipped(@Nullable String s) {
+//                        Log.i(s);
+//                    }
+//                })
+//                .build()
+//                .show();
+
+
     }
 
     @Override

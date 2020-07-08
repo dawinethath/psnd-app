@@ -8,11 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class RequestDepartmentType_label_2 extends BaseParam {
-
-    @SerializedName("general_id")
-    private int generalId;
+public class RequestGeneralComm_label_1 extends BaseParam {
 
 }

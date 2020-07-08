@@ -92,7 +92,7 @@ public class SearchResultView extends FrameLayout {
 
     public void loadMore(String search, int page) {
         Log.i("Sent request to server...");
-        requestSearch = new RequestSearch(search, page);
+        requestSearch = new RequestSearch(search, null, page);
 
         val compositeDisposable = fragment.getCompositeDisposable();
         compositeDisposable.clear();

@@ -14,7 +14,28 @@ public class RequestSearch extends BaseParam {
 
     @SerializedName("search")
     private String search;
+    @SerializedName("filter")
+    private Filter filter = null;
     @SerializedName("page")
     private int    page;
 
+    /**
+     * "general_id": 6,
+     * "department_id": 114,
+     * "office_id": 1,
+     * "sector_id": 1
+     */
+    @Data
+    @EqualsAndHashCode(callSuper = false)
+    public class Filter extends BaseParam {
+
+        @SerializedName("general_id")
+        private int generalId    = -1;
+        @SerializedName("department_id")
+        private int departmentId = -1;
+        @SerializedName("office_id")
+        private int officeId     = -1;
+        @SerializedName("sector_id")
+        private int sectorId     = -1;
+    }
 }

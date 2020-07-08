@@ -1,8 +1,8 @@
-package kh.com.psnd.network.model;
+package kh.com.psnd.network.request;
 
 import com.google.gson.annotations.SerializedName;
 
-import core.lib.network.model.BaseGson;
+import core.lib.network.request.BaseParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,15 +10,11 @@ import lombok.EqualsAndHashCode;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class GeneralComm_label_1 extends BaseGson {
+public class RequestDepartment_label_3 extends BaseParam {
 
     @SerializedName("gID")
     private int    id;
-    @SerializedName("gName")
-    private String name;
+    @SerializedName("dTypeID")
+    private int    departmentTypeId;
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

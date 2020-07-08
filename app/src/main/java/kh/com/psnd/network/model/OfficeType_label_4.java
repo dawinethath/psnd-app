@@ -10,15 +10,15 @@ import lombok.EqualsAndHashCode;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class GeneralComm_label_1 extends BaseGson {
+public class OfficeType_label_4 extends BaseGson {
 
-    @SerializedName("gID")
-    private int    id;
-    @SerializedName("gName")
-    private String name;
+    @SerializedName("office_type_id")
+    private int    officeTypeId;
+    @SerializedName("office_type")
+    private String officeName;
 
     @Override
     public String toString() {
-        return name;
+        return officeName;
     }
 }
