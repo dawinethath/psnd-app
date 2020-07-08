@@ -16,7 +16,8 @@
             android:dropDownWidth="match_parent"
             android:dropDownHeight="wrap_content"
             android:inputType="none"
-            android:textColor="@color/textViewHeaderColor" />
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 </layout>
