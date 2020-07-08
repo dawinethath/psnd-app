@@ -41,12 +41,12 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
     @Override
     public void setupUI() {
-        binding.toolbar.setTitle(R.string.search_detail_label_1);
         loadValueLabel_1();
     }
 
     private void loadValueLabel_1() {
         binding.progressBar.setVisibility(View.VISIBLE);
+        preloadResult(binding.searchSelect1);
         val task = new TaskGeneralComm_label_1();
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
 
@@ -60,7 +60,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 if (result.isSuccessful()) {
                     val data = (ResponseGeneralComm_Label_1) result.body();
                     binding.searchSelect1.setupUI(data.getResult(), callback);
-                    showSelected(binding.searchSelect1);
+                    showSelectedResult(binding.searchSelect1);
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -75,6 +75,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
     private void loadValueLabel_2(GeneralComm_label_1 generalComm) {
         binding.progressBar.setVisibility(View.VISIBLE);
+        preloadResult(binding.searchSelect2);
         val request = new RequestDepartmentType_label_2(generalComm.getId());
         val task    = new TaskDepartmentType_label_2(request);
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
@@ -89,7 +90,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 if (result.isSuccessful()) {
                     val data = (ResponseDepartmentType_Label_2) result.body();
                     binding.searchSelect2.setupUI(data.getResult(), callback);
-                    showSelected(binding.searchSelect2);
+                    showSelectedResult(binding.searchSelect2);
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -104,6 +105,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
     private void loadValueLabel_3(GeneralComm_label_1 generalComm, DepartmentType_label_2 departmentType) {
         binding.progressBar.setVisibility(View.VISIBLE);
+        preloadResult(binding.searchSelect3);
         val request = new RequestDepartment_label_3(generalComm.getId(), departmentType.getDepartmentTypeId());
         val task    = new TaskDepartment_label_3(request);
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
@@ -118,7 +120,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 if (result.isSuccessful()) {
                     val data = (ResponseDepartment_Label_3) result.body();
                     binding.searchSelect3.setupUI(data.getResult(), callback);
-                    showSelected(binding.searchSelect3);
+                    showSelectedResult(binding.searchSelect3);
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -133,6 +135,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
     private void loadValueLabel_4(Department_label_3 department) {
         binding.progressBar.setVisibility(View.VISIBLE);
+        preloadResult(binding.searchSelect4);
         val request = new RequestOfficeType_label_4(department.getDepartmentId());
         val task    = new TaskOfficeType_label_4(request);
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
@@ -147,7 +150,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 if (result.isSuccessful()) {
                     val data = (ResponseOfficeType_Label_4) result.body();
                     binding.searchSelect4.setupUI(data.getResult(), callback);
-                    showSelected(binding.searchSelect4);
+                    showSelectedResult(binding.searchSelect4);
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -162,6 +165,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
     private void loadValueLabel_5(Department_label_3 department, OfficeType_label_4 officeType) {
         binding.progressBar.setVisibility(View.VISIBLE);
+        preloadResult(binding.searchSelect5);
         val request = new RequestOfficeName_label_5(department.getDepartmentId(), officeType.getOfficeTypeId());
         val task    = new TaskOfficeName_label_5(request);
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
@@ -176,7 +180,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 if (result.isSuccessful()) {
                     val data = (ResponseOfficeName_Label_5) result.body();
                     binding.searchSelect5.setupUI(data.getResult(), callback);
-                    showSelected(binding.searchSelect5);
+                    showSelectedResult(binding.searchSelect5);
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -191,6 +195,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
     private void loadValueLabel_6() {
         binding.progressBar.setVisibility(View.VISIBLE);
+        preloadResult(binding.searchSelect6);
         val task = new TaskSectorType_label_6();
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
 
@@ -204,7 +209,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 if (result.isSuccessful()) {
                     val data = (ResponseSectorType_Label_6) result.body();
                     binding.searchSelect6.setupUI(data.getResult(), callback);
-                    showSelected(binding.searchSelect6);
+                    showSelectedResult(binding.searchSelect6);
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -219,6 +224,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
     private void loadValueLabel_7(OfficeName_label_5 officeName, SectorType_label_6 sectorType) {
         binding.progressBar.setVisibility(View.VISIBLE);
+        preloadResult(binding.searchSelect7);
         val request = new RequestSectorName_label_7(officeName.getOfficeId(), sectorType.getSectorTypeId());
         val task    = new TaskSectorName_label_7(request);
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
@@ -233,7 +239,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 if (result.isSuccessful()) {
                     val data = (ResponseSectionName_Label_7) result.body();
                     binding.searchSelect7.setupUI(data.getResult(), callback);
-                    showSelected(binding.searchSelect7);
+                    showSelectedResult(binding.searchSelect7);
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -289,7 +295,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
         }
     };
 
-    private void showSelected(View selectedView) {
+    private void preloadResult(View selectedView){
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setTag(null);
             binding.searchSelect3.setTag(null);
@@ -312,7 +318,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect6.setTag(null);
             binding.searchSelect7.setTag(null);
 
-            binding.searchSelect2.setVisibility(View.VISIBLE);
+            binding.searchSelect2.setVisibility(View.INVISIBLE);
             binding.searchSelect3.setVisibility(View.INVISIBLE);
             binding.searchSelect4.setVisibility(View.INVISIBLE);
             binding.searchSelect5.setVisibility(View.INVISIBLE);
@@ -326,7 +332,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect7.setTag(null);
 
             binding.searchSelect2.setVisibility(View.VISIBLE);
-            binding.searchSelect3.setVisibility(View.VISIBLE);
+            binding.searchSelect3.setVisibility(View.INVISIBLE);
             binding.searchSelect4.setVisibility(View.INVISIBLE);
             binding.searchSelect5.setVisibility(View.INVISIBLE);
             binding.searchSelect6.setVisibility(View.INVISIBLE);
@@ -339,7 +345,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
 
             binding.searchSelect2.setVisibility(View.VISIBLE);
             binding.searchSelect3.setVisibility(View.VISIBLE);
-            binding.searchSelect4.setVisibility(View.VISIBLE);
+            binding.searchSelect4.setVisibility(View.INVISIBLE);
             binding.searchSelect5.setVisibility(View.INVISIBLE);
             binding.searchSelect6.setVisibility(View.INVISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
@@ -351,13 +357,72 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect2.setVisibility(View.VISIBLE);
             binding.searchSelect3.setVisibility(View.VISIBLE);
             binding.searchSelect4.setVisibility(View.VISIBLE);
-            binding.searchSelect5.setVisibility(View.VISIBLE);
+            binding.searchSelect5.setVisibility(View.INVISIBLE);
             binding.searchSelect6.setVisibility(View.INVISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
         }
         else if (binding.searchSelect6 == selectedView) {
             binding.searchSelect7.setTag(null);
 
+            binding.searchSelect2.setVisibility(View.VISIBLE);
+            binding.searchSelect3.setVisibility(View.VISIBLE);
+            binding.searchSelect4.setVisibility(View.VISIBLE);
+            binding.searchSelect5.setVisibility(View.VISIBLE);
+            binding.searchSelect6.setVisibility(View.INVISIBLE);
+            binding.searchSelect7.setVisibility(View.INVISIBLE);
+        }
+        else if (binding.searchSelect7 == selectedView) {
+            binding.searchSelect2.setVisibility(View.VISIBLE);
+            binding.searchSelect3.setVisibility(View.VISIBLE);
+            binding.searchSelect4.setVisibility(View.VISIBLE);
+            binding.searchSelect5.setVisibility(View.VISIBLE);
+            binding.searchSelect6.setVisibility(View.VISIBLE);
+            binding.searchSelect7.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void showSelectedResult(View selectedView) {
+        if (binding.searchSelect1 == selectedView) {
+            binding.searchSelect2.setVisibility(View.INVISIBLE);
+            binding.searchSelect3.setVisibility(View.INVISIBLE);
+            binding.searchSelect4.setVisibility(View.INVISIBLE);
+            binding.searchSelect5.setVisibility(View.INVISIBLE);
+            binding.searchSelect6.setVisibility(View.INVISIBLE);
+            binding.searchSelect7.setVisibility(View.INVISIBLE);
+        }
+        else if (binding.searchSelect2 == selectedView) {
+            binding.searchSelect2.setVisibility(View.VISIBLE);
+            binding.searchSelect3.setVisibility(View.INVISIBLE);
+            binding.searchSelect4.setVisibility(View.INVISIBLE);
+            binding.searchSelect5.setVisibility(View.INVISIBLE);
+            binding.searchSelect6.setVisibility(View.INVISIBLE);
+            binding.searchSelect7.setVisibility(View.INVISIBLE);
+        }
+        else if (binding.searchSelect3 == selectedView) {
+            binding.searchSelect2.setVisibility(View.VISIBLE);
+            binding.searchSelect3.setVisibility(View.VISIBLE);
+            binding.searchSelect4.setVisibility(View.INVISIBLE);
+            binding.searchSelect5.setVisibility(View.INVISIBLE);
+            binding.searchSelect6.setVisibility(View.INVISIBLE);
+            binding.searchSelect7.setVisibility(View.INVISIBLE);
+        }
+        else if (binding.searchSelect4 == selectedView) {
+            binding.searchSelect2.setVisibility(View.VISIBLE);
+            binding.searchSelect3.setVisibility(View.VISIBLE);
+            binding.searchSelect4.setVisibility(View.VISIBLE);
+            binding.searchSelect5.setVisibility(View.INVISIBLE);
+            binding.searchSelect6.setVisibility(View.INVISIBLE);
+            binding.searchSelect7.setVisibility(View.INVISIBLE);
+        }
+        else if (binding.searchSelect5 == selectedView) {
+            binding.searchSelect2.setVisibility(View.VISIBLE);
+            binding.searchSelect3.setVisibility(View.VISIBLE);
+            binding.searchSelect4.setVisibility(View.VISIBLE);
+            binding.searchSelect5.setVisibility(View.VISIBLE);
+            binding.searchSelect6.setVisibility(View.INVISIBLE);
+            binding.searchSelect7.setVisibility(View.INVISIBLE);
+        }
+        else if (binding.searchSelect6 == selectedView) {
             binding.searchSelect2.setVisibility(View.VISIBLE);
             binding.searchSelect3.setVisibility(View.VISIBLE);
             binding.searchSelect4.setVisibility(View.VISIBLE);

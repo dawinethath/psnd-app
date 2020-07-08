@@ -21,6 +21,7 @@ import kh.com.psnd.ui.activity.DetailActivity;
 import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.ui.activity.PdfActivity;
+import kh.com.psnd.ui.activity.SearchOptionActivity;
 import lombok.val;
 
 public class App extends BaseApp implements Application.ActivityLifecycleCallbacks {
@@ -91,13 +92,7 @@ public class App extends BaseApp implements Application.ActivityLifecycleCallbac
         return activity instanceof PdfActivity
                 || activity instanceof MainActivity
                 || activity instanceof DetailActivity
-                || activity instanceof ImagePreviewActivity;
-    }
-
-    private boolean checkActivitiesToResetTime(@NonNull Activity activity) {
-        return activity instanceof PdfActivity
-                || activity instanceof MainActivity
-                || activity instanceof DetailActivity
+                || activity instanceof SearchOptionActivity
                 || activity instanceof ImagePreviewActivity;
     }
 
