@@ -2,7 +2,7 @@ package kh.com.psnd.ui.fragment;
 
 import android.view.View;
 
-import core.lib.base.BaseFragment;
+import core.lib.dialog.BaseDialogFragment;
 import core.lib.utils.Log;
 import io.reactivex.annotations.NonNull;
 import kh.com.psnd.R;
@@ -18,6 +18,7 @@ import kh.com.psnd.network.request.RequestDepartmentType_label_2;
 import kh.com.psnd.network.request.RequestDepartment_label_3;
 import kh.com.psnd.network.request.RequestOfficeName_label_5;
 import kh.com.psnd.network.request.RequestOfficeType_label_4;
+import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.request.RequestSectorName_label_7;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
 import kh.com.psnd.network.response.ResponseDepartment_Label_3;
@@ -34,14 +35,53 @@ import kh.com.psnd.network.task.TaskOfficeType_label_4;
 import kh.com.psnd.network.task.TaskSectorName_label_7;
 import kh.com.psnd.network.task.TaskSectorType_label_6;
 import kh.com.psnd.ui.view.AutoCompleteDropdownView;
+import lombok.Setter;
 import lombok.val;
 import retrofit2.Response;
 
-public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBinding> {
+public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptionBinding> {
+
+    @Setter
+    private Callback callback = null;
+
+    public static SearchOptionFragment newInstance(@androidx.annotation.NonNull Callback callback) {
+        val fragment = new SearchOptionFragment();
+        fragment.setCallback(callback);
+        return fragment;
+    }
 
     @Override
     public void setupUI() {
         loadValueLabel_1();
+        binding.btnSearch.setOnClickListener(__ -> {
+            val obj1 = (GeneralComm_label_1) binding.searchSelect1.getTag();
+            val obj2 = (DepartmentType_label_2) binding.searchSelect2.getTag();
+            val obj3 = (Department_label_3) binding.searchSelect3.getTag();
+            val obj4 = (OfficeType_label_4) binding.searchSelect4.getTag();
+            val obj5 = (OfficeName_label_5) binding.searchSelect5.getTag();
+            val obj6 = (SectorType_label_6) binding.searchSelect6.getTag();
+            val obj7 = (SectorName_label_7) binding.searchSelect7.getTag();
+
+            if (obj1 != null && obj2 != null && obj3 != null && obj4 != null) {
+                val filter = new RequestSearch.Filter();
+                filter.setGeneralId(obj1.getId());
+                filter.setGeneralName(obj1.getName());
+
+                filter.setDepartmentId(obj3.getDepartmentId());
+                filter.setDepartmentName(obj3.getDepartmentName());
+
+                if (obj5 != null) {
+                    filter.setOfficeId(obj5.getOfficeId());
+                    filter.setOfficeName(obj5.getOfficeName());
+                }
+                if (obj7 != null) {
+                    filter.setSectorId(obj7.getSectorId());
+                    filter.setSectorName(obj7.getSectorName());
+                }
+                callback.onSearch(filter);
+                dismiss();
+            }
+        });
     }
 
     private void loadValueLabel_1() {
@@ -59,7 +99,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseGeneralComm_Label_1) result.body();
-                    binding.searchSelect1.setupUI(data.getResult(), callback);
+                    binding.searchSelect1.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect1);
                 }
                 binding.progressBar.setVisibility(View.GONE);
@@ -89,8 +129,11 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseDepartmentType_Label_2) result.body();
-                    binding.searchSelect2.setupUI(data.getResult(), callback);
+                    binding.searchSelect2.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect2);
+//                    if (data.getResult().size() == 1) {
+//                        binding.searchSelect2.selectItem(0);
+//                    }
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -119,7 +162,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseDepartment_Label_3) result.body();
-                    binding.searchSelect3.setupUI(data.getResult(), callback);
+                    binding.searchSelect3.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect3);
                 }
                 binding.progressBar.setVisibility(View.GONE);
@@ -149,7 +192,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseOfficeType_Label_4) result.body();
-                    binding.searchSelect4.setupUI(data.getResult(), callback);
+                    binding.searchSelect4.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect4);
                 }
                 binding.progressBar.setVisibility(View.GONE);
@@ -179,7 +222,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseOfficeName_Label_5) result.body();
-                    binding.searchSelect5.setupUI(data.getResult(), callback);
+                    binding.searchSelect5.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect5);
                 }
                 binding.progressBar.setVisibility(View.GONE);
@@ -208,7 +251,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseSectorType_Label_6) result.body();
-                    binding.searchSelect6.setupUI(data.getResult(), callback);
+                    binding.searchSelect6.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect6);
                 }
                 binding.progressBar.setVisibility(View.GONE);
@@ -238,7 +281,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseSectionName_Label_7) result.body();
-                    binding.searchSelect7.setupUI(data.getResult(), callback);
+                    binding.searchSelect7.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect7);
                 }
                 binding.progressBar.setVisibility(View.GONE);
@@ -252,7 +295,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
         }));
     }
 
-    private AutoCompleteDropdownView.Callback callback = new AutoCompleteDropdownView.Callback() {
+    private AutoCompleteDropdownView.Callback dropdownCallback = new AutoCompleteDropdownView.Callback() {
         @Override
         public void onSelected(Object object) {
             Log.i(object.getClass());
@@ -448,11 +491,6 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
     }
 
     @Override
-    protected void initToolbar() {
-
-    }
-
-    @Override
     protected int layoutId() {
         return R.layout.fragment_search_option;
     }
@@ -462,4 +500,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
         super.onPause();
     }
 
+    public interface Callback {
+        void onSearch(RequestSearch.Filter filter);
+    }
 }

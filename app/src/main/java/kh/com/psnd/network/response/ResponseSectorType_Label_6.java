@@ -3,6 +3,7 @@ package kh.com.psnd.network.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import core.lib.network.response.BaseResponse;
@@ -15,5 +16,5 @@ import lombok.EqualsAndHashCode;
 public class ResponseSectorType_Label_6 extends BaseResponse {
 
     @SerializedName("result")
-    private List<SectorType_label_6> result;
+    private List<SectorType_label_6> result = new ArrayList<>();
 }

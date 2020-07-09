@@ -51,6 +51,15 @@ public class AutoCompleteDropdownView extends FrameLayout {
         enabledItemClickListener(true);
     }
 
+    public void selectItem(int position) {
+        val item = binding.dropdown.getAdapter().getItem(position);
+        binding.dropdown.setText(item.toString());
+        binding.dropdown.showDropDown();
+        binding.dropdown.setSelection(position);
+        binding.dropdown.setListSelection(position);
+        binding.dropdown.performCompletion();
+    }
+
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

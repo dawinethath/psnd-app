@@ -12,7 +12,6 @@ import kh.com.psnd.ui.activity.LoginActivity;
 import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.ui.activity.PdfActivity;
 import kh.com.psnd.ui.activity.ProfileActivity;
-import kh.com.psnd.ui.activity.SearchOptionActivity;
 import lombok.val;
 
 public class ActivityHelper {
@@ -36,8 +35,8 @@ public class ActivityHelper {
     }
 
     public static void openSearchOptionActivity(@NonNull Context context) {
-        val intent = new Intent(context, SearchOptionActivity.class);
-        context.startActivity(intent);
+//        val intent = new Intent(context, SearchOptionActivity.class);
+//        context.startActivity(intent);
     }
 
     public static void openProfileActivity(@NonNull Context context) {

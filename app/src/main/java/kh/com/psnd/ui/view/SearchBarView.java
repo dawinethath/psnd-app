@@ -17,7 +17,8 @@ import core.lib.listener.MyTextWatcher;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutSearchBarBinding;
-import kh.com.psnd.helper.ActivityHelper;
+import kh.com.psnd.network.request.RequestSearch;
+import kh.com.psnd.ui.fragment.SearchOptionFragment;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -71,7 +72,13 @@ public class SearchBarView extends FrameLayout {
         this.callback = callback;
         binding.txtSearch.requestFocus();
         binding.txtSearch.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.txtSearch), 600);
-        binding.textField.setStartIconOnClickListener(__ -> ActivityHelper.openSearchOptionActivity(getContext()));
+        binding.textField.setStartIconOnClickListener(__ -> {
+            SearchOptionFragment searchOptionFragment = SearchOptionFragment.newInstance(filter -> callback.doSearch(filter));
+            searchOptionFragment.setPercentHeightDialog(0.9f);
+            searchOptionFragment.setPercentWidthDialog(0.99f);
+            searchOptionFragment.show(fragment.getChildFragmentManager(), "");
+
+        });
         binding.textField.setEndIconOnClickListener(__ -> {
             binding.txtSearch.setText("");
             ApplicationUtil.showKeyboard(getContext(), binding.txtSearch);
@@ -116,6 +123,8 @@ public class SearchBarView extends FrameLayout {
     public interface Callback {
 
         void doSearch(CharSequence search);
+
+        void doSearch(RequestSearch.Filter filter);
 
         void onClickedClear();
     }

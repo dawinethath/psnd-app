@@ -5,25 +5,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <!--        <com.google.android.material.appbar.AppBarLayout-->
+        <!--            android:id="@+id/appBar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:theme="@style/AppTheme.AppBarOverlay"-->
+        <!--            app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--            <androidx.appcompat.widget.Toolbar-->
+        <!--                android:id="@+id/toolbar"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="?attr/actionBarSize"-->
+        <!--                android:background="?attr/colorPrimary"-->
+        <!--                app:popupTheme="@style/AppTheme.PopupOverlay"-->
+        <!--                app:title="@string/search_filter_title" />-->
+
+        <!--        </com.google.android.material.appbar.AppBarLayout>-->
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/appBar"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:title="@string/search_filter_title" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:gravity="center"
+            android:text="@string/search_filter_title"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollView"
@@ -36,8 +46,7 @@
             app:layout_constraintBottom_toTopOf="@id/btnSearch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appBar"
-            tools:background="#aaa">
+            app:layout_constraintTop_toBottomOf="@id/appBar">
 
             <LinearLayout
                 android:id="@+id/content"

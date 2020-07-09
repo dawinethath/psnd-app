@@ -15,6 +15,7 @@ import kh.com.psnd.dao.SearchHistory;
 import kh.com.psnd.databinding.FragmentSearchBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.request.RequestStaff;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.network.task.TaskStaff;
@@ -61,6 +62,11 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
 
     private SearchBarView.Callback callback = new SearchBarView.Callback() {
         @Override
+        public void doSearch(RequestSearch.Filter filter) {
+            binding.searchResult.doSearch(filter);
+        }
+
+        @Override
         public void doSearch(CharSequence search) {
             Log.i("Search : " + search);
             if (TextUtils.isEmpty(search)) {
@@ -71,7 +77,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
                 Snackbar.make(getView(), R.string.noInternetConnection, Snackbar.LENGTH_SHORT).show();
                 return;
             }
-            binding.searchResult.loadMore(search.toString(), 1);
+            binding.searchResult.doSearch(search.toString());
         }
 
         @Override

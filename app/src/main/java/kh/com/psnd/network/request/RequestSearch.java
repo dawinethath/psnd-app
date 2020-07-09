@@ -27,15 +27,26 @@ public class RequestSearch extends BaseParam {
      */
     @Data
     @EqualsAndHashCode(callSuper = false)
-    public class Filter extends BaseParam {
+    public static class Filter extends BaseParam {
 
         @SerializedName("general_id")
-        private int generalId    = -1;
+        private int    generalId   = -1;
+        @SerializedName("general_name")
+        private String generalName = null;
+
         @SerializedName("department_id")
-        private int departmentId = -1;
+        private int    departmentId   = -1;
+        @SerializedName("department_name")
+        private String departmentName = null;
+
         @SerializedName("office_id")
-        private int officeId     = -1;
+        private int    officeId   = -1;
+        @SerializedName("office_name")
+        private String officeName = null;
+
         @SerializedName("sector_id")
-        private int sectorId     = -1;
+        private int    sectorId   = -1;
+        @SerializedName("sector_name")
+        private String sectorName = null;
     }
 }

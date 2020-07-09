@@ -63,7 +63,8 @@ public class SearchResultView extends FrameLayout {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 Log.i("Page : " + page + "    totalItemsCount : " + totalItemsCount + "   " + requestSearch);
                 if (requestSearch != null) {
-                    loadMore(requestSearch.getSearch(), requestSearch.getPage() + 1);
+                    val nextPage = requestSearch.getPage() + 1;
+                    loadMore(nextPage);
                 }
             }
         });
@@ -90,9 +91,21 @@ public class SearchResultView extends FrameLayout {
         searchBarBinding.progressBar.setVisibility(GONE);
     }
 
-    public void loadMore(String search, int page) {
-        Log.i("Sent request to server...");
+    public void doSearch(RequestSearch.Filter filter) {
+        val page = 1;
+        requestSearch = new RequestSearch(null, filter, page);
+        loadMore(page);
+    }
+
+    public void doSearch(String search) {
+        val page = 1;
         requestSearch = new RequestSearch(search, null, page);
+        loadMore(page);
+    }
+
+    private void loadMore(int page) {
+        Log.i("Sent request to server...");
+        requestSearch.setPage(page);
 
         val compositeDisposable = fragment.getCompositeDisposable();
         compositeDisposable.clear();
