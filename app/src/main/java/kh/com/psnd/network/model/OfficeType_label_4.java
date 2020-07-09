@@ -12,9 +12,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class OfficeType_label_4 extends BaseGson {
 
-    @SerializedName("office_type_id")
+    @SerializedName("offTypeID")
     private int    officeTypeId;
-    @SerializedName("office_type")
+    @SerializedName("offType")
     private String officeName;
 
     @Override

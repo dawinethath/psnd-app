@@ -14,11 +14,7 @@ public class Department_label_3 extends BaseGson {
 
     @SerializedName("dID")
     private int    departmentId;
-    @SerializedName("gID")
-    private int    generalId;
-    @SerializedName("dTypeID")
-    private int    departmentTypeId;
-    @SerializedName("department name")
+    @SerializedName("dName")
     private String departmentName;
 
     @Override
