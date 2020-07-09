@@ -295,7 +295,8 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
         }
     };
 
-    private void preloadResult(View selectedView){
+    private void preloadResult(View selectedView) {
+        binding.groupSearch.setVisibility(View.GONE);
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setTag(null);
             binding.searchSelect3.setTag(null);
@@ -370,6 +371,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.INVISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
+            binding.groupSearch.setVisibility(View.VISIBLE);
         }
         else if (binding.searchSelect7 == selectedView) {
             binding.searchSelect2.setVisibility(View.VISIBLE);
@@ -378,10 +380,12 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.VISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
+            binding.groupSearch.setVisibility(View.VISIBLE);
         }
     }
 
     private void showSelectedResult(View selectedView) {
+        binding.groupSearch.setVisibility(View.GONE);
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setVisibility(View.INVISIBLE);
             binding.searchSelect3.setVisibility(View.INVISIBLE);
@@ -421,6 +425,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.INVISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
+            binding.groupSearch.setVisibility(View.VISIBLE);
         }
         else if (binding.searchSelect6 == selectedView) {
             binding.searchSelect2.setVisibility(View.VISIBLE);
@@ -429,6 +434,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.VISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
+            binding.groupSearch.setVisibility(View.VISIBLE);
         }
         else if (binding.searchSelect7 == selectedView) {
             binding.searchSelect2.setVisibility(View.VISIBLE);
@@ -437,6 +443,7 @@ public class SearchOptionFragment extends BaseFragment<FragmentSearchOptionBindi
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.VISIBLE);
             binding.searchSelect7.setVisibility(View.VISIBLE);
+            binding.groupSearch.setVisibility(View.VISIBLE);
         }
     }
 

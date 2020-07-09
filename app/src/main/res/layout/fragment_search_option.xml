@@ -31,6 +31,7 @@
             android:layout_height="0dp"
             android:background="@android:color/white"
             android:clipToPadding="false"
+            android:paddingBottom="@dimen/space_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btnSearch"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,14 +50,14 @@
                     android:id="@+id/searchSelect1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_12dp"
+                    android:layout_marginBottom="@dimen/space_16dp"
                     app:hint="@{@string/search_detail_label_1}" />
 
                 <kh.com.psnd.ui.view.AutoCompleteDropdownView
                     android:id="@+id/searchSelect2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_12dp"
+                    android:layout_marginBottom="@dimen/space_16dp"
                     android:visibility="invisible"
                     app:hint="@{@string/search_detail_label_2}"
                     tools:visibility="visible" />
@@ -65,7 +66,7 @@
                     android:id="@+id/searchSelect3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_12dp"
+                    android:layout_marginBottom="@dimen/space_16dp"
                     android:visibility="invisible"
                     app:hint="@{@string/search_detail_label_3}"
                     tools:visibility="visible" />
@@ -74,7 +75,7 @@
                     android:id="@+id/searchSelect4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_12dp"
+                    android:layout_marginBottom="@dimen/space_16dp"
                     android:visibility="invisible"
                     app:hint="@{@string/search_detail_label_4}"
                     tools:visibility="visible" />
@@ -83,7 +84,7 @@
                     android:id="@+id/searchSelect5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_12dp"
+                    android:layout_marginBottom="@dimen/space_16dp"
                     android:visibility="invisible"
                     app:hint="@{@string/search_detail_label_5}"
                     tools:visibility="visible" />
@@ -92,7 +93,7 @@
                     android:id="@+id/searchSelect6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_12dp"
+                    android:layout_marginBottom="@dimen/space_16dp"
                     android:visibility="invisible"
                     app:hint="@{@string/search_detail_label_6}"
                     tools:visibility="visible" />
@@ -101,7 +102,7 @@
                     android:id="@+id/searchSelect7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/space_12dp"
+                    android:layout_marginBottom="@dimen/space_16dp"
                     android:visibility="invisible"
                     app:hint="@{@string/search_detail_label_7}"
                     tools:visibility="visible" />
@@ -134,9 +135,16 @@
             app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
         <View
+            android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@drawable/recycler_divider"
             app:layout_constraintBottom_toBottomOf="@id/scrollView" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="btnSearch, line" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
