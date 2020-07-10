@@ -56,12 +56,16 @@
     <string name="detail_label_2">ឋានៈ</string>
     <string name="detail_label_3">ឆ្នាំកំណើត</string>
     <string name="detail_label_4">ភេទ</string>
-    <string name="detail_label_5">អង្គភាព</string>
-    <string name="detail_label_6">ស្ថានភាពការងារ</string>
-    <string name="detail_label_7">កម្រិតវប្បធម៍</string>
-    <string name="detail_label_8">ជំនាញ</string>
-    <string name="detail_label_9">ទូរស័ព្ទ</string>
-    <string name="detail_label_10">អាស័យដ្ឋាន</string>
+    <string name="detail_label_5">នាយកដ្ឋាន</string>
+    <string name="detail_label_6">អង្គ.ថ្នាក់ស្មើការិ</string>
+    <string name="detail_label_7">ផ្នែក/ប៉ុស្តិ៍</string>
+    <string name="detail_label_8">ឋានន្តរសក្តិ</string>
+    <string name="detail_label_9">មុខតំណែង</string>
+    <string name="detail_label_10">ស្ថានភាពការងារ</string>
+    <string name="detail_label_11">កម្រិតវប្បធម៍</string>
+    <string name="detail_label_12">ជំនាញ</string>
+    <string name="detail_label_13">ទូរស័ព្ទ</string>
+    <string name="detail_label_14">អាស័យដ្ឋាន</string>
 
     <!--    Detail Tab-->
     <string name="detail_label_tab_1">ព័ត៌មានផ្ទាល់ខ្លួន</string>

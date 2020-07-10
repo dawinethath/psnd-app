@@ -41,11 +41,15 @@ public class DetailBodyView extends FrameLayout {
         binding.valueLabel3.setText(staff.getDateOfBirth());
         binding.valueLabel4.setText(staff.getSex());
         binding.valueLabel5.setText(staff.getDepartment());
-        binding.valueLabel6.setText(staff.getStatus());
-        binding.valueLabel7.setText(staff.getEducation());
-        binding.valueLabel8.setText(staff.getSkill());
-        binding.valueLabel9.setText(staff.getTelephone());
-        binding.valueLabel10.setText(staff.getAddress());
+        binding.valueLabel6.setText(staff.getOffice());
+        binding.valueLabel7.setText(staff.getSector());
+        binding.valueLabel8.setText(staff.getRank());
+        binding.valueLabel9.setText(staff.getPosition());
+        binding.valueLabel10.setText(staff.getStatus());
+        binding.valueLabel11.setText(staff.getEducation());
+        binding.valueLabel12.setText(staff.getSkill());
+        binding.valueLabel13.setText(staff.getTelephone());
+        binding.valueLabel14.setText(staff.getAddress());
     }
 
 }

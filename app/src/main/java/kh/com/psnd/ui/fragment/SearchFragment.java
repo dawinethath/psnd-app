@@ -63,6 +63,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
     private SearchBarView.Callback callback = new SearchBarView.Callback() {
         @Override
         public void doSearch(RequestSearch.Filter filter) {
+            binding.searchBar.clearTextBox();
             binding.searchResult.doSearch(filter);
         }
 

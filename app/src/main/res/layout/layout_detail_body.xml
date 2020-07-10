@@ -63,7 +63,6 @@
             style="@style/DetailLabel"
             android:text="@string/detail_label_6"
             app:layout_constraintBottom_toBottomOf="@id/value_label_6"
-            app:layout_constraintEnd_toStartOf="@id/barrier"
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_5" />
 
@@ -100,6 +99,38 @@
             app:layout_constraintTop_toBottomOf="@id/label_9" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_11"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_11"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_11"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_10" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_12"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_12"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_12"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_11" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_13"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_13"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_13"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_12" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/label_14"
+            style="@style/DetailLabel"
+            android:text="@string/detail_label_14"
+            app:layout_constraintBottom_toBottomOf="@id/value_label_14"
+            app:layout_constraintStart_toStartOf="@id/label_1"
+            app:layout_constraintTop_toBottomOf="@id/label_13" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_1"
             style="@style/DetailValueLabel"
             android:text="អនុសេនីយ៍ត្រី"
@@ -134,7 +165,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_5"
             style="@style/DetailValueLabel"
-            android:text="ការិយាល័យគ្រប់គ្រងឯកសារ"
+            android:text="នាយកដ្ឋានបុគ្គលិក"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_5" />
@@ -142,7 +173,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_6"
             style="@style/DetailValueLabel"
-            android:text="បំរើការងារ"
+            android:text="ការិយាល័យគ្រប់គ្រងឯកសារ"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_6" />
@@ -150,7 +181,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_7"
             style="@style/DetailValueLabel"
-            android:text="បរិញ្ញាប័ត្រ"
+            android:text="នាយផ្នែក"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_7" />
@@ -158,7 +189,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_8"
             style="@style/DetailValueLabel"
-            android:text="Asia Pacific International University"
+            android:text="អនុសេនីយ៍ត្រី"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_8" />
@@ -166,7 +197,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_9"
             style="@style/DetailValueLabel"
-            android:text="099990202"
+            android:text="មន្រ្តី"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_9" />
@@ -174,10 +205,42 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_10"
             style="@style/DetailValueLabel"
-            android:text="ផ្ទះលេខ ១២៥ហ្ស៊ី, ផ្លូវ២៥៥ហ្សិត,​​​ ភូមិ៣, សង្កាត់បឹងសាឡាង, ខណ្ឌទួលគោក,​ រាជធានីភ្នំពេញ"
+            android:text="បំរើការងារ"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_10" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_11"
+            style="@style/DetailValueLabel"
+            android:text="បរិញ្ញាប័ត្រ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_11" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_12"
+            style="@style/DetailValueLabel"
+            android:text="Asia Pacific International University៊ី"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_12" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_13"
+            style="@style/DetailValueLabel"
+            android:text="099990202"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_13" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/value_label_14"
+            style="@style/DetailValueLabel"
+            android:text="ផ្ទះលេខ ១២៥ហ្ស៊ី, ផ្លូវ២៥៥ហ្សិត,​​​ ភូមិ៣, សង្កាត់បឹងសាឡាង, ខណ្ឌទួលគោក,​ រាជធានីភ្នំពេញ៊ី"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@id/label_14" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
