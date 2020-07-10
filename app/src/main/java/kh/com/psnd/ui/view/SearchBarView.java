@@ -21,6 +21,7 @@ import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.ui.fragment.SearchOptionFragment;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.val;
 
 public class SearchBarView extends FrameLayout {
 
@@ -70,14 +71,14 @@ public class SearchBarView extends FrameLayout {
     public void setupUI(@NonNull BaseFragment fragment, @NonNull Callback callback) {
         this.fragment = fragment;
         this.callback = callback;
+        val searchOptionFragment = new SearchOptionFragment(getContext(), filter -> callback.doSearch(filter), fragment.getCompositeDisposable());
+        //  searchOptionFragment.setPercentHeightDialog(0.9f);
+        searchOptionFragment.setPercentWidthDialog(0.99f);
+
         binding.txtSearch.requestFocus();
         binding.txtSearch.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.txtSearch), 600);
         binding.textField.setStartIconOnClickListener(__ -> {
-            SearchOptionFragment searchOptionFragment = SearchOptionFragment.newInstance(filter -> callback.doSearch(filter));
-            searchOptionFragment.setPercentHeightDialog(0.9f);
-            searchOptionFragment.setPercentWidthDialog(0.99f);
-            searchOptionFragment.show(fragment.getChildFragmentManager(), "");
-
+            searchOptionFragment.show();
         });
         binding.textField.setEndIconOnClickListener(__ -> {
             binding.txtSearch.setText("");
@@ -95,6 +96,12 @@ public class SearchBarView extends FrameLayout {
             }
             return false;
         });
+    }
+
+    public void clearTextBox() {
+        binding.txtSearch.removeTextChangedListener(onTextChangeListener);
+        binding.txtSearch.setText("");
+        binding.txtSearch.addTextChangedListener(onTextChangeListener);
     }
 
     private TextWatcher onTextChangeListener = new MyTextWatcher() {

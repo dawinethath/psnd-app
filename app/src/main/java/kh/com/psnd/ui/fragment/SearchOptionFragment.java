@@ -1,10 +1,14 @@
 package kh.com.psnd.ui.fragment;
 
+import android.content.Context;
 import android.view.View;
 
-import core.lib.dialog.BaseDialogFragment;
+import androidx.annotation.Nullable;
+
+import core.lib.dialog.BaseDialog;
 import core.lib.utils.Log;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchOptionBinding;
 import kh.com.psnd.network.model.DepartmentType_label_2;
@@ -39,16 +43,21 @@ import lombok.Setter;
 import lombok.val;
 import retrofit2.Response;
 
-public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptionBinding> {
+public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding> {
 
     @Setter
     private Callback callback = null;
 
-    public static SearchOptionFragment newInstance(@androidx.annotation.NonNull Callback callback) {
-        val fragment = new SearchOptionFragment();
-        fragment.setCallback(callback);
-        return fragment;
+    public SearchOptionFragment(@androidx.annotation.NonNull Context context, @NonNull Callback callback, @Nullable CompositeDisposable compositeDisposable) {
+        super(context, compositeDisposable);
+        this.callback = callback;
     }
+
+//    public static SearchOptionFragment newInstance(@androidx.annotation.NonNull Callback callback) {
+//        val fragment = new SearchOptionFragment();
+//        fragment.setCallback(callback);
+//        return fragment;
+//    }
 
     @Override
     public void setupUI() {
@@ -338,7 +347,7 @@ public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptio
     };
 
     private void preloadResult(View selectedView) {
-        binding.groupSearch.setVisibility(View.GONE);
+        binding.groupSearch.setVisibility(View.INVISIBLE);
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setTag(null);
             binding.searchSelect3.setTag(null);
@@ -427,7 +436,7 @@ public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptio
     }
 
     private void showSelectedResult(View selectedView) {
-        binding.groupSearch.setVisibility(View.GONE);
+        binding.groupSearch.setVisibility(View.INVISIBLE);
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setVisibility(View.INVISIBLE);
             binding.searchSelect3.setVisibility(View.INVISIBLE);
@@ -491,11 +500,6 @@ public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptio
     @Override
     protected int layoutId() {
         return R.layout.fragment_search_option;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 
     public interface Callback {
