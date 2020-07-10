@@ -55,14 +55,14 @@ public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptio
         loadValueLabel_1();
         binding.btnSearch.setOnClickListener(__ -> {
             val obj1 = (GeneralComm_label_1) binding.searchSelect1.getTag();
-            val obj2 = (DepartmentType_label_2) binding.searchSelect2.getTag();
+            // val obj2 = (DepartmentType_label_2) binding.searchSelect2.getTag();
             val obj3 = (Department_label_3) binding.searchSelect3.getTag();
             val obj4 = (OfficeType_label_4) binding.searchSelect4.getTag();
             val obj5 = (OfficeName_label_5) binding.searchSelect5.getTag();
-            val obj6 = (SectorType_label_6) binding.searchSelect6.getTag();
+            // val obj6 = (SectorType_label_6) binding.searchSelect6.getTag();
             val obj7 = (SectorName_label_7) binding.searchSelect7.getTag();
 
-            if (obj1 != null && obj2 != null && obj3 != null && obj4 != null) {
+            if (obj1 != null && obj3 != null && obj4 != null && obj5 != null) {
                 val filter = new RequestSearch.Filter();
                 filter.setGeneralId(obj1.getId());
                 filter.setGeneralName(obj1.getName());
@@ -70,10 +70,9 @@ public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptio
                 filter.setDepartmentId(obj3.getDepartmentId());
                 filter.setDepartmentName(obj3.getDepartmentName());
 
-                if (obj5 != null) {
-                    filter.setOfficeId(obj5.getOfficeId());
-                    filter.setOfficeName(obj5.getOfficeName());
-                }
+                filter.setOfficeId(obj5.getOfficeId());
+                filter.setOfficeName(obj5.getOfficeName());
+
                 if (obj7 != null) {
                     filter.setSectorId(obj7.getSectorId());
                     filter.setSectorName(obj7.getSectorName());
@@ -468,7 +467,6 @@ public class SearchOptionFragment extends BaseDialogFragment<FragmentSearchOptio
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.INVISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
-            binding.groupSearch.setVisibility(View.VISIBLE);
         }
         else if (binding.searchSelect6 == selectedView) {
             binding.searchSelect2.setVisibility(View.VISIBLE);
