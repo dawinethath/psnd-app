@@ -1,19 +1,45 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "kh.com.sdnd"
+        applicationId "psnd.app.gov"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0.0 Beta"
+        versionCode 2
+        versionName "1.0.2 Beta"
         multiDexEnabled true
         resConfigs "en", "US"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'test'
+            keyPassword 'test'
+            storeFile file('../keystores/psnd.app.android.jks')
+            storePassword 'test'
+        }
+    }
+
+    flavorDimensions 'default'
+    productFlavors {
+        dev {
+            applicationId 'psnd.app.gov'
+            manifestPlaceholders = [
+                    dynamicLink: "test.page.link",
+            ]
+        }
+        play {
+            applicationId 'psnd.app.android'
+            manifestPlaceholders = [
+                    dynamicLink: "test.page.link",
+            ]
+        }
     }
 
     externalNativeBuild {
@@ -37,6 +63,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def project = "PSND"
+            def type = "beta"
+            def space = " "
+            def proguard = variant.buildType.minifyEnabled ? "proguard" : "none-proguard"
+            def buildType = variant.buildType.name
+            if (buildType == "debug") {
+                buildType = "testing"
+            }
+
+            def version = variant.versionName
+            def applicationId = variant.applicationId
+
+            def date = new Date();
+            def formattedDate = date.format('YYYY-MM-dd')
+            def newApkName = applicationId + space +
+                    type + space + version + space + buildType + space + proguard + space + formattedDate + space + project + ".apk"
+
+            //result will look like this: 2017-08-07 SampleApp beta 0.0.1 testing none-proguard
+            outputFileName = new File(newApkName)
+        }
+    }
+
 
     buildFeatures {
         dataBinding = true

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "719566871616",
+    "firebase_url": "https://psnd-app.firebaseio.com",
+    "project_id": "psnd-app",
+    "storage_bucket": "psnd-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719566871616:android:9107be20535ccbb6d113a5",
+        "android_client_info": {
+          "package_name": "psnd.app.gov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719566871616-o99isodd4coarpnaftorf5c8iodhegag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbPNLJU_XTTxx191pPbOZJT_8cU9kx2cA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719566871616-o99isodd4coarpnaftorf5c8iodhegag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
