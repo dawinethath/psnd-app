@@ -14,6 +14,7 @@
             style="@style/ProfilePhoto"
             android:layout_width="@dimen/detail_toolbar_logo_width"
             android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:roundingBorderWidth="1dp"
@@ -28,7 +29,6 @@
             android:ellipsize="end"
             android:fontFamily="@string/font_family_medium"
             android:maxLines="2"
-            android:text="យ៉ាវ ណាលីនដាវីដ"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_23sp"
             app:autoSizeMaxTextSize="@dimen/text_size_23sp"
@@ -36,7 +36,8 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageProfile"
-            app:layout_constraintTop_toTopOf="@id/imageProfile" />
+            app:layout_constraintTop_toTopOf="@id/imageProfile"
+            tools:text="យ៉ាវ ណាលីនដាវីដ" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/staffId"
@@ -46,7 +47,6 @@
             android:fontFamily="@string/font_family_medium"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:text="67783"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_21sp"
             app:autoSizeMaxTextSize="@dimen/text_size_21sp"
@@ -54,7 +54,8 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="@id/imageProfile"
             app:layout_constraintEnd_toEndOf="@id/firstNameKH"
-            app:layout_constraintStart_toStartOf="@id/firstNameKH" />
+            app:layout_constraintStart_toStartOf="@id/firstNameKH"
+            tools:text="67783" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

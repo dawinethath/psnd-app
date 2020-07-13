@@ -133,114 +133,114 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_1"
             style="@style/DetailValueLabel"
-            android:text="អនុសេនីយ៍ត្រី"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_1" />
+            app:layout_constraintTop_toTopOf="@id/label_1"
+            tools:text="អនុសេនីយ៍ត្រី" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_2"
             style="@style/DetailValueLabel"
-            android:text="នាយកដ្ឋានបុគ្គលិក"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_2" />
+            app:layout_constraintTop_toTopOf="@id/label_2"
+            tools:text="នាយកដ្ឋានបុគ្គលិក" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_3"
             style="@style/DetailValueLabel"
-            android:text="29/05/1987"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_3" />
+            app:layout_constraintTop_toTopOf="@id/label_3"
+            tools:text="29/05/1987" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_4"
             style="@style/DetailValueLabel"
-            android:text="ប្រុស"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_4" />
+            app:layout_constraintTop_toTopOf="@id/label_4"
+            tools:text="ប្រុស" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_5"
             style="@style/DetailValueLabel"
-            android:text="នាយកដ្ឋានបុគ្គលិក"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_5" />
+            app:layout_constraintTop_toTopOf="@id/label_5"
+            tools:text="នាយកដ្ឋានបុគ្គលិក" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_6"
             style="@style/DetailValueLabel"
-            android:text="ការិយាល័យគ្រប់គ្រងឯកសារ"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_6" />
+            app:layout_constraintTop_toTopOf="@id/label_6"
+            tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_7"
             style="@style/DetailValueLabel"
-            android:text="នាយផ្នែក"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_7" />
+            app:layout_constraintTop_toTopOf="@id/label_7"
+            tools:text="នាយផ្នែក" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_8"
             style="@style/DetailValueLabel"
-            android:text="អនុសេនីយ៍ត្រី"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_8" />
+            app:layout_constraintTop_toTopOf="@id/label_8"
+            tools:text="អនុសេនីយ៍ត្រី" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_9"
             style="@style/DetailValueLabel"
-            android:text="មន្រ្តី"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_9" />
+            app:layout_constraintTop_toTopOf="@id/label_9"
+            tools:text="មន្រ្តី" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_10"
             style="@style/DetailValueLabel"
-            android:text="បំរើការងារ"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_10" />
+            app:layout_constraintTop_toTopOf="@id/label_10"
+            tools:text="បំរើការងារ" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_11"
             style="@style/DetailValueLabel"
-            android:text="បរិញ្ញាប័ត្រ"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_11" />
+            app:layout_constraintTop_toTopOf="@id/label_11"
+            tools:text="បរិញ្ញាប័ត្រ" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_12"
             style="@style/DetailValueLabel"
-            android:text="Asia Pacific International University៊ី"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_12" />
+            app:layout_constraintTop_toTopOf="@id/label_12"
+            tools:text="Asia Pacific International University៊ី" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_13"
             style="@style/DetailValueLabel"
-            android:text="099990202"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_13" />
+            app:layout_constraintTop_toTopOf="@id/label_13"
+            tools:text="099990202" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_label_14"
             style="@style/DetailValueLabel"
-            android:text="ផ្ទះលេខ ១២៥ហ្ស៊ី, ផ្លូវ២៥៥ហ្សិត,​​​ ភូមិ៣, សង្កាត់បឹងសាឡាង, ខណ្ឌទួលគោក,​ រាជធានីភ្នំពេញ៊ី"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_14" />
+            app:layout_constraintTop_toTopOf="@id/label_14"
+            tools:text="ផ្ទះលេខ ១២៥ហ្ស៊ី, ផ្លូវ២៥៥ហ្សិត,​​​ ភូមិ៣, សង្កាត់បឹងសាឡាង, ខណ្ឌទួលគោក,​ រាជធានីភ្នំពេញ៊ី" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

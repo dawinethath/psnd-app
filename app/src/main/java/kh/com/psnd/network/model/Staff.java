@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import core.lib.network.model.BaseGson;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.val;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -49,4 +50,13 @@ public class Staff extends BaseGson {
     @SerializedName("staHistories")
     private StaffHistory staffHistories;
 
+    public static Staff getStaffTmp(Search search) {
+        val staffTmp = new Staff();
+        staffTmp.setGeneralCommissariat(search.getGeneralCommissariat());
+        staffTmp.setPhoto(search.getPhoto());
+        staffTmp.setFullName(search.getFullName());
+        staffTmp.setId(search.getStaffNumber());
+        staffTmp.setDepartment(search.getDepartment());
+        return staffTmp;
+    }
 }

@@ -3,6 +3,8 @@ package kh.com.psnd.ui.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.kelin.translucentbar.library.TranslucentBarManager;
@@ -16,8 +18,12 @@ import core.lib.utils.OkHttpUtils;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentDetailBinding;
 import kh.com.psnd.helper.ActivityHelper;
+import kh.com.psnd.network.model.Search;
 import kh.com.psnd.network.model.Staff;
 import kh.com.psnd.network.model.StaffRecord;
+import kh.com.psnd.network.request.RequestStaff;
+import kh.com.psnd.network.response.ResponseStaff;
+import kh.com.psnd.network.task.TaskStaff;
 import kh.com.psnd.ui.view.ItemDetailSectionView;
 import lombok.val;
 import okhttp3.Call;
@@ -33,13 +39,13 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
     private final String         TAG_PDF  = "DownloadPDF";
     private final OkHttpClient   client   = new OkHttpClient();
 
-//    public static DetailFragment newInstance(@NonNull Search search) {
-//        val fragment = new DetailFragment();
-//        val bundle   = new Bundle();
-//        bundle.putSerializable(Search.EXTRA, search);
-//        fragment.setArguments(bundle);
-//        return fragment;
-//    }
+    public static DetailFragment newInstance(@NonNull Search search) {
+        val fragment = new DetailFragment();
+        val bundle   = new Bundle();
+        bundle.putSerializable(Search.EXTRA, search);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -51,14 +57,12 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
     @Override
     public void setupUI() {
-        val staff = (Staff) getActivity().getIntent().getSerializableExtra(Staff.EXTRA);
-        Log.i(staff);
-        if (staff == null) {
-            getActivity().finish();
-            return;
-        }
         progress = new DialogProgress(getContext(), true, dialogInterface -> OkHttpUtils.cancelCallWithTag(client, TAG_PDF));
+        progress.setCanceledOnTouchOutside(false);
+        loadData();
+    }
 
+    private void bindView(@NonNull Staff staff) {
         binding.headerToolbarView.setupUI(this, staff);
         binding.detailHeader.setupUI(this, staff);
         binding.layoutDetail.setupUI(this, staff);
@@ -78,6 +82,38 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
             binding.adapterView2.setupUI(this, staff.getStaffHistories().getPosition(), R.string.detail_label_2, callback);
             binding.adapterView3.setupUI(this, staff.getStaffHistories().getDepartment(), R.string.detail_label_change_position, callback);
         }
+    }
+
+    private void loadData() {
+        val search = (Search) getArguments().getSerializable(Search.EXTRA);
+        bindView(Staff.getStaffTmp(search));
+
+        val task = new TaskStaff(new RequestStaff(search.getStaffId()));
+        binding.detailHeader.showProgress();
+        getCompositeDisposable().add(task.start(task.new SimpleObserver() {
+
+            @Override
+            public Class<?> clazzResponse() {
+                return null;
+            }
+
+            @Override
+            public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
+                Log.i("LOG >> onNext >> result : " + result);
+                if (result.isSuccessful()) {
+                    val data = (ResponseStaff) result.body();
+                    Log.i(data);
+                    bindView(data.getResult());
+                }
+                binding.detailHeader.hideProgress();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(e);
+                binding.detailHeader.hideProgress();
+            }
+        }));
     }
 
     private ItemDetailSectionView.Callback callback = new ItemDetailSectionView.Callback() {

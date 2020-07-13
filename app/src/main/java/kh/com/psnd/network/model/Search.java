@@ -9,7 +9,9 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Search extends BaseGson {
-    public static final String EXTRA = "Search";
+    public static final String EXTRA          = "Search";
+    public static final String EXTRA_LIST     = "Search_List";
+    public static final String EXTRA_POSITION = "Position";
 
     @SerializedName("staffID")
     private int    staffId;
@@ -21,5 +23,7 @@ public class Search extends BaseGson {
     private String department;
     @SerializedName("photo")
     private String photo;
+    @SerializedName("general_commissariat")
+    private String generalCommissariat;
 
 }

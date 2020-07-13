@@ -5,7 +5,10 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import kh.com.psnd.network.model.Staff;
+import java.io.Serializable;
+import java.util.List;
+
+import kh.com.psnd.network.model.Search;
 import kh.com.psnd.ui.activity.DetailActivity;
 import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.LoginActivity;
@@ -22,9 +25,10 @@ public class ActivityHelper {
         context.startActivity(intent);
     }
 
-    public static void openDetailActivity(@NonNull Context context, @NonNull Staff staff) {
+    public static void openDetailActivity(@NonNull Context context, @NonNull List<Search> items, int position) {
         val intent = new Intent(context, DetailActivity.class);
-        intent.putExtra(Staff.EXTRA, staff);
+        intent.putExtra(Search.EXTRA_LIST, (Serializable) items);
+        intent.putExtra(Search.EXTRA_POSITION, position);
         context.startActivity(intent);
     }
 
@@ -32,11 +36,6 @@ public class ActivityHelper {
         val intent = new Intent(context, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
-    }
-
-    public static void openSearchOptionActivity(@NonNull Context context) {
-//        val intent = new Intent(context, SearchOptionActivity.class);
-//        context.startActivity(intent);
     }
 
     public static void openProfileActivity(@NonNull Context context) {

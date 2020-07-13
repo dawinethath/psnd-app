@@ -19,6 +19,7 @@ import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Staff;
+import lombok.val;
 
 public class DetailHeaderView extends FrameLayout {
 
@@ -46,21 +47,26 @@ public class DetailHeaderView extends FrameLayout {
     }
 
     public void setupUI(@NonNull BaseFragment fragment, @NonNull Staff staff) {
+        val bitmap = FrescoUtil.getBitmapFromCache(staff.getPhoto());
+        if (bitmap != null) {
+            binding.imageProfile.setImageURI(staff.getPhoto());
+            binding.cardImageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff.getPhoto()));
+        }
+        else {
+            FrescoUtil.loadImage(Uri.parse(staff.getPhoto()), new BaseBitmapDataSubscriber() {
+                @Override
+                public void onNewResultImpl(@Nullable Bitmap bitmap) {
+                    binding.imageProfile.setImageURI(staff.getPhoto());
+                    binding.cardImageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff.getPhoto()));
+                }
 
-        FrescoUtil.loadImage(Uri.parse(staff.getPhoto()), new BaseBitmapDataSubscriber() {
-            @Override
-            public void onNewResultImpl(@Nullable Bitmap bitmap) {
-                Log.i("bitmap : " + bitmap);
-                binding.imageProfile.setImageURI(staff.getPhoto());
-                binding.cardImageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff.getPhoto()));
-            }
+                @Override
+                public void onFailureImpl(DataSource dataSource) {
+                    Log.i("dataSource : " + dataSource);
+                }
 
-            @Override
-            public void onFailureImpl(DataSource dataSource) {
-                Log.i("dataSource : " + dataSource);
-            }
-
-        });
+            });
+        }
 
         binding.firstNameKH.setText(staff.getFullName());
         binding.staffId.setText(staff.getId());
@@ -73,6 +79,14 @@ public class DetailHeaderView extends FrameLayout {
 //            String filePath = fragment.getActivity().getCacheDir().getPath() + File.separator + "test.jpg";
 //            FileManager.saveImageJPG(bitmap, filePath);
         });
+    }
+
+    public void showProgress() {
+        binding.progressBar.setVisibility(VISIBLE);
+    }
+
+    public void hideProgress() {
+        binding.progressBar.setVisibility(GONE);
     }
 
 }

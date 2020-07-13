@@ -15,11 +15,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:elevation="@dimen/cardElevation"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:elevation="@dimen/cardElevation"
                 app:expandedTitleGravity="top"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -49,7 +51,8 @@
                     <kh.com.psnd.ui.view.DetailHeaderToolbarView
                         android:id="@+id/headerToolbarView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:elevation="@dimen/cardElevation" />
 
                 </com.google.android.material.appbar.MaterialToolbar>
 
@@ -57,43 +60,49 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:overScrollMode="never">
 
-                <kh.com.psnd.ui.view.DetailBodyView
-                    android:id="@+id/layoutDetail"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <kh.com.psnd.ui.view.DetailSectionView
-                    android:id="@+id/adapterView_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <kh.com.psnd.ui.view.DetailBodyView
+                        android:id="@+id/layoutDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <kh.com.psnd.ui.view.DetailSectionView
-                    android:id="@+id/adapterView_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <kh.com.psnd.ui.view.DetailSectionView
+                        android:id="@+id/adapterView_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <kh.com.psnd.ui.view.DetailSectionView
-                    android:id="@+id/adapterView_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <kh.com.psnd.ui.view.DetailSectionView
+                        android:id="@+id/adapterView_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="@android:color/transparent" />
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+                    <kh.com.psnd.ui.view.DetailSectionView
+                        android:id="@+id/adapterView_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@android:color/transparent" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

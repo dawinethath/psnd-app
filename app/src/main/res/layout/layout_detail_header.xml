@@ -14,6 +14,18 @@
             android:background="@color/colorPrimary"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/background"
+            app:mpb_progressStyle="horizontal"
+            app:mpb_useIntrinsicPadding="false"
+            tools:visibility="visible" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/exportPdf"
             android:layout_width="wrap_content"
@@ -50,7 +62,6 @@
             android:maxLines="2"
             android:paddingStart="@dimen/space_16dp"
             android:paddingEnd="@dimen/space_16dp"
-            android:text="@string/label_commissariat"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_29sp"
             app:autoSizeMaxTextSize="@dimen/text_size_29sp"
@@ -59,7 +70,8 @@
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/statusBar" />
+            app:layout_constraintTop_toBottomOf="@id/statusBar"
+            tools:text="@string/label_commissariat" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardImageProfile"
@@ -93,7 +105,6 @@
             android:ellipsize="end"
             android:fontFamily="@string/font_family_medium"
             android:maxLines="2"
-            android:text="យ៉ាវ ណាលីនដាវីដ"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_29sp"
             app:autoSizeMaxTextSize="@dimen/text_size_29sp"
@@ -101,7 +112,8 @@
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cardImageProfile"
-            app:layout_constraintTop_toBottomOf="@id/background" />
+            app:layout_constraintTop_toBottomOf="@id/background"
+            tools:text="យ៉ាវ ណាលីនដាវីដ" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/staffId"
@@ -110,7 +122,6 @@
             android:layout_marginTop="@dimen/space_12dp"
             android:fontFamily="@string/font_family_medium"
             android:singleLine="true"
-            android:text="67783"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_25sp"
             app:autoSizeMaxTextSize="@dimen/text_size_25sp"
@@ -119,7 +130,8 @@
             app:layout_constraintBottom_toBottomOf="@id/cardImageProfile"
             app:layout_constraintEnd_toEndOf="@id/firstNameKH"
             app:layout_constraintStart_toStartOf="@id/firstNameKH"
-            app:layout_constraintTop_toBottomOf="@id/firstNameKH" />
+            app:layout_constraintTop_toBottomOf="@id/firstNameKH"
+            tools:text="67783" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

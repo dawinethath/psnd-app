@@ -1,5 +1,7 @@
 package kh.com.psnd.ui.adapter.holder;
 
+import java.util.List;
+
 import core.lib.base.BaseViewHolder;
 import kh.com.psnd.databinding.ItemSearchBinding;
 import kh.com.psnd.network.model.Search;
@@ -11,13 +13,12 @@ public class SearchHolder extends BaseViewHolder<SearchFragment, ItemSearchBindi
         super(fragment, binding);
     }
 
-    @Override
-    public void bind(Search item) {
-        super.bind(item);
+    public void bind(List<Search> items, int position) {
+        super.bind(items.get(position));
         binding.image.setImageURI(item.getPhoto());
         binding.name.setText(item.getFullName());
         binding.department.setText(item.getDepartment());
         binding.id.setText(item.getStaffNumber());
-        binding.getRoot().setOnClickListener(__ -> fragment.onClickedItem(item));
+        binding.getRoot().setOnClickListener(__ -> fragment.onClickedItem(items, position));
     }
 }
