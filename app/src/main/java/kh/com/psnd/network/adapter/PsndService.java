@@ -5,8 +5,9 @@ import kh.com.psnd.network.request.RequestDepartmentType_label_2;
 import kh.com.psnd.network.request.RequestDepartment_label_3;
 import kh.com.psnd.network.request.RequestGeneralComm_label_1;
 import kh.com.psnd.network.request.RequestLogin;
-import kh.com.psnd.network.request.RequestOfficeType_label_4;
 import kh.com.psnd.network.request.RequestOfficeName_label_5;
+import kh.com.psnd.network.request.RequestOfficeType_label_4;
+import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.request.RequestSectorName_label_7;
 import kh.com.psnd.network.request.RequestSectorType_label_6;
@@ -41,6 +42,9 @@ public interface PsndService {
 
     @POST("search_staffs")
     Call<ResponseSearch> search(@Body RequestSearch requestSearch);
+
+    @POST("get_staff_by_qrcode")
+    Call<ResponseStaff> qrcode(@Body RequestQRCode requestQRCode);
 
     @POST("login")
     Call<ResponseLogin> login(@Body RequestLogin requestLogin);
