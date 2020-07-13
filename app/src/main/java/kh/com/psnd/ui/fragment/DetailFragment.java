@@ -15,7 +15,14 @@ import core.lib.base.BaseFragment;
 import core.lib.dialog.DialogProgress;
 import core.lib.utils.Log;
 import core.lib.utils.OkHttpUtils;
+import io.reactivex.CompletableObserver;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import kh.com.psnd.R;
+import kh.com.psnd.dao.AppDatabase;
+import kh.com.psnd.dao.DetailStaff;
 import kh.com.psnd.databinding.FragmentDetailBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
@@ -59,7 +66,37 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
     public void setupUI() {
         progress = new DialogProgress(getContext(), true, dialogInterface -> OkHttpUtils.cancelCallWithTag(client, TAG_PDF));
         progress.setCanceledOnTouchOutside(false);
-        loadData();
+
+        val search = (Search) getArguments().getSerializable(Search.EXTRA);
+
+        AppDatabase.getInstance().detailStaffDao().loadSingle(search.getStaffId())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<DetailStaff>() {
+                    @Override
+                    public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
+                        Log.i("onSubscribe");
+                    }
+
+                    @Override
+                    public void onSuccess(@io.reactivex.annotations.NonNull DetailStaff detailStaff) {
+                        Log.i("onSuccess : detailStaff");
+                        long currentTime = System.currentTimeMillis();
+                        if (currentTime - detailStaff.getRecent() > DetailStaff.INTERVAL_CHECK_NEW_DATA) {
+                            loadData(search);
+                        }
+                        else {
+                            Log.i("Show detail from database");
+                            bindView(detailStaff.getStaff());
+                        }
+                    }
+
+                    @Override
+                    public void onError(@io.reactivex.annotations.NonNull Throwable e) {
+                        Log.e("onError " + e);
+                        loadData(search);
+                    }
+                });
     }
 
     private void bindView(@NonNull Staff staff) {
@@ -72,7 +109,6 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 float offsetAlpha = (appBarLayout.getY() / binding.appBarLayout.getTotalScrollRange());
                 offsetAlpha = (offsetAlpha * -1);
-                Log.i("offsetAlpha : " + offsetAlpha);
                 binding.toolbar.setAlpha(offsetAlpha);
             }
         });
@@ -84,10 +120,9 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         }
     }
 
-    private void loadData() {
-        val search = (Search) getArguments().getSerializable(Search.EXTRA);
+    private void loadData(Search search) {
+        Log.i("Loading new detail");
         bindView(Staff.getStaffTmp(search));
-
         val task = new TaskStaff(new RequestStaff(search.getStaffId()));
         binding.detailHeader.showProgress();
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
@@ -101,9 +136,28 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
             public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
-                    val data = (ResponseStaff) result.body();
-                    Log.i(data);
-                    bindView(data.getResult());
+                    val data  = (ResponseStaff) result.body();
+                    val staff = data.getResult();
+                    bindView(staff);
+
+                    val detailStaff = DetailStaff.getInstance(search, staff);
+                    AppDatabase.getInstance()
+                            .detailStaffDao()
+                            .insertAll(detailStaff)
+                            .subscribeOn(Schedulers.io())
+                            .subscribe(new CompletableObserver() {
+                                @Override
+                                public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
+                                }
+
+                                @Override
+                                public void onComplete() {
+                                }
+
+                                @Override
+                                public void onError(@io.reactivex.annotations.NonNull Throwable e) {
+                                }
+                            });
                 }
                 binding.detailHeader.hideProgress();
             }
