@@ -140,10 +140,9 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
                     val staff = data.getResult();
                     bindView(staff);
 
-                    val detailStaff = DetailStaff.getInstance(search, staff);
                     AppDatabase.getInstance()
                             .detailStaffDao()
-                            .insertAll(detailStaff)
+                            .insertAll(new DetailStaff(staff))
                             .subscribeOn(Schedulers.io())
                             .subscribe(new CompletableObserver() {
                                 @Override

@@ -13,6 +13,10 @@ public class Staff extends BaseGson {
 
     public static final String EXTRA = "Staff";
 
+    @SerializedName("staffID")
+    private int          staffId;
+    @SerializedName("uid")
+    private String       uid;
     @SerializedName("id")
     private String       id;
     @SerializedName("fullName")

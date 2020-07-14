@@ -26,4 +26,16 @@ public class Search extends BaseGson {
     @SerializedName("general_commissariat")
     private String generalCommissariat;
 
+    public Search() {
+
+    }
+
+    public Search(Staff staff) {
+        setStaffId(staff.getStaffId());
+        setDepartment(staff.getDepartment());
+        setFullName(staff.getFullName());
+        setGeneralCommissariat(staff.getGeneralCommissariat());
+        setPhoto(staff.getPhoto());
+        setStaffNumber(staff.getId());
+    }
 }

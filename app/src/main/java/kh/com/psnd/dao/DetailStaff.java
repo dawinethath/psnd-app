@@ -6,10 +6,8 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.Gson;
 
-import kh.com.psnd.network.model.Search;
 import kh.com.psnd.network.model.Staff;
 import lombok.Data;
-import lombok.val;
 
 @Entity
 @Data
@@ -26,11 +24,12 @@ public class DetailStaff {
     @ColumnInfo(name = "recent")
     public long recent = System.currentTimeMillis();
 
-    public static DetailStaff getInstance(Search search, Staff staff) {
-        val detail = new DetailStaff();
-        detail.setStaffId(search.getStaffId());
-        detail.setJson(staff.toJson());
-        return detail;
+    public DetailStaff() {
+    }
+
+    public DetailStaff(Staff staff) {
+        setStaffId(staff.getStaffId());
+        setJson(staff.toJson());
     }
 
     public Staff getStaff() {

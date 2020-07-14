@@ -119,7 +119,6 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                             LoginManager.loggedIn(profile);
                             ActivityHelper.openMainActivity(getContext());
                             getActivity().finish();
-//                            }
                             progress.dismiss();
                         }
 

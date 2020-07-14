@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="qrcode">QRCode</string>
 
     <string name="noData">គ្មានទិន័យ</string>
     <string name="noInternetConnection">គ្មានអ៊ីនធើណេត សូមធ្វើការពិនិត្យឡើងវិញ</string>
@@ -97,6 +97,7 @@
 
     <string name="fingerprint_title">Verify your identity</string>
     <string name="fingerprint_description">Use your fingerprint to verify your identity</string>
+    <string name="qrcode_description">Scan QR Code on the card</string>
 
     <!--    PDF-->
     <string name="file_not_found">មិនមានទិន្នន័យ!</string>
