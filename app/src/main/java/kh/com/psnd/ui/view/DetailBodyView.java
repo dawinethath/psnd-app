@@ -1,6 +1,7 @@
 package kh.com.psnd.ui.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailBodyBinding;
 import kh.com.psnd.network.model.Staff;
+import lombok.var;
 
 public class DetailBodyView extends FrameLayout {
 
@@ -50,6 +52,11 @@ public class DetailBodyView extends FrameLayout {
         binding.valueLabel12.setText(staff.getSkill());
         binding.valueLabel13.setText(staff.getTelephone());
         binding.valueLabel14.setText(staff.getAddress());
+
+        try {
+            binding.valueLabel10.setTextColor(Color.parseColor(staff.getStatusColor()));
+        } catch (Throwable e) {
+        }
     }
 
 }

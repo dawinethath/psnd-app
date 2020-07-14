@@ -1,0 +1,26 @@
+រពរាយការណ៌ជូន
+
+ឥលូវ   App PSND Android ត្រូវបានដាក់ចូលក្នុង Firebase server ដើម្បីធ្វើការតេសរួចរាល់ហើយ
+
+ខាងក្រោមនេះគឺជា Link សំរាប់ធ្វើតេស
+
+https://appdistribution.firebase.dev/i/21732279ef69dcf2
+
+v1.0.0 Beta (1)
+ - Login screen
+ - Search screen (ID / Name)
+ - Search by options (Multiple choice)
+ - View Image of each staff
+ - View PDF if available
+ - About screen
+ - Profile user
+ - The user can enable Fingerprint
+
+Next version
+ - Need to improve UX and UI
+ - QRCode
+ - Create local database to improve loading data
+ - The user can swipe left/right to see next
+ - Security improvement
+ - Login with real API
+ - Signup
