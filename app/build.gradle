@@ -107,6 +107,9 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     implementation 'com.google.zxing:core:3.4.0'
 
+    implementation 'com.amplifyframework:core:1.0.0'
+    implementation 'com.amplifyframework:aws-auth-cognito:1.0.0'
+
 //    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
 
