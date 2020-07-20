@@ -11,6 +11,7 @@ import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.request.RequestSectorName_label_7;
 import kh.com.psnd.network.request.RequestSectorType_label_6;
+import kh.com.psnd.network.request.RequestSignUpVerify;
 import kh.com.psnd.network.request.RequestStaff;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
 import kh.com.psnd.network.response.ResponseDepartment_Label_3;
@@ -21,6 +22,7 @@ import kh.com.psnd.network.response.ResponseOfficeType_Label_4;
 import kh.com.psnd.network.response.ResponseSearch;
 import kh.com.psnd.network.response.ResponseSectionName_Label_7;
 import kh.com.psnd.network.response.ResponseSectorType_Label_6;
+import kh.com.psnd.network.response.ResponseSignUpVerify;
 import kh.com.psnd.network.response.ResponseStaff;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -39,6 +41,9 @@ import retrofit2.http.POST;
  * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/get_staff
  */
 public interface PsndService {
+
+    @POST("sign_up_authentication")
+    Call<ResponseSignUpVerify> signUpVerify(@Body RequestSignUpVerify requestSignUpVerify);
 
     @POST("search_staffs")
     Call<ResponseSearch> search(@Body RequestSearch requestSearch);

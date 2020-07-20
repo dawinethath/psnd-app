@@ -7,6 +7,13 @@
         <item name="startIconTint">@color/textViewHeaderColor</item>
     </style>
 
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefaultWhite">
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="boxStrokeColor">@android:color/white</item>
+        <item name="endIconTint">@android:color/white</item>
+        <item name="startIconTint">@android:color/white</item>
+    </style>
+
     <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu.AppDefault">
         <item name="android:textColorHint">@color/textViewHeaderColor</item>
         <item name="boxStrokeColor">@color/textViewHeaderColor</item>

@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import core.lib.base.BaseFragment;
 import kh.com.psnd.databinding.LayoutDetailBodyBinding;
 import kh.com.psnd.network.model.Staff;
-import lombok.var;
 
 public class DetailBodyView extends FrameLayout {
 

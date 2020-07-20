@@ -19,6 +19,15 @@ v1.0.2 Beta (2)
  - The user can swipe left/right to see next
 
 Next version
+ - Signup (first step)
+    - Full Khmer Name
+    - Phone Number
+    - ID
+ - Signup (second step)
+    - Verify phone number
+ - Signup (third step)
+    - username
+    - password
  - Security improvement
  - Save last search (Search option)
  - Auto select in search option if there is a item

@@ -2,9 +2,7 @@ package kh.com.psnd.ui.fragment;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import core.lib.base.BaseFragment;
@@ -46,26 +44,21 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                 isValidatePassword();
             }
         });
-        binding.username.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    binding.password.requestFocus();
-                    return true;
-                }
-                return false;
+        binding.username.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                binding.password.requestFocus();
+                return true;
             }
+            return false;
         });
-        binding.password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    doLogin();
-                    return true;
-                }
-                return false;
+        binding.password.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                doLogin();
+                return true;
             }
+            return false;
         });
+        binding.signup.setOnClickListener(__ -> ActivityHelper.openSignupActivity(getContext()));
     }
 
     private boolean isValidateUsername() {

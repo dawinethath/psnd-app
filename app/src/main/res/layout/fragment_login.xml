@@ -153,7 +153,7 @@
             android:id="@+id/btnLogin"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/height_button"
             android:layout_margin="@dimen/space_12dp"
             android:elevation="99dp"
             android:text="@string/login"
@@ -175,8 +175,21 @@
             android:backgroundTint="@android:color/white"
             android:text="@string/forget_password"
             android:textColor="@color/textViewColor"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/signup"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signup"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_08dp"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/signup_now"
+            android:textColor="@color/textViewColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/forgetPassword"
             app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
 

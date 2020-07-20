@@ -7,6 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
+import com.amplifyframework.core.Amplify;
 import com.google.gson.Gson;
 
 import co.infinum.goldfinger.Goldfinger;
@@ -37,7 +40,23 @@ public class App extends BaseApp implements Application.ActivityLifecycleCallbac
         super.onCreate();
         goldfinger = new Goldfinger.Builder(this).logEnabled(BuildConfig.DEBUG).build();
         registerActivityLifecycleCallbacks(this);
+
+        try {
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.configure(getApplicationContext());
+        } catch (AmplifyException e) {
+            Log.e("Amplify : " + e);
+        }
     }
+
+//    Amplify.default.configure({
+//        Auth: {
+//            mandatorySignId: true,
+//                    region: 'ap-southeast-1',
+//                    userPoolId: 'ap-southeast-1_ubXjOpH45',
+//                    userPoolWebClientId: '2p0bplion8hrsl0olejl3kpah6',
+//        }
+//    })
 
     public void checkFingerprintSecurity(@NonNull Activity activity) {
         Log.i("checkFingerprintSecurity");

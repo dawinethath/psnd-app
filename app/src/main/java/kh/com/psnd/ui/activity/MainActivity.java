@@ -130,6 +130,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
             }
         });
+
     }
 
     @Override
