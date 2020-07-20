@@ -48,5 +48,15 @@ public class RequestSearch extends BaseParam {
         private int    sectorId   = -1;
         @SerializedName("sector_name")
         private String sectorName = null;
+
+        @SerializedName("rank_id")
+        private int    rankId   = -1;
+        @SerializedName("rank_name")
+        private String rankName = null;
+
+        @SerializedName("position_id")
+        private int    positionId   = -1;
+        @SerializedName("position_name")
+        private String positionName = null;
     }
 }
