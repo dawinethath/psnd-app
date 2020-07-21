@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:padding="@dimen/space_26dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/signup"
+                android:textColor="@color/textViewHeaderColor"
+                android:textSize="@dimen/text_size_29sp"
+                app:fontFamily="@string/font_family_medium" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/space_16dp"
+                android:paddingBottom="@dimen/space_16dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardImageProfile"
+                    style="@style/Widget.MaterialComponents.CardView.Default"
+                    android:layout_width="@dimen/logo_header_width"
+                    android:layout_height="@dimen/logo_header_height"
+                    app:contentPadding="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@android:color/white"
+                    app:strokeWidth="1dp">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/imageProfile"
+                        android:layout_width="@dimen/logo_header_width"
+                        android:layout_height="@dimen/logo_header_height"
+                        app:actualImageScaleType="fitXY"
+                        app:failureImage="@drawable/ic_person"
+                        app:failureImageScaleType="fitXY"
+                        app:placeholderImage="@drawable/ic_person"
+                        tools:tint="@color/textViewColor" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/staffName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_16dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cardImageProfile"
+                    app:layout_constraintTop_toTopOf="@id/cardImageProfile"
+                    tools:text="User Name" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/staffNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_08dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/staffName"
+                    app:layout_constraintTop_toBottomOf="@id/staffName"
+                    tools:text="88814" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutUserName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:hint="@string/username_eng"
+                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:textColor="@color/textViewHeaderColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutStaffNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:hint="@string/password_eng"
+                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColor="@color/textViewHeaderColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutPhoneNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:hint="@string/password_confirm_eng"
+                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColor="@color/textViewHeaderColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_08dp"
+                android:paddingBottom="@dimen/space_08dp"
+                android:textColor="@color/design_default_color_error"
+                android:textSize="@dimen/text_size_14sp"
+                android:visibility="invisible"
+                tools:text="Error message"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/next"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="@dimen/space_08dp"
+            android:text="@string/next"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@color/textViewHeaderColor"
+            app:rippleColor="@color/colorPrimary" />
+    </FrameLayout>
+</layout>

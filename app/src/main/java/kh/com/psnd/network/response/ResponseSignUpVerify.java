@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 public class ResponseSignUpVerify extends BaseResponse {
 
 //    @SerializedName("result")
-//    private List<Search> result;
+//    private SignUpStep1 result;
 
     public boolean isVerified() {
         return (getStatusCode() == 200);

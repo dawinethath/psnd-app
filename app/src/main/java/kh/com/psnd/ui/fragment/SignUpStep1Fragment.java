@@ -10,20 +10,21 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.InternetUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
-import kh.com.psnd.databinding.FragmentSignupBinding;
+import kh.com.psnd.databinding.FragmentSignupStep1Binding;
+import kh.com.psnd.network.model.SignUpStep1;
 import kh.com.psnd.network.request.RequestSignUpVerify;
 import kh.com.psnd.network.response.ResponseSignUpVerify;
 import kh.com.psnd.network.task.TaskSignUpVerify;
 import lombok.val;
 import retrofit2.Response;
 
-public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
+public class SignUpStep1Fragment extends BaseFragment<FragmentSignupStep1Binding> {
     private DialogProgress progress = null;
 
     @Override
     public void setupUI() {
         progress = new DialogProgress(getContext(), true, dialogInterface -> getCompositeDisposable().clear());
-        binding.btnVerify.setOnClickListener(__ -> doVerify());
+        binding.next.setOnClickListener(__ -> doVerify());
 
         binding.firstName.addTextChangedListener(new MyTextWatcher() {
             @Override
@@ -49,6 +50,14 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
                 isValidatePhoneNumber();
             }
         });
+
+        // todo Mock up
+        {
+            binding.firstName.setText("អាង");
+            binding.lastName.setText("ធី");
+            binding.staffNumber.setText("41527");
+            binding.phoneNumber.setText("0978718137");
+        }
     }
 
     private void doVerify() {
@@ -80,7 +89,12 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
                     if (result.isSuccessful()) {
                         val data = (ResponseSignUpVerify) result.body();
                         if (data.isVerified()) {
-                            // todo open next screen (Verify phone number)
+                            val fragment = SignUpStep2Fragment.newInstance(new SignUpStep1(staffNumber, name, null, phone));
+                            getActivity().getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .add(R.id.contentFragment, fragment, "SignUpStep2Fragment")
+                                    .addToBackStack("SignUpStep2Fragment")
+                                    .commit();
                         }
                         else {
                             binding.msg.setVisibility(View.VISIBLE);
@@ -142,7 +156,7 @@ public class SignupFragment extends BaseFragment<FragmentSignupBinding> {
 
     @Override
     protected int layoutId() {
-        return R.layout.fragment_signup;
+        return R.layout.fragment_signup_step_1;
     }
 
 //    {
