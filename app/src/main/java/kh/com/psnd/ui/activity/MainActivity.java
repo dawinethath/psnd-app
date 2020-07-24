@@ -42,6 +42,7 @@ import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.network.task.TaskQRCode;
+import kh.com.psnd.ui.fragment.SelectUserRightFragment;
 import lombok.val;
 import retrofit2.Response;
 
@@ -65,7 +66,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         }
         progress = new DialogProgress(context, false, dialogInterface -> getCompositeDisposable().clear());
         setSupportActionBar(binding.appBarMain.toolbar);
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_search, R.id.nav_history, R.id.nav_about)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_search, R.id.nav_user_management, R.id.nav_history, R.id.nav_about)
                 .setDrawerLayout(binding.drawerLayout)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -130,7 +131,8 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
             }
         });
-
+        val selectUserRightFragment = SelectUserRightFragment.newInstance();
+        selectUserRightFragment.show(this.getSupportFragmentManager(), "");
     }
 
     @Override

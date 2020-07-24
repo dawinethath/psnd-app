@@ -1,6 +1,8 @@
 package kh.com.psnd.network.response;
 
 
+import android.text.TextUtils;
+
 import core.lib.network.response.BaseResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +15,7 @@ public class ResponseSignUpVerify extends BaseResponse {
 //    private SignUpStep1 result;
 
     public boolean isVerified() {
-        return (getStatusCode() == 200);
+        return (!TextUtils.isEmpty(getStatusCode()) && getStatusCode().equals("200"));
     }
 
 }

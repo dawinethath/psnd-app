@@ -7,7 +7,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityFragmentBinding;
 import kh.com.psnd.ui.fragment.SignUpStep1Fragment;
 
-public class SignupActivity extends BaseFragmentActivity<ActivityFragmentBinding> {
+public class SignUpActivity extends BaseFragmentActivity<ActivityFragmentBinding> {
 
     @Override
     protected int layoutId() {

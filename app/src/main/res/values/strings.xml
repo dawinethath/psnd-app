@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">PSND</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,9 +9,19 @@
     <string name="noInternetConnection">គ្មានអ៊ីនធើណេត សូមធ្វើការពិនិត្យឡើងវិញ</string>
 
     <string name="menu_search">ស្វែងរក</string>
+    <string name="menu_user_manager">User management</string>
     <string name="menu_about">អំពីកម្មវិធី</string>
     <string name="menu_history">ប្រវត្តិធ្លាប់មើល</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <!--    User Management-->
+    <string name="add_new_user">Add user</string>
+    <string name="search_user">Search user</string>
+    <string name="create">Create</string>
+    <string name="generate_password">Generate</string>
+    <string name="user_role">User\'s role</string>
+    <string name="choose_user_privilege">Choose user\'s privileges</string>
+    <string name="choose_user_role">Choose user\'s roles</string>
 
     <!--    About-->
     <string name="develop_by">បង្កើតឡើងដោយ</string>

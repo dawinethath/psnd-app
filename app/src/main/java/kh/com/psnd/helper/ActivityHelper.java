@@ -15,7 +15,7 @@ import kh.com.psnd.ui.activity.LoginActivity;
 import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.ui.activity.PdfActivity;
 import kh.com.psnd.ui.activity.ProfileActivity;
-import kh.com.psnd.ui.activity.SignupActivity;
+import kh.com.psnd.ui.activity.SignUpActivity;
 import lombok.val;
 
 public class ActivityHelper {
@@ -40,7 +40,7 @@ public class ActivityHelper {
     }
 
     public static void openSignupActivity(@NonNull Context context) {
-        val intent = new Intent(context, SignupActivity.class);
+        val intent = new Intent(context, SignUpActivity.class);
         context.startActivity(intent);
     }
 

@@ -13,6 +13,9 @@ import kh.com.psnd.network.request.RequestSectorName_label_7;
 import kh.com.psnd.network.request.RequestSectorType_label_6;
 import kh.com.psnd.network.request.RequestSignUpVerify;
 import kh.com.psnd.network.request.RequestStaff;
+import kh.com.psnd.network.request.RequestUserPrivilege;
+import kh.com.psnd.network.request.RequestUserRole;
+import kh.com.psnd.network.request.RequestUserSearch;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
 import kh.com.psnd.network.response.ResponseDepartment_Label_3;
 import kh.com.psnd.network.response.ResponseGeneralComm_Label_1;
@@ -24,6 +27,9 @@ import kh.com.psnd.network.response.ResponseSectionName_Label_7;
 import kh.com.psnd.network.response.ResponseSectorType_Label_6;
 import kh.com.psnd.network.response.ResponseSignUpVerify;
 import kh.com.psnd.network.response.ResponseStaff;
+import kh.com.psnd.network.response.ResponseUserPrivileges;
+import kh.com.psnd.network.response.ResponseUserRoles;
+import kh.com.psnd.network.response.ResponseUserSearch;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -41,6 +47,15 @@ import retrofit2.http.POST;
  * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/get_staff
  */
 public interface PsndService {
+
+    @POST("user_privilege")
+    Call<ResponseUserPrivileges> userPrivileges(@Body RequestUserPrivilege requestUserPrivilege);
+
+    @POST("user_roles")
+    Call<ResponseUserRoles> userRoles(@Body RequestUserRole requestUserRole);
+
+    @POST("user_search")
+    Call<ResponseUserSearch> userSearch(@Body RequestUserSearch requestUserSearch);
 
     @POST("sign_up_authentication")
     Call<ResponseSignUpVerify> signUpVerify(@Body RequestSignUpVerify requestSignUpVerify);
