@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 
 import com.google.android.material.chip.Chip;
 
+import core.lib.base.BaseApp;
 import core.lib.base.BaseBottomSheetDialogFragment;
 import core.lib.databinding.ChipActionBinding;
 import core.lib.databinding.ChipEntryBinding;
@@ -44,9 +45,21 @@ public class SelectUserRightFragment extends BaseBottomSheetDialogFragment<Fragm
     }
 
     private void initUserRole(UserRole userRole) {
-        val newRole = getCustomUserRole();
+        val     jsonUserRolePrivilege = BaseApp.getGson().toJson(userRole.getPrivileges());
+        boolean found                 = false;
         for (val item : MockUsers.userRoles) {
-
+            val jsonPrivilege = BaseApp.getGson().toJson(item.getPrivileges());
+            if (jsonPrivilege.length() == jsonUserRolePrivilege.length()) {
+                userRole.setId(item.getId());
+                userRole.setName(item.getName());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            val customUserRole = getCustomUserRole();
+            userRole.setId(customUserRole.getId());
+            userRole.setName(customUserRole.getName());
         }
 
         val item = userRole.clone();
@@ -70,7 +83,7 @@ public class SelectUserRightFragment extends BaseBottomSheetDialogFragment<Fragm
     private void removedPrivilege(UserPrivilege privilege) {
         Log.i(privilege);
         val currentUserRole = (UserRole) binding.currentUserRole.getTag();
-        currentUserRole.removePrivilege(privilege);
+        currentUserRole.removePrivilege(privilege.clone());
         initUserRole(currentUserRole);
     }
 
@@ -116,7 +129,7 @@ public class SelectUserRightFragment extends BaseBottomSheetDialogFragment<Fragm
     private void loadChooseUserRoles(UserRole currentUserRole) {
         binding.groupChooseUserRoles.removeAllViews();
         for (val userRole : MockUsers.userRoles) {
-            if (userRole != null) {
+            if (userRole != null && userRole.getId() != MockUsers.ROLE_CUSTOM_ID) {
                 val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
                 val chip        = (Chip) chipBinding.getRoot();
                 chip.setText(userRole.getName());
