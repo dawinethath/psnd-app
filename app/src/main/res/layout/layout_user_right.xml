@@ -11,7 +11,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/label_1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/space_16dp"
             android:paddingBottom="@dimen/space_16dp"
@@ -19,7 +19,24 @@
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_15sp"
             app:fontFamily="@string/font_family_medium"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/currentUserRole"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16dp"
+            android:clickable="false"
+            android:fontFamily="@string/font_family_black"
+            android:text="User"
+            android:textColor="@android:color/white"
+            app:chipBackgroundColor="@color/colorPrimary"
+            app:chipIconTint="@color/textViewHeaderColor"
+            app:layout_constraintBottom_toBottomOf="@id/label_1"
+            app:layout_constraintStart_toEndOf="@id/label_1"
+            app:layout_constraintTop_toTopOf="@id/label_1" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btnEdit"
@@ -33,68 +50,74 @@
             app:srcCompat="@drawable/ic_outline_edit_24"
             app:tint="@color/textViewHeaderColor" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/label_1"
-            app:selectionRequired="false">
+            android:layout_marginTop="@dimen/space_08dp"
+            android:minHeight="@dimen/height_group_user_role"
+            app:layout_constraintTop_toBottomOf="@id/label_1">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip1"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/groupUserPrivileges"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkable="false"
-                android:clickable="false"
-                android:text="User" />
+                app:selectionRequired="false">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip2"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="false"
-                android:clickable="false"
-                android:text="Editor" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:text="User" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip3"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="false"
-                android:clickable="false"
-                android:text="Admin" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:text="Editor" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip4"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="false"
-                android:clickable="false"
-                android:text="Super Admin" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:text="Admin" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip5"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="false"
-                android:clickable="false"
-                android:text="Super Admin" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:text="Super Admin" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip6"
-                style="@style/Widget.MaterialComponents.Chip.Action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="false"
-                android:clickable="false"
-                android:text="Super Admin" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip5"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:text="Super Admin" />
 
-        </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip6"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:text="Super Admin" />
 
+            </com.google.android.material.chip.ChipGroup>
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

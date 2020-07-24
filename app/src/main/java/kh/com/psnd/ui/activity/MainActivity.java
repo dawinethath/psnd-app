@@ -42,7 +42,6 @@ import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.network.task.TaskQRCode;
-import kh.com.psnd.ui.fragment.SelectUserRightFragment;
 import lombok.val;
 import retrofit2.Response;
 
@@ -131,8 +130,6 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
             }
         });
-        val selectUserRightFragment = SelectUserRightFragment.newInstance();
-        selectUserRightFragment.show(this.getSupportFragmentManager(), "");
     }
 
     @Override

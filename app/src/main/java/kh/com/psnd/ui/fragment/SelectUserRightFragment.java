@@ -1,7 +1,10 @@
 package kh.com.psnd.ui.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.material.chip.Chip;
 
@@ -15,24 +18,38 @@ import kh.com.psnd.databinding.FragmentSelectUserRightBinding;
 import kh.com.psnd.mock.MockUsers;
 import kh.com.psnd.network.model.UserPrivilege;
 import kh.com.psnd.network.model.UserRole;
+import lombok.Setter;
 import lombok.val;
 
 public class SelectUserRightFragment extends BaseBottomSheetDialogFragment<FragmentSelectUserRightBinding> {
 
-    public static SelectUserRightFragment newInstance() {
+    public static SelectUserRightFragment newInstance(@NonNull UserRole userRole) {
         val fragment = new SelectUserRightFragment();
         val bundle   = new Bundle();
+        bundle.putSerializable(UserRole.EXTRA, userRole);
         fragment.setArguments(bundle);
         return fragment;
     }
 
+    @Setter
+    private Callback callback;
+
     @Override
     public void setupUI() {
-        val currentRole = MockUsers.userRole_user;
+        val currentRole = (UserRole) getArguments().getSerializable(UserRole.EXTRA);
 
         initUserRole(currentRole);
         loadChooseUserPrivileges();
         loadChooseUserRoles(currentRole);
+    }
+
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if (callback != null) {
+            val currentUserRole = (UserRole) binding.currentUserRole.getTag();
+            callback.dismiss(currentUserRole);
+        }
     }
 
     private UserRole getCustomUserRole() {
@@ -145,4 +162,7 @@ public class SelectUserRightFragment extends BaseBottomSheetDialogFragment<Fragm
         return R.layout.fragment_select_user_right;
     }
 
+    public interface Callback {
+        void dismiss(@NonNull UserRole currentUserRole);
+    }
 }

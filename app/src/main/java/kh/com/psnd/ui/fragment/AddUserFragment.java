@@ -4,9 +4,11 @@ import android.text.TextUtils;
 
 import core.lib.base.BaseBottomSheetDialogFragment;
 import core.lib.utils.ApplicationUtil;
+import core.lib.utils.Log;
 import core.lib.utils.PasswordGenerator;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentAddUserBinding;
+import kh.com.psnd.mock.MockUsers;
 import lombok.val;
 
 public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUserBinding> {
@@ -23,12 +25,18 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
                 ApplicationUtil.copyPassword(pwd);
             }
         });
-        binding.userRight.setupUI(this);
+        binding.userRight.setupUI(this, MockUsers.userRole_user);
         loadingUserRight();
     }
 
     private void loadingUserRight() {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("onResume");
     }
 
     @Override

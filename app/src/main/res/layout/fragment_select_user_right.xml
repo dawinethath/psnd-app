@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_16dp"
-                android:minHeight="150dp">
+                android:minHeight="@dimen/height_group_select_user_role">
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/groupUserPrivileges"

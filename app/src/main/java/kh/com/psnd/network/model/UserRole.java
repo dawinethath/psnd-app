@@ -16,6 +16,8 @@ import lombok.val;
 @EqualsAndHashCode(callSuper = false)
 public class UserRole extends BaseGson {
 
+    public static final String EXTRA = "UserRole";
+
     @SerializedName("id")
     private int id;
 

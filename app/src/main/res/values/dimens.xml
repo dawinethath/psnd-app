@@ -25,4 +25,7 @@
     <dimen name="widthImageSearch">70dp</dimen>
     <dimen name="height_button">60dp</dimen>
 
+    <dimen name="height_group_select_user_role">150dp</dimen>
+    <dimen name="height_group_user_role">120dp</dimen>
+
 </resources>

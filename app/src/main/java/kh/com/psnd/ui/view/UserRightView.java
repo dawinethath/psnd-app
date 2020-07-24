@@ -8,7 +8,11 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.material.chip.Chip;
+
+import core.lib.databinding.ChipActionBinding;
 import kh.com.psnd.databinding.LayoutUserRightBinding;
+import kh.com.psnd.network.model.UserRole;
 import kh.com.psnd.ui.fragment.AddUserFragment;
 import kh.com.psnd.ui.fragment.SelectUserRightFragment;
 import lombok.val;
@@ -40,11 +44,27 @@ public class UserRightView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull AddUserFragment fragment) {
+    public void setupUI(@NonNull AddUserFragment fragment, @NonNull UserRole userRole) {
         binding.btnEdit.setOnClickListener(__ -> {
-            val selectUserRightFragment = SelectUserRightFragment.newInstance();
+            val selectUserRightFragment = SelectUserRightFragment.newInstance(userRole);
+            selectUserRightFragment.setCallback(currentUserRole -> setupUI(fragment, currentUserRole));
             selectUserRightFragment.show(fragment.getActivity().getSupportFragmentManager(), "");
         });
+        setTag(userRole);
+        binding.currentUserRole.setText(userRole.getName());
+        binding.groupUserPrivileges.removeAllViews();
+        if (userRole.getPrivileges() != null) {
+            for (val privilege : userRole.getPrivileges()) {
+                if (privilege != null) {
+                    val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
+                    val chip        = (Chip) chipBinding.getRoot();
+                    chip.setText(privilege.getName());
+                    chip.setCheckable(false);
+                    chip.setClickable(false);
+                    binding.groupUserPrivileges.addView(chip);
+                }
+            }
+        }
     }
 
 }
