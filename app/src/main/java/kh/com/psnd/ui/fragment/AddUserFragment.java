@@ -27,6 +27,17 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         });
         binding.userRight.setupUI(this, MockUsers.userRole_user);
         loadingUserRight();
+
+        binding.fullName.setText("Hello");
+        binding.textInputLayoutFullName.setOnClickListener(__ -> {
+            Log.i("textInputLayoutFullName");
+        });
+        binding.textInputLayoutStaffNumber.setOnClickListener(__ -> {
+            Log.i("textInputLayoutStaffNumber");
+        });
+        binding.cardImageProfile.setOnClickListener(__ -> {
+            Log.i("cardImageProfile");
+        });
     }
 
     private void loadingUserRight() {

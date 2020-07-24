@@ -70,7 +70,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:clickable="false"
-                    android:text="User" />
+                    android:text="User"
+                    android:textColor="@color/textViewHeaderColor" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip2"
@@ -79,7 +80,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:clickable="false"
-                    android:text="Editor" />
+                    android:text="Editor"
+                    android:textColor="@color/textViewHeaderColor" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip3"
@@ -88,7 +90,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:clickable="false"
-                    android:text="Admin" />
+                    android:text="Admin"
+                    android:textColor="@color/textViewHeaderColor" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip4"
@@ -97,7 +100,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:clickable="false"
-                    android:text="Super Admin" />
+                    android:text="Super Admin"
+                    android:textColor="@color/textViewHeaderColor" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip5"
@@ -106,7 +110,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:clickable="false"
-                    android:text="Super Admin" />
+                    android:text="Super Admin"
+                    android:textColor="@color/textViewHeaderColor" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip6"
@@ -115,7 +120,8 @@
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:clickable="false"
-                    android:text="Super Admin" />
+                    android:text="Super Admin"
+                    android:textColor="@color/textViewHeaderColor" />
 
             </com.google.android.material.chip.ChipGroup>
         </FrameLayout>

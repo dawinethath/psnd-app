@@ -32,6 +32,7 @@
     <string name="last_name_khmer">នាម (ភាសាខ្មែរ)</string>
     <string name="staff_id">អត្តលេខ</string>
     <string name="phone_number">លេខទូរសព្ទ</string>
+    <string name="first_name_last_name">នាម គោត្តនាម</string>
     <string name="verify">Verify</string>
     <string name="next">បន្ទាប់</string>
     <string name="first_name_khmer_error">ត្រូវការ គោត្តនាម</string>
