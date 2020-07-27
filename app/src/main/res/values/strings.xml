@@ -9,15 +9,15 @@
     <string name="noInternetConnection">គ្មានអ៊ីនធើណេត សូមធ្វើការពិនិត្យឡើងវិញ</string>
 
     <string name="menu_search">ស្វែងរក</string>
-    <string name="menu_user_manager">User Management</string>
+    <string name="menu_user_manager">ការគ្រប់គ្រងអ្នកប្រើប្រាស់</string>
     <string name="menu_about">អំពីកម្មវិធី</string>
     <string name="menu_history">ប្រវត្តិធ្លាប់មើល</string>
     <string name="menu_slideshow">Slideshow</string>
 
     <!--    User Management-->
-    <string name="add_new_user">Add user</string>
-    <string name="search_user">Search user</string>
-    <string name="create">Create</string>
+    <string name="add_new_user">បង្កើតគណនី</string>
+    <string name="search_user">អត្តលេខ ឬ ឈ្មោះគណនី</string>
+    <string name="create">បង្កើតគណនី</string>
     <string name="generate_password">Generate</string>
     <string name="user_role">User\'s role</string>
     <string name="choose_user_privilege">Choose user\'s privileges</string>

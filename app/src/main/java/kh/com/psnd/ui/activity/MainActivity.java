@@ -130,6 +130,54 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
             }
         });
+
+//        {
+////            val email    = "kongsonida168@gmail.com";
+////            val phone    = "+85511210777";
+////            val username = "tongheng";
+////            val pwd      = "Tongheng123#";
+//
+//            val username = "testing1";
+//            val pwd      = "hahs@9osbSK2w";
+//            val signupOption = AuthSignUpOptions.builder()
+////                    .userAttribute(AuthUserAttributeKey.email(), email)
+////                    .userAttribute(AuthUserAttributeKey.phoneNumber(), phone)
+//                    .build();
+//            Amplify.Auth.signUp(username, pwd, signupOption, new Consumer<AuthSignUpResult>() {
+//                @Override
+//                public void accept(@NonNull AuthSignUpResult value) {
+//                    Log.i("Amplify : " + value);
+//                }
+//            }, new Consumer<AuthException>() {
+//                @Override
+//                public void accept(@NonNull AuthException value) {
+//                    Log.i("Amplify : " + value);
+//                }
+//            });
+//        }
+//
+//        {
+//            val username = "testing1";
+//            val pwd      = "hahs@9osbSK2w";
+//
+//            val metadata = new HashMap<String, String>();
+//            metadata.put("prompt", "login");
+//            val options = AWSCognitoAuthSignInOptions.builder()
+//                    .metadata(metadata)
+//                    .build();
+//
+//            Amplify.Auth.signIn(username, pwd, options, new Consumer<AuthSignInResult>() {
+//                @Override
+//                public void accept(@NonNull AuthSignInResult value) {
+//                    Log.i("Amplify : " + value);
+//                }
+//            }, new Consumer<AuthException>() {
+//                @Override
+//                public void accept(@NonNull AuthException value) {
+//                    Log.e("Amplify : " + value);
+//                }
+//            });
+//        }
     }
 
     @Override
