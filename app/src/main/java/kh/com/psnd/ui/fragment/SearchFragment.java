@@ -18,8 +18,13 @@ import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
 import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.ui.view.SearchBarView;
+import lombok.Setter;
+import lombok.val;
 
 public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
+
+    @Setter
+    private Object parentCallBack = null;
 
     @Override
     public void setupUI() {
@@ -100,6 +105,15 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
 
     public void onClickedItem(@NonNull List<Search> items, int position) {
         SearchHistory.addSearch(binding.searchBar.getSearchString());
-        ActivityHelper.openDetailActivity(getContext(), items, position);
+        if (parentCallBack != null) {
+            if (parentCallBack instanceof SearchAddUserFragment) {
+                val searchAddUserFragment = ((SearchAddUserFragment) parentCallBack);
+                searchAddUserFragment.getCallback().onSearch(items.get(position));
+                searchAddUserFragment.dismiss();
+            }
+        }
+        else {
+            ActivityHelper.openDetailActivity(getContext(), items, position);
+        }
     }
 }

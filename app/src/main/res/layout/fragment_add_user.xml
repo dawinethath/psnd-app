@@ -70,6 +70,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/space_16dp"
+                    android:clickable="false"
                     android:hint="@string/first_name_last_name"
                     app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="@id/barrier"
@@ -85,11 +86,24 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <FrameLayout
+                    android:id="@+id/fakeInputLayoutFullName"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:clickable="true"
+                    android:elevation="99dp"
+                    android:focusable="true"
+                    app:layout_constraintBottom_toBottomOf="@id/textInputLayoutStaffNumber"
+                    app:layout_constraintEnd_toEndOf="@id/textInputLayoutFullName"
+                    app:layout_constraintStart_toStartOf="@id/textInputLayoutFullName"
+                    app:layout_constraintTop_toTopOf="@id/textInputLayoutFullName" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutStaffNumber"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:hint="@string/staff_id"
                     app:errorEnabled="true"
                     app:layout_constraintEnd_toEndOf="@id/textInputLayoutFullName"
@@ -101,7 +115,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:enabled="false"
-                        android:imeOptions="actionNext"
                         android:singleLine="true"
                         android:textColor="@color/textViewHeaderColor" />
 

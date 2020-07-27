@@ -9,12 +9,17 @@ import core.lib.utils.PasswordGenerator;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentAddUserBinding;
 import kh.com.psnd.mock.MockUsers;
+import kh.com.psnd.network.model.Search;
 import lombok.val;
 
 public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUserBinding> {
+    private SearchAddUserFragment searchAddUserFragment = null;
 
     @Override
     public void setupUI() {
+        searchAddUserFragment = new SearchAddUserFragment(getContext(), this::updateUI, getCompositeDisposable());
+        searchAddUserFragment.setPercentWidthDialog(0.99f);
+
         binding.btnGenerate.setOnClickListener(__ -> {
             val pwd = getPasswordGenerator().generate(6);
             binding.password.setText(pwd);
@@ -28,20 +33,27 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         binding.userRight.setupUI(this, MockUsers.userRole_user);
         loadingUserRight();
 
-        binding.fullName.setText("Hello");
-        binding.textInputLayoutFullName.setOnClickListener(__ -> {
-            Log.i("textInputLayoutFullName");
-        });
-        binding.textInputLayoutStaffNumber.setOnClickListener(__ -> {
-            Log.i("textInputLayoutStaffNumber");
-        });
-        binding.cardImageProfile.setOnClickListener(__ -> {
-            Log.i("cardImageProfile");
-        });
+        binding.fakeInputLayoutFullName.setOnClickListener(__ -> searchAddUserFragment.show());
+        binding.cardImageProfile.setOnClickListener(__ -> searchAddUserFragment.show());
+    }
+
+    private void updateUI(Search search) {
+        binding.fullName.setText(search.getFullName());
+        binding.staffNumber.setText(search.getStaffNumber());
+        binding.imageProfile.setImageURI(search.getPhoto());
+
+        binding.username.requestFocus();
+        binding.username.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.username), 600);
     }
 
     private void loadingUserRight() {
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        searchAddUserFragment.onDestroy();
+        super.onDestroyView();
     }
 
     @Override
