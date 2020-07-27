@@ -76,13 +76,4 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
                 .build();
     }
 
-//    private PasswordGenerator getPasswordGenerator() {
-//        return new PasswordGenerator.Builder()
-//                .useLower(lowerLettersSwitch.isChecked())
-//                .useUpper(upperLettersSwitch.isChecked())
-//                .useDigits(digitsSwitch.isChecked())
-//                .usePunctuation(symbolsSwitch.isChecked())
-//                .build();
-//    }
-
 }
