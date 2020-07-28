@@ -15,7 +15,7 @@
             android:background="@drawable/bg_gradient"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/labelCommissariat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/labelDepartment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelCommissariat" />
 
-        <com.google.android.material.card.MaterialCardView
+        <core.lib.widget.MyCardView
             android:id="@+id/cardImageProfile"
             style="@style/Widget.MaterialComponents.CardView.Default"
             android:layout_width="@dimen/logo_profile_width"
@@ -67,7 +67,7 @@
                 app:failureImage="@drawable/ic_person"
                 app:placeholderImage="@drawable/ic_person"
                 tools:tint="@color/textViewColor" />
-        </com.google.android.material.card.MaterialCardView>
+        </core.lib.widget.MyCardView>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -81,17 +81,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
+                <core.lib.widget.MyTextView
                     style="@style/SettingCaption"
                     android:text="@string/personal_information" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <core.lib.widget.MyTextView
                     android:id="@+id/username"
                     style="@style/SettingItem"
                     android:text="Sondia Kong"
                     app:drawableLeftCompat="@drawable/ic_outline_perm_identity_24" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <core.lib.widget.MyTextView
                     android:id="@+id/userId"
                     style="@style/SettingItem"
                     android:text="88814"
@@ -104,11 +104,11 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
-                    <com.google.android.material.textview.MaterialTextView
+                    <core.lib.widget.MyTextView
                         style="@style/SettingCaption"
                         android:text="@string/language_choice" />
 
-                    <com.google.android.material.textview.MaterialTextView
+                    <core.lib.widget.MyTextView
                         android:id="@+id/language"
                         style="@style/SettingItem"
                         android:text="@string/language_khmer"
@@ -121,17 +121,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.google.android.material.textview.MaterialTextView
+                    <core.lib.widget.MyTextView
                         style="@style/SettingCaption"
                         android:text="@string/security" />
 
-                    <com.google.android.material.textview.MaterialTextView
+                    <core.lib.widget.MyTextView
                         android:id="@+id/autoLogout"
                         style="@style/SettingItem"
                         android:text="@string/auto_logout_after"
                         app:drawableLeftCompat="@drawable/ic_outline_access_time_24" />
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
+                    <core.lib.widget.MySwitch
                         android:id="@+id/fingerprint"
                         style="@style/SettingItem"
                         android:text="@string/enable_fingerprint"

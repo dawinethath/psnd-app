@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
+    <core.lib.widget.MyCardView
         style="@style/Widget.MaterialComponents.CardView.Default"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,5 +19,5 @@
             android:orientation="vertical"
             tools:layout_height="200dp" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </core.lib.widget.MyCardView>
 </layout>

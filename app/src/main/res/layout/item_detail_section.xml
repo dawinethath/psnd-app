@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/position"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toEndOf="@+id/position"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/docNumber"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -56,7 +56,7 @@
             app:layout_constraintStart_toEndOf="@+id/docNumber"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/date"
             android:layout_width="0dp"
             android:layout_height="0dp"

@@ -14,7 +14,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent=".1" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <core.lib.widget.MyImageView
             android:id="@+id/logo"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -25,7 +25,7 @@
             app:layout_constraintWidth_percent=".4"
             app:srcCompat="@drawable/logo_splashscreen" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/commissariat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/commissariat" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appName" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/developBy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/version" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/developer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/developBy" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/office"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

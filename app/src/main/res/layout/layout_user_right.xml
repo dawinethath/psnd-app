@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:paddingBottom="@dimen/space_16dp">
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.chip.Chip
+        <core.lib.widget.MyChip
             android:id="@+id/currentUserRole"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
             app:layout_constraintStart_toEndOf="@id/label_1"
             app:layout_constraintTop_toTopOf="@id/label_1" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <core.lib.widget.MyImageView
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,13 +57,13 @@
             android:minHeight="@dimen/height_group_user_role"
             app:layout_constraintTop_toBottomOf="@id/label_1">
 
-            <com.google.android.material.chip.ChipGroup
+            <core.lib.widget.MyChipGroup
                 android:id="@+id/groupUserPrivileges"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:selectionRequired="false">
 
-                <com.google.android.material.chip.Chip
+                <core.lib.widget.MyChip
                     android:id="@+id/chip1"
                     style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
                     android:text="User"
                     android:textColor="@color/textViewHeaderColor" />
 
-                <com.google.android.material.chip.Chip
+                <core.lib.widget.MyChip
                     android:id="@+id/chip2"
                     style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                     android:text="Editor"
                     android:textColor="@color/textViewHeaderColor" />
 
-                <com.google.android.material.chip.Chip
+                <core.lib.widget.MyChip
                     android:id="@+id/chip3"
                     style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                     android:text="Admin"
                     android:textColor="@color/textViewHeaderColor" />
 
-                <com.google.android.material.chip.Chip
+                <core.lib.widget.MyChip
                     android:id="@+id/chip4"
                     style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                     android:text="Super Admin"
                     android:textColor="@color/textViewHeaderColor" />
 
-                <com.google.android.material.chip.Chip
+                <core.lib.widget.MyChip
                     android:id="@+id/chip5"
                     style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                     android:text="Super Admin"
                     android:textColor="@color/textViewHeaderColor" />
 
-                <com.google.android.material.chip.Chip
+                <core.lib.widget.MyChip
                     android:id="@+id/chip6"
                     style="@style/Widget.MaterialComponents.Chip.Action"
                     android:layout_width="wrap_content"
@@ -123,7 +123,7 @@
                     android:text="Super Admin"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.chip.ChipGroup>
+            </core.lib.widget.MyChipGroup>
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

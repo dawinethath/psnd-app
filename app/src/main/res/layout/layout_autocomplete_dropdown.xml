@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <core.lib.widget.MyTextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu.AppDefault"
         android:layout_width="match_parent"
@@ -19,5 +19,5 @@
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_16sp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </core.lib.widget.MyTextInputLayout>
 </layout>

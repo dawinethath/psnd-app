@@ -9,7 +9,7 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/appBar"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                 android:background="@drawable/recycler_divider"
                 app:layout_constraintBottom_toBottomOf="@id/scrollView" />
 
-            <com.google.android.material.button.MaterialButton
+            <core.lib.widget.MyButton
                 android:id="@+id/btnSearch"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
                 android:layout_width="match_parent"

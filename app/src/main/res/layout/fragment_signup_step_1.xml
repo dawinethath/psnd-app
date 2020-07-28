@@ -16,7 +16,7 @@
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textview.MaterialTextView
+            <core.lib.widget.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signup"
@@ -24,7 +24,7 @@
                 android:textSize="@dimen/text_size_29sp"
                 app:fontFamily="@string/font_family_medium" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <core.lib.widget.MyTextInputLayout
                 android:id="@+id/textInputLayoutFirstName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 app:endIconMode="clear_text"
                 app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <core.lib.widget.MyTextInputEditText
                     android:id="@+id/firstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,9 +43,9 @@
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </core.lib.widget.MyTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <core.lib.widget.MyTextInputLayout
                 android:id="@+id/textInputLayoutLastName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 app:endIconMode="clear_text"
                 app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <core.lib.widget.MyTextInputEditText
                     android:id="@+id/lastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -64,9 +64,9 @@
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </core.lib.widget.MyTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <core.lib.widget.MyTextInputLayout
                 android:id="@+id/textInputLayoutStaffNumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                 app:endIconMode="clear_text"
                 app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <core.lib.widget.MyTextInputEditText
                     android:id="@+id/staffNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,9 +86,9 @@
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </core.lib.widget.MyTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <core.lib.widget.MyTextInputLayout
                 android:id="@+id/textInputLayoutPhoneNumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                 app:errorEnabled="true"
                 app:prefixText="+855">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <core.lib.widget.MyTextInputEditText
                     android:id="@+id/phoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,9 +109,9 @@
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </core.lib.widget.MyTextInputLayout>
 
-            <com.google.android.material.textview.MaterialTextView
+            <core.lib.widget.MyTextView
                 android:id="@+id/msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
 
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <core.lib.widget.MyButton
             android:id="@+id/next"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
             android:layout_width="wrap_content"

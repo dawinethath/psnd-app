@@ -13,7 +13,7 @@
         android:padding="@dimen/space_16dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-        <com.google.android.material.card.MaterialCardView
+        <core.lib.widget.MyCardView
             android:id="@+id/cardImageProfile"
             style="@style/Widget.MaterialComponents.CardView.Default"
             android:layout_width="@dimen/logo_header_width"
@@ -35,9 +35,9 @@
                 app:failureImage="@drawable/ic_person"
                 app:placeholderImage="@drawable/ic_person"
                 tools:tint="@color/textViewColor" />
-        </com.google.android.material.card.MaterialCardView>
+        </core.lib.widget.MyCardView>
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             app:layout_constraintTop_toTopOf="@id/cardImageProfile"
             tools:text="User Name" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/userId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

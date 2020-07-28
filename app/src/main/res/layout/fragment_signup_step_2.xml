@@ -16,7 +16,7 @@
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textview.MaterialTextView
+            <core.lib.widget.MyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signup"
@@ -32,7 +32,7 @@
                 android:paddingBottom="@dimen/space_16dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-                <com.google.android.material.card.MaterialCardView
+                <core.lib.widget.MyCardView
                     android:id="@+id/cardImageProfile"
                     style="@style/Widget.MaterialComponents.CardView.Default"
                     android:layout_width="@dimen/logo_header_width"
@@ -53,9 +53,9 @@
                         app:failureImageScaleType="fitXY"
                         app:placeholderImage="@drawable/ic_person"
                         tools:tint="@color/textViewColor" />
-                </com.google.android.material.card.MaterialCardView>
+                </core.lib.widget.MyCardView>
 
-                <com.google.android.material.textview.MaterialTextView
+                <core.lib.widget.MyTextView
                     android:id="@+id/staffName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                     app:layout_constraintTop_toTopOf="@id/cardImageProfile"
                     tools:text="User Name" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <core.lib.widget.MyTextView
                     android:id="@+id/staffNumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                     tools:text="88814" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <core.lib.widget.MyTextInputLayout
                 android:id="@+id/textInputLayoutUserName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                 app:endIconMode="clear_text"
                 app:errorEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <core.lib.widget.MyTextInputEditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,9 +99,9 @@
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </core.lib.widget.MyTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <core.lib.widget.MyTextInputLayout
                 android:id="@+id/textInputLayoutStaffNumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                 app:errorEnabled="true"
                 app:passwordToggleEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <core.lib.widget.MyTextInputEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,9 +122,9 @@
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </core.lib.widget.MyTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <core.lib.widget.MyTextInputLayout
                 android:id="@+id/textInputLayoutPhoneNumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                 app:errorEnabled="true"
                 app:passwordToggleEnabled="true">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <core.lib.widget.MyTextInputEditText
                     android:id="@+id/confirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,9 +145,9 @@
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </core.lib.widget.MyTextInputLayout>
 
-            <com.google.android.material.textview.MaterialTextView
+            <core.lib.widget.MyTextView
                 android:id="@+id/msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
 
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <core.lib.widget.MyButton
             android:id="@+id/next"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
             android:layout_width="wrap_content"

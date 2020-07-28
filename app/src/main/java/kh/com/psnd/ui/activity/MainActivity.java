@@ -132,12 +132,12 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         });
 
 //        {
-////            val email    = "kongsonida168@gmail.com";
-////            val phone    = "+85511210777";
-////            val username = "tongheng";
-////            val pwd      = "Tongheng123#";
-//
-//            val username = "testing1";
+//            val email    = "kongsonida168@gmail.com";
+//            val phone    = "+85511210777";
+//            val username = "tongheng";
+//            val pwd      = "Tongheng123#";
+
+//            val username = "testing_3";
 //            val pwd      = "hahs@9osbSK2w";
 //            val signupOption = AuthSignUpOptions.builder()
 ////                    .userAttribute(AuthUserAttributeKey.email(), email)

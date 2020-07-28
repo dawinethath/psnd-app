@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/appBar"
             style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.card.MaterialCardView
+                <core.lib.widget.MyCardView
                     android:id="@+id/cardImageProfile"
                     style="@style/Widget.MaterialComponents.CardView.Default"
                     android:layout_width="@dimen/logo_profile_width"
@@ -62,9 +62,9 @@
                         app:failureImage="@drawable/ic_person"
                         app:placeholderImage="@drawable/ic_person"
                         tools:tint="@color/textViewColor" />
-                </com.google.android.material.card.MaterialCardView>
+                </core.lib.widget.MyCardView>
 
-                <com.google.android.material.textfield.TextInputLayout
+                <core.lib.widget.MyTextInputLayout
                     android:id="@+id/textInputLayoutFullName"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                     android:layout_width="0dp"
@@ -76,7 +76,7 @@
                     app:layout_constraintEnd_toEndOf="@id/barrier"
                     app:layout_constraintStart_toStartOf="parent">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <core.lib.widget.MyTextInputEditText
                         android:id="@+id/fullName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                         android:singleLine="true"
                         android:textColor="@color/textViewHeaderColor" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </core.lib.widget.MyTextInputLayout>
 
                 <FrameLayout
                     android:id="@+id/fakeInputLayoutFullName"
@@ -98,7 +98,7 @@
                     app:layout_constraintStart_toStartOf="@id/textInputLayoutFullName"
                     app:layout_constraintTop_toTopOf="@id/textInputLayoutFullName" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <core.lib.widget.MyTextInputLayout
                     android:id="@+id/textInputLayoutStaffNumber"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                     android:layout_width="0dp"
@@ -110,7 +110,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textInputLayoutFullName">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <core.lib.widget.MyTextInputEditText
                         android:id="@+id/staffNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -118,10 +118,10 @@
                         android:singleLine="true"
                         android:textColor="@color/textViewHeaderColor" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </core.lib.widget.MyTextInputLayout>
 
 
-                <com.google.android.material.textfield.TextInputLayout
+                <core.lib.widget.MyTextInputLayout
                     android:id="@+id/textInputLayoutUserName"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                     android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                     app:errorEnabled="true"
                     app:layout_constraintTop_toBottomOf="@id/textInputLayoutStaffNumber">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <core.lib.widget.MyTextInputEditText
                         android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -140,9 +140,9 @@
                         android:singleLine="true"
                         android:textColor="@color/textViewHeaderColor" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </core.lib.widget.MyTextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+                <core.lib.widget.MyTextInputLayout
                     android:id="@+id/textInputLayoutPassword"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                     android:layout_width="0dp"
@@ -156,7 +156,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textInputLayoutUserName">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <core.lib.widget.MyTextInputEditText
                         android:id="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -164,9 +164,9 @@
                         android:singleLine="true"
                         android:textColor="@color/textViewHeaderColor" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                </core.lib.widget.MyTextInputLayout>
 
-                <com.google.android.material.button.MaterialButton
+                <core.lib.widget.MyButton
                     android:id="@+id/btnGenerate"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
                     android:layout_width="wrap_content"
@@ -201,7 +201,7 @@
                 android:background="@drawable/recycler_divider"
                 app:layout_constraintBottom_toBottomOf="@id/scrollView" />
 
-            <com.google.android.material.button.MaterialButton
+            <core.lib.widget.MyButton
                 android:id="@+id/btnSubmit"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
                 android:layout_width="match_parent"

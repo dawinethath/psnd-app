@@ -26,7 +26,7 @@
             app:mpb_useIntrinsicPadding="false"
             tools:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <core.lib.widget.MyImageView
             android:id="@+id/exportPdf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="@dimen/detail_header_height_guideline" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/headerTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             app:layout_constraintTop_toBottomOf="@id/statusBar"
             tools:text="@string/label_commissariat" />
 
-        <com.google.android.material.card.MaterialCardView
+        <core.lib.widget.MyCardView
             android:id="@+id/cardImageProfile"
             style="@style/Widget.MaterialComponents.CardView.Default"
             android:layout_width="@dimen/detail_logo_width"
@@ -93,9 +93,9 @@
                 android:layout_width="@dimen/detail_logo_width"
                 android:layout_height="wrap_content"
                 tools:tint="@color/textViewColor" />
-        </com.google.android.material.card.MaterialCardView>
+        </core.lib.widget.MyCardView>
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/firstNameKH"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
             app:layout_constraintTop_toBottomOf="@id/background"
             tools:text="យ៉ាវ ណាលីនដាវីដ" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/staffId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

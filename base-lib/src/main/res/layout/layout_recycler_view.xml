@@ -31,7 +31,7 @@
                 style="@style/progressBarStyle"
                 tools:visibility="visible" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <core.lib.widget.MyTextView
                 android:id="@+id/txtNodData"
                 style="@style/NoDataTextViewStyle"
                 tools:visibility="visible" />

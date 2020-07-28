@@ -27,7 +27,7 @@
             app:mpb_useIntrinsicPadding="false"
             tools:visibility="visible" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <core.lib.widget.MyTextInputLayout
             android:id="@+id/textField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:startIconDrawable="@drawable/ic_baseline_filter_list_24">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <core.lib.widget.MyTextInputEditText
                 android:id="@+id/txtSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 android:textColorHint="@color/textViewColor"
                 android:textSize="@dimen/text_size_15sp" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </core.lib.widget.MyTextInputLayout>
 
         <kh.com.psnd.ui.view.SearchHistoryChipGroupView
             android:id="@+id/searchHistory"

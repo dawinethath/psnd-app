@@ -15,7 +15,7 @@
             app:constraint_referenced_ids="label_1, label_2,label_3, label_4,label_5, label_6,label_7, label_8,label_9, label_10"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_1"
             style="@style/DetailLabel"
             android:layout_marginStart="@dimen/space_16dp"
@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_2"
             style="@style/DetailLabel"
             android:text="@string/detail_label_2"
@@ -34,7 +34,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_1" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_3"
             style="@style/DetailLabel"
             android:text="@string/detail_label_3"
@@ -42,7 +42,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_2" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_4"
             style="@style/DetailLabel"
             android:text="@string/detail_label_4"
@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_3" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_5"
             style="@style/DetailLabel"
             android:text="@string/detail_label_5"
@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_4" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_6"
             style="@style/DetailLabel"
             android:text="@string/detail_label_6"
@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_5" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_7"
             style="@style/DetailLabel"
             android:text="@string/detail_label_7"
@@ -74,7 +74,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_6" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_8"
             style="@style/DetailLabel"
             android:text="@string/detail_label_8"
@@ -82,7 +82,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_7" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_9"
             style="@style/DetailLabel"
             android:text="@string/detail_label_9"
@@ -90,7 +90,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_8" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_10"
             style="@style/DetailLabel"
             android:text="@string/detail_label_10"
@@ -98,7 +98,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_9" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_11"
             style="@style/DetailLabel"
             android:text="@string/detail_label_11"
@@ -106,7 +106,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_10" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_12"
             style="@style/DetailLabel"
             android:text="@string/detail_label_12"
@@ -114,7 +114,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_11" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_13"
             style="@style/DetailLabel"
             android:text="@string/detail_label_13"
@@ -122,7 +122,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_12" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/label_14"
             style="@style/DetailLabel"
             android:text="@string/detail_label_14"
@@ -130,7 +130,7 @@
             app:layout_constraintStart_toStartOf="@id/label_1"
             app:layout_constraintTop_toBottomOf="@id/label_13" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_1"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -138,7 +138,7 @@
             app:layout_constraintTop_toTopOf="@id/label_1"
             tools:text="អនុសេនីយ៍ត្រី" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_2"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +146,7 @@
             app:layout_constraintTop_toTopOf="@id/label_2"
             tools:text="នាយកដ្ឋានបុគ្គលិក" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_3"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +154,7 @@
             app:layout_constraintTop_toTopOf="@id/label_3"
             tools:text="29/05/1987" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_4"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,7 +162,7 @@
             app:layout_constraintTop_toTopOf="@id/label_4"
             tools:text="ប្រុស" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_5"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -170,7 +170,7 @@
             app:layout_constraintTop_toTopOf="@id/label_5"
             tools:text="នាយកដ្ឋានបុគ្គលិក" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_6"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -178,7 +178,7 @@
             app:layout_constraintTop_toTopOf="@id/label_6"
             tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_7"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +186,7 @@
             app:layout_constraintTop_toTopOf="@id/label_7"
             tools:text="នាយផ្នែក" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_8"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -194,7 +194,7 @@
             app:layout_constraintTop_toTopOf="@id/label_8"
             tools:text="អនុសេនីយ៍ត្រី" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_9"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -202,7 +202,7 @@
             app:layout_constraintTop_toTopOf="@id/label_9"
             tools:text="មន្រ្តី" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_10"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -210,7 +210,7 @@
             app:layout_constraintTop_toTopOf="@id/label_10"
             tools:text="បំរើការងារ" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_11"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -218,7 +218,7 @@
             app:layout_constraintTop_toTopOf="@id/label_11"
             tools:text="បរិញ្ញាប័ត្រ" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_12"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -226,7 +226,7 @@
             app:layout_constraintTop_toTopOf="@id/label_12"
             tools:text="Asia Pacific International University៊ី" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_13"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -234,7 +234,7 @@
             app:layout_constraintTop_toTopOf="@id/label_13"
             tools:text="099990202" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <core.lib.widget.MyTextView
             android:id="@+id/value_label_14"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
