@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import core.lib.base.BaseApp;
 import core.lib.network.model.BaseGson;
 import core.lib.utils.FileManager;
+import kh.com.psnd.network.model.Config;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.val;
@@ -17,11 +18,23 @@ import lombok.var;
 @EqualsAndHashCode(callSuper = false)
 public class SearchHistory extends BaseGson {
 
-    private static final int    MAX_HISTORY = 20;
-    private static final String CACHE_NAME  = "SearchHistoryDAO";
+    private static final String CACHE_NAME = "SearchHistoryDAO";
 
     @SerializedName("search")
     private LinkedList<String> search = new LinkedList<>();
+
+    public static SearchHistory getCache() {
+        try {
+            String json   = FileManager.readTextFileInContext(BaseApp.context, CACHE_NAME);
+            var    search = new Gson().fromJson(json, SearchHistory.class);
+            if (search == null || search.getSearch().size() == 0) {
+                search = new SearchHistory();
+            }
+            return search;
+        } catch (Exception e) {
+        }
+        return new SearchHistory();
+    }
 
     public void saveToCache() {
         FileManager.writeTextToFileInContext(BaseApp.context, CACHE_NAME, toJson());
@@ -37,8 +50,13 @@ public class SearchHistory extends BaseGson {
 
 
     public static SearchHistory addSearch(String text) {
-        val history = getCache();
-        if (history != null && history.getSearch().size() >= MAX_HISTORY) {
+        val history    = getCache();
+        var maxHistory = 10;
+        val appConfig  = Config.newInstance().getAppConfig();
+        if (appConfig != null) {
+            maxHistory = appConfig.getMaxSearchHistory();
+        }
+        if (history.getSearch().size() >= maxHistory) {
             history.getSearch().removeLast();
         }
         int index = -1;
@@ -57,16 +75,4 @@ public class SearchHistory extends BaseGson {
     }
 
 
-    public static SearchHistory getCache() {
-        try {
-            String json   = FileManager.readTextFileInContext(BaseApp.context, CACHE_NAME);
-            var    search = new Gson().fromJson(json, SearchHistory.class);
-            if (search == null || search.getSearch().size() == 0) {
-                search = new SearchHistory();
-            }
-            return search;
-        } catch (Exception e) {
-        }
-        return new SearchHistory();
-    }
 }

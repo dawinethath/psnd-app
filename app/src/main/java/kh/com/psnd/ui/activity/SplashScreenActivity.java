@@ -11,6 +11,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivitySplashscreenBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
+import kh.com.psnd.service.ConfigService;
 
 public class SplashScreenActivity extends BaseFragmentActivity<ActivitySplashscreenBinding> {
     @Override
@@ -32,6 +33,8 @@ public class SplashScreenActivity extends BaseFragmentActivity<ActivitySplashscr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ConfigService.start(context);
+        
         String version = "v" + ApplicationUtil.getVersionApp(context);
         binding.version.setText(version);
 

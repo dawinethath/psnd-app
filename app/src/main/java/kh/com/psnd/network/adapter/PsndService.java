@@ -1,6 +1,7 @@
 package kh.com.psnd.network.adapter;
 
 
+import kh.com.psnd.network.request.RequestConfig;
 import kh.com.psnd.network.request.RequestDepartmentType_label_2;
 import kh.com.psnd.network.request.RequestDepartment_label_3;
 import kh.com.psnd.network.request.RequestGeneralComm_label_1;
@@ -16,6 +17,7 @@ import kh.com.psnd.network.request.RequestStaff;
 import kh.com.psnd.network.request.RequestUserPrivilege;
 import kh.com.psnd.network.request.RequestUserRole;
 import kh.com.psnd.network.request.RequestUserSearch;
+import kh.com.psnd.network.response.ResponseConfig;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
 import kh.com.psnd.network.response.ResponseDepartment_Label_3;
 import kh.com.psnd.network.response.ResponseGeneralComm_Label_1;
@@ -65,6 +67,9 @@ public interface PsndService {
 
     @POST("get_staff_by_qrcode")
     Call<ResponseStaff> qrcode(@Body RequestQRCode requestQRCode);
+
+    @POST("amplify_configure")
+    Call<ResponseConfig> config(@Body RequestConfig requestConfig);
 
     @POST("login")
     Call<ResponseLogin> login(@Body RequestLogin requestLogin);
