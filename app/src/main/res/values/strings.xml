@@ -24,8 +24,9 @@
     <string name="choose_user_role">Choose user\'s roles</string>
 
     <!--    About-->
-    <string name="develop_by">បង្កើតឡើងដោយ</string>
-    <string name="promote">ក្រោមការដឹកនាំឯកឧត្ដម នាយឧត្តមសេនីយ៌ ប៉ែន វិបុល</string>
+    <string name="copyright_by">© រក្សាសិទ្ធដោយ</string>
+    <string name="promote_1">ក្រោមការដឹកនាំ</string>
+    <string name="promote_2">ឯកឧត្ដម នាយឧត្តមសេនីយ៌ ប៉ែន វិបុល</string>
 
     <!--    SignUp-->
     <string name="signup">Sign Up</string>
