@@ -10,6 +10,7 @@ import core.lib.utils.Log;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
+import kh.com.psnd.database.config.AppDatabase;
 import kh.com.psnd.databinding.FragmentSearchOptionBinding;
 import kh.com.psnd.network.model.DepartmentType_label_2;
 import kh.com.psnd.network.model.Department_label_3;
@@ -20,10 +21,12 @@ import kh.com.psnd.network.model.SectorName_label_7;
 import kh.com.psnd.network.model.SectorType_label_6;
 import kh.com.psnd.network.request.RequestDepartmentType_label_2;
 import kh.com.psnd.network.request.RequestDepartment_label_3;
+import kh.com.psnd.network.request.RequestGeneralComm_label_1;
 import kh.com.psnd.network.request.RequestOfficeName_label_5;
 import kh.com.psnd.network.request.RequestOfficeType_label_4;
 import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.request.RequestSectorName_label_7;
+import kh.com.psnd.network.request.RequestSectorType_label_6;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
 import kh.com.psnd.network.response.ResponseDepartment_Label_3;
 import kh.com.psnd.network.response.ResponseGeneralComm_Label_1;
@@ -103,6 +106,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             }
 
             @Override
+            public void onReceiveResult(@NonNull RequestGeneralComm_label_1 request, @NonNull Response result) throws Exception {
+                if (result.isSuccessful()) {
+                    val data = (ResponseGeneralComm_Label_1) result.body();
+                    AppDatabase.getInstance().generalCommDao_label_1().insertAll(data.getResultArrays());
+                }
+            }
+
+            @Override
             public void onNext(@NonNull Response result) {
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
@@ -130,6 +141,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
 
             public Class<?> clazzResponse() {
                 return null;
+            }
+
+            @Override
+            public void onReceiveResult(@NonNull RequestDepartmentType_label_2 request, @NonNull Response result) throws Exception {
+                if (result.isSuccessful()) {
+                    val data = (ResponseDepartmentType_Label_2) result.body();
+                    AppDatabase.getInstance().departmentTypeDao_label_2().insertAll(data.getResultArrays());
+                }
             }
 
             @Override
@@ -166,6 +185,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             }
 
             @Override
+            public void onReceiveResult(@NonNull RequestDepartment_label_3 request, @NonNull Response result) throws Exception {
+                if (result.isSuccessful()) {
+                    val data = (ResponseDepartment_Label_3) result.body();
+                    AppDatabase.getInstance().departmentDao_label_3().insertAll(data.getResultArrays());
+                }
+            }
+
+            @Override
             public void onNext(@NonNull Response result) {
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
@@ -193,6 +220,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
 
             public Class<?> clazzResponse() {
                 return null;
+            }
+
+            @Override
+            public void onReceiveResult(@NonNull RequestOfficeType_label_4 request, @NonNull Response result) throws Exception {
+                if (result.isSuccessful()) {
+                    val data = (ResponseOfficeType_Label_4) result.body();
+                    AppDatabase.getInstance().officeTypeDao_label_4().insertAll(data.getResultArrays());
+                }
             }
 
             @Override
@@ -226,6 +261,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             }
 
             @Override
+            public void onReceiveResult(@NonNull RequestOfficeName_label_5 request, @NonNull Response result) throws Exception {
+                if (result.isSuccessful()) {
+                    val data = (ResponseOfficeName_Label_5) result.body();
+                    AppDatabase.getInstance().officeNameDao_label_5().insertAll(data.getResultArrays());
+                }
+            }
+
+            @Override
             public void onNext(@NonNull Response result) {
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
@@ -252,6 +295,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
 
             public Class<?> clazzResponse() {
                 return null;
+            }
+
+            @Override
+            public void onReceiveResult(@NonNull RequestSectorType_label_6 request, @NonNull Response result) throws Exception {
+                if (result.isSuccessful()) {
+                    val data = (ResponseSectorType_Label_6) result.body();
+                    AppDatabase.getInstance().sectorTypeDao_label_6().insertAll(data.getResultArrays());
+                }
             }
 
             @Override
@@ -282,6 +333,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
 
             public Class<?> clazzResponse() {
                 return null;
+            }
+
+            @Override
+            public void onReceiveResult(@NonNull RequestSectorName_label_7 request, @NonNull Response result) throws Exception {
+                if (result.isSuccessful()) {
+                    val data = (ResponseSectionName_Label_7) result.body();
+                    AppDatabase.getInstance().sectorName_label_7().insertAll(data.getResultArrays());
+                }
             }
 
             @Override

@@ -14,7 +14,7 @@ import com.google.android.material.chip.Chip;
 import java.util.List;
 
 import core.lib.databinding.ChipActionBinding;
-import kh.com.psnd.dao.SearchHistory;
+import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.databinding.LayoutHistoryChipGroupBinding;
 import lombok.val;
 
@@ -46,7 +46,7 @@ public class SearchHistoryChipGroupView extends FrameLayout {
 
     public void setupUI(@NonNull Callback callback) {
         binding.chipGroup.removeAllViews();
-        List<String> labels = SearchHistory.getCache().getSearch();
+        List<String> labels = SearchHistoryDao.getCache().getSearch();
         for (val label : labels) {
             if (!TextUtils.isEmpty(label)) {
                 val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));

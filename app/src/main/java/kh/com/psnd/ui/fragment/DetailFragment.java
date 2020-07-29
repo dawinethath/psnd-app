@@ -21,8 +21,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import kh.com.psnd.R;
-import kh.com.psnd.dao.AppDatabase;
-import kh.com.psnd.dao.DetailStaff;
+import kh.com.psnd.database.config.AppDatabase;
+import kh.com.psnd.database.entities.DetailStaffEntity;
 import kh.com.psnd.databinding.FragmentDetailBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
@@ -72,17 +72,17 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         AppDatabase.getInstance().detailStaffDao().loadSingle(search.getStaffId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<DetailStaff>() {
+                .subscribe(new SingleObserver<DetailStaffEntity>() {
                     @Override
                     public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
                         Log.i("onSubscribe");
                     }
 
                     @Override
-                    public void onSuccess(@io.reactivex.annotations.NonNull DetailStaff detailStaff) {
+                    public void onSuccess(@io.reactivex.annotations.NonNull DetailStaffEntity detailStaff) {
                         Log.i("onSuccess : detailStaff");
                         long currentTime = System.currentTimeMillis();
-                        if (currentTime - detailStaff.getRecent() > DetailStaff.INTERVAL_CHECK_NEW_DATA) {
+                        if (currentTime - detailStaff.getRecent() > DetailStaffEntity.INTERVAL_CHECK_NEW_DATA) {
                             loadData(search);
                         }
                         else {
@@ -142,7 +142,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
                     AppDatabase.getInstance()
                             .detailStaffDao()
-                            .insertAll(new DetailStaff(staff))
+                            .insertAll(new DetailStaffEntity(staff))
                             .subscribeOn(Schedulers.io())
                             .subscribe(new CompletableObserver() {
                                 @Override

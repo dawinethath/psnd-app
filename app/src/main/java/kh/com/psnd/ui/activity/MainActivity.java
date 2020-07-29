@@ -30,8 +30,8 @@ import core.lib.dialog.DialogProgress;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
-import kh.com.psnd.dao.AppDatabase;
-import kh.com.psnd.dao.DetailStaff;
+import kh.com.psnd.database.config.AppDatabase;
+import kh.com.psnd.database.entities.DetailStaffEntity;
 import kh.com.psnd.databinding.ActivityMainBinding;
 import kh.com.psnd.databinding.NavHeaderMainBinding;
 import kh.com.psnd.helper.ActivityHelper;
@@ -253,7 +253,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
                     val staff  = data.getResult();
                     val search = new Search(staff);
 
-                    AppDatabase.getInstance().detailStaffDao().insertAll(new DetailStaff(staff));
+                    AppDatabase.getInstance().detailStaffDao().insertAll(new DetailStaffEntity(staff));
 
                     List<Search> items = new ArrayList<>();
                     items.add(search);

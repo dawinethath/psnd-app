@@ -1,4 +1,4 @@
-package kh.com.psnd.dao;
+package kh.com.psnd.database.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -16,24 +16,24 @@ import lombok.var;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SearchHistory extends BaseGson {
+public class SearchHistoryDao extends BaseGson {
 
     private static final String CACHE_NAME = "SearchHistoryDAO";
 
     @SerializedName("search")
     private LinkedList<String> search = new LinkedList<>();
 
-    public static SearchHistory getCache() {
+    public static SearchHistoryDao getCache() {
         try {
             String json   = FileManager.readTextFileInContext(BaseApp.context, CACHE_NAME);
-            var    search = new Gson().fromJson(json, SearchHistory.class);
+            var    search = new Gson().fromJson(json, SearchHistoryDao.class);
             if (search == null || search.getSearch().size() == 0) {
-                search = new SearchHistory();
+                search = new SearchHistoryDao();
             }
             return search;
         } catch (Exception e) {
         }
-        return new SearchHistory();
+        return new SearchHistoryDao();
     }
 
     public void saveToCache() {
@@ -49,7 +49,7 @@ public class SearchHistory extends BaseGson {
     }
 
 
-    public static SearchHistory addSearch(String text) {
+    public static SearchHistoryDao addSearch(String text) {
         val history    = getCache();
         var maxHistory = 10;
         val appConfig  = Config.newInstance().getAppConfig();

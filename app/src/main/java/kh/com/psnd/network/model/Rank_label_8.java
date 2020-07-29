@@ -13,19 +13,23 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SectorType_label_6 extends BaseGson {
+public class Rank_label_8 extends BaseGson {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
-    @SerializedName("secTypeID")
-    public int    sectorTypeId;
+    @SerializedName("rank_id")
+    public int id;
 
-    @ColumnInfo(name = "type")
-    @SerializedName("sector_type")
-    public String sectorType;
+    @ColumnInfo(name = "name")
+    @SerializedName("rank_name")
+    public String name;
+
+    @ColumnInfo(name = "nameShort")
+    @SerializedName("rank_name_short")
+    public String nameShort;
 
     @Override
     public String toString() {
-        return sectorType;
+        return name;
     }
 }

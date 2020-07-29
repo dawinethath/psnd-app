@@ -8,7 +8,9 @@ import kh.com.psnd.network.request.RequestGeneralComm_label_1;
 import kh.com.psnd.network.request.RequestLogin;
 import kh.com.psnd.network.request.RequestOfficeName_label_5;
 import kh.com.psnd.network.request.RequestOfficeType_label_4;
+import kh.com.psnd.network.request.RequestPosition_label_9;
 import kh.com.psnd.network.request.RequestQRCode;
+import kh.com.psnd.network.request.RequestRank_label_8;
 import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.request.RequestSectorName_label_7;
 import kh.com.psnd.network.request.RequestSectorType_label_6;
@@ -24,6 +26,8 @@ import kh.com.psnd.network.response.ResponseGeneralComm_Label_1;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseOfficeName_Label_5;
 import kh.com.psnd.network.response.ResponseOfficeType_Label_4;
+import kh.com.psnd.network.response.ResponsePosition_Label_9;
+import kh.com.psnd.network.response.ResponseRank_Label_8;
 import kh.com.psnd.network.response.ResponseSearch;
 import kh.com.psnd.network.response.ResponseSectionName_Label_7;
 import kh.com.psnd.network.response.ResponseSectorType_Label_6;
@@ -97,5 +101,11 @@ public interface PsndService {
 
     @POST("sectors_name")
     Call<ResponseSectionName_Label_7> sectionName_label_7(@Body RequestSectorName_label_7 param);
+
+    @POST("get_all_ranks")
+    Call<ResponseRank_Label_8> rank_Label_8(@Body RequestRank_label_8 param);
+
+    @POST("get_all_positions")
+    Call<ResponsePosition_Label_9> position_Label_8(@Body RequestPosition_label_9 param);
 
 }

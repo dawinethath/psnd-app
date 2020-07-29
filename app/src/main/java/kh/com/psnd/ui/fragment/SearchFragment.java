@@ -12,7 +12,7 @@ import core.lib.base.BaseFragment;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
-import kh.com.psnd.dao.SearchHistory;
+import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.databinding.FragmentSearchBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
@@ -104,7 +104,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
     }
 
     public void onClickedItem(@NonNull List<Search> items, int position) {
-        SearchHistory.addSearch(binding.searchBar.getSearchString());
+        SearchHistoryDao.addSearch(binding.searchBar.getSearchString());
         if (parentCallBack != null) {
             if (parentCallBack instanceof SearchAddUserFragment) {
                 val searchAddUserFragment = ((SearchAddUserFragment) parentCallBack);

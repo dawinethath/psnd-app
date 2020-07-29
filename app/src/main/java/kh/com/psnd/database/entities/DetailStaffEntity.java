@@ -1,4 +1,4 @@
-package kh.com.psnd.dao;
+package kh.com.psnd.database.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class DetailStaff {
+public class DetailStaffEntity {
 
     public static final long INTERVAL_CHECK_NEW_DATA = 1000 * 60 * 1; // 1mn
 
@@ -24,10 +24,10 @@ public class DetailStaff {
     @ColumnInfo(name = "recent")
     public long recent = System.currentTimeMillis();
 
-    public DetailStaff() {
+    public DetailStaffEntity() {
     }
 
-    public DetailStaff(Staff staff) {
+    public DetailStaffEntity(Staff staff) {
         setStaffId(staff.getStaffId());
         setJson(staff.toJson());
     }

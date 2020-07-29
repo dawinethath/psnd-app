@@ -1,21 +1,32 @@
 package kh.com.psnd.network.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import core.lib.network.model.BaseGson;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+@Entity
 @Data
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class GeneralComm_label_1 extends BaseGson {
 
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     @SerializedName("gID")
-    private int    id;
+    public int id;
+
+    @ColumnInfo(name = "name")
     @SerializedName("gName")
-    private String name;
+    public String name;
+
+    @ColumnInfo(name = "shortName")
+    @SerializedName("gNameShort")
+    public String shortName;
 
     @Override
     public String toString() {
