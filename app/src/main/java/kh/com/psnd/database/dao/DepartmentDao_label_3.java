@@ -15,7 +15,13 @@ import kh.com.psnd.network.model.Department_label_3;
 public interface DepartmentDao_label_3 {
 
     @Query("SELECT * FROM Department_label_3 WHERE departmentTypeId = :departmentTypeId AND generalCommId=:generalCommId")
+    List<Department_label_3> findAllByDepartmentTypeIdAndGeneralId(int generalCommId, int departmentTypeId);
+
+    @Query("SELECT * FROM Department_label_3 WHERE departmentTypeId = :departmentTypeId AND generalCommId=:generalCommId")
     Flowable<List<Department_label_3>> findAllByDepartmentTypeIdAndGeneralId_Rx(int generalCommId, int departmentTypeId);
+
+    @Query("SELECT * FROM Department_label_3 WHERE id=:id")
+    Department_label_3 findAllById(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll_Rx(Department_label_3... items);

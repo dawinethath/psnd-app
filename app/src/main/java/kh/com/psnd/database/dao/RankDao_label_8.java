@@ -13,8 +13,15 @@ import kh.com.psnd.network.model.Rank_label_8;
 
 @Dao
 public interface RankDao_label_8 {
+
+    @Query("SELECT * FROM Rank_label_8")
+    List<Rank_label_8> findAll();
+
     @Query("SELECT * FROM Rank_label_8")
     Flowable<List<Rank_label_8>> findAll_Rx();
+
+    @Query("SELECT * FROM Rank_label_8 WHERE id=:id")
+    Rank_label_8 findAllById(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll_Rx(Rank_label_8... items);

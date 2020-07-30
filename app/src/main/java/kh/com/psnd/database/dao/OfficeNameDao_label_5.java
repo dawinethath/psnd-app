@@ -15,7 +15,13 @@ import kh.com.psnd.network.model.OfficeName_label_5;
 public interface OfficeNameDao_label_5 {
 
     @Query("SELECT * FROM OfficeName_label_5 WHERE departmentId = :departmentId AND officeTypeId = :officeTypeId")
+    List<OfficeName_label_5> findAllDepartmentIdAndOfficeTypeId(int departmentId, int officeTypeId);
+
+    @Query("SELECT * FROM OfficeName_label_5 WHERE departmentId = :departmentId AND officeTypeId = :officeTypeId")
     Flowable<List<OfficeName_label_5>> findAllDepartmentIdAndOfficeTypeId_Rx(int departmentId, int officeTypeId);
+
+    @Query("SELECT * FROM OfficeName_label_5 WHERE id=:id")
+    OfficeName_label_5 findAllById(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll_Rx(OfficeName_label_5... items);

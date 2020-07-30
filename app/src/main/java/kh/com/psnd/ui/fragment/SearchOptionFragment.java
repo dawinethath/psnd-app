@@ -1,9 +1,13 @@
 package kh.com.psnd.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+import java.util.List;
 
 import core.lib.dialog.BaseDialog;
 import core.lib.utils.Log;
@@ -17,6 +21,8 @@ import kh.com.psnd.network.model.Department_label_3;
 import kh.com.psnd.network.model.GeneralComm_label_1;
 import kh.com.psnd.network.model.OfficeName_label_5;
 import kh.com.psnd.network.model.OfficeType_label_4;
+import kh.com.psnd.network.model.Position_label_9;
+import kh.com.psnd.network.model.Rank_label_8;
 import kh.com.psnd.network.model.SearchFilter;
 import kh.com.psnd.network.model.SectorName_label_7;
 import kh.com.psnd.network.model.SectorType_label_6;
@@ -73,33 +79,142 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
         loadValueLabel_1();
         binding.btnSearch.setOnClickListener(__ -> {
             val obj1 = (GeneralComm_label_1) binding.searchSelect1.getTag();
-            // val obj2 = (DepartmentType_label_2) binding.searchSelect2.getTag();
+            val obj2 = (DepartmentType_label_2) binding.searchSelect2.getTag();
             val obj3 = (Department_label_3) binding.searchSelect3.getTag();
             val obj4 = (OfficeType_label_4) binding.searchSelect4.getTag();
             val obj5 = (OfficeName_label_5) binding.searchSelect5.getTag();
-            // val obj6 = (SectorType_label_6) binding.searchSelect6.getTag();
+            val obj6 = (SectorType_label_6) binding.searchSelect6.getTag();
             val obj7 = (SectorName_label_7) binding.searchSelect7.getTag();
 
-            if (obj1 != null && obj3 != null && obj4 != null && obj5 != null) {
+            if (obj1 != null && obj2 != null && obj3 != null && obj4 != null && obj5 != null) {
                 val filter = new SearchFilter();
-                filter.setGeneralId(obj1.getId());
-                filter.setGeneralName(obj1.getName());
+                filter.setGeneralComm_label_1(obj1);
+                filter.setDepartmentType_label_2(obj2);
+                filter.setDepartment_label_3(obj3);
+                filter.setOfficeType_label_4(obj4);
+                filter.setOfficeName_label_5(obj5);
 
-                filter.setDepartmentId(obj3.getDepartmentId());
-                filter.setDepartmentName(obj3.getDepartmentName());
-
-                filter.setOfficeId(obj5.getOfficeId());
-                filter.setOfficeName(obj5.getOfficeName());
-
+                if (obj6 != null) {
+                    filter.setSectorType_label_6(obj6);
+                }
                 if (obj7 != null) {
-                    filter.setSectorId(obj7.getSectorId());
-                    filter.setSectorName(obj7.getSectorName());
+                    filter.setSectorName_label_7(obj7);
                 }
                 filter.saveLastFilter();
                 callback.onSearch(filter);
                 dismiss();
             }
         });
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private void checkLastFilter() {
+        val filter = SearchFilter.getLastFilter();
+        if (filter != null) {
+
+            new AsyncTask<Void, Void, Void>() {
+
+                List<GeneralComm_label_1> listGeneral = null;
+                GeneralComm_label_1 findGeneral = null;
+
+                List<DepartmentType_label_2> listDepartmentType = null;
+                DepartmentType_label_2 findDepartmentType = null;
+
+                List<Department_label_3> listDepartment = null;
+                Department_label_3 findDepartment = null;
+
+                List<OfficeType_label_4> listOfficeType = null;
+                OfficeType_label_4 findOfficeType = null;
+
+                List<OfficeName_label_5> listOfficeName = null;
+                OfficeName_label_5 findOfficeName = null;
+
+                List<SectorType_label_6> listSectorType = null;
+                SectorType_label_6 findSectorType = null;
+
+                List<SectorName_label_7> listSectorName = null;
+                SectorName_label_7 findSectorName = null;
+
+                List<Rank_label_8> listRank = null;
+                Rank_label_8 findRank = null;
+
+                List<Position_label_9> listPosition = null;
+                Position_label_9 findPosition = null;
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    Log.i("listGeneral : " + listGeneral);
+                    Log.i("findGeneral : " + findGeneral);
+
+                    Log.i("listDepartmentType : " + listDepartmentType);
+                    Log.i("findDepartmentType : " + findDepartmentType);
+
+                    Log.i("listDepartment : " + listDepartment);
+                    Log.i("findDepartment : " + findDepartment);
+
+                    Log.i("listOfficeType : " + listOfficeType);
+                    Log.i("findOfficeType : " + findOfficeType);
+
+                    Log.i("listOfficeName : " + listOfficeName);
+                    Log.i("findOfficeName : " + findOfficeName);
+
+                    Log.i("listSectorType : " + listSectorType);
+                    Log.i("findSectorType : " + findSectorType);
+
+                    Log.i("listSectorName : " + listSectorName);
+                    Log.i("findSectorName : " + findSectorName);
+
+                    Log.i("listRank : " + listRank);
+                    Log.i("findRank : " + findRank);
+
+                    Log.i("listPosition : " + listPosition);
+                    Log.i("findPosition : " + findPosition);
+                }
+
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    val t1 = System.currentTimeMillis();
+                    val db = AppDatabase.getInstance();
+                    listGeneral = db.generalCommDao_label_1().findAll();
+                    findGeneral = db.generalCommDao_label_1().findAllById(filter.getGeneralId());
+                    if (findGeneral != null) {
+                        listDepartmentType = db.departmentTypeDao_label_2().findAllByGeneralCommId(findGeneral.getId());
+                        findDepartmentType = db.departmentTypeDao_label_2().findAllById(filter.getDepartmentTypeId());
+                        if (findDepartmentType != null) {
+                            listDepartment = db.departmentDao_label_3().findAllByDepartmentTypeIdAndGeneralId(findGeneral.getId(), findDepartmentType.getDepartmentTypeId());
+                            findDepartment = db.departmentDao_label_3().findAllById(filter.getDepartmentId());
+                            if (findDepartment != null) {
+                                listOfficeType = db.officeTypeDao_label_4().findAllByDepartmentId(findDepartment.getDepartmentId());
+                                findOfficeType = db.officeTypeDao_label_4().findAllById(filter.getOfficeTypeId());
+                                if (findOfficeType != null) {
+                                    listOfficeName = db.officeNameDao_label_5().findAllDepartmentIdAndOfficeTypeId(findDepartment.getDepartmentId(), findOfficeType.getOfficeTypeId());
+                                    findOfficeName = db.officeNameDao_label_5().findAllById(filter.getOfficeId());
+                                    if (findOfficeName != null) {
+                                        listSectorType = db.sectorTypeDao_label_6().findAll();
+                                        findSectorType = db.sectorTypeDao_label_6().findAllById(filter.getSectorTypeId());
+                                        if (findSectorType != null) {
+                                            listSectorName = db.sectorName_label_7().findAllBySectorTypeIdAndOfficeTypeId(findSectorType.getSectorTypeId(), findOfficeType.getOfficeTypeId());
+                                            findSectorName = db.sectorName_label_7().findAllById(filter.getSectorId());
+                                            if (findSectorName != null) {
+                                                listRank = db.rankDao_label_8().findAll();
+                                                findRank = db.rankDao_label_8().findAllById(filter.getRankId());
+                                                if (findRank != null) {
+                                                    listPosition = db.positionDao_label_9().findAll();
+                                                    findPosition = db.positionDao_label_9().findAllById(filter.getPositionId());
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    val t2 = System.currentTimeMillis();
+                    Log.i("Time query : " + (t2 - t1));
+                    return null;
+                }
+            }.execute();
+        }
     }
 
     private void loadValueLabel_1() {
@@ -127,6 +242,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
                     val data = (ResponseGeneralComm_Label_1) result.body();
                     binding.searchSelect1.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect1);
+                    checkLastFilter();
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }

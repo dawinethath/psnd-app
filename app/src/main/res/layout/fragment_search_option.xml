@@ -146,9 +146,13 @@
                 android:layout_marginEnd="@dimen/space_16dp"
                 android:layout_marginBottom="@dimen/space_12dp"
                 android:text="@string/search"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/textViewHeaderColor"
                 app:icon="@drawable/ic_baseline_search_black_24"
+                app:iconTint="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scrollView" />
+                app:layout_constraintTop_toBottomOf="@id/scrollView"
+                app:rippleColor="@color/colorPrimary" />
 
         </LinearLayout>
 

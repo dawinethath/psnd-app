@@ -14,7 +14,13 @@ import kh.com.psnd.network.model.SectorType_label_6;
 @Dao
 public interface SectorTypeDao_label_6 {
     @Query("SELECT * FROM SectorType_label_6")
-    Flowable<List<SectorType_label_6>> findAll();
+    List<SectorType_label_6> findAll();
+
+    @Query("SELECT * FROM SectorType_label_6")
+    Flowable<List<SectorType_label_6>> findAll_Rx();
+
+    @Query("SELECT * FROM SectorType_label_6 WHERE id=:id")
+    SectorType_label_6 findAllById(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll_Rx(SectorType_label_6... items);

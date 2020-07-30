@@ -13,8 +13,15 @@ import kh.com.psnd.network.model.OfficeType_label_4;
 
 @Dao
 public interface OfficeTypeDao_label_4 {
+
+    @Query("SELECT * FROM OfficeType_label_4 WHERE departmentId = :departmentId")
+    List<OfficeType_label_4> findAllByDepartmentId(int departmentId);
+
     @Query("SELECT * FROM OfficeType_label_4 WHERE departmentId = :departmentId")
     Flowable<List<OfficeType_label_4>> findAllByDepartmentId_Rx(int departmentId);
+
+    @Query("SELECT * FROM OfficeType_label_4 WHERE id=:id")
+    OfficeType_label_4 findAllById(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll_Rx(OfficeType_label_4... items);
