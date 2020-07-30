@@ -69,7 +69,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
         val search = (Search) getArguments().getSerializable(Search.EXTRA);
 
-        AppDatabase.getInstance().detailStaffDao().loadSingle(search.getStaffId())
+        AppDatabase.getInstance().detailStaffDao().loadSingle_Rx(search.getStaffId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<DetailStaffEntity>() {

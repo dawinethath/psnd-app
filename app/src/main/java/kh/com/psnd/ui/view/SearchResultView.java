@@ -16,6 +16,7 @@ import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutSearchBarBinding;
 import kh.com.psnd.databinding.LayoutSearchResultBinding;
+import kh.com.psnd.network.model.SearchFilter;
 import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.response.ResponseSearch;
 import kh.com.psnd.network.task.TaskSearch;
@@ -91,7 +92,7 @@ public class SearchResultView extends FrameLayout {
         searchBarBinding.progressBar.setVisibility(GONE);
     }
 
-    public void doSearch(RequestSearch.Filter filter) {
+    public void doSearch(SearchFilter filter) {
         val page = 1;
         requestSearch = new RequestSearch(null, filter, page);
         loadMore(page);

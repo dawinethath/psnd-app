@@ -17,6 +17,7 @@ import kh.com.psnd.network.model.Department_label_3;
 import kh.com.psnd.network.model.GeneralComm_label_1;
 import kh.com.psnd.network.model.OfficeName_label_5;
 import kh.com.psnd.network.model.OfficeType_label_4;
+import kh.com.psnd.network.model.SearchFilter;
 import kh.com.psnd.network.model.SectorName_label_7;
 import kh.com.psnd.network.model.SectorType_label_6;
 import kh.com.psnd.network.request.RequestDepartmentType_label_2;
@@ -24,7 +25,6 @@ import kh.com.psnd.network.request.RequestDepartment_label_3;
 import kh.com.psnd.network.request.RequestGeneralComm_label_1;
 import kh.com.psnd.network.request.RequestOfficeName_label_5;
 import kh.com.psnd.network.request.RequestOfficeType_label_4;
-import kh.com.psnd.network.request.RequestSearch;
 import kh.com.psnd.network.request.RequestSectorName_label_7;
 import kh.com.psnd.network.request.RequestSectorType_label_6;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
@@ -63,6 +63,12 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
 //    }
 
     @Override
+    public void dismiss() {
+        binding.progressBar.setVisibility(View.GONE);
+        super.dismiss();
+    }
+
+    @Override
     public void setupUI() {
         loadValueLabel_1();
         binding.btnSearch.setOnClickListener(__ -> {
@@ -75,7 +81,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             val obj7 = (SectorName_label_7) binding.searchSelect7.getTag();
 
             if (obj1 != null && obj3 != null && obj4 != null && obj5 != null) {
-                val filter = new RequestSearch.Filter();
+                val filter = new SearchFilter();
                 filter.setGeneralId(obj1.getId());
                 filter.setGeneralName(obj1.getName());
 
@@ -89,6 +95,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
                     filter.setSectorId(obj7.getSectorId());
                     filter.setSectorName(obj7.getSectorName());
                 }
+                filter.saveLastFilter();
                 callback.onSearch(filter);
                 dismiss();
             }
@@ -406,7 +413,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     };
 
     private void preloadResult(View selectedView) {
-        binding.groupSearch.setVisibility(View.INVISIBLE);
+        showGroupSearch(View.INVISIBLE);
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setTag(null);
             binding.searchSelect3.setTag(null);
@@ -481,7 +488,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.INVISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
-            binding.groupSearch.setVisibility(View.VISIBLE);
+            showGroupSearch(View.VISIBLE);
         }
         else if (binding.searchSelect7 == selectedView) {
             binding.searchSelect2.setVisibility(View.VISIBLE);
@@ -490,12 +497,26 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.VISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
-            binding.groupSearch.setVisibility(View.VISIBLE);
+            showGroupSearch(View.VISIBLE);
+        }
+    }
+
+    private void showGroupSearch(int visibility) {
+        switch (visibility) {
+            case View.VISIBLE:
+                binding.btnSearch.setEnabled(true);
+                binding.groupSearch.setAlpha(1);
+                break;
+            case View.INVISIBLE:
+            case View.GONE:
+                binding.btnSearch.setEnabled(false);
+                binding.groupSearch.setAlpha(0.4f);
+                break;
         }
     }
 
     private void showSelectedResult(View selectedView) {
-        binding.groupSearch.setVisibility(View.INVISIBLE);
+        showGroupSearch(View.INVISIBLE);
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setVisibility(View.INVISIBLE);
             binding.searchSelect3.setVisibility(View.INVISIBLE);
@@ -543,7 +564,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.VISIBLE);
             binding.searchSelect7.setVisibility(View.INVISIBLE);
-            binding.groupSearch.setVisibility(View.VISIBLE);
+            showGroupSearch(View.VISIBLE);
         }
         else if (binding.searchSelect7 == selectedView) {
             binding.searchSelect2.setVisibility(View.VISIBLE);
@@ -552,7 +573,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             binding.searchSelect5.setVisibility(View.VISIBLE);
             binding.searchSelect6.setVisibility(View.VISIBLE);
             binding.searchSelect7.setVisibility(View.VISIBLE);
-            binding.groupSearch.setVisibility(View.VISIBLE);
+            showGroupSearch(View.VISIBLE);
         }
     }
 
@@ -562,6 +583,6 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     public interface Callback {
-        void onSearch(RequestSearch.Filter filter);
+        void onSearch(SearchFilter filter);
     }
 }

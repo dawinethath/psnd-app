@@ -8,16 +8,20 @@ import androidx.room.Query;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
 import kh.com.psnd.network.model.Rank_label_8;
 
 @Dao
 public interface RankDao_label_8 {
     @Query("SELECT * FROM Rank_label_8")
-    List<Rank_label_8> getAll();
+    Flowable<List<Rank_label_8>> findAll_Rx();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll_Rx(Rank_label_8... items);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Rank_label_8... items);
+
+    @Query("DELETE FROM Rank_label_8")
+    void deleteAll();
 }

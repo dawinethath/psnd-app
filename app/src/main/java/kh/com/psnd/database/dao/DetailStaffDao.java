@@ -16,21 +16,17 @@ import kh.com.psnd.database.entities.DetailStaffEntity;
 @Dao
 public interface DetailStaffDao {
     @Query("SELECT * FROM DetailStaffEntity")
-    List<DetailStaffEntity> getAll();
+    Flowable<List<DetailStaffEntity>> findAll();
 
     @Query("SELECT * FROM DetailStaffEntity WHERE staffId IN (:staffIds)")
-    Flowable<List<DetailStaffEntity>> loadAllByIds(int[] staffIds);
+    Flowable<List<DetailStaffEntity>> loadAllByIds_Rx(int[] staffIds);
 
     @Query("SELECT * FROM DetailStaffEntity WHERE staffId=:staffId")
-    Single<DetailStaffEntity> loadSingle(int staffId);
-
-//    @Query("SELECT * FROM DetailStaff WHERE first_name LIKE :first AND " +
-//           "last_name LIKE :last LIMIT 1")
-//    DetailStaff findByName(String first, String last);
+    Single<DetailStaffEntity> loadSingle_Rx(int staffId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll(DetailStaffEntity... items);
 
     @Delete
-    public Single<Integer> delete(DetailStaffEntity user);
+    Single<Integer> delete(DetailStaffEntity user);
 }

@@ -16,7 +16,7 @@ import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.databinding.FragmentSearchBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.Search;
-import kh.com.psnd.network.request.RequestSearch;
+import kh.com.psnd.network.model.SearchFilter;
 import kh.com.psnd.ui.view.SearchBarView;
 import lombok.Setter;
 import lombok.val;
@@ -61,7 +61,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
 
     private SearchBarView.Callback callback = new SearchBarView.Callback() {
         @Override
-        public void doSearch(RequestSearch.Filter filter) {
+        public void doSearch(SearchFilter filter) {
             binding.searchBar.clearTextBox();
             binding.searchResult.doSearch(filter);
         }
