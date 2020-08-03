@@ -84,7 +84,8 @@
                     <kh.com.psnd.ui.view.DetailSectionView
                         android:id="@+id/adapterView_1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_16dp" />
 
                     <kh.com.psnd.ui.view.DetailSectionView
                         android:id="@+id/adapterView_2"

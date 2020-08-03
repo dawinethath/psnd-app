@@ -13,11 +13,28 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:layout_height="200dp" />
+            android:orientation="vertical">
 
+            <core.lib.widget.MyTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/textViewHeaderColor"
+                android:fontFamily="@string/font_family_medium"
+                android:gravity="center"
+                android:padding="@dimen/space_08dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_19sp"
+                tools:text="Title" />
+
+            <LinearLayout
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_height="200dp" />
+        </LinearLayout>
     </core.lib.widget.MyCardView>
 </layout>

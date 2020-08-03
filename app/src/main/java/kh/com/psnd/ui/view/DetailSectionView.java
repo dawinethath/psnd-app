@@ -50,6 +50,7 @@ public class DetailSectionView extends FrameLayout {
         }
         setVisibility(VISIBLE);
         {
+            binding.title.setText(labelHeader_1);
             val header_1 = getContext().getString(labelHeader_1);
             val view     = new ItemDetailSectionHeaderView(getContext());
             view.bind(header_1);
