@@ -75,6 +75,12 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     @Override
+    public void show() {
+        checkLastFilter();
+        super.show();
+    }
+
+    @Override
     public void setupUI() {
         loadValueLabel_1();
         binding.btnSearch.setOnClickListener(__ -> {
@@ -143,32 +149,57 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
 
                 @Override
                 protected void onPostExecute(Void aVoid) {
-                    Log.i("listGeneral : " + listGeneral);
-                    Log.i("findGeneral : " + findGeneral);
-
-                    Log.i("listDepartmentType : " + listDepartmentType);
-                    Log.i("findDepartmentType : " + findDepartmentType);
-
-                    Log.i("listDepartment : " + listDepartment);
-                    Log.i("findDepartment : " + findDepartment);
-
-                    Log.i("listOfficeType : " + listOfficeType);
-                    Log.i("findOfficeType : " + findOfficeType);
-
-                    Log.i("listOfficeName : " + listOfficeName);
-                    Log.i("findOfficeName : " + findOfficeName);
-
-                    Log.i("listSectorType : " + listSectorType);
-                    Log.i("findSectorType : " + findSectorType);
-
-                    Log.i("listSectorName : " + listSectorName);
-                    Log.i("findSectorName : " + findSectorName);
-
                     Log.i("listRank : " + listRank);
                     Log.i("findRank : " + findRank);
 
                     Log.i("listPosition : " + listPosition);
                     Log.i("findPosition : " + findPosition);
+
+                    if (findGeneral != null && findGeneral != null) {
+                        binding.searchSelect1.setupUI(listGeneral, dropdownCallback);
+                        binding.searchSelect1.selectItem(findGeneral);
+                        showSelectedResult(binding.searchSelect1);
+
+                        if (listDepartmentType != null && findDepartmentType != null) {
+                            binding.searchSelect2.setupUI(listDepartmentType, dropdownCallback);
+                            binding.searchSelect2.selectItem(findDepartmentType);
+                            showSelectedResult(binding.searchSelect2);
+
+                            if (listDepartment != null && findDepartment != null) {
+                                binding.searchSelect3.setupUI(listDepartment, dropdownCallback);
+                                binding.searchSelect3.selectItem(findDepartment);
+                                showSelectedResult(binding.searchSelect3);
+
+                                if (listOfficeType != null && findOfficeType != null) {
+                                    binding.searchSelect4.setupUI(listOfficeType, dropdownCallback);
+                                    binding.searchSelect4.selectItem(findOfficeType);
+                                    showSelectedResult(binding.searchSelect4);
+
+                                    if (listOfficeName != null && findOfficeName != null) {
+                                        binding.searchSelect5.setupUI(listOfficeName, dropdownCallback);
+                                        binding.searchSelect5.selectItem(findOfficeName);
+                                        showSelectedResult(binding.searchSelect5);
+
+                                        if (findSectorType == null) {
+                                            binding.searchSelect6.setupUI(listSectorType, dropdownCallback);
+                                            showSelectedResult(binding.searchSelect6);
+                                        }
+                                        else if (listSectorType != null) {
+                                            binding.searchSelect6.setupUI(listSectorType, dropdownCallback);
+                                            binding.searchSelect6.selectItem(findSectorType);
+                                            showSelectedResult(binding.searchSelect6);
+
+                                            if (listSectorName != null && findSectorName != null) {
+                                                binding.searchSelect7.setupUI(listSectorName, dropdownCallback);
+                                                binding.searchSelect7.selectItem(findSectorName);
+                                                showSelectedResult(binding.searchSelect7);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
                 @Override
@@ -218,6 +249,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void loadValueLabel_1() {
+        Log.i("loadValueLabel_1");
         binding.progressBar.setVisibility(View.VISIBLE);
         preloadResult(binding.searchSelect1);
         val task = new TaskGeneralComm_label_1();
@@ -242,7 +274,6 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
                     val data = (ResponseGeneralComm_Label_1) result.body();
                     binding.searchSelect1.setupUI(data.getResult(), dropdownCallback);
                     showSelectedResult(binding.searchSelect1);
-                    checkLastFilter();
                 }
                 binding.progressBar.setVisibility(View.GONE);
             }
@@ -256,6 +287,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void loadValueLabel_2(GeneralComm_label_1 generalComm) {
+        Log.i("loadValueLabel_2");
         binding.progressBar.setVisibility(View.VISIBLE);
         preloadResult(binding.searchSelect2);
         val request = new RequestDepartmentType_label_2(generalComm.getId());
@@ -297,6 +329,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void loadValueLabel_3(GeneralComm_label_1 generalComm, DepartmentType_label_2 departmentType) {
+        Log.i("loadValueLabel_3");
         binding.progressBar.setVisibility(View.VISIBLE);
         preloadResult(binding.searchSelect3);
         val request = new RequestDepartment_label_3(generalComm.getId(), departmentType.getDepartmentTypeId());
@@ -335,6 +368,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void loadValueLabel_4(Department_label_3 department) {
+        Log.i("loadValueLabel_4");
         binding.progressBar.setVisibility(View.VISIBLE);
         preloadResult(binding.searchSelect4);
         val request = new RequestOfficeType_label_4(department.getDepartmentId());
@@ -373,6 +407,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void loadValueLabel_5(Department_label_3 department, OfficeType_label_4 officeType) {
+        Log.i("loadValueLabel_5");
         binding.progressBar.setVisibility(View.VISIBLE);
         preloadResult(binding.searchSelect5);
         val request = new RequestOfficeName_label_5(department.getDepartmentId(), officeType.getOfficeTypeId());
@@ -411,6 +446,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void loadValueLabel_6() {
+        Log.i("loadValueLabel_6");
         binding.progressBar.setVisibility(View.VISIBLE);
         preloadResult(binding.searchSelect6);
         val task = new TaskSectorType_label_6();
@@ -448,6 +484,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void loadValueLabel_7(OfficeName_label_5 officeName, SectorType_label_6 sectorType) {
+        Log.i("loadValueLabel_7");
         binding.progressBar.setVisibility(View.VISIBLE);
         preloadResult(binding.searchSelect7);
         val request = new RequestSectorName_label_7(officeName.getOfficeId(), sectorType.getSectorTypeId());
@@ -632,6 +669,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void showSelectedResult(View selectedView) {
+        Log.i(selectedView);
         showGroupSearch(View.INVISIBLE);
         if (binding.searchSelect1 == selectedView) {
             binding.searchSelect2.setVisibility(View.INVISIBLE);

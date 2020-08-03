@@ -14,6 +14,7 @@ import androidx.databinding.BindingAdapter;
 
 import java.util.List;
 
+import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutAutocompleteDropdownBinding;
 import lombok.val;
@@ -53,11 +54,17 @@ public class AutoCompleteDropdownView extends FrameLayout {
 
     public void selectItem(int position) {
         val item = binding.dropdown.getAdapter().getItem(position);
-        binding.dropdown.setText(item.toString());
-        binding.dropdown.showDropDown();
-        binding.dropdown.setSelection(position);
-        binding.dropdown.setListSelection(position);
-        binding.dropdown.performCompletion();
+        Log.i(item);
+        binding.dropdown.setText(item.toString(), false);
+//        binding.dropdown.setSelection(position);
+//        binding.dropdown.setListSelection(position);
+        setTag(item);
+    }
+
+    public void selectItem(@NonNull Object obj) {
+        Log.i(obj);
+        binding.dropdown.setText(obj.toString(), false);
+        setTag(obj);
     }
 
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
