@@ -21,17 +21,17 @@ import kh.com.psnd.network.model.SearchFilter;
 import kh.com.psnd.ui.fragment.SearchOptionFragment;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.val;
 
 public class SearchBarView extends FrameLayout {
 
-    private final long                   TIME_DELAY = 500L;
+    private final long                   TIME_DELAY           = 500L;
     @Getter
-    private       LayoutSearchBarBinding binding    = null;
-    private       Callback               callback   = null;
-    private       BaseFragment           fragment   = null;
-    private       Handler                handler    = new Handler();
-    private       MyRunnable             runnable   = new MyRunnable();
+    private       LayoutSearchBarBinding binding              = null;
+    private       Callback               callback             = null;
+    private       BaseFragment           fragment             = null;
+    private       Handler                handler              = new Handler();
+    private       MyRunnable             runnable             = new MyRunnable();
+    private       SearchOptionFragment   searchOptionFragment = null;
 
     public SearchBarView(@NonNull Context context) {
         super(context);
@@ -58,11 +58,27 @@ public class SearchBarView extends FrameLayout {
 
     public void onResume() {
         binding.txtSearch.setSelection(binding.txtSearch.getText().length());
-        binding.searchHistory.setupUI(str -> {
-            binding.txtSearch.setText(str);
-            binding.txtSearch.setSelection(binding.txtSearch.getText().length());
-        });
+        binding.searchHistory.setupUI(callbackHistory);
     }
+
+    private SearchHistoryChipGroupView.Callback callbackHistory = new SearchHistoryChipGroupView.Callback() {
+        @Override
+        public void clicked(Object object) {
+            Log.i(object);
+            if (object instanceof String) {
+                binding.txtSearch.setText(object.toString());
+                binding.txtSearch.setSelection(binding.txtSearch.getText().length());
+            }
+            else if (object instanceof SearchFilter) {
+                callback.doSearch((SearchFilter) object);
+            }
+        }
+
+        @Override
+        public void showSearchOption(SearchFilter filter) {
+            searchOptionFragment.show(filter);
+        }
+    };
 
     public String getSearchString() {
         return binding.txtSearch.getText().toString();
@@ -71,7 +87,10 @@ public class SearchBarView extends FrameLayout {
     public void setupUI(@NonNull BaseFragment fragment, @NonNull Callback callback) {
         this.fragment = fragment;
         this.callback = callback;
-        val searchOptionFragment = new SearchOptionFragment(getContext(), filter -> callback.doSearch(filter), fragment.getCompositeDisposable());
+        searchOptionFragment = new SearchOptionFragment(getContext(), filter -> {
+            binding.searchHistory.setupUI(callbackHistory);
+            callback.doSearch(filter);
+        }, fragment.getCompositeDisposable());
         //  searchOptionFragment.setPercentHeightDialog(0.9f);
         searchOptionFragment.setPercentWidthDialog(0.99f);
 

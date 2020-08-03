@@ -15,23 +15,23 @@
             android:id="@+id/chipGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:singleLine="true"
+            app:singleLine="false"
             app:singleSelection="true">
 
             <core.lib.widget.MyChip
-                android:id="@+id/chip1"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="88888"
+                android:textColor="@color/textViewHeaderColor"
                 app:ensureMinTouchTargetSize="false" />
 
             <core.lib.widget.MyChip
-                android:id="@+id/chip2"
                 style="@style/Widget.MaterialComponents.Chip.Action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="77777"
+                android:textColor="@color/textViewHeaderColor"
                 app:ensureMinTouchTargetSize="false" />
 
         </core.lib.widget.MyChipGroup>

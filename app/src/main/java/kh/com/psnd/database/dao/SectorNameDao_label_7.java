@@ -14,11 +14,11 @@ import kh.com.psnd.network.model.SectorName_label_7;
 @Dao
 public interface SectorNameDao_label_7 {
 
-    @Query("SELECT * FROM SectorName_label_7 WHERE sectorTypeId = :sectorTypeId AND officeTypeId = :officeTypeId")
-    List<SectorName_label_7> findAllBySectorTypeIdAndOfficeTypeId(int sectorTypeId, int officeTypeId);
+    @Query("SELECT * FROM SectorName_label_7 WHERE sectorTypeId = :sectorTypeId AND officeId = :officeId")
+    List<SectorName_label_7> findAllBySectorTypeIdAndOfficeId(int sectorTypeId, int officeId);
 
-    @Query("SELECT * FROM SectorName_label_7 WHERE sectorTypeId = :sectorTypeId AND officeTypeId = :officeTypeId")
-    Flowable<List<SectorName_label_7>> findAllBySectorTypeIdAndOfficeTypeId_Rx(int sectorTypeId, int officeTypeId);
+    @Query("SELECT * FROM SectorName_label_7 WHERE sectorTypeId = :sectorTypeId AND officeId = :officeId")
+    Flowable<List<SectorName_label_7>> findAllBySectorTypeIdAndOfficeTypeId_Rx(int sectorTypeId, int officeId);
 
     @Query("SELECT * FROM SectorName_label_7 WHERE id=:id")
     SectorName_label_7 findAllById(int id);

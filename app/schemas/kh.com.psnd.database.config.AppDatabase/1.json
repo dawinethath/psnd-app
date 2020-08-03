@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a67e3baa78e438b24610c14096bbdebb",
+    "identityHash": "a5595b619b125404f0272e198ac0b376",
     "entities": [
       {
         "tableName": "DetailStaffEntity",
@@ -248,7 +248,7 @@
       },
       {
         "tableName": "SectorName_label_7",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT, `nameShort` TEXT, `officeTypeId` INTEGER NOT NULL, `sectorTypeId` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT, `nameShort` TEXT, `officeId` INTEGER NOT NULL, `sectorTypeId` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "sectorId",
@@ -269,8 +269,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "officeTypeId",
-            "columnName": "officeTypeId",
+            "fieldPath": "officeId",
+            "columnName": "officeId",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -358,7 +358,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a67e3baa78e438b24610c14096bbdebb')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a5595b619b125404f0272e198ac0b376')"
     ]
   }
 }

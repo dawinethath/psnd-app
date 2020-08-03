@@ -18,7 +18,8 @@ import lombok.var;
 @EqualsAndHashCode(callSuper = false)
 public class SearchHistoryDao extends BaseGson {
 
-    private static final String CACHE_NAME = "SearchHistoryDAO";
+    private static final String CACHE_NAME  = "SearchHistoryDAO";
+    public static final  String LAST_FILTER = "@filter";
 
     @SerializedName("search")
     private LinkedList<String> search = new LinkedList<>();
@@ -46,6 +47,16 @@ public class SearchHistoryDao extends BaseGson {
             objs[i] = search.get(i);
         }
         return objs;
+    }
+
+    public void remove(String text) {
+        for (val item : search) {
+            if (item.equals(text)) {
+                search.remove(item);
+                saveToCache();
+                break;
+            }
+        }
     }
 
 

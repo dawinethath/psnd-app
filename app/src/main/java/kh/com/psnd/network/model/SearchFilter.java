@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import core.lib.base.BaseApp;
 import core.lib.network.request.BaseParam;
 import core.lib.utils.FileManager;
+import kh.com.psnd.database.dao.SearchHistoryDao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.var;
@@ -116,7 +117,20 @@ public class SearchFilter extends BaseParam {
         return null;
     }
 
+    public static void clearLastFilter() {
+        FileManager.writeTextToFileInContext(BaseApp.context, CACHE_NAME, "");
+    }
+
     public void saveLastFilter() {
         FileManager.writeTextToFileInContext(BaseApp.context, CACHE_NAME, toJson());
+        SearchHistoryDao.addSearch(SearchHistoryDao.LAST_FILTER);
+    }
+
+    public String getLabelChip() {
+        try {
+            return "@" + getOfficeName_label_5().getOfficeNameShort();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

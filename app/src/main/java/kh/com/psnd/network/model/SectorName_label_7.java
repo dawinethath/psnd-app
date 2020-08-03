@@ -28,9 +28,9 @@ public class SectorName_label_7 extends BaseGson {
     @SerializedName("secNameShort")
     public String sectorNameShort;
 
-    @ColumnInfo(name = "officeTypeId")
+    @ColumnInfo(name = "officeId")
     @SerializedName("offID")
-    public int officeTypeId;
+    public int officeId;
 
     @ColumnInfo(name = "sectorTypeId")
     @SerializedName("secTypeID")
