@@ -55,7 +55,8 @@ import retrofit2.Response;
 public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding> {
 
     @Setter
-    private Callback callback = null;
+    private Callback callback      = null;
+    private boolean  showFirstTime = true;
 
     public SearchOptionFragment(@androidx.annotation.NonNull Context context, @NonNull Callback callback, @Nullable CompositeDisposable compositeDisposable) {
         super(context, compositeDisposable);
@@ -76,7 +77,10 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
 
     @Override
     public void show() {
-        checkLastFilter();
+        if (showFirstTime) {
+            checkLastFilter();
+        }
+        showFirstTime = false;
         super.show();
     }
 
