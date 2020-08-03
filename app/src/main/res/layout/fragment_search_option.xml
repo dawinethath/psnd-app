@@ -106,6 +106,24 @@
                         app:hint="@{@string/search_detail_label_7}"
                         tools:visibility="visible" />
 
+                    <kh.com.psnd.ui.view.AutoCompleteDropdownView
+                        android:id="@+id/searchSelect8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/space_16dp"
+                        android:visibility="invisible"
+                        app:hint="@{@string/search_detail_label_8}"
+                        tools:visibility="visible" />
+
+                    <kh.com.psnd.ui.view.AutoCompleteDropdownView
+                        android:id="@+id/searchSelect9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/space_16dp"
+                        android:visibility="invisible"
+                        app:hint="@{@string/search_detail_label_9}"
+                        tools:visibility="visible" />
+
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>

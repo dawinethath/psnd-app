@@ -71,9 +71,8 @@
     <string name="search_detail_label_5">ការិយាល័យ/អធិការដ្ឋាន </string>
     <string name="search_detail_label_6">ជ្រើសរើស ផ្នែក/ប៉ុស្តិ៍</string>
     <string name="search_detail_label_7">ផ្នែក/ប៉ុស្តិ៍</string>
-    <string name="search_detail_label_8">ឋានន្តរសក្</string>
+    <string name="search_detail_label_8">ឋានន្តរសក្តិ</string>
     <string name="search_detail_label_9">មុខតំណែង</string>
-    <string name="search_detail_label_10">តួនាទីបន្ថែម</string>
 
     <!--    History-->
     <string name="history">History</string>

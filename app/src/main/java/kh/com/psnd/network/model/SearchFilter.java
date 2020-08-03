@@ -17,83 +17,93 @@ public class SearchFilter extends BaseParam {
     private static final String CACHE_NAME = "SearchFilter";
 
     @SerializedName("general_id")
-    private int    generalId   = -1;
-    @SerializedName("general_name")
-    private String generalName = null;
+    private int                 generalId           = -1;
+    @SerializedName("GeneralComm_label_1")
+    private GeneralComm_label_1 generalComm_label_1 = null;
 
     @SerializedName("department_type_id")
-    private int    departmentTypeId   = -1;
-    @SerializedName("department_type_name")
-    private String departmentTypeName = null;
+    private int                    departmentTypeId       = -1;
+    @SerializedName("DepartmentType_label_2")
+    private DepartmentType_label_2 departmentType_label_2 = null;
 
     @SerializedName("department_id")
-    private int    departmentId   = -1;
-    @SerializedName("department_name")
-    private String departmentName = null;
+    private int                departmentId       = -1;
+    @SerializedName("Department_label_3")
+    private Department_label_3 department_label_3 = null;
 
     @SerializedName("office_type_id")
-    private int    officeTypeId   = -1;
-    @SerializedName("office_type_name")
-    private String officeTypeName = null;
+    private int                officeTypeId       = -1;
+    @SerializedName("OfficeType_label_4")
+    private OfficeType_label_4 officeType_label_4 = null;
 
     @SerializedName("office_id")
-    private int    officeId   = -1;
-    @SerializedName("office_name")
-    private String officeName = null;
+    private int                officeId           = -1;
+    @SerializedName("OfficeName_label_5")
+    private OfficeName_label_5 officeName_label_5 = null;
 
     @SerializedName("sector_type_id")
-    private int    sectorTypeId   = -1;
-    @SerializedName("sector_type_name")
-    private String sectorTypeName = null;
+    private int                sectorTypeId       = -1;
+    @SerializedName("SectorType_label_6")
+    private SectorType_label_6 sectorType_label_6 = null;
 
     @SerializedName("sector_id")
-    private int    sectorId   = -1;
-    @SerializedName("sector_name")
-    private String sectorName = null;
+    private int                sectorId           = -1;
+    @SerializedName("SectorName_label_7")
+    private SectorName_label_7 sectorName_label_7 = null;
 
     @SerializedName("rank_id")
-    private int    rankId   = -1;
-    @SerializedName("rank_name")
-    private String rankName = null;
+    private int          rankId       = -1;
+    @SerializedName("Rank_label_8")
+    private Rank_label_8 rank_label_8 = null;
 
     @SerializedName("position_id")
-    private int    positionId   = -1;
-    @SerializedName("position_name")
-    private String positionName = null;
+    private int              positionId       = -1;
+    @SerializedName("Position_label_9")
+    private Position_label_9 position_label_9 = null;
 
     public void setGeneralComm_label_1(GeneralComm_label_1 generalComm) {
-        setGeneralId(generalComm.getId());
-        setGeneralName(generalComm.getName());
+        this.generalId = generalComm.getId();
+        this.generalComm_label_1 = generalComm;
     }
 
     public void setDepartmentType_label_2(DepartmentType_label_2 departmentType) {
-        setDepartmentTypeId(departmentType.getDepartmentTypeId());
-        setDepartmentName(departmentType.getDepartmentType());
+        this.departmentTypeId = departmentType.getDepartmentTypeId();
+        this.departmentType_label_2 = departmentType;
     }
 
     public void setDepartment_label_3(Department_label_3 department) {
-        setDepartmentId(department.getDepartmentId());
-        setDepartmentName(department.getDepartmentName());
+        this.departmentId = department.getDepartmentId();
+        this.department_label_3 = department;
     }
 
     public void setOfficeType_label_4(OfficeType_label_4 officeType) {
-        setOfficeTypeId(officeType.getOfficeTypeId());
-        setOfficeTypeName(officeType.getOfficeName());
+        this.officeTypeId = officeType.getOfficeTypeId();
+        this.officeType_label_4 = officeType;
     }
 
     public void setOfficeName_label_5(OfficeName_label_5 officeName) {
-        setOfficeId(officeName.getOfficeId());
-        setOfficeName(officeName.getOfficeName());
+        this.officeId = officeName.getOfficeId();
+        this.officeName_label_5 = officeName;
     }
 
     public void setSectorType_label_6(SectorType_label_6 sectorType) {
-        setSectorTypeId(sectorType.getSectorTypeId());
-        setSectorTypeName(sectorType.getSectorType());
+        this.sectorTypeId = sectorType.getSectorTypeId();
+        this.sectorType_label_6 = sectorType;
     }
 
     public void setSectorName_label_7(SectorName_label_7 sectorName) {
-        setSectorId(sectorName.getSectorId());
-        setSectorName(sectorName.getSectorName());
+        this.sectorId = sectorName.getSectorId();
+        this.sectorName_label_7 = sectorName;
+    }
+
+    public void setRank_label_8(Rank_label_8 rank) {
+        this.rankId = rank.getId();
+        this.rank_label_8 = rank;
+    }
+
+    public void setPosition_label_9(Position_label_9 position) {
+        this.positionId = position.getId();
+        this.position_label_9 = position;
     }
 
     public static SearchFilter getLastFilter() {
