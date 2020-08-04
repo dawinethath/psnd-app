@@ -156,7 +156,7 @@
 
             <core.lib.widget.MyButton
                 android:id="@+id/btnSearch"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_16dp"
@@ -164,13 +164,9 @@
                 android:layout_marginEnd="@dimen/space_16dp"
                 android:layout_marginBottom="@dimen/space_12dp"
                 android:text="@string/search"
-                android:textColor="@android:color/white"
-                app:backgroundTint="@color/textViewHeaderColor"
                 app:icon="@drawable/ic_baseline_search_black_24"
-                app:iconTint="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scrollView"
-                app:rippleColor="@color/colorPrimary" />
+                app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
         </LinearLayout>
 

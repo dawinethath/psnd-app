@@ -17,8 +17,9 @@ public class SearchHolder extends BaseViewHolder<SearchFragment, ItemSearchBindi
         super.bind(items.get(position));
         binding.image.setImageURI(item.getPhoto());
         binding.name.setText(item.getFullName());
+        binding.staffNumber.setText(item.getStaffNumber());
+        binding.office.setText(item.getOffice());
         binding.department.setText(item.getDepartment());
-        binding.id.setText(item.getStaffNumber());
         binding.getRoot().setOnClickListener(__ -> fragment.onClickedItem(items, position));
     }
 }

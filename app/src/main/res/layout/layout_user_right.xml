@@ -32,8 +32,7 @@
             android:fontFamily="@string/font_family_black"
             android:text="User"
             android:textColor="@android:color/white"
-            app:chipBackgroundColor="@color/colorPrimary"
-            app:chipIconTint="@color/textViewHeaderColor"
+            app:chipBackgroundColor="@color/textViewHeaderColor"
             app:layout_constraintBottom_toBottomOf="@id/label_1"
             app:layout_constraintStart_toEndOf="@id/label_1"
             app:layout_constraintTop_toTopOf="@id/label_1" />

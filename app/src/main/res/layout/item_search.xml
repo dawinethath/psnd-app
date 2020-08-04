@@ -37,16 +37,28 @@
             tools:text="យ៉ាវ ណាលីនដាវីដ" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/id"
+            android:id="@+id/staffNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_15sp"
-            app:layout_constraintBottom_toTopOf="@id/department"
+            app:layout_constraintBottom_toTopOf="@id/office"
             app:layout_constraintEnd_toEndOf="@id/name"
             app:layout_constraintStart_toStartOf="@id/name"
             app:layout_constraintTop_toBottomOf="@id/name"
             tools:text="90193" />
+
+        <core.lib.widget.MyTextView
+            android:id="@+id/office"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textViewColor"
+            android:textSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toTopOf="@id/department"
+            app:layout_constraintEnd_toEndOf="@id/name"
+            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/staffNumber"
+            tools:text="ការិយាល័យគ្រប់គ្រងសន្តិសុខឯកជនផ្តល់សេវាកម្ម" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/department"

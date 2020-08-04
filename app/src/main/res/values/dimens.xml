@@ -21,8 +21,8 @@
 
     <dimen name="photo_viewAspectRatio">0.76666666666</dimen>
 
-    <dimen name="heightItemSearch">100dp</dimen>
-    <dimen name="widthImageSearch">70dp</dimen>
+    <dimen name="heightItemSearch">120dp</dimen>
+    <dimen name="widthImageSearch">80dp</dimen>
     <dimen name="height_button">60dp</dimen>
 
     <dimen name="height_group_select_user_role">150dp</dimen>

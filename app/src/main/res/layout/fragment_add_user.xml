@@ -203,7 +203,7 @@
 
             <core.lib.widget.MyButton
                 android:id="@+id/btnSubmit"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Blue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/space_16dp"
