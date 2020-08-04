@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import core.lib.dialog.BaseDialog;
+import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
@@ -687,6 +688,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
                 loadValueLabel_9();
             }
             else if (object instanceof Position_label_9) {
+                ApplicationUtil.dismissKeyboard(getContext(), binding.searchSelect9);
                 binding.searchSelect9.setTag(object);
             }
         }
