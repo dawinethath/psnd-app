@@ -127,14 +127,11 @@
 
         <core.lib.widget.MyButton
             android:id="@+id/next"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Default"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Blue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginTop="@dimen/space_08dp"
-            android:text="@string/next"
-            android:textColor="@android:color/white"
-            app:backgroundTint="@color/textViewHeaderColor"
-            app:rippleColor="@color/colorPrimary" />
+            android:text="@string/next" />
     </FrameLayout>
 </layout>
