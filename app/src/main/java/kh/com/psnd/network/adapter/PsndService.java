@@ -72,7 +72,7 @@ public interface PsndService {
     @POST("get_staff_by_qrcode")
     Call<ResponseStaff> qrcode(@Body RequestQRCode requestQRCode);
 
-    @POST("amplify_configure")
+    @POST("configure")
     Call<ResponseConfig> config(@Body RequestConfig requestConfig);
 
     @POST("login")

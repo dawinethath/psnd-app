@@ -38,22 +38,20 @@ public class DetailBodyView extends FrameLayout {
 
     public void setupUI(@NonNull BaseFragment fragment, @NonNull Staff staff) {
         binding.valueLabel1.setText(staff.getRank());
-        binding.valueLabel2.setText(staff.getPosition());
-        binding.valueLabel3.setText(staff.getDateOfBirth());
-        binding.valueLabel4.setText(staff.getSex());
-        binding.valueLabel5.setText(staff.getDepartment());
-        binding.valueLabel6.setText(staff.getOffice());
-        binding.valueLabel7.setText(staff.getSector());
-        binding.valueLabel8.setText(staff.getRank());
-        binding.valueLabel9.setText(staff.getPosition());
-        binding.valueLabel10.setText(staff.getStatus());
-        binding.valueLabel11.setText(staff.getEducation());
-        binding.valueLabel12.setText(staff.getSkill());
-        binding.valueLabel13.setText(staff.getTelephone());
-        binding.valueLabel14.setText(staff.getAddress());
+        binding.valueLabel2.setText(staff.getDepartment());
+        binding.valueLabel3.setText(staff.getOffice());
+        binding.valueLabel4.setText(staff.getPosition());
+        binding.valueLabel5.setText(staff.getSector());
+        binding.valueLabel6.setText(staff.getStatus());
+        binding.valueLabel7.setText(staff.getSex());
+        binding.valueLabel8.setText(staff.getDateOfBirth());
+        binding.valueLabel9.setText(staff.getEducation());
+        binding.valueLabel10.setText(staff.getSkill());
+        binding.valueLabel11.setText(staff.getTelephone());
+        binding.valueLabel12.setText(staff.getAddress());
 
         try {
-            binding.valueLabel10.setTextColor(Color.parseColor(staff.getStatusColor()));
+            binding.valueLabel6.setTextColor(Color.parseColor(staff.getStatusColor()));
         } catch (Throwable e) {
         }
     }

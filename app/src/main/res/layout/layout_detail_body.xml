@@ -115,22 +115,6 @@
             app:layout_constraintTop_toBottomOf="@id/label_11" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/label_13"
-            style="@style/DetailLabel"
-            android:text="@string/detail_label_13"
-            app:layout_constraintBottom_toBottomOf="@id/value_label_13"
-            app:layout_constraintStart_toStartOf="@id/label_1"
-            app:layout_constraintTop_toBottomOf="@id/label_12" />
-
-        <core.lib.widget.MyTextView
-            android:id="@+id/label_14"
-            style="@style/DetailLabel"
-            android:text="@string/detail_label_14"
-            app:layout_constraintBottom_toBottomOf="@id/value_label_14"
-            app:layout_constraintStart_toStartOf="@id/label_1"
-            app:layout_constraintTop_toBottomOf="@id/label_13" />
-
-        <core.lib.widget.MyTextView
             android:id="@+id/value_label_1"
             style="@style/DetailValueLabel"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +136,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_3"
-            tools:text="29/05/1987" />
+            tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_4"
@@ -160,7 +144,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_4"
-            tools:text="ប្រុស" />
+            tools:text="នាយផ្នែក" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_5"
@@ -168,7 +152,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_5"
-            tools:text="នាយកដ្ឋានបុគ្គលិក" />
+            tools:text="មន្រ្តី" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_6"
@@ -176,7 +160,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_6"
-            tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
+            tools:text="បំរើការងារ" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_7"
@@ -184,7 +168,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_7"
-            tools:text="នាយផ្នែក" />
+            tools:text="ប្រុស" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_8"
@@ -192,7 +176,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_8"
-            tools:text="អនុសេនីយ៍ត្រី" />
+            tools:text="29/05/1987" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_9"
@@ -200,7 +184,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_9"
-            tools:text="មន្រ្តី" />
+            tools:text="បរិញ្ញាប័ត្រ" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_10"
@@ -208,7 +192,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_10"
-            tools:text="បំរើការងារ" />
+            tools:text="Asia Pacific International University" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_11"
@@ -216,7 +200,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_11"
-            tools:text="បរិញ្ញាប័ត្រ" />
+            tools:text="099990202" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_12"
@@ -224,22 +208,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_12"
-            tools:text="Asia Pacific International University៊ី" />
-
-        <core.lib.widget.MyTextView
-            android:id="@+id/value_label_13"
-            style="@style/DetailValueLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_13"
-            tools:text="099990202" />
-
-        <core.lib.widget.MyTextView
-            android:id="@+id/value_label_14"
-            style="@style/DetailValueLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/barrier"
-            app:layout_constraintTop_toTopOf="@id/label_14"
             tools:text="ផ្ទះលេខ ១២៥ហ្ស៊ី, ផ្លូវ២៥៥ហ្សិត,​​​ ភូមិ៣, សង្កាត់បឹងសាឡាង, ខណ្ឌទួលគោក,​ រាជធានីភ្នំពេញ៊ី" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

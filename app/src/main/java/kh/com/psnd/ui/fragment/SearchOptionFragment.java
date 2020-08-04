@@ -3,6 +3,7 @@ package kh.com.psnd.ui.fragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.text.InputType;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -98,6 +99,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     @Override
     public void setupUI() {
         loadValueLabel_1();
+        binding.searchSelect9.setInputType(InputType.TYPE_CLASS_TEXT);
         binding.btnSearch.setOnClickListener(__ -> {
             val obj1 = (GeneralComm_label_1) binding.searchSelect1.getTag();
             val obj2 = (DepartmentType_label_2) binding.searchSelect2.getTag();

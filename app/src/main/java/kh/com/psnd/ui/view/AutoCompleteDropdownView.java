@@ -52,6 +52,12 @@ public class AutoCompleteDropdownView extends FrameLayout {
         enabledItemClickListener(true);
     }
 
+    public void setInputType(int type) {
+        binding.dropdown.setInputType(type);
+//        binding.dropdown.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
+//        binding.textInputLayout.setEndIconMode(TextInputLayout.END_ICON_CLEAR_TEXT);
+    }
+
     public void selectItem(int position) {
         val item = binding.dropdown.getAdapter().getItem(position);
         Log.i(item);
