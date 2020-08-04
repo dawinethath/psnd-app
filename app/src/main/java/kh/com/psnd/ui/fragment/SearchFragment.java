@@ -15,7 +15,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.databinding.FragmentSearchBinding;
 import kh.com.psnd.helper.ActivityHelper;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.SearchFilter;
 import kh.com.psnd.ui.view.SearchBarView;
 import lombok.Setter;
@@ -103,7 +103,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
         binding.searchBar.onPause();
     }
 
-    public void onClickedItem(@NonNull List<Search> items, int position) {
+    public void onClickedItem(@NonNull List<SearchStaff> items, int position) {
         SearchHistoryDao.addSearch(binding.searchBar.getSearchString());
         if (parentCallBack != null) {
             if (parentCallBack instanceof SearchAddUserFragment) {

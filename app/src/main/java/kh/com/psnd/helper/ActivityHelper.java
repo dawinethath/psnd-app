@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 import java.util.List;
 
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.ui.activity.DetailActivity;
 import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.LoginActivity;
@@ -26,10 +26,10 @@ public class ActivityHelper {
         context.startActivity(intent);
     }
 
-    public static void openDetailActivity(@NonNull Context context, @NonNull List<Search> items, int position) {
+    public static void openDetailActivity(@NonNull Context context, @NonNull List<SearchStaff> items, int position) {
         val intent = new Intent(context, DetailActivity.class);
-        intent.putExtra(Search.EXTRA_LIST, (Serializable) items);
-        intent.putExtra(Search.EXTRA_POSITION, position);
+        intent.putExtra(SearchStaff.EXTRA_LIST, (Serializable) items);
+        intent.putExtra(SearchStaff.EXTRA_POSITION, position);
         context.startActivity(intent);
     }
 

@@ -9,7 +9,7 @@ import core.lib.utils.PasswordGenerator;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentAddUserBinding;
 import kh.com.psnd.mock.MockUsers;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import lombok.val;
 
 public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUserBinding> {
@@ -37,10 +37,10 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         binding.cardImageProfile.setOnClickListener(__ -> searchAddUserFragment.show());
     }
 
-    private void updateUI(Search search) {
-        binding.fullName.setText(search.getFullName());
-        binding.staffNumber.setText(search.getStaffNumber());
-        binding.imageProfile.setImageURI(search.getPhoto());
+    private void updateUI(SearchStaff searchStaff) {
+        binding.fullName.setText(searchStaff.getFullName());
+        binding.staffNumber.setText(searchStaff.getStaffNumber());
+        binding.imageProfile.setImageURI(searchStaff.getPhoto());
 
         binding.username.requestFocus();
         binding.username.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.username), 600);

@@ -8,11 +8,11 @@ import androidx.annotation.NonNull;
 import core.lib.base.BaseFragment;
 import core.lib.base.BaseRecyclerView;
 import kh.com.psnd.databinding.ItemDetailSectionBinding;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.ui.adapter.holder.DetailHolder;
 
 
-public class DetailAdapter extends BaseRecyclerView<BaseFragment, DetailHolder, Search> {
+public class DetailAdapter extends BaseRecyclerView<BaseFragment, DetailHolder, SearchStaff> {
 
     public DetailAdapter(@NonNull BaseFragment fragment) {
         super(fragment);

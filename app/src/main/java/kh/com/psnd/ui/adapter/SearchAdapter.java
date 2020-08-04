@@ -7,12 +7,12 @@ import androidx.annotation.NonNull;
 
 import core.lib.base.BaseRecyclerView;
 import kh.com.psnd.databinding.ItemSearchBinding;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.ui.adapter.holder.SearchHolder;
 import kh.com.psnd.ui.fragment.SearchFragment;
 
 
-public class SearchAdapter extends BaseRecyclerView<SearchFragment, SearchHolder, Search> {
+public class SearchAdapter extends BaseRecyclerView<SearchFragment, SearchHolder, SearchStaff> {
 
     public SearchAdapter(@NonNull SearchFragment fragment) {
         super(fragment);

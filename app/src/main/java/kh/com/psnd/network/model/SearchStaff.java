@@ -8,29 +8,40 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Search extends BaseGson {
-    public static final String EXTRA          = "Search";
-    public static final String EXTRA_LIST     = "Search_List";
+public class SearchStaff extends BaseGson {
+    public static final String EXTRA          = "SearchStaff";
+    public static final String EXTRA_LIST     = "SearchStaff_List";
     public static final String EXTRA_POSITION = "Position";
 
     @SerializedName("staffID")
-    private int    staffId;
+    private int staffId;
+
     @SerializedName("staffNumber")
     private String staffNumber;
+
     @SerializedName("fullName")
     private String fullName;
+
     @SerializedName("department")
     private String department;
+
     @SerializedName("photo")
     private String photo;
+
     @SerializedName("general_commissariat")
     private String generalCommissariat;
 
-    public Search() {
+    @SerializedName("office")
+    private String office;
+
+    @SerializedName("position")
+    private String position;
+
+    public SearchStaff() {
 
     }
 
-    public Search(Staff staff) {
+    public SearchStaff(Staff staff) {
         setStaffId(staff.getStaffId());
         setDepartment(staff.getDepartment());
         setFullName(staff.getFullName());

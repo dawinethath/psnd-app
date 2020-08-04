@@ -10,7 +10,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchAddUserBinding;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.val;
@@ -54,6 +54,6 @@ public class SearchAddUserFragment extends BaseDialog<FragmentSearchAddUserBindi
     }
 
     public interface Callback {
-        void onSearch(Search search);
+        void onSearch(SearchStaff searchStaff);
     }
 }

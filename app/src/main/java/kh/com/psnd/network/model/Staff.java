@@ -54,13 +54,15 @@ public class Staff extends BaseGson {
     @SerializedName("staHistories")
     private StaffHistory staffHistories;
 
-    public static Staff getStaffTmp(Search search) {
+    public static Staff getStaffTmp(SearchStaff searchStaff) {
         val staffTmp = new Staff();
-        staffTmp.setGeneralCommissariat(search.getGeneralCommissariat());
-        staffTmp.setPhoto(search.getPhoto());
-        staffTmp.setFullName(search.getFullName());
-        staffTmp.setId(search.getStaffNumber());
-        staffTmp.setDepartment(search.getDepartment());
+        staffTmp.setGeneralCommissariat(searchStaff.getGeneralCommissariat());
+        staffTmp.setPhoto(searchStaff.getPhoto());
+        staffTmp.setFullName(searchStaff.getFullName());
+        staffTmp.setId(searchStaff.getStaffNumber());
+        staffTmp.setDepartment(searchStaff.getDepartment());
+        staffTmp.setOffice(searchStaff.getOffice());
+        staffTmp.setPosition(searchStaff.getPosition());
         return staffTmp;
     }
 }

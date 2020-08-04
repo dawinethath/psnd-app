@@ -11,7 +11,7 @@ import core.lib.base.BaseFragmentActivity;
 import core.lib.base.PagerAdapter;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityDetailBinding;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.ui.fragment.DetailFragment;
 import lombok.val;
 
@@ -29,8 +29,8 @@ public class DetailActivity extends BaseFragmentActivity<ActivityDetailBinding> 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        val position = getIntent().getIntExtra(Search.EXTRA_POSITION, 0);
-        val items    = (List<Search>) getIntent().getSerializableExtra(Search.EXTRA_LIST);
+        val position = getIntent().getIntExtra(SearchStaff.EXTRA_POSITION, 0);
+        val items    = (List<SearchStaff>) getIntent().getSerializableExtra(SearchStaff.EXTRA_LIST);
         for (val item : items) {
             fragments.add(DetailFragment.newInstance(item));
         }

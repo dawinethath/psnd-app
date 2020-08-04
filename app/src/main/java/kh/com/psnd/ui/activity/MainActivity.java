@@ -36,7 +36,7 @@ import kh.com.psnd.databinding.ActivityMainBinding;
 import kh.com.psnd.databinding.NavHeaderMainBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseLogin;
@@ -251,11 +251,11 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
                 if (result.isSuccessful()) {
                     val data   = (ResponseStaff) result.body();
                     val staff  = data.getResult();
-                    val search = new Search(staff);
+                    val search = new SearchStaff(staff);
 
                     AppDatabase.getInstance().detailStaffDao().insertAll(new DetailStaffEntity(staff));
 
-                    List<Search> items = new ArrayList<>();
+                    List<SearchStaff> items = new ArrayList<>();
                     items.add(search);
                     ActivityHelper.openDetailActivity(context, items, 0);
                 }

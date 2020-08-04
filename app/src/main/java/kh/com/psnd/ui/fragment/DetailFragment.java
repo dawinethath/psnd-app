@@ -25,7 +25,7 @@ import kh.com.psnd.database.config.AppDatabase;
 import kh.com.psnd.database.entities.DetailStaffEntity;
 import kh.com.psnd.databinding.FragmentDetailBinding;
 import kh.com.psnd.helper.ActivityHelper;
-import kh.com.psnd.network.model.Search;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.Staff;
 import kh.com.psnd.network.model.StaffRecord;
 import kh.com.psnd.network.request.RequestStaff;
@@ -46,10 +46,10 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
     private final String         TAG_PDF  = "DownloadPDF";
     private final OkHttpClient   client   = new OkHttpClient();
 
-    public static DetailFragment newInstance(@NonNull Search search) {
+    public static DetailFragment newInstance(@NonNull SearchStaff searchStaff) {
         val fragment = new DetailFragment();
         val bundle   = new Bundle();
-        bundle.putSerializable(Search.EXTRA, search);
+        bundle.putSerializable(SearchStaff.EXTRA, searchStaff);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -67,7 +67,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         progress = new DialogProgress(getContext(), true, dialogInterface -> OkHttpUtils.cancelCallWithTag(client, TAG_PDF));
         progress.setCanceledOnTouchOutside(false);
 
-        val search = (Search) getArguments().getSerializable(Search.EXTRA);
+        val search = (SearchStaff) getArguments().getSerializable(SearchStaff.EXTRA);
 
         AppDatabase.getInstance().detailStaffDao().loadSingle_Rx(search.getStaffId())
                 .subscribeOn(Schedulers.io())
@@ -120,10 +120,10 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         }
     }
 
-    private void loadData(Search search) {
+    private void loadData(SearchStaff searchStaff) {
         Log.i("Loading new detail");
-        bindView(Staff.getStaffTmp(search));
-        val task = new TaskStaff(new RequestStaff(search.getStaffId()));
+        bindView(Staff.getStaffTmp(searchStaff));
+        val task = new TaskStaff(new RequestStaff(searchStaff.getStaffId()));
         binding.detailHeader.showProgress();
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
 
