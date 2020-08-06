@@ -16,7 +16,6 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentProfileBinding;
 import kh.com.psnd.helper.FingerPrintManager;
 import kh.com.psnd.helper.LoginManager;
-import kh.com.psnd.mock.MockData;
 import kh.com.psnd.network.model.UserProfile;
 import lombok.val;
 
@@ -33,7 +32,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
 
         binding.username.setText(userProfile.getUsername());
         binding.userId.setText(userProfile.getPwd());
-        binding.imageProfile.setImageURI(MockData.TEST_IMAGE);
+        binding.imageProfile.setImageURI(userProfile.getStaff().getPhoto());
         binding.language.setOnClickListener(__ -> doChangeLanguage());
         binding.autoLogout.setOnClickListener(__ -> doAutoLogout());
 

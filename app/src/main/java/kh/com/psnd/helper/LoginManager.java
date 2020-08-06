@@ -10,7 +10,9 @@ import core.lib.base.BaseFragmentActivity;
 import core.lib.utils.CryptoUtil;
 import core.lib.utils.FileManager;
 import core.lib.utils.Log;
+import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.internal.MobileInternal;
+import kh.com.psnd.network.model.SearchFilter;
 import kh.com.psnd.network.model.UserProfile;
 import lombok.val;
 
@@ -19,6 +21,7 @@ public class LoginManager {
     private static final String SECRET = "login.bin";
 
     public static void loggedIn(@NonNull UserProfile userProfile) {
+        Log.i("loggedIn");
         if (userProfile == null) {
             throw new RuntimeException("Login cannot null");
         }
@@ -33,7 +36,11 @@ public class LoginManager {
     }
 
     public static void logout(BaseFragmentActivity activity) {
+        Log.i("logout");
         FileManager.writeTextToFileInContext(BaseApp.context, SECRET, "");
+        // clear cache
+        SearchHistoryDao.clearCache();
+        SearchFilter.clearLastFilter();
         ActivityHelper.openLoginActivity(activity);
         activity.finish();
 

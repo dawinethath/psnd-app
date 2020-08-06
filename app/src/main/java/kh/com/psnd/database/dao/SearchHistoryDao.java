@@ -37,6 +37,10 @@ public class SearchHistoryDao extends BaseGson {
         return new SearchHistoryDao();
     }
 
+    public static void clearCache() {
+        FileManager.writeTextToFileInContext(BaseApp.context, CACHE_NAME, "");
+    }
+
     public void saveToCache() {
         FileManager.writeTextToFileInContext(BaseApp.context, CACHE_NAME, toJson());
     }

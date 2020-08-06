@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.amazonaws.services.cognitoidentityprovider.model.InvalidPasswordException;
 import com.amazonaws.services.cognitoidentityprovider.model.UsernameExistsException;
 import com.amplifyframework.auth.AuthException;
+import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.auth.result.AuthSignInResult;
@@ -113,6 +114,9 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                 val username = binding.username.getText().toString();
                 val pwd      = binding.passwordView.getPassword();
                 val signUpOption = AuthSignUpOptions.builder()
+                        .userAttribute(AuthUserAttributeKey.name(), staff.getFullName())
+                        .userAttribute(AuthUserAttributeKey.picture(), staff.getPhoto())
+//                    .userAttribute(AuthUserAttributeKey.custom("staff_id"), staff.getStaffId() + "")
 //                    .userAttribute(AuthUserAttributeKey.email(), email)
 //                    .userAttribute(AuthUserAttributeKey.phoneNumber(), phone)
                         .build();
