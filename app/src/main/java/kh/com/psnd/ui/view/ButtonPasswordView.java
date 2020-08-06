@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
 
 import core.lib.listener.MyTextWatcher;
 import core.lib.utils.ApplicationUtil;
@@ -38,24 +39,25 @@ public class ButtonPasswordView extends FrameLayout {
 
     private void init() {
         binding = LayoutButtonPasswordBinding.inflate(LayoutInflater.from(getContext()), this, true);
-
-        binding.btnGenerate.setOnClickListener(__ -> {
-            val pwd = PasswordGeneratorUtil.getPasswordGenerator().generate(PasswordGeneratorUtil.PWD_LENGTH);
-            binding.password.setTextWithEndCursor(pwd);
-        });
-        binding.textInputLayoutPassword.setEndIconOnClickListener(__ -> {
-            val pwd = binding.password.getText().toString();
-            if (!TextUtils.isEmpty(pwd)) {
-                ApplicationUtil.copyPassword(pwd);
-            }
-        });
-        binding.password.addTextChangedListener(new MyTextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                super.onTextChanged(charSequence, start, before, count);
-                isValidPassword();
-            }
-        });
+        if (!isInEditMode()) {
+            binding.btnGenerate.setOnClickListener(__ -> {
+                val pwd = PasswordGeneratorUtil.getPasswordGenerator().generate(PasswordGeneratorUtil.PWD_LENGTH);
+                binding.password.setTextWithEndCursor(pwd);
+            });
+            binding.textInputLayoutPassword.setEndIconOnClickListener(__ -> {
+                val pwd = binding.password.getText().toString();
+                if (!TextUtils.isEmpty(pwd)) {
+                    ApplicationUtil.copyPassword(pwd);
+                }
+            });
+            binding.password.addTextChangedListener(new MyTextWatcher() {
+                @Override
+                public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                    super.onTextChanged(charSequence, start, before, count);
+                    isValidPassword();
+                }
+            });
+        }
     }
 
     public void addTextChangedListener(MyTextWatcher textWatcher) {
@@ -89,5 +91,10 @@ public class ButtonPasswordView extends FrameLayout {
 
     public interface Callback {
 
+    }
+
+    @BindingAdapter("enabled_generate")
+    public static void hint(ButtonPasswordView view, boolean enabledGenerate) {
+        view.binding.btnGenerate.setVisibility(enabledGenerate ? VISIBLE : GONE);
     }
 }
