@@ -15,7 +15,6 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentLoginBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
-import kh.com.psnd.mock.MockData;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.network.request.RequestLogin;
 import kh.com.psnd.network.response.ResponseLogin;
@@ -86,10 +85,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
         }
         if (isValidateUsername() && isValidatePassword()) {
             val profile = new UserProfile();
-            profile.setId("88814");
             profile.setUsername("KONG SONIDA");
-            profile.setToken("kwpoeiryuw9r872903rjeaksfdspiou");
-            profile.setImage(MockData.TEST_IMAGE);
 
             val username = binding.username.getText().toString();
             val password = binding.password.getText().toString();

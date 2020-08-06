@@ -32,7 +32,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
         goldfinger = new Goldfinger.Builder(getContext()).logEnabled(BuildConfig.DEBUG).build();
 
         binding.username.setText(userProfile.getUsername());
-        binding.userId.setText(userProfile.getId());
+        binding.userId.setText(userProfile.getPwd());
         binding.imageProfile.setImageURI(MockData.TEST_IMAGE);
         binding.language.setOnClickListener(__ -> doChangeLanguage());
         binding.autoLogout.setOnClickListener(__ -> doAutoLogout());

@@ -1,5 +1,9 @@
 package kh.com.psnd.network.model;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.amplifyframework.auth.cognito.AWSCognitoUserPoolTokens;
 import com.google.gson.annotations.SerializedName;
 
 import core.lib.network.model.BaseGson;
@@ -11,13 +15,23 @@ import lombok.EqualsAndHashCode;
 public class UserProfile extends BaseGson {
 
     @SerializedName("username")
-    private String username;
-    @SerializedName("id")
-    private String id;
-    @SerializedName("token")
-    private String token;
-    @SerializedName("image")
-    private String image;
+    private String                   username;
+    @SerializedName("pwd")
+    private String                   pwd;
+    @SerializedName("AWSCognitoUserPoolTokens")
+    private AWSCognitoUserPoolTokens token;
+    @SerializedName("staff")
+    private Staff                    staff;
+
+    public UserProfile() {
+    }
+
+    public UserProfile(@NonNull String username, @NonNull String pwd, @NonNull Staff staff, @Nullable AWSCognitoUserPoolTokens token) {
+        this.username = username;
+        this.pwd = pwd;
+        this.staff = staff;
+        this.token = token;
+    }
 
     // Security
     @SerializedName("enabledFingerprint")

@@ -1,9 +1,8 @@
 package kh.com.psnd.helper;
 
-import android.text.TextUtils;
-
 import androidx.annotation.NonNull;
 
+import com.amplifyframework.core.Amplify;
 import com.google.gson.Gson;
 
 import core.lib.base.BaseApp;
@@ -19,13 +18,14 @@ public class LoginManager {
 
     private static final String SECRET = "login.bin";
 
-
     public static void loggedIn(@NonNull UserProfile userProfile) {
         if (userProfile == null) {
             throw new RuntimeException("Login cannot null");
         }
         try {
-            val encrypt = CryptoUtil.encryptMsg(userProfile.toJson(), MobileInternal.secret());
+            val json = userProfile.toJson();
+            Log.i(json);
+            val encrypt = CryptoUtil.encryptMsg(json, MobileInternal.secret());
             FileManager.writeTextToFileInContext(BaseApp.context, SECRET, encrypt);
         } catch (Throwable e) {
             Log.e(e);
@@ -36,6 +36,11 @@ public class LoginManager {
         FileManager.writeTextToFileInContext(BaseApp.context, SECRET, "");
         ActivityHelper.openLoginActivity(activity);
         activity.finish();
+
+        Amplify.Auth.signOut(
+                () -> Log.i("AuthQuickstart Signed out successfully"),
+                error -> Log.e("AuthQuickstart " + error.toString())
+        );
     }
 
     public static boolean isLoggedIn() {
@@ -52,7 +57,7 @@ public class LoginManager {
             val decrypt = CryptoUtil.decryptMsg(encrypt, MobileInternal.secret());
             val json    = decrypt;
             val login   = new Gson().fromJson(json, UserProfile.class);
-            if (login != null && !TextUtils.isEmpty(login.getToken())) {
+            if (login != null && login.getToken() != null) {
                 return login;
             }
         } catch (Throwable e) {

@@ -1,16 +1,12 @@
 package kh.com.psnd.ui.fragment;
 
-import android.text.TextUtils;
-
 import core.lib.base.BaseBottomSheetDialogFragment;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
-import core.lib.utils.PasswordGenerator;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentAddUserBinding;
 import kh.com.psnd.mock.MockUsers;
 import kh.com.psnd.network.model.SearchStaff;
-import lombok.val;
 
 public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUserBinding> {
     private SearchAddUserFragment searchAddUserFragment = null;
@@ -20,16 +16,6 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         searchAddUserFragment = new SearchAddUserFragment(getContext(), this::updateUI, getCompositeDisposable());
         searchAddUserFragment.setPercentWidthDialog(0.99f);
 
-        binding.btnGenerate.setOnClickListener(__ -> {
-            val pwd = getPasswordGenerator().generate(6);
-            binding.password.setText(pwd);
-        });
-        binding.textInputLayoutPassword.setEndIconOnClickListener(__ -> {
-            val pwd = binding.password.getText().toString();
-            if (!TextUtils.isEmpty(pwd)) {
-                ApplicationUtil.copyPassword(pwd);
-            }
-        });
         binding.userRight.setupUI(this, MockUsers.userRole_user);
         loadingUserRight();
 
@@ -65,15 +51,6 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
     @Override
     protected int layoutId() {
         return R.layout.fragment_add_user;
-    }
-
-    private PasswordGenerator getPasswordGenerator() {
-        return new PasswordGenerator.Builder()
-                .useLower(true)
-                .useUpper(true)
-                .useDigits(true)
-                .usePunctuation(false)
-                .build();
     }
 
 }

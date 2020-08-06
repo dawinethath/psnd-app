@@ -848,13 +848,11 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     private void showGroupSearch(int visibility) {
         switch (visibility) {
             case View.VISIBLE:
-                binding.btnSearch.setEnabled(true);
-                binding.groupSearch.setAlpha(1);
+                binding.btnSearch.setEnabledWithAlpha(true);
                 break;
             case View.INVISIBLE:
             case View.GONE:
-                binding.btnSearch.setEnabled(false);
-                binding.groupSearch.setAlpha(0.4f);
+                binding.btnSearch.setEnabledWithAlpha(false);
                 break;
         }
     }

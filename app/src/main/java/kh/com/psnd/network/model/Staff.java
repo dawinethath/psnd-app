@@ -19,6 +19,8 @@ public class Staff extends BaseGson {
     private String       uid;
     @SerializedName("id")
     private String       id;
+    @SerializedName("id_en")
+    private String       idEn;
     @SerializedName("fullName")
     private String       fullName;
     @SerializedName("photo")

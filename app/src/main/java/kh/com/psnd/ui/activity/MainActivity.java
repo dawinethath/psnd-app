@@ -60,6 +60,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!LoginManager.isLoggedIn()) {
+            Log.i("User not logged-in yet");
             finish();
             ActivityHelper.openLoginActivity(this);
         }
@@ -101,12 +102,13 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
         Log.i(profile);
 
-        val userId = getString(R.string.user_id, profile.getId());
+        val userId = getString(R.string.user_id, (profile.getStaff() == null ? "" : profile.getStaff().getId()));
+        val image  = profile.getStaff() == null ? null : profile.getStaff().getPhoto();
 
         val header = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0));
         header.username.setText(profile.getUsername());
         header.userId.setText(userId);
-        header.imageProfile.setImageURI(profile.getImage());
+        header.imageProfile.setImageURI(image);
         header.getRoot().setOnClickListener(__ -> ActivityHelper.openProfileActivity(context));
 
         binding.drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {

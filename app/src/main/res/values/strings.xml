@@ -29,7 +29,7 @@
     <string name="promote_2">ឯកឧត្ដម នាយឧត្តមសេនីយ៌ <b>ប៉ែន វិបុល</b></string>
 
     <!--    SignUp-->
-    <string name="signup">Sign Up</string>
+    <string name="signup">ចុះឈ្មោះ</string>
     <string name="first_name_khmer">គោត្តនាម (ភាសាខ្មែរ)</string>
     <string name="last_name_khmer">នាម (ភាសាខ្មែរ)</string>
     <string name="staff_id">អត្តលេខ</string>
@@ -42,6 +42,9 @@
     <string name="staff_id_error">ត្រូវការ អត្តលេខ</string>
     <string name="phone_number_error">ត្រូវការ លេខទូរសព្ទ</string>
     <string name="signup_now">Sign Up Now</string>
+    <string name="password_error_incorrect">Password មិនត្រឹមត្រូវ</string>
+    <string name="user_already_exists">User already exists</string>
+    <string name="msg_scan_wrong_qrcode">Please scan QRCode on your card</string>
 
     <!--    Login -->
     <string name="cancel">Cancel</string>
@@ -125,6 +128,7 @@
     <string name="fingerprint_title">Verify your identity</string>
     <string name="fingerprint_description">Use your fingerprint to verify your identity</string>
     <string name="qrcode_description">Scan QR Code on the card</string>
+    <string name="qrcode_signup">Scan QR Code on the card to Sign Up</string>
 
     <!--    PDF-->
     <string name="file_not_found">មិនមានទិន្នន័យ!</string>

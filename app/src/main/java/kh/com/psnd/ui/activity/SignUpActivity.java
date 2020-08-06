@@ -5,7 +5,7 @@ import android.os.Bundle;
 import core.lib.base.BaseFragmentActivity;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityFragmentBinding;
-import kh.com.psnd.ui.fragment.SignUpStep1Fragment;
+import kh.com.psnd.ui.fragment.SignUpFragment;
 
 public class SignUpActivity extends BaseFragmentActivity<ActivityFragmentBinding> {
 
@@ -21,7 +21,7 @@ public class SignUpActivity extends BaseFragmentActivity<ActivityFragmentBinding
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.contentFragment, new SignUpStep1Fragment(), "SignUpStep1Fragment")
+                    .replace(R.id.contentFragment, new SignUpFragment(), "SignUpStep1Fragment")
                     .commit();
         }
     }

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <core.lib.widget.MyTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="@dimen/cardElevation"
+            android:gravity="center"
+            android:paddingStart="@dimen/space_26dp"
+            android:paddingTop="50dp"
+            android:paddingEnd="@dimen/space_26dp"
+            android:paddingBottom="50dp"
+            android:text="@string/signup"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_29sp"
+            app:fontFamily="@string/font_family_medium"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_26dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/space_16dp"
+                android:paddingBottom="@dimen/space_16dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+                <core.lib.widget.MyCardView
+                    android:id="@+id/cardImageProfile"
+                    style="@style/Widget.MaterialComponents.CardView.Default"
+                    android:layout_width="@dimen/logo_header_width"
+                    android:layout_height="@dimen/logo_header_height"
+                    app:contentPadding="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/textViewHeaderColor"
+                    app:strokeWidth="1dp">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/imageProfile"
+                        android:layout_width="@dimen/logo_header_width"
+                        android:layout_height="@dimen/logo_header_height"
+                        app:actualImageScaleType="fitXY"
+                        app:failureImage="@drawable/ic_person"
+                        app:failureImageScaleType="fitXY"
+                        app:placeholderImage="@drawable/ic_person"
+                        tools:tint="@color/textViewColor" />
+                </core.lib.widget.MyCardView>
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/staffName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_16dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cardImageProfile"
+                    app:layout_constraintTop_toTopOf="@id/cardImageProfile"
+                    tools:text="User Name" />
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/office"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_08dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_17sp"
+                    app:layout_constraintBottom_toTopOf="@id/department"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/staffName"
+                    app:layout_constraintTop_toBottomOf="@id/staffName"
+                    tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/department"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_08dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_17sp"
+                    app:layout_constraintBottom_toBottomOf="@id/cardImageProfile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/staffName"
+                    app:layout_constraintTop_toBottomOf="@id/office"
+                    tools:text="នាយកដ្ឋានបុគ្គលិក" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <core.lib.widget.MyTextInputLayout
+                android:id="@+id/textInputLayoutUserName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:hint="@string/username_eng"
+                app:errorEnabled="true">
+
+                <core.lib.widget.MyTextInputEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:singleLine="true"
+                    android:textColor="@color/textViewHeaderColor" />
+
+            </core.lib.widget.MyTextInputLayout>
+
+            <kh.com.psnd.ui.view.ButtonPasswordView
+                android:id="@+id/passwordView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayoutUserName" />
+
+            <core.lib.widget.MyTextView
+                android:id="@+id/msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/space_08dp"
+                android:paddingBottom="@dimen/space_08dp"
+                android:textColor="@color/design_default_color_error"
+                android:textSize="@dimen/text_size_14sp"
+                tools:text="Error message"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <core.lib.widget.MyButton
+            android:id="@+id/btnSignUp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="@dimen/space_16dp"
+            android:text="@string/signup"
+            app:layout_constraintEnd_toEndOf="@id/layoutTop"
+            app:layout_constraintTop_toBottomOf="@id/layoutTop"
+            app:layout_constraintWidth_percent=".5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
