@@ -1,9 +1,19 @@
 package kh.com.psnd.ui.fragment;
 
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amplifyframework.auth.AuthException;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
+import com.amplifyframework.auth.result.AuthSignInResult;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.Consumer;
+
+import org.greenrobot.eventbus.EventBus;
 
 import core.lib.base.BaseFragment;
 import core.lib.dialog.DialogProgress;
@@ -13,14 +23,14 @@ import core.lib.utils.InternetUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentLoginBinding;
+import kh.com.psnd.eventbus.SingUpSuccess;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.UserProfile;
-import kh.com.psnd.network.request.RequestLogin;
-import kh.com.psnd.network.response.ResponseLogin;
-import kh.com.psnd.network.task.TaskLogin;
+import kh.com.psnd.network.request.RequestStaff;
+import kh.com.psnd.network.response.ResponseStaff;
+import kh.com.psnd.network.task.TaskStaff;
 import lombok.val;
-import retrofit2.Response;
 
 public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
 
@@ -84,44 +94,92 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
             return;
         }
         if (isValidateUsername() && isValidatePassword()) {
-            val profile = new UserProfile();
-            profile.setUsername("KONG SONIDA");
-
             val username = binding.username.getText().toString();
             val password = binding.password.getText().toString();
             progress.show();
-            val task = new TaskLogin(new RequestLogin(username, password));
-            new Handler().postDelayed(new Runnable() {
+
+
+//            AWSMobileClient.getInstance().getUserAttributes()
+
+
+            Amplify.Auth.signIn(username, password, new Consumer<AuthSignInResult>() {
                 @Override
-                public void run() {
-                    getCompositeDisposable().add(task.start(task.new SimpleObserver() {
-
-                        @Override
-                        public Class<?> clazzResponse() {
-                            return ResponseLogin.class;
-                        }
-
-                        @Override
-                        public void onNext(Response result) {
-                            Log.i("LOG >> onNext >> result : " + result);
-                            // if (result.isSuccessful()) {
-                            LoginManager.loggedIn(profile);
-                            ActivityHelper.openMainActivity(getContext());
-                            getActivity().finish();
-                            progress.dismiss();
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            Log.e(e);
-                            progress.dismiss();
-                            LoginManager.loggedIn(profile);
-                            ActivityHelper.openMainActivity(getContext());
-                            getActivity().finish();
-                        }
-                    }));
+                public void accept(@NonNull AuthSignInResult value) {
+                    Log.i("result : " + value);
+                    if (value.isSignInComplete()) {
+                        val profile = new UserProfile(username, password, null, null);
+                        fetchAuthSession(profile);
+                    }
+                    else {
+                        progress.dismiss();
+                    }
                 }
-            }, 1000);
+            }, new Consumer<AuthException>() {
+                @Override
+                public void accept(@NonNull AuthException value) {
+                    Log.e("result : " + value);
+                    binding.msg.setText(value.toString());
+                    progress.dismiss();
+                }
+            });
+        }
+    }
+
+    private void fetchAuthSession(UserProfile profile) {
+        Amplify.Auth.fetchAuthSession(
+                result -> {
+                    AWSCognitoAuthSession cognitoAuthSession = (AWSCognitoAuthSession) result;
+                    Log.i("result : " + result);
+                    fetchStaff(profile);
+                },
+                error -> {
+                    Log.e("AuthQuickStart " + error.toString());
+                    progress.dismiss();
+                }
+        );
+    }
+
+    private void fetchStaff(UserProfile profile) {
+        try {
+            val staffId = AWSMobileClient.getInstance().getUserAttributes().get("custom:staff_id");
+            val task    = new TaskStaff(new RequestStaff(Integer.valueOf(staffId)));
+            getCompositeDisposable().add(task.start(task.new SimpleObserver() {
+
+                @Override
+                public Class<?> clazzResponse() {
+                    return null;
+                }
+
+                @Override
+                public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
+                    Log.i("LOG >> onNext >> result : " + result);
+                    if (result.isSuccessful()) {
+                        val data  = (ResponseStaff) result.body();
+                        val staff = data.getResult();
+
+                        try {
+                            profile.setStaff(staff);
+                            profile.setTokens(AWSMobileClient.getInstance().getTokens());
+                            LoginManager.loggedIn(profile);
+                            EventBus.getDefault().post(new SingUpSuccess());
+                            ActivityHelper.openMainActivity(getContext());
+                            finish();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    progress.dismiss();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.e(e);
+                    progress.dismiss();
+                }
+            }));
+        } catch (Exception e) {
+            Log.e(e);
+            progress.dismiss();
         }
     }
 

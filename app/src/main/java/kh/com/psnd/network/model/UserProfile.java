@@ -3,7 +3,7 @@ package kh.com.psnd.network.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.amplifyframework.auth.cognito.AWSCognitoUserPoolTokens;
+import com.amazonaws.mobile.client.results.Tokens;
 import com.google.gson.annotations.SerializedName;
 
 import core.lib.network.model.BaseGson;
@@ -15,22 +15,22 @@ import lombok.EqualsAndHashCode;
 public class UserProfile extends BaseGson {
 
     @SerializedName("username")
-    private String                   username;
+    private String username;
     @SerializedName("pwd")
-    private String                   pwd;
-    @SerializedName("AWSCognitoUserPoolTokens")
-    private AWSCognitoUserPoolTokens token;
+    private String pwd;
+    @SerializedName("Tokens")
+    private Tokens tokens;
     @SerializedName("staff")
-    private Staff                    staff;
+    private Staff  staff;
 
     public UserProfile() {
     }
 
-    public UserProfile(@NonNull String username, @NonNull String pwd, @NonNull Staff staff, @Nullable AWSCognitoUserPoolTokens token) {
+    public UserProfile(@NonNull String username, @NonNull String pwd, @Nullable Staff staff, @Nullable Tokens tokens) {
         this.username = username;
         this.pwd = pwd;
         this.staff = staff;
-        this.token = token;
+        this.tokens = tokens;
     }
 
     // Security

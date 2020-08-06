@@ -64,7 +64,7 @@ public class LoginManager {
             val decrypt = CryptoUtil.decryptMsg(encrypt, MobileInternal.secret());
             val json    = decrypt;
             val login   = new Gson().fromJson(json, UserProfile.class);
-            if (login != null && login.getToken() != null) {
+            if (login != null && login.getTokens() != null) {
                 return login;
             }
         } catch (Throwable e) {

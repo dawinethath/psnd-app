@@ -8,9 +8,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.services.cognitoidentityprovider.model.InvalidPasswordException;
 import com.amazonaws.services.cognitoidentityprovider.model.UsernameExistsException;
 import com.amplifyframework.auth.AuthException;
+import com.amplifyframework.auth.AuthUserAttribute;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
@@ -22,6 +24,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
 
 import core.lib.base.BaseFragment;
 import core.lib.dialog.DialogProgress;
@@ -111,14 +115,16 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
             {
                 binding.msg.setText("");
                 progress.show();
-                val username = binding.username.getText().toString();
-                val pwd      = binding.passwordView.getPassword();
+                val username       = binding.username.getText().toString();
+                val pwd            = binding.passwordView.getPassword();
+                val userAttributes = new ArrayList<AuthUserAttribute>();
+                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.name(), staff.getFullName()));
+                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.picture(), staff.getPhoto()));
+                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.address(), staff.getStaffId() + ""));
+                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.custom("custom:staff_id"), staff.getStaffId() + ""));
+
                 val signUpOption = AuthSignUpOptions.builder()
-                        .userAttribute(AuthUserAttributeKey.name(), staff.getFullName())
-                        .userAttribute(AuthUserAttributeKey.picture(), staff.getPhoto())
-//                    .userAttribute(AuthUserAttributeKey.custom("staff_id"), staff.getStaffId() + "")
-//                    .userAttribute(AuthUserAttributeKey.email(), email)
-//                    .userAttribute(AuthUserAttributeKey.phoneNumber(), phone)
+                        .userAttributes(userAttributes)
                         .build();
                 Amplify.Auth.signUp(username, pwd, signUpOption, new Consumer<AuthSignUpResult>() {
                     @Override
@@ -161,7 +167,9 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                 if (value.isSignInComplete()) {
                     fetchAuthSession(profile);
                 }
-                progress.dismiss();
+                else {
+                    progress.dismiss();
+                }
             }
         }, new Consumer<AuthException>() {
             @Override
@@ -177,21 +185,20 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                     AWSCognitoAuthSession cognitoAuthSession = (AWSCognitoAuthSession) result;
                     Log.i("result : " + result);
 
-                    profile.setToken(cognitoAuthSession.getUserPoolTokens().getValue());
-                    LoginManager.loggedIn(profile);
-                    EventBus.getDefault().post(new SingUpSuccess());
-                    ActivityHelper.openMainActivity(getContext());
-                    finish();
-
-                    switch (cognitoAuthSession.getIdentityId().getType()) {
-                        case SUCCESS:
-                            Log.i("AuthQuickStart IdentityId: " + cognitoAuthSession.getIdentityId().getValue());
-                            break;
-                        case FAILURE:
-                            Log.i("AuthQuickStart IdentityId not present because: " + cognitoAuthSession.getIdentityId().getError().toString());
+                    try {
+                        profile.setTokens(AWSMobileClient.getInstance().getTokens());
+                        LoginManager.loggedIn(profile);
+                        EventBus.getDefault().post(new SingUpSuccess());
+                        ActivityHelper.openMainActivity(getContext());
+                        finish();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 },
-                error -> Log.e("AuthQuickStart " + error.toString())
+                error -> {
+                    Log.e("AuthQuickStart " + error.toString());
+                    progress.dismiss();
+                }
         );
     }
 

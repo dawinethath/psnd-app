@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/bg_gradient"
-            app:layout_constraintHeight_percent=".55"
+            app:layout_constraintHeight_percent=".4"
             app:layout_constraintTop_toTopOf="parent" />
 
         <core.lib.widget.MyImageView
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@id/layoutTop"
-            app:layout_constraintGuide_percent=".45"
+            app:layout_constraintGuide_percent=".33"
             app:layout_constraintTop_toTopOf="@id/layoutTop" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@id/layoutTop"
-            app:layout_constraintGuide_percent=".425"
+            app:layout_constraintGuide_percent=".31"
             app:layout_constraintTop_toTopOf="@id/layoutTop" />
 
         <core.lib.widget.MyCardView
@@ -145,6 +145,17 @@
                         android:textColor="@color/textViewHeaderColor" />
 
                 </core.lib.widget.MyTextInputLayout>
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/space_08dp"
+                    android:paddingBottom="@dimen/space_08dp"
+                    android:textColor="@color/design_default_color_error"
+                    android:textSize="@dimen/text_size_14sp"
+                    tools:text="Error message"
+                    tools:visibility="visible" />
 
             </LinearLayout>
         </core.lib.widget.MyCardView>
