@@ -1,5 +1,7 @@
 package kh.com.psnd.ui.fragment;
 
+import android.annotation.SuppressLint;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 
@@ -24,6 +26,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     private UserProfile profile    = LoginManager.getUserProfile();
     private Goldfinger  goldfinger = null;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void setupUI() {
         Log.i(profile);
@@ -42,6 +45,22 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
 
         updateUI();
 
+        binding.btnViewPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        binding.password.setText(profile.getPwd());
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                    case MotionEvent.ACTION_HOVER_EXIT:
+                        binding.password.setText("******");
+                        break;
+                }
+                return true;
+            }
+        });
         binding.groupSecurity.setVisibility(goldfinger.canAuthenticate() ? View.VISIBLE : View.GONE);
         binding.fingerprint.setChecked(profile.isEnabledFingerprint());
         binding.fingerprint.setOnCheckedChangeListener(onCheckedChangeListener);
