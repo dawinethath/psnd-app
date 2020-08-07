@@ -63,6 +63,7 @@
     <string name="msg_ask_logout">Do you want to logout?</string>
     <string name="password_eng">Password</string>
     <string name="password_confirm_eng">Confirm password</string>
+    <string name="incorrect_username_or_password">ខុសឈ្មោះ ឫ លេខសម្ងាត់</string>
 
     <string name="labelSearch">អត្តលេខ / ឈ្មោះ</string>
     <string name="search">ស្វែងរក</string>

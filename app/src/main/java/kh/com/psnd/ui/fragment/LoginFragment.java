@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amazonaws.services.cognitoidentityprovider.model.NotAuthorizedException;
 import com.amplifyframework.auth.AuthException;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
 import com.amplifyframework.auth.result.AuthSignInResult;
@@ -19,7 +20,6 @@ import core.lib.base.BaseFragment;
 import core.lib.dialog.DialogProgress;
 import core.lib.listener.MyTextWatcher;
 import core.lib.utils.ApplicationUtil;
-import core.lib.utils.InternetUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentLoginBinding;
@@ -71,6 +71,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
     }
 
     private boolean isValidateUsername() {
+        binding.msg.setText("");
         if (TextUtils.isEmpty(binding.username.getText())) {
             binding.textInputLayoutUsername.setError(getString(R.string.username_error));
             return false;
@@ -80,6 +81,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
     }
 
     private boolean isValidatePassword() {
+        binding.msg.setText("");
         if (TextUtils.isEmpty(binding.password.getText())) {
             binding.textInputLayoutPassword.setError(getString(R.string.password_error));
             return false;
@@ -90,17 +92,13 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
 
     private void doLogin() {
         if (!ApplicationUtil.isOnline()) {
-            InternetUtil.showNoInternet(binding.getRoot());
+            binding.msg.setText(core.lib.R.string.noInternetConnection);
             return;
         }
         if (isValidateUsername() && isValidatePassword()) {
             val username = binding.username.getText().toString();
             val password = binding.password.getText().toString();
             progress.show();
-
-
-//            AWSMobileClient.getInstance().getUserAttributes()
-
 
             Amplify.Auth.signIn(username, password, new Consumer<AuthSignInResult>() {
                 @Override
@@ -118,7 +116,12 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                 @Override
                 public void accept(@NonNull AuthException value) {
                     Log.e("result : " + value);
-                    binding.msg.setText(value.toString());
+                    if (value.getCause() instanceof NotAuthorizedException) {
+                        binding.msg.setText(R.string.incorrect_username_or_password);
+                    }
+                    else {
+                        binding.msg.setText(value.toString());
+                    }
                     progress.dismiss();
                 }
             });
