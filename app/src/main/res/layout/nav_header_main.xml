@@ -16,8 +16,8 @@
         <core.lib.widget.MyCardView
             android:id="@+id/cardImageProfile"
             style="@style/Widget.MaterialComponents.CardView.Default"
-            android:layout_width="@dimen/logo_header_width"
-            android:layout_height="@dimen/logo_header_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/status_bar_height_portrait"
             app:contentPadding="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,13 +28,11 @@
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageProfile"
+                style="@style/ProfilePhoto"
                 android:layout_width="@dimen/logo_header_width"
-                android:layout_height="@dimen/logo_header_height"
-                app:actualImageScaleType="fitXY"
-                app:failureImageScaleType="fitXY"
-                app:failureImage="@drawable/ic_person"
-                app:placeholderImage="@drawable/ic_person"
-                tools:tint="@color/textViewColor" />
+                android:layout_height="wrap_content"
+                app:backgroundImage="@android:color/white" />
+
         </core.lib.widget.MyCardView>
 
         <core.lib.widget.MyTextView

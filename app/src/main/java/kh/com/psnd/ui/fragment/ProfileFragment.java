@@ -21,28 +21,32 @@ import lombok.val;
 
 public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
 
-    private UserProfile userProfile = LoginManager.getUserProfile();
-    private Goldfinger  goldfinger  = null;
+    private UserProfile profile    = LoginManager.getUserProfile();
+    private Goldfinger  goldfinger = null;
 
     @Override
     public void setupUI() {
-        Log.i(userProfile);
+        Log.i(profile);
 
         goldfinger = new Goldfinger.Builder(getContext()).logEnabled(BuildConfig.DEBUG).build();
 
-        binding.username.setText(userProfile.getUsername());
-        binding.userId.setText(userProfile.getPwd());
-        binding.imageProfile.setImageURI(userProfile.getStaff().getPhoto());
+        val fullName = (profile != null && profile.getStaff() != null) ? profile.getStaff().getFullName() : "";
+        val image    = profile.getStaff() == null ? null : profile.getStaff().getPhoto();
+
+        binding.fullName.setText(fullName);
+        binding.username.setText(profile.getUsername());
+        // binding.password.setText(profile.getPwd());
+        binding.imageProfile.setImageURI(image);
         binding.language.setOnClickListener(__ -> doChangeLanguage());
         binding.autoLogout.setOnClickListener(__ -> doAutoLogout());
 
         updateUI();
 
         binding.groupSecurity.setVisibility(goldfinger.canAuthenticate() ? View.VISIBLE : View.GONE);
-        binding.fingerprint.setChecked(userProfile.isEnabledFingerprint());
+        binding.fingerprint.setChecked(profile.isEnabledFingerprint());
         binding.fingerprint.setOnCheckedChangeListener(onCheckedChangeListener);
 
-        if (userProfile.isEnabledFingerprint() && goldfinger.canAuthenticate()) {
+        if (profile.isEnabledFingerprint() && goldfinger.canAuthenticate()) {
             binding.lockBackground.setVisibility(View.VISIBLE);
             goldfinger.authenticate(FingerPrintManager.getPromptParams(getBaseFragmentActivity()), new Goldfinger.Callback() {
                 @Override
@@ -74,10 +78,10 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     private void updateUI() {
 
         val languages = getResources().getStringArray(R.array.languages);
-        binding.language.setText(languages[userProfile.getLanguage()]);
+        binding.language.setText(languages[profile.getLanguage()]);
 
         val autoLogout    = getResources().getStringArray(R.array.autoLogout);
-        val strAutoLogout = getString(R.string.auto_logout_after) + " " + autoLogout[userProfile.getAutoLogout()];
+        val strAutoLogout = getString(R.string.auto_logout_after) + " " + autoLogout[profile.getAutoLogout()];
         binding.autoLogout.setText(strAutoLogout);
 
     }
@@ -95,8 +99,8 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
                         binding.fingerprint.setOnCheckedChangeListener(null);
                         switch (result.reason()) {
                             case AUTHENTICATION_SUCCESS:
-                                userProfile.setEnabledFingerprint(true);
-                                LoginManager.updateUserProfile(userProfile);
+                                profile.setEnabledFingerprint(true);
+                                LoginManager.updateUserProfile(profile);
                                 binding.fingerprint.setChecked(true);
                                 break;
                         }
@@ -112,8 +116,8 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
                 });
             }
             else {
-                userProfile.setEnabledFingerprint(false);
-                LoginManager.updateUserProfile(userProfile);
+                profile.setEnabledFingerprint(false);
+                LoginManager.updateUserProfile(profile);
                 binding.fingerprint.setOnCheckedChangeListener(onCheckedChangeListener);
             }
         }
@@ -122,9 +126,9 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     private void doAutoLogout() {
         new MaterialAlertDialogBuilder(getContext())
                 .setTitle(R.string.auto_logout_after)
-                .setSingleChoiceItems(R.array.autoLogout, userProfile.getAutoLogout(), (dialogInterface, position) -> {
-                    userProfile.setAutoLogout(position);
-                    LoginManager.updateUserProfile(userProfile);
+                .setSingleChoiceItems(R.array.autoLogout, profile.getAutoLogout(), (dialogInterface, position) -> {
+                    profile.setAutoLogout(position);
+                    LoginManager.updateUserProfile(profile);
                     updateUI();
                     dialogInterface.dismiss();
                 })
@@ -134,9 +138,9 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
     private void doChangeLanguage() {
         new MaterialAlertDialogBuilder(getContext())
                 .setTitle(R.string.language_choice)
-                .setSingleChoiceItems(R.array.languages, userProfile.getLanguage(), (dialogInterface, position) -> {
-                    userProfile.setLanguage(position);
-                    LoginManager.updateUserProfile(userProfile);
+                .setSingleChoiceItems(R.array.languages, profile.getLanguage(), (dialogInterface, position) -> {
+                    profile.setLanguage(position);
+                    LoginManager.updateUserProfile(profile);
                     updateUI();
                     dialogInterface.dismiss();
                 })

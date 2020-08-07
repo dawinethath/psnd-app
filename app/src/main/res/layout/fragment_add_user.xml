@@ -44,24 +44,23 @@
                 <core.lib.widget.MyCardView
                     android:id="@+id/cardImageProfile"
                     style="@style/Widget.MaterialComponents.CardView.Default"
-                    android:layout_width="@dimen/logo_profile_width"
-                    android:layout_height="@dimen/logo_profile_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_04dp"
                     android:layout_marginEnd="@dimen/space_08dp"
                     app:contentPadding="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/textInputLayoutFullName"
-                    app:strokeColor="@color/textViewColor"
+                    app:strokeColor="@android:color/white"
                     app:strokeWidth="1dp">
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/imageProfile"
+                        style="@style/ProfilePhoto"
                         android:layout_width="@dimen/logo_profile_width"
-                        android:layout_height="@dimen/logo_profile_height"
-                        app:actualImageScaleType="fitXY"
-                        app:failureImage="@drawable/ic_person"
-                        app:placeholderImage="@drawable/ic_person"
-                        tools:tint="@color/textViewColor" />
+                        android:layout_height="wrap_content"
+                        app:backgroundImage="@android:color/white" />
+
                 </core.lib.widget.MyCardView>
 
                 <core.lib.widget.MyTextInputLayout

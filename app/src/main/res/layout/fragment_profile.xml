@@ -9,10 +9,11 @@
         tools:context=".ui.fragment.ProfileFragment">
 
         <FrameLayout
-            android:id="@+id/bg_header"
+            android:id="@+id/layoutTop"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/detail_header_height"
+            android:layout_height="0dp"
             android:background="@drawable/bg_gradient"
+            app:layout_constraintHeight_percent=".25"
             app:layout_constraintTop_toTopOf="parent" />
 
         <core.lib.widget.MyTextView
@@ -39,34 +40,39 @@
             android:layout_marginBottom="@dimen/space_16dp"
             android:text="@string/label_personnel_department"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_size_29sp"
-            app:layout_constraintBottom_toTopOf="@id/cardImageProfile"
+            android:textSize="@dimen/text_size_27sp"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelCommissariat" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/layoutTop"
+            app:layout_constraintGuide_percent=".20" />
+
         <core.lib.widget.MyCardView
             android:id="@+id/cardImageProfile"
             style="@style/Widget.MaterialComponents.CardView.Default"
-            android:layout_width="@dimen/logo_profile_width"
-            android:layout_height="@dimen/logo_profile_height"
-            android:layout_marginTop="@dimen/status_bar_height_portrait"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:contentPadding="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/bg_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bg_header"
+            app:layout_constraintTop_toBottomOf="@id/guideline"
             app:strokeColor="@android:color/white"
             app:strokeWidth="3dp">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageProfile"
+                style="@style/ProfilePhoto"
                 android:layout_width="@dimen/logo_profile_width"
-                android:layout_height="@dimen/logo_profile_height"
-                app:actualImageScaleType="fitXY"
-                app:failureImage="@drawable/ic_person"
-                app:placeholderImage="@drawable/ic_person"
-                tools:tint="@color/textViewColor" />
+                android:layout_height="wrap_content"
+                app:backgroundImage="@android:color/white" />
+
         </core.lib.widget.MyCardView>
 
         <androidx.core.widget.NestedScrollView
@@ -86,16 +92,38 @@
                     android:text="@string/personal_information" />
 
                 <core.lib.widget.MyTextView
-                    android:id="@+id/username"
+                    android:id="@+id/fullName"
                     style="@style/SettingItem"
-                    android:text="Sondia Kong"
-                    app:drawableLeftCompat="@drawable/ic_outline_perm_identity_24" />
+                    app:drawableLeftCompat="@drawable/ic_outline_perm_identity_24"
+                    tools:text="Sondia Kong" />
 
                 <core.lib.widget.MyTextView
-                    android:id="@+id/userId"
+                    android:id="@+id/username"
                     style="@style/SettingItem"
-                    android:text="88814"
-                    app:drawableLeftCompat="@drawable/ic_outline_featured_video_24" />
+                    app:drawableLeftCompat="@drawable/ic_outline_featured_video_24"
+                    tools:text="88814" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <core.lib.widget.MyTextView
+                        android:id="@+id/password"
+                        style="@style/SettingItem"
+                        android:text="*****"
+                        app:drawableLeftCompat="@drawable/ic_outline_security_24" />
+
+                    <core.lib.widget.MyImageView
+                        android:id="@+id/btnViewPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginEnd="@dimen/space_16dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="@dimen/space_10dp"
+                        android:tint="@color/textViewHeaderColor"
+                        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
+                </FrameLayout>
 
                 <LinearLayout
                     android:id="@+id/groupLanguage"
