@@ -98,19 +98,6 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
                     .setPositiveButton(R.string.logout, (dialogInterface, i) -> LoginManager.logout(MainActivity.this)).show();
         });
 
-        UserProfile profile = LoginManager.getUserProfile();
-
-        Log.i(profile);
-
-        val userId = getString(R.string.user_id, (profile.getStaff() == null ? "" : profile.getStaff().getId()));
-        val image  = profile.getStaff() == null ? null : profile.getStaff().getPhoto();
-
-        val header = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0));
-        header.username.setText(profile.getUsername());
-        header.userId.setText(userId);
-        header.imageProfile.setImageURI(image);
-        header.getRoot().setOnClickListener(__ -> ActivityHelper.openProfileActivity(context));
-
         binding.drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -132,54 +119,33 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
             }
         });
+        bindViewHeader();
+    }
 
-//        {
-//            val email    = "kongsonida168@gmail.com";
-//            val phone    = "+85511210777";
-//            val username = "tongheng";
-//            val pwd      = "Tongheng123#";
+    private void bindViewHeader() {
+        UserProfile profile = LoginManager.getUserProfile();
+        Log.i(profile);
 
-//            val username = "testing_3";
-//            val pwd      = "hahs@9osbSK2w";
-//            val signupOption = AuthSignUpOptions.builder()
-////                    .userAttribute(AuthUserAttributeKey.email(), email)
-////                    .userAttribute(AuthUserAttributeKey.phoneNumber(), phone)
-//                    .build();
-//            Amplify.Auth.signUp(username, pwd, signupOption, new Consumer<AuthSignUpResult>() {
-//                @Override
-//                public void accept(@NonNull AuthSignUpResult value) {
-//                    Log.i("Amplify : " + value);
-//                }
-//            }, new Consumer<AuthException>() {
-//                @Override
-//                public void accept(@NonNull AuthException value) {
-//                    Log.i("Amplify : " + value);
-//                }
-//            });
-//        }
-//
-//        {
-//            val username = "testing1";
-//            val pwd      = "hahs@9osbSK2w";
-//
-//            val metadata = new HashMap<String, String>();
-//            metadata.put("prompt", "login");
-//            val options = AWSCognitoAuthSignInOptions.builder()
-//                    .metadata(metadata)
-//                    .build();
-//
-//            Amplify.Auth.signIn(username, pwd, options, new Consumer<AuthSignInResult>() {
-//                @Override
-//                public void accept(@NonNull AuthSignInResult value) {
-//                    Log.i("Amplify : " + value);
-//                }
-//            }, new Consumer<AuthException>() {
-//                @Override
-//                public void accept(@NonNull AuthException value) {
-//                    Log.e("Amplify : " + value);
-//                }
-//            });
-//        }
+        val staffId  = (profile.getStaff() == null ? "" : profile.getStaff().getId());
+        val fullName = (profile != null && profile.getStaff() != null) ? profile.getStaff().getFullName() : "";
+        val image    = profile.getStaff() == null ? null : profile.getStaff().getPhoto();
+
+        val header = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0));
+        if (TextUtils.isEmpty(fullName)) {
+            header.username.setVisibility(View.GONE);
+        }
+        else {
+            header.username.setText(fullName);
+        }
+        /////////////////////////////////////
+        if (TextUtils.isEmpty(staffId)) {
+            header.userId.setVisibility(View.GONE);
+        }
+        else {
+            header.userId.setText(getString(R.string.user_id, staffId));
+        }
+        header.imageProfile.setImageURI(image);
+        header.getRoot().setOnClickListener(__ -> ActivityHelper.openProfileActivity(context));
     }
 
     @Override
