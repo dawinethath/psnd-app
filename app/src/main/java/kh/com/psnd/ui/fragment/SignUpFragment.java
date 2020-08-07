@@ -91,14 +91,15 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        Log.i(result);
         if (result != null) {
             if (!TextUtils.isEmpty(result.getContents())) {
                 loadDetailByQRCode(result.getContents());
+                return;
             }
         }
-        else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
+        finish();
+        // super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
