@@ -5,8 +5,10 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 import kh.com.psnd.databinding.ItemDetailSectionHeaderBinding;
 
@@ -33,8 +35,20 @@ public class ItemDetailSectionHeaderView extends FrameLayout {
         binding = ItemDetailSectionHeaderBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
-    public void bind(@NonNull String header) {
-        binding.headerPosition.setText(header);
+    public void bind(@IntRange(from = 1) @StringRes int... headers) {
+        for (int i = 0; i < headers.length; i++) {
+            switch (i) {
+                case 0:
+                    binding.headerTitle1.setText(headers[0]);
+                    break;
+                case 1:
+                    binding.headerTitle2.setText(headers[1]);
+                    break;
+                case 2:
+                    binding.headerTitle3.setText(headers[2]);
+                    break;
+            }
+        }
     }
 
 }

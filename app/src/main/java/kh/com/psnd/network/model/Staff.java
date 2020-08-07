@@ -2,6 +2,9 @@ package kh.com.psnd.network.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import core.lib.network.model.BaseGson;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -55,6 +58,10 @@ public class Staff extends BaseGson {
     private String       statusColor;
     @SerializedName("staHistories")
     private StaffHistory staffHistories;
+    @SerializedName("course")
+    private List<Course> courses;
+    @SerializedName("medals")
+    private List<Medal>  medals;
 
     public static Staff getStaffTmp(SearchStaff searchStaff) {
         val staffTmp = new Staff();
@@ -66,5 +73,25 @@ public class Staff extends BaseGson {
         staffTmp.setOffice(searchStaff.getOffice());
         staffTmp.setPosition(searchStaff.getPosition());
         return staffTmp;
+    }
+
+    public List<StaffRecord> getCourseRecord() {
+        List<StaffRecord> list = new ArrayList<>();
+        if (courses != null && courses.size() > 0) {
+            for (val course : courses) {
+                list.add(new StaffRecord(course.getName(), course.getPlace(), course.getDescription(), ""));
+            }
+        }
+        return list;
+    }
+
+    public List<StaffRecord> getMedalRecord() {
+        List<StaffRecord> list = new ArrayList<>();
+        if (medals != null && medals.size() > 0) {
+            for (val medal : medals) {
+                list.add(new StaffRecord(medal.getMedalDescription(), medal.getAnnounceNumber(), medal.getBy(), ""));
+            }
+        }
+        return list;
     }
 }

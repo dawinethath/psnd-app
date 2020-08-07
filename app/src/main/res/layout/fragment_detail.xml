@@ -97,6 +97,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
+                    <kh.com.psnd.ui.view.DetailSectionView
+                        android:id="@+id/adapterView_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <kh.com.psnd.ui.view.DetailSectionView
+                        android:id="@+id/adapterView_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="100dp"

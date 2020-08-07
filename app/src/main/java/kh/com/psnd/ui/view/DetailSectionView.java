@@ -43,17 +43,16 @@ public class DetailSectionView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull BaseFragment fragment, List<StaffRecord> staffRecords, @IntRange(from = 1) @StringRes int labelHeader_1, @Nullable ItemDetailSectionView.Callback callback) {
+    public void setupUI(@NonNull BaseFragment fragment, List<StaffRecord> staffRecords, @Nullable ItemDetailSectionView.Callback callback, @IntRange(from = 1) @StringRes int topHeader, @IntRange(from = 1) @StringRes int... headers) {
         if (staffRecords == null || staffRecords.size() == 0) {
             setVisibility(GONE);
             return;
         }
         setVisibility(VISIBLE);
         {
-            binding.title.setText(labelHeader_1);
-            val header_1 = getContext().getString(labelHeader_1);
-            val view     = new ItemDetailSectionHeaderView(getContext());
-            view.bind(header_1);
+            binding.title.setText(topHeader);
+            val view = new ItemDetailSectionHeaderView(getContext());
+            view.bind(headers);
             binding.recyclerView.addView(view);
         }
 

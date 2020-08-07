@@ -8,7 +8,7 @@
         android:layout_height="wrap_content">
 
         <core.lib.widget.MyTextView
-            android:id="@+id/headerPosition"
+            android:id="@+id/headerTitle_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gray_light"
@@ -27,24 +27,25 @@
             android:layout_height="0dp"
             android:background="@color/textViewColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/headerDocNumber"
-            app:layout_constraintStart_toEndOf="@+id/headerPosition"
+            app:layout_constraintEnd_toStartOf="@+id/headerTitle_2"
+            app:layout_constraintStart_toEndOf="@+id/headerTitle_1"
             app:layout_constraintTop_toTopOf="parent" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/headerDocNumber"
+            android:id="@+id/headerTitle_2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/gray_light"
             android:gravity="center"
             android:padding="@dimen/space_08dp"
             android:text="@string/detail_header_2"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/line_2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/line_1"
-            app:layout_constraintTop_toTopOf="@id/headerPosition"
+            app:layout_constraintTop_toTopOf="@id/headerTitle_1"
             app:layout_constraintWidth_percent=".33" />
 
         <FrameLayout
@@ -53,23 +54,24 @@
             android:layout_height="0dp"
             android:background="@color/textViewColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/headerDate"
-            app:layout_constraintStart_toEndOf="@+id/headerDocNumber"
+            app:layout_constraintEnd_toStartOf="@+id/headerTitle_3"
+            app:layout_constraintStart_toEndOf="@+id/headerTitle_2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/headerDate"
+            android:id="@+id/headerTitle_3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/gray_light"
             android:gravity="center"
             android:padding="@dimen/space_08dp"
             android:text="@string/detail_header_3"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/line_2"
-            app:layout_constraintTop_toTopOf="@id/headerPosition"
+            app:layout_constraintTop_toTopOf="@id/headerTitle_1"
             app:layout_constraintWidth_percent=".33"
             tools:layout_editor_absoluteY="0dp" />
 

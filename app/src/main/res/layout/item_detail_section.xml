@@ -61,20 +61,16 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:maxLines="1"
             android:padding="@dimen/space_08dp"
-            android:text="26-06-2014"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_17sp"
-            app:autoSizeMaxTextSize="@dimen/text_size_17sp"
-            app:autoSizeMinTextSize="@dimen/text_size_13sp"
-            app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/line_2"
             app:layout_constraintTop_toTopOf="@id/position"
             app:layout_constraintWidth_percent=".33"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            tools:text="26-06-2014" />
 
         <FrameLayout
             android:id="@+id/line_3"

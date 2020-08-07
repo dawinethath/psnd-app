@@ -2,6 +2,7 @@ package kh.com.psnd.ui.view;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -40,8 +41,10 @@ public class ItemDetailSectionView extends FrameLayout {
         binding.docNumber.setText(staffRecord.getAnnounceNumber());
         binding.date.setText(staffRecord.getDateAnnounce());
 
-        binding.docNumber.setPaintFlags(binding.docNumber.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        binding.docNumber.setOnClickListener(__ -> callback.clickedDownloadPdf(staffRecord));
+        if (!TextUtils.isEmpty(staffRecord.getPdfUrl())) {
+            binding.docNumber.setPaintFlags(binding.docNumber.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            binding.docNumber.setOnClickListener(__ -> callback.clickedDownloadPdf(staffRecord));
+        }
     }
 
     public interface Callback {

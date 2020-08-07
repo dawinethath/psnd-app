@@ -111,6 +111,13 @@
     <string name="detail_header_2">លេខឯកសារ</string>
     <string name="detail_header_3">កាលបរិច្ឆេទ</string>
     <string name="detail_label_change_position">ផ្ទេរភារៈកិច្ច</string>
+    <string name="detail_label_skill_header">កម្រិតបណ្តុះបណ្តាលវិជ្ជាជីវៈ</string>
+    <string name="detail_label_skill">ជំនាញ</string>
+    <string name="detail_label_department">គ្រឹះស្ថាន</string>
+    <string name="detail_label_praise">ការលើកសរសើរ</string>
+    <string name="detail_label_announce_number">លិខិត-ប័ណ្ណ-មេដាយ</string>
+    <string name="detail_label_follow_by">ធ្វើតាមរយៈ</string>
+    <string name="detail_label_due_country">%s \nរយៈពេល%s\n%sប្រទេស</string>
 
     <!--    Profile-->
     <string name="user_id">អត្តលេខ : %s</string>
