@@ -8,18 +8,55 @@
         android:layout_height="@dimen/heightItemSearch"
         android:background="?attr/selectableItemBackground">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/image"
-            style="@style/ProfilePhoto"
-            android:layout_width="@dimen/widthImageSearch"
+        <core.lib.widget.MyCardView
+            android:id="@+id/cardImageProfile"
+            style="@style/Widget.MaterialComponents.CardView.Default"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_08dp"
             android:layout_marginTop="@dimen/space_08dp"
             android:layout_marginBottom="@dimen/space_08dp"
+            app:contentPadding="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:roundedCornerRadius="@dimen/cardCornerRadius" />
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imageProfile"
+                    style="@style/ProfilePhoto"
+                    android:layout_width="@dimen/widthImageSearch"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/staffNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_staff_id_gradient"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingTop="@dimen/space_18dp"
+                    android:paddingBottom="@dimen/space_04dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:autoSizeMaxTextSize="@dimen/text_size_16sp"
+                    app:autoSizeMinTextSize="@dimen/text_size_11sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="៨៨៨១៤" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </core.lib.widget.MyCardView>
 
         <core.lib.widget.MyTextView
             android:id="@+id/name"
@@ -32,32 +69,36 @@
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_21sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintTop_toTopOf="@id/image"
+            app:layout_constraintStart_toEndOf="@id/cardImageProfile"
+            app:layout_constraintTop_toTopOf="@id/cardImageProfile"
             tools:text="យ៉ាវ ណាលីនដាវីដ" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/staffNumber"
+            android:id="@+id/position"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/textViewHeaderColor"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/textViewColor"
             android:textSize="@dimen/text_size_15sp"
             app:layout_constraintBottom_toTopOf="@id/office"
             app:layout_constraintEnd_toEndOf="@id/name"
             app:layout_constraintStart_toStartOf="@id/name"
             app:layout_constraintTop_toBottomOf="@id/name"
-            tools:text="90193" />
+            tools:text="មន្រ្តី" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/office"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textColor="@color/textViewColor"
             android:textSize="@dimen/text_size_15sp"
             app:layout_constraintBottom_toTopOf="@id/department"
             app:layout_constraintEnd_toEndOf="@id/name"
             app:layout_constraintStart_toStartOf="@id/name"
-            app:layout_constraintTop_toBottomOf="@id/staffNumber"
+            app:layout_constraintTop_toBottomOf="@id/position"
             tools:text="ការិយាល័យគ្រប់គ្រងសន្តិសុខឯកជនផ្តល់សេវាកម្ម" />
 
         <core.lib.widget.MyTextView
@@ -68,7 +109,7 @@
             android:maxLines="1"
             android:textColor="@color/textViewColor"
             android:textSize="@dimen/text_size_15sp"
-            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintBottom_toBottomOf="@id/cardImageProfile"
             app:layout_constraintEnd_toEndOf="@id/name"
             app:layout_constraintStart_toStartOf="@id/name"
             tools:text="នាយកដ្ឋានបុគ្គលិក" />

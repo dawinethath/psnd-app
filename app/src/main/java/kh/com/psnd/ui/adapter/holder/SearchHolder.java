@@ -15,8 +15,9 @@ public class SearchHolder extends BaseViewHolder<SearchFragment, ItemSearchBindi
 
     public void bind(List<SearchStaff> items, int position) {
         super.bind(items.get(position));
-        binding.image.setImageURI(item.getPhoto());
+        binding.imageProfile.setImageURI(item.getPhoto());
         binding.name.setText(item.getFullName());
+        binding.position.setText(item.getPosition());
         binding.staffNumber.setText(item.getStaffNumber());
         binding.office.setText(item.getOffice());
         binding.department.setText(item.getDepartment());

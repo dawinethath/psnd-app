@@ -51,7 +51,7 @@
     <string name="logout">Logout</string>
     <string name="login">Login</string>
     <string name="username_eng">Username</string>
-    <string name="username">ឈ្មោះអ្នកប្រើ</string>
+    <string name="username">គណនី</string>
     <string name="password">លេខសម្ងាត់</string>
     <string name="forget_password">ភ្លេចលេខសម្ងាត់?</string>
     <string name="label_commissariat">អគ្គស្នងការដ្ឋាននគរបាលជាតិ</string>
