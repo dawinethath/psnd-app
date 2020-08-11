@@ -45,9 +45,11 @@
     <string name="password_error_incorrect">Password មិនត្រឹមត្រូវ</string>
     <string name="user_already_exists">User already exists</string>
     <string name="msg_scan_wrong_qrcode">Please scan QRCode on your card</string>
+    <string name="sign_up_guide_title">របៀបចុះឈ្មោះ</string>
+    <string name="sign_up_guide_desc">សូមធ្វើការស្កេន QR Code នៅលើកាតដើម្បីចុះឈ្មោះ</string>
 
     <!--    Login -->
-    <string name="cancel">Cancel</string>
+    <string name="cancel">បោះបង់</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
     <string name="username_eng">Username</string>

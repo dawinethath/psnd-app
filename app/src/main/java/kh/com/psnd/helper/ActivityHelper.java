@@ -5,9 +5,12 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import java.io.Serializable;
 import java.util.List;
 
+import kh.com.psnd.R;
 import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.ui.activity.DetailActivity;
 import kh.com.psnd.ui.activity.ImagePreviewActivity;
@@ -39,9 +42,16 @@ public class ActivityHelper {
         context.startActivity(intent);
     }
 
-    public static void openSignupActivity(@NonNull Context context) {
-        val intent = new Intent(context, SignUpActivity.class);
-        context.startActivity(intent);
+    public static void openSignUpActivity(@NonNull Context context) {
+        new MaterialAlertDialogBuilder(context)
+                .setIcon(R.drawable.ic_outline_perm_identity_24)
+                .setTitle(R.string.sign_up_guide_title)
+                .setMessage(R.string.sign_up_guide_desc)
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.next, (dialogInterface, i) -> {
+                    val intent = new Intent(context, SignUpActivity.class);
+                    context.startActivity(intent);
+                }).show();
     }
 
     public static void openProfileActivity(@NonNull Context context) {

@@ -67,7 +67,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
             }
             return false;
         });
-        binding.signup.setOnClickListener(__ -> ActivityHelper.openSignupActivity(getContext()));
+        binding.signup.setOnClickListener(__ -> ActivityHelper.openSignUpActivity(getContext()));
     }
 
     private boolean isValidateUsername() {
