@@ -121,7 +121,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                 val userAttributes = new ArrayList<AuthUserAttribute>();
                 userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.name(), staff.getFullName()));
                 userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.picture(), staff.getPhoto()));
-                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.address(), staff.getStaffId() + ""));
+                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.address(), staff.getAddress()));
                 userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.custom("custom:staff_id"), staff.getStaffId() + ""));
 
                 val signUpOption = AuthSignUpOptions.builder()
@@ -190,8 +190,10 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                         profile.setTokens(AWSMobileClient.getInstance().getTokens());
                         LoginManager.loggedIn(profile);
                         EventBus.getDefault().post(new SingUpSuccess());
-                        ActivityHelper.openMainActivity(getContext());
+
+                        progress.dismiss();
                         finish();
+                        ActivityHelper.openMainActivity(getContext());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
