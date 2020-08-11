@@ -18,21 +18,22 @@ v1.0.2 Beta (2)
  - Create local database to improve loading data and also reduce calling api
  - The user can swipe left/right to see next
 
+v1.0.3 Beta (3)
+ - Improvement UX and UI
+ - SignUp by using QRCode (Using Cognito [AWS])
+ - Login (Using Cognito [AWS])
+ - Home screen
+    - Adjust staff list UI (search result)
+    - Saved last search by Option (Improved speed loading)
+ - Detail
+    - Added កម្រិតបណ្តុះបណ្តាលវិជ្ជាជីវៈ
+    - Added ការលើកសរសើរ
+ - User profile
+    - Adjust UI
+
 Next version
- - Signup (first step)
-    - Full Khmer Name
-    - Phone Number
-    - ID
- - Signup (second step)
-    - Verify phone number
- - Signup (third step)
-    - username
-    - password
+ - User management
  - Security improvement
- - Save last search (Search option)
  - Auto select in search option if there is a item
- - Login with real API
  - Detail screen
     - long click on staff name or ID to copy clipboard
- - Study Cognito configuration and api
- - Signup
