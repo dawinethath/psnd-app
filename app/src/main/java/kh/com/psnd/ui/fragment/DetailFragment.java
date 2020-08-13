@@ -115,8 +115,8 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
         if (staff.getStaffHistories() != null) {
             binding.adapterView1.setupUI(this, staff.getStaffHistories().getRank(), callback, R.string.detail_label_1, R.string.detail_label_1);
-            binding.adapterView2.setupUI(this, staff.getStaffHistories().getPosition(), callback, R.string.detail_label_2, R.string.detail_label_2);
-            binding.adapterView3.setupUI(this, staff.getStaffHistories().getDepartment(), callback, R.string.detail_label_change_position, R.string.detail_label_change_position);
+            binding.adapterView2.setupUI(this, staff.getStaffHistories().getPosition(), callback, R.string.detail_label_13, R.string.detail_label_5);
+            binding.adapterView3.setupUI(this, staff.getStaffHistories().getDepartment(), callback, R.string.detail_label_change_position, R.string.detail_label_2);
             binding.adapterView4.setupUI(this, staff.getCourseRecord(), callback, R.string.detail_label_skill_header, R.string.detail_label_skill, R.string.detail_label_department);
             binding.adapterView5.setupUI(this, staff.getMedalRecord(), callback, R.string.detail_label_praise, R.string.detail_label_announce_number, R.string.detail_header_2, R.string.detail_label_follow_by);
         }
