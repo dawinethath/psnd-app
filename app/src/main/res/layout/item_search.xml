@@ -71,7 +71,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cardImageProfile"
             app:layout_constraintTop_toTopOf="@id/cardImageProfile"
-            tools:text="យ៉ាវ ណាលីនដាវីដ" />
+            tools:text="គង់ សុនីដា" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/position"

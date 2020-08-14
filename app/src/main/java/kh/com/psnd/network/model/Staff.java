@@ -28,6 +28,8 @@ public class Staff extends BaseGson {
     private String       fullName;
     @SerializedName("photo")
     private String       photo;
+    @SerializedName("album_photo")
+    private List<String> album;
     @SerializedName("dob")
     private String       dateOfBirth;
     @SerializedName("sex")

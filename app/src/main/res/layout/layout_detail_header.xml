@@ -87,12 +87,39 @@
             app:strokeColor="@android:color/white"
             app:strokeWidth="3dp">
 
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/imageProfile"
-                style="@style/ProfilePhoto"
-                android:layout_width="@dimen/detail_logo_width"
-                android:layout_height="wrap_content"
-                tools:tint="@color/textViewColor" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/imageProfile"
+                    style="@style/ProfilePhoto"
+                    android:layout_width="@dimen/detail_logo_width"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:tint="@color/textViewColor" />
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/album"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_staff_id_gradient"
+                    android:gravity="end"
+                    android:paddingStart="0dp"
+                    android:paddingTop="@dimen/space_18dp"
+                    android:paddingEnd="@dimen/space_12dp"
+                    android:paddingBottom="@dimen/space_08dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_16sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="1/3"
+                    tools:visibility="visible" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </core.lib.widget.MyCardView>
 
         <core.lib.widget.MyTextView
@@ -113,7 +140,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cardImageProfile"
             app:layout_constraintTop_toBottomOf="@id/background"
-            tools:text="យ៉ាវ ណាលីនដាវីដ" />
+            tools:text="គង់ សុនីដា" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/staffId"
@@ -131,7 +158,7 @@
             app:layout_constraintEnd_toEndOf="@id/firstNameKH"
             app:layout_constraintStart_toStartOf="@id/firstNameKH"
             app:layout_constraintTop_toBottomOf="@id/firstNameKH"
-            tools:text="67783" />
+            tools:text="88814" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

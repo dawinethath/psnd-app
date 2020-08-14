@@ -79,6 +79,15 @@ public class DetailHeaderView extends FrameLayout {
 //            String filePath = fragment.getActivity().getCacheDir().getPath() + File.separator + "test.jpg";
 //            FileManager.saveImageJPG(bitmap, filePath);
         });
+        if (staff.getAlbum() == null || staff.getAlbum().size() <= 1) {
+            binding.album.setVisibility(GONE);
+            binding.album.setText("");
+        }
+        else {
+            binding.album.setVisibility(VISIBLE);
+            val album = String.format("%s/%s", 1, staff.getAlbum().size());
+            binding.album.setText(album);
+        }
     }
 
     public void showProgress() {

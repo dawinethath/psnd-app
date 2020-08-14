@@ -32,6 +32,7 @@ v1.0.3 Beta (3)
     - Adjust UI
 
 Next version
+ - View album
  - User management
  - Security improvement
  - Auto select in search option if there is a item
