@@ -101,7 +101,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
 
     private void bindView(@NonNull Staff staff) {
         binding.headerToolbarView.setupUI(this, staff);
-        binding.detailHeader.setupUI(this, staff);
+        binding.detailHeader.setupUI(this, binding.headerToolbarView, staff);
         binding.layoutDetail.setupUI(this, staff);
         binding.appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
 

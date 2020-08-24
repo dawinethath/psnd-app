@@ -10,8 +10,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.io.Serializable;
 import java.util.List;
 
+import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.network.model.SearchStaff;
+import kh.com.psnd.network.model.Staff;
 import kh.com.psnd.ui.activity.DetailActivity;
 import kh.com.psnd.ui.activity.ImagePreviewActivity;
 import kh.com.psnd.ui.activity.LoginActivity;
@@ -19,6 +21,7 @@ import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.ui.activity.PdfActivity;
 import kh.com.psnd.ui.activity.ProfileActivity;
 import kh.com.psnd.ui.activity.SignUpActivity;
+import kh.com.psnd.ui.fragment.ImageStaffFragment;
 import lombok.val;
 
 public class ActivityHelper {
@@ -65,9 +68,11 @@ public class ActivityHelper {
         context.startActivity(intent);
     }
 
-    public static void openImagePreviewActivity(@NonNull Context context, @NonNull String imageUri) {
+    public static void openImagePreviewActivity(@NonNull Context context, @NonNull Staff staff, int position) {
+        Log.i("Selected position : " + position);
         val intent = new Intent(context, ImagePreviewActivity.class);
-        intent.putExtra(ImagePreviewActivity.EXTRA_IMAGE_URI, imageUri);
+        intent.putExtra(Staff.EXTRA, staff);
+        intent.putExtra(ImageStaffFragment.POSITION, position);
         context.startActivity(intent);
     }
 

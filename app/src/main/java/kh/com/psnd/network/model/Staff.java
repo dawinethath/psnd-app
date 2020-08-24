@@ -3,6 +3,7 @@ package kh.com.psnd.network.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import core.lib.network.model.BaseGson;
@@ -64,6 +65,11 @@ public class Staff extends BaseGson {
     private List<Course> courses;
     @SerializedName("medals")
     private List<Medal>  medals;
+
+    public List<String> getAlbum() {
+        val items = (album == null || album.size() == 0) ? Arrays.asList(photo) : album;
+        return items;
+    }
 
     public static Staff getStaffTmp(SearchStaff searchStaff) {
         val staffTmp = new Staff();

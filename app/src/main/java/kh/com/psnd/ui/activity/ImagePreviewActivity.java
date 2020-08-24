@@ -1,15 +1,27 @@
 package kh.com.psnd.ui.activity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+
+import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import core.lib.base.BaseFragmentActivity;
-import core.lib.utils.Log;
+import core.lib.base.PagerAdapter;
+import core.lib.listener.MyOnPageChangeListener;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityImagePreviewBinding;
+import kh.com.psnd.network.model.Staff;
+import kh.com.psnd.ui.fragment.ImagePreviewFragment;
+import kh.com.psnd.ui.fragment.ImageStaffFragment;
 import lombok.val;
 
 public class ImagePreviewActivity extends BaseFragmentActivity<ActivityImagePreviewBinding> {
-    public static String EXTRA_IMAGE_URI = "EXTRA_IMAGE_URI";
+
+    private PagerAdapter   adapter   = null;
+    private List<Fragment> fragments = new ArrayList<>();
 
     @Override
     protected int layoutId() {
@@ -19,8 +31,28 @@ public class ImagePreviewActivity extends BaseFragmentActivity<ActivityImagePrev
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        val uriPdf = getIntent().getStringExtra(EXTRA_IMAGE_URI);
-        Log.i(uriPdf);
+        val staff    = (Staff) getIntent().getSerializableExtra(Staff.EXTRA);
+        val position = getIntent().getIntExtra(ImageStaffFragment.POSITION, 0);
+
+        val items = staff.getAlbum();
+        if (items != null) {
+            for (val item : items) {
+                if (!TextUtils.isEmpty(item)) {
+                    fragments.add(ImagePreviewFragment.newInstance(item));
+                }
+            }
+            adapter = new PagerAdapter(context, getSupportFragmentManager(), fragments, null);
+            binding.viewPager.setAdapter(adapter);
+            binding.viewPager.addOnPageChangeListener(new MyOnPageChangeListener() {
+
+                @Override
+                public void onPageSelected(int position) {
+                    binding.pageIndicatorView.setSelection(position);
+                }
+
+            });
+            binding.viewPager.setCurrentItem(position);
+        }
     }
 
 }

@@ -50,14 +50,14 @@ public class DetailHeaderToolbarView extends FrameLayout {
         val bitmap = FrescoUtil.getBitmapFromCache(staff.getPhoto());
         if (bitmap != null) {
             binding.imageProfile.setImageURI(staff.getPhoto());
-            binding.imageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff.getPhoto()));
+            binding.imageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff, 0));
         }
         else {
             FrescoUtil.loadImage(Uri.parse(staff.getPhoto()), new BaseBitmapDataSubscriber() {
                 @Override
                 public void onNewResultImpl(@Nullable Bitmap bitmap) {
                     binding.imageProfile.setImageURI(staff.getPhoto());
-                    binding.imageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff.getPhoto()));
+                    binding.imageProfile.setOnClickListener(__ -> ActivityHelper.openImagePreviewActivity(getContext(), staff, 0));
                 }
 
                 @Override
@@ -70,6 +70,10 @@ public class DetailHeaderToolbarView extends FrameLayout {
 
         binding.firstNameKH.setText(staff.getFullName());
         binding.staffId.setText(staff.getId());
+    }
+
+    public void setImageProfile(@NonNull String imageUrl) {
+        binding.imageProfile.setImageURI(imageUrl);
     }
 
 }
