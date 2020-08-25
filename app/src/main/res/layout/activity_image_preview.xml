@@ -29,6 +29,21 @@
             app:piv_selectedColor="@color/transparentWhite90"
             app:piv_unselectedColor="@color/transparentWhite70"
             app:piv_viewPager="@id/viewPager" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/changeStaffPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_16dp"
+            android:text="@string/change_staff_photo"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            app:backgroundTint="@color/colorPrimary"
+            app:icon="@drawable/ic_outline_insert_photo_24"
+            app:iconTint="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@id/pageIndicatorView"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

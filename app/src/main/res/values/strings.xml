@@ -88,7 +88,7 @@
     <string name="detail_first_name_last_name">គោត្តនាម​ និងនាម</string>
     <string name="detail_first_name_last_name_latin">អក្សរឡាតាំង</string>
     <string name="detail_label_1">ឋានន្តរសក្តិ</string>
-    <string name="detail_label_2">នាយកដ្ឋាន</string>
+    <string name="detail_label_2">អង្គភាព</string>
     <string name="detail_label_3">អង្គ.ថ្នាក់ស្មើការិ</string>
     <string name="detail_label_4">ផ្នែក/ប៉ុស្តិ៍</string>
     <string name="detail_label_5">មុខតំណែង</string>
@@ -121,6 +121,9 @@
     <string name="detail_label_announce_number">លិខិត-ប័ណ្ណ-មេដាយ</string>
     <string name="detail_label_follow_by">ធ្វើតាមរយៈ</string>
     <string name="detail_label_due_country">%s \nរយៈពេល%s\n%sប្រទេស</string>
+
+
+    <string name="change_staff_photo">ប្ដូររូបភាព</string>
 
     <!--    Profile-->
     <string name="user_id">អត្តលេខ : %s</string>

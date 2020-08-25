@@ -2,6 +2,7 @@ package kh.com.psnd.ui.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +20,7 @@ import kh.com.psnd.eventbus.ImagePreviewSwipeEventBus;
 import kh.com.psnd.network.model.Staff;
 import kh.com.psnd.ui.fragment.ImagePreviewFragment;
 import kh.com.psnd.ui.fragment.ImageStaffFragment;
+import kh.com.psnd.ui.view.ImagesStaffViewPager;
 import lombok.val;
 
 public class ImagePreviewActivity extends BaseFragmentActivity<ActivityImagePreviewBinding> {
@@ -51,11 +53,21 @@ public class ImagePreviewActivity extends BaseFragmentActivity<ActivityImagePrev
                 @Override
                 public void onPageSelected(int position) {
                     binding.pageIndicatorView.setSelection(position);
-                    EventBus.getDefault().postSticky(new ImagePreviewSwipeEventBus(staff, position));
+                    if (!ImagesStaffViewPager.USED_SINGLE_PHOTO) {
+                        EventBus.getDefault().postSticky(new ImagePreviewSwipeEventBus(staff, position));
+                    }
                 }
 
             });
             binding.viewPager.setCurrentItem(position);
+
+            if (ImagesStaffViewPager.USED_SINGLE_PHOTO && items.size() > 1) {
+                binding.changeStaffPhoto.setVisibility(View.VISIBLE);
+                binding.changeStaffPhoto.setOnClickListener(__ -> {
+                    EventBus.getDefault().postSticky(new ImagePreviewSwipeEventBus(staff, binding.viewPager.getCurrentItem()));
+                    finish();
+                });
+            }
         }
     }
 

@@ -14,7 +14,8 @@ import kh.com.psnd.network.model.Staff;
 
 public class DetailHeaderView extends FrameLayout {
 
-    private LayoutDetailHeaderBinding binding = null;
+    private       LayoutDetailHeaderBinding binding     = null;
+    private final int                       BLUR_RADIUS = 25;
 
     public DetailHeaderView(@NonNull Context context) {
         super(context);
@@ -43,7 +44,6 @@ public class DetailHeaderView extends FrameLayout {
 
     public void setupUI(@NonNull BaseFragment baseFragment, @NonNull DetailHeaderToolbarView headerToolbarView, @NonNull Staff staff) {
         binding.imagesStaffViewPager.bind(baseFragment, headerToolbarView, staff);
-
         binding.firstNameKH.setText(staff.getFullName());
         binding.staffId.setText(staff.getId());
         binding.headerTitle.setText(staff.getGeneralCommissariat());
@@ -55,6 +55,23 @@ public class DetailHeaderView extends FrameLayout {
 //            String filePath = fragment.getActivity().getCacheDir().getPath() + File.separator + "test.jpg";
 //            FileManager.saveImageJPG(bitmap, filePath);
         });
+
+        {
+            // Study blur image
+            /*
+            binding.layoutBlurImage.setVisibility(GONE);
+            binding.blurImage.setVisibility(GONE);
+            val bitmap = FrescoUtil.getBitmapFromCache(staff.getPhoto());
+            if (bitmap != null) {
+                val blurBitmap = BlurKit.getInstance().blur(bitmap, BLUR_RADIUS);
+                if (blurBitmap != null) {
+                    binding.blurImage.setImageBitmap(blurBitmap);
+                    binding.blurImage.setVisibility(VISIBLE);
+                    binding.layoutBlurImage.setVisibility(VISIBLE);
+                }
+            }
+            */
+        }
 
     }
 

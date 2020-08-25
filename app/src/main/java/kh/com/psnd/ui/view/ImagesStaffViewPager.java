@@ -27,7 +27,8 @@ public class ImagesStaffViewPager extends FrameLayout {
     private PagerAdapter   adapter   = null;
     private List<Fragment> fragments = new ArrayList<>();
 
-    private LayoutImagesStaffViewPagerBinding binding = null;
+    private             LayoutImagesStaffViewPagerBinding binding           = null;
+    public static final boolean                           USED_SINGLE_PHOTO = true;
 
     public ImagesStaffViewPager(@NonNull Context context) {
         super(context);
@@ -48,7 +49,7 @@ public class ImagesStaffViewPager extends FrameLayout {
         binding = LayoutImagesStaffViewPagerBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
-    public void setCurrentItem(int position){
+    public void setCurrentItem(int position) {
         binding.viewPager.setCurrentItem(position);
     }
 
@@ -63,16 +64,22 @@ public class ImagesStaffViewPager extends FrameLayout {
                     fragments.add(ImageStaffFragment.newInstance(staff, items.indexOf(item)));
                 }
             }
-            binding.layoutIndicator.setVisibility(items.size() <= 1 ? GONE : VISIBLE);
+            if (USED_SINGLE_PHOTO) {
+                binding.layoutIndicator.setVisibility(GONE);
+            }
+            else {
+                binding.layoutIndicator.setVisibility(items.size() <= 1 ? GONE : VISIBLE);
+            }
         }
+        binding.viewPager.setSwipeEnabled(!USED_SINGLE_PHOTO);
         binding.viewPager.clearOnPageChangeListeners();
         binding.viewPager.addOnPageChangeListener(new MyOnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
                 Log.i("onPageSelected : " + position);
+                headerToolbarView.setImageProfile(staff.getAlbum().get(position));
                 binding.pageIndicatorView.setSelection(position);
-                headerToolbarView.setImageProfile(items.get(position));
             }
 
         });

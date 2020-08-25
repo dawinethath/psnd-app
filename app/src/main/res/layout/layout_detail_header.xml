@@ -53,6 +53,30 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="@dimen/detail_header_height_guideline" />
 
+        <core.lib.widget.MyImageView
+            android:id="@+id/blurImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/background"
+            app:layout_constraintEnd_toEndOf="@id/background"
+            app:layout_constraintStart_toStartOf="@id/background"
+            app:layout_constraintTop_toTopOf="@id/background"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:id="@+id/layoutBlurImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/transparentBlack50"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/background"
+            app:layout_constraintEnd_toEndOf="@id/background"
+            app:layout_constraintStart_toStartOf="@id/background"
+            app:layout_constraintTop_toTopOf="@id/background"
+            tools:visibility="visible" />
+
         <core.lib.widget.MyTextView
             android:id="@+id/headerTitle"
             android:layout_width="match_parent"
