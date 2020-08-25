@@ -23,7 +23,7 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentLoginBinding;
-import kh.com.psnd.eventbus.SingUpSuccess;
+import kh.com.psnd.eventbus.SingUpSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.UserProfile;
@@ -164,7 +164,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                             profile.setStaff(staff);
                             profile.setTokens(AWSMobileClient.getInstance().getTokens());
                             LoginManager.loggedIn(profile);
-                            EventBus.getDefault().post(new SingUpSuccess());
+                            EventBus.getDefault().post(new SingUpSuccessEventBus());
                             ActivityHelper.openMainActivity(getContext());
                             finish();
                         } catch (Exception e) {

@@ -10,7 +10,7 @@ import core.lib.base.BaseFragmentActivity;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityLoginBinding;
-import kh.com.psnd.eventbus.SingUpSuccess;
+import kh.com.psnd.eventbus.SingUpSuccessEventBus;
 
 public class LoginActivity extends BaseFragmentActivity<ActivityLoginBinding> {
     @Override
@@ -32,7 +32,7 @@ public class LoginActivity extends BaseFragmentActivity<ActivityLoginBinding> {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onSingUpSuccess(SingUpSuccess event) {
+    public void onSingUpSuccessEventBus(SingUpSuccessEventBus event) {
         Log.i(event);
         finish();
     }

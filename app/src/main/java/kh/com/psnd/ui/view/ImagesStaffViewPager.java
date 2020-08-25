@@ -48,6 +48,10 @@ public class ImagesStaffViewPager extends FrameLayout {
         binding = LayoutImagesStaffViewPagerBinding.inflate(LayoutInflater.from(getContext()), this, true);
     }
 
+    public void setCurrentItem(int position){
+        binding.viewPager.setCurrentItem(position);
+    }
+
     public void bind(@NonNull BaseFragment baseFragment, @NonNull DetailHeaderToolbarView headerToolbarView, @NonNull Staff staff) {
         fragments.clear();
         val items = staff.getAlbum();

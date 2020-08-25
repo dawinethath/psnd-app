@@ -5,6 +5,8 @@ import android.text.TextUtils;
 
 import androidx.fragment.app.Fragment;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import core.lib.base.PagerAdapter;
 import core.lib.listener.MyOnPageChangeListener;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityImagePreviewBinding;
+import kh.com.psnd.eventbus.ImagePreviewSwipeEventBus;
 import kh.com.psnd.network.model.Staff;
 import kh.com.psnd.ui.fragment.ImagePreviewFragment;
 import kh.com.psnd.ui.fragment.ImageStaffFragment;
@@ -48,6 +51,7 @@ public class ImagePreviewActivity extends BaseFragmentActivity<ActivityImagePrev
                 @Override
                 public void onPageSelected(int position) {
                     binding.pageIndicatorView.setSelection(position);
+                    EventBus.getDefault().postSticky(new ImagePreviewSwipeEventBus(staff, position));
                 }
 
             });

@@ -37,6 +37,10 @@ public class DetailHeaderView extends FrameLayout {
         }
     }
 
+    public void setCurrentImageStaff(int position) {
+        binding.imagesStaffViewPager.setCurrentItem(position);
+    }
+
     public void setupUI(@NonNull BaseFragment baseFragment, @NonNull DetailHeaderToolbarView headerToolbarView, @NonNull Staff staff) {
         binding.imagesStaffViewPager.bind(baseFragment, headerToolbarView, staff);
 

@@ -4,10 +4,15 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.kelin.translucentbar.library.TranslucentBarManager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
 
@@ -24,6 +29,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.database.config.AppDatabase;
 import kh.com.psnd.database.entities.DetailStaffEntity;
 import kh.com.psnd.databinding.FragmentDetailBinding;
+import kh.com.psnd.eventbus.ImagePreviewSwipeEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.Staff;
@@ -45,6 +51,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
     private       DialogProgress progress = null;
     private final String         TAG_PDF  = "DownloadPDF";
     private final OkHttpClient   client   = new OkHttpClient();
+    private       Staff          mStaff   = null;
 
     public static DetailFragment newInstance(@NonNull SearchStaff searchStaff) {
         val fragment = new DetailFragment();
@@ -52,6 +59,27 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
         bundle.putSerializable(SearchStaff.EXTRA, searchStaff);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onImagePreviewSwipeEventBus(ImagePreviewSwipeEventBus event) {
+        Log.i(event);
+        if (mStaff != null && event.getStaff() != null && mStaff.getStaffId() == event.getStaff().getStaffId()) {
+            binding.detailHeader.setCurrentImageStaff(event.getPosition());
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setEnabledEventBus(false);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -100,6 +128,7 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
     }
 
     private void bindView(@NonNull Staff staff) {
+        this.mStaff = staff;
         binding.headerToolbarView.setupUI(this, staff);
         binding.detailHeader.setupUI(this, binding.headerToolbarView, staff);
         binding.layoutDetail.setupUI(this, staff);

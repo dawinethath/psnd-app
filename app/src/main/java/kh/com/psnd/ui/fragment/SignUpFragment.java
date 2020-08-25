@@ -34,7 +34,7 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSignupBinding;
-import kh.com.psnd.eventbus.SingUpSuccess;
+import kh.com.psnd.eventbus.SingUpSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.SignUpStep1;
@@ -189,7 +189,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                     try {
                         profile.setTokens(AWSMobileClient.getInstance().getTokens());
                         LoginManager.loggedIn(profile);
-                        EventBus.getDefault().post(new SingUpSuccess());
+                        EventBus.getDefault().post(new SingUpSuccessEventBus());
 
                         progress.dismiss();
                         finish();
