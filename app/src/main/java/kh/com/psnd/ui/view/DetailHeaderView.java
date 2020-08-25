@@ -47,6 +47,7 @@ public class DetailHeaderView extends FrameLayout {
         binding.firstNameKH.setText(staff.getFullName());
         binding.staffId.setText(staff.getId());
         binding.headerTitle.setText(staff.getGeneralCommissariat());
+        binding.share.setOnClickListener(__ -> staff.doShare(getContext()));
         binding.exportPdf.setOnClickListener(__ -> {
 //            View view = fragment.getBinding().getRoot();
 ////            view.buildLayer();

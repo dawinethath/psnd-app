@@ -87,6 +87,9 @@
     <string name="detail_cv_title">ជីវប្រវត្តិមន្ត្រីនគរបាលជាតិ</string>
     <string name="detail_first_name_last_name">គោត្តនាម​ និងនាម</string>
     <string name="detail_first_name_last_name_latin">អក្សរឡាតាំង</string>
+    <string name="detail_full_name">ឈ្មោះ</string>
+    <string name="detail_staff_info">ព័ត៌មានលំអិតរបស់លោក %s</string>
+    <string name="detail_label_0">អង្គភាពថ្នាក់ស្មើអគ្គ</string>
     <string name="detail_label_1">ឋានន្តរសក្តិ</string>
     <string name="detail_label_2">មុខតំណែង</string>
     <string name="detail_label_3">អង្គភាព</string>

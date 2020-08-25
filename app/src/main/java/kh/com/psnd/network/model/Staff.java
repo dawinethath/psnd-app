@@ -1,12 +1,17 @@
 package kh.com.psnd.network.model;
 
+import android.content.Context;
+import android.content.Intent;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import core.lib.base.BaseApp;
 import core.lib.network.model.BaseGson;
+import kh.com.psnd.R;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.val;
@@ -101,5 +106,37 @@ public class Staff extends BaseGson {
             }
         }
         return list;
+    }
+
+    private String getTextSharing() {
+        val context = BaseApp.context;
+        val builder = new StringBuilder();
+        builder.append(context.getString(R.string.detail_full_name)).append("  :  ").append(getFullName()).append("\n\n");
+        builder.append(context.getString(R.string.staff_id)).append("  :  ").append(getId()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_1)).append("  :  ").append(getRank()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_2)).append("  :  ").append(getPosition()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_0)).append("  :  ").append(getGeneralCommissariat()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_3)).append("  :  ").append(getDepartment()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_4)).append("  :  ").append(getOffice()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_5)).append("  :  ").append(getSector()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_6)).append("  :  ").append(getStatus()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_7)).append("  :  ").append(getSex()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_8)).append("  :  ").append(getDateOfBirth()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_9)).append("  :  ").append(getEducation()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_10)).append("  :  ").append(getSkill()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_11)).append("  :  ").append(getTelephone()).append("\n\n");
+        builder.append(context.getString(R.string.detail_label_12)).append("  :  ").append(getAddress()).append("\n\n");
+        return builder.toString();
+    }
+
+    public void doShare(Context context) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getTextSharing());
+        sendIntent.putExtra(Intent.EXTRA_TITLE, context.getString(R.string.detail_staff_info, getFullName()));
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        context.startActivity(shareIntent);
     }
 }
