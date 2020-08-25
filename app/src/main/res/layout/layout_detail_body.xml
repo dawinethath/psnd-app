@@ -128,7 +128,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_2"
-            tools:text="នាយកដ្ឋានបុគ្គលិក" />
+            tools:text="មន្រ្តី" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_3"
@@ -136,7 +136,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_3"
-            tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
+            tools:text="នាយកដ្ឋានបុគ្គលិក" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_4"
@@ -144,7 +144,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_4"
-            tools:text="នាយផ្នែក" />
+            tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_5"
@@ -152,7 +152,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@id/label_5"
-            tools:text="មន្រ្តី" />
+            tools:text="នាយផ្នែក" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/value_label_6"

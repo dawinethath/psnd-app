@@ -88,10 +88,10 @@
     <string name="detail_first_name_last_name">គោត្តនាម​ និងនាម</string>
     <string name="detail_first_name_last_name_latin">អក្សរឡាតាំង</string>
     <string name="detail_label_1">ឋានន្តរសក្តិ</string>
-    <string name="detail_label_2">អង្គភាព</string>
-    <string name="detail_label_3">អង្គ.ថ្នាក់ស្មើការិ</string>
-    <string name="detail_label_4">ផ្នែក/ប៉ុស្តិ៍</string>
-    <string name="detail_label_5">មុខតំណែង</string>
+    <string name="detail_label_2">មុខតំណែង</string>
+    <string name="detail_label_3">អង្គភាព</string>
+    <string name="detail_label_4">អង្គ.ថ្នាក់ស្មើការិ</string>
+    <string name="detail_label_5">ផ្នែក/ប៉ុស្តិ៍</string>
     <string name="detail_label_6">ស្ថានភាពការងារ</string>
     <string name="detail_label_7">ភេទ</string>
     <string name="detail_label_8">ឆ្នាំកំណើត</string>
