@@ -31,9 +31,17 @@ v1.0.3 Beta (3)
  - User profile
     - Adjust UI
 
+v1.0.4 Beta (4)
+ - Detail screen
+    - Adjust UI
+    - Correct some labels
+    - Can view album of each staff
+    - Can share staff's info
+    - Take screenshot (pdf) and share with staff's info
+
 Next version
- - View album
  - User management
+ - Generate PDF like web (from webview)
  - Security improvement
  - Auto select in search option if there is a item
  - Detail screen

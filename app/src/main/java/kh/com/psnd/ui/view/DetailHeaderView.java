@@ -13,7 +13,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -115,7 +114,7 @@ public class DetailHeaderView extends FrameLayout {
         binding.headerTitle.setText(staff.getGeneralCommissariat());
         binding.share.setOnClickListener(__ -> staff.doShare(getContext()));
         binding.screenshot.setOnClickListener(__ -> makeScreenshotAndShare(baseFragment, staff));
-        binding.exportPdf.setOnClickListener(__ -> Toast.makeText(getContext(), "Clicked on Export PDF", Toast.LENGTH_SHORT).show());
+//        binding.exportPdf.setOnClickListener(__ -> Toast.makeText(getContext(), "Clicked on Export PDF", Toast.LENGTH_SHORT).show());
 
         {
             // Study blur image
