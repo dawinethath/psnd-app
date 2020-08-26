@@ -108,7 +108,7 @@ public class Staff extends BaseGson {
         return list;
     }
 
-    private String getTextSharing() {
+    public String getTextSharing() {
         val context = BaseApp.context;
         val builder = new StringBuilder();
         builder.append(context.getString(R.string.detail_full_name)).append("  :  ").append(getFullName()).append("\n\n");

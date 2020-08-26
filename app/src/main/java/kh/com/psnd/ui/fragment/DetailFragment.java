@@ -38,6 +38,7 @@ import kh.com.psnd.network.request.RequestStaff;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.network.task.TaskStaff;
 import kh.com.psnd.ui.view.ItemDetailSectionView;
+import kh.com.psnd.utils.PdfUtil;
 import lombok.val;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -80,6 +81,9 @@ public class DetailFragment extends BaseFragment<FragmentDetailBinding> {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        if (mStaff != null) {
+            PdfUtil.deleteScreenshotPdfStaff(mStaff);
+        }
     }
 
     @Override

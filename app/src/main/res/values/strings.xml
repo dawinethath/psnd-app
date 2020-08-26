@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">PSND</string>
+    <string name="fileprovider">psnd.fileprovider</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -84,6 +85,9 @@
     <string name="history">History</string>
 
     <!--    Detail-->
+    <string name="screenshot">Screenshot</string>
+    <string name="shareText">Share staff info</string>
+    <string name="exportPdf">Export PDF</string>
     <string name="detail_cv_title">ជីវប្រវត្តិមន្ត្រីនគរបាលជាតិ</string>
     <string name="detail_first_name_last_name">គោត្តនាម​ និងនាម</string>
     <string name="detail_first_name_last_name_latin">អក្សរឡាតាំង</string>
@@ -92,9 +96,9 @@
     <string name="detail_label_0">អង្គភាពថ្នាក់ស្មើអគ្គ</string>
     <string name="detail_label_1">ឋានន្តរសក្តិ</string>
     <string name="detail_label_2">មុខតំណែង</string>
-    <string name="detail_label_3">អង្គភាព</string>
-    <string name="detail_label_4">អង្គ.ថ្នាក់ស្មើការិ</string>
-    <string name="detail_label_5">ផ្នែក/ប៉ុស្តិ៍</string>
+    <string name="detail_label_3">ថ្នាក់ស្មើនាយកដ្ឋាន</string>
+    <string name="detail_label_4">ថ្នាក់ស្មើការិ</string>
+    <string name="detail_label_5">ថ្នាក់ស្មើផ្នែក/ប៉ុស្តិ៍</string>
     <string name="detail_label_6">ស្ថានភាពការងារ</string>
     <string name="detail_label_7">ភេទ</string>
     <string name="detail_label_8">ឆ្នាំកំណើត</string>

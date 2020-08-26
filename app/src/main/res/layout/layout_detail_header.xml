@@ -69,14 +69,27 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_04dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/exportPdf"
             android:padding="@dimen/space_06dp"
-            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/background"
+            app:layout_constraintEnd_toStartOf="@id/screenshot"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:srcCompat="@drawable/ic_outline_picture_as_pdf_24"
+            app:tint="@android:color/white" />
+
+        <core.lib.widget.MyImageView
+            android:id="@+id/screenshot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_04dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/screenshot"
+            android:padding="@dimen/space_06dp"
             app:layout_constraintBottom_toBottomOf="@+id/background"
             app:layout_constraintEnd_toStartOf="@id/share"
             app:layout_constraintTop_toTopOf="@id/guideline"
-            app:srcCompat="@drawable/ic_outline_picture_as_pdf_24"
-            app:tint="@android:color/white"
-            tools:visibility="visible" />
+            app:srcCompat="@drawable/ic_outline_fullscreen_24"
+            app:tint="@android:color/white" />
 
         <core.lib.widget.MyImageView
             android:id="@+id/share"
@@ -84,12 +97,19 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/shareText"
             android:padding="@dimen/space_06dp"
             app:layout_constraintBottom_toBottomOf="@+id/background"
             app:layout_constraintEnd_toEndOf="@id/background"
             app:layout_constraintTop_toTopOf="@id/guideline"
             app:srcCompat="@drawable/ic_outline_share_24"
             app:tint="@android:color/white" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="exportPdf, screenshot, share" />
 
         <core.lib.widget.MyTextView
             android:id="@+id/headerTitle"
