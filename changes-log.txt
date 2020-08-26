@@ -46,5 +46,8 @@ Next version
  - Auto select in search option if there is a item
  - Detail screen
     - long click on staff name or ID to copy clipboard
-
  - Call api (general_comm) from service to avoid conflict action
+
+Server side
+ - Search with English text
+ - User management
