@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,9 +19,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.amplifyframework.auth.AuthException;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,7 @@ import kh.com.psnd.database.config.AppDatabase;
 import kh.com.psnd.database.entities.DetailStaffEntity;
 import kh.com.psnd.databinding.ActivityMainBinding;
 import kh.com.psnd.databinding.NavHeaderMainBinding;
+import kh.com.psnd.eventbus.CognitoFetchSessionFailureEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.SearchStaff;
@@ -42,6 +48,7 @@ import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.network.task.TaskQRCode;
+import kh.com.psnd.service.CognitoService;
 import lombok.val;
 import retrofit2.Response;
 
@@ -64,6 +71,8 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
             finish();
             ActivityHelper.openLoginActivity(this);
         }
+        CognitoService.start(context);
+
         progress = new DialogProgress(context, false, dialogInterface -> getCompositeDisposable().clear());
         setSupportActionBar(binding.appBarMain.toolbar);
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_search, R.id.nav_user_management, R.id.nav_history, R.id.nav_about)
@@ -236,5 +245,17 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
                 progress.dismiss();
             }
         }));
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onCognitoFetchSessionFailureEventBus(CognitoFetchSessionFailureEventBus event) {
+        Log.i(event);
+        val error = event.getUserPoolTokens().getError();
+        if (error instanceof AuthException.SessionExpiredException) {
+            // todo logic session expired
+        }
+        Toast.makeText(context, R.string.session_expired, Toast.LENGTH_LONG).show();
+        finish();
+        ActivityHelper.openLoginActivity(this);
     }
 }

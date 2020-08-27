@@ -34,7 +34,7 @@ public class SplashScreenActivity extends BaseFragmentActivity<ActivitySplashscr
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ConfigService.start(context);
-        
+
         String version = "v" + ApplicationUtil.getVersionApp(context);
         binding.version.setText(version);
 

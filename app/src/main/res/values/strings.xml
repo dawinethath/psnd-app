@@ -50,6 +50,7 @@
     <string name="sign_up_guide_desc">សូមធ្វើការស្កេន QR Code នៅលើកាតដើម្បីចុះឈ្មោះ</string>
 
     <!--    Login -->
+    <string name="session_expired">Session expired!</string>
     <string name="cancel">បោះបង់</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>

@@ -65,6 +65,7 @@
             tools:replace="android:screenOrientation" />
 
         <service android:name=".service.ConfigService" />
+        <service android:name=".service.CognitoService" />
     </application>
 
 </manifest>

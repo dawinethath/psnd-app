@@ -43,6 +43,7 @@ Next version
  - Need to check user's session from Cognito api, if false logout with alert message
  - User management
  - Generate PDF like web (from webview)
+ - Forget password
  - Security improvement
  - Auto select in search option if there is a item
  - Detail screen
