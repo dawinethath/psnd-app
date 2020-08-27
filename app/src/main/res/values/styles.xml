@@ -74,4 +74,14 @@
         <item name="roundedCornerRadius">@dimen/cardCornerRadius</item>
         <item name="roundingBorderColor">@android:color/white</item>
     </style>
+
+    <style name="TopBarTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:textSize">@dimen/text_size_21sp</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:elevation">@dimen/cardElevation</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

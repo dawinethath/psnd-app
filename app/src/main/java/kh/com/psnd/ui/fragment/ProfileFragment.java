@@ -38,7 +38,10 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
 
         binding.fullName.setText(fullName);
         binding.username.setText(profile.getUsername());
-        // binding.password.setText(profile.getPwd());
+        binding.password.setOnClickListener(__ -> {
+            val fragment = StaffChangePasswordFragment.newInstance();
+            fragment.show(getBaseFragmentActivity().getSupportFragmentManager(), "");
+        });
         binding.imageProfile.setImageURI(image);
         binding.language.setOnClickListener(__ -> doChangeLanguage());
         binding.autoLogout.setOnClickListener(__ -> doAutoLogout());

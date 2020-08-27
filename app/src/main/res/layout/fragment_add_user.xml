@@ -10,14 +10,8 @@
 
         <core.lib.widget.MyTextView
             android:id="@+id/appBar"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="@dimen/cardElevation"
-            android:gravity="center"
+            style="@style/TopBarTitle"
             android:text="@string/add_new_user"
-            android:textColor="@android:color/white"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView

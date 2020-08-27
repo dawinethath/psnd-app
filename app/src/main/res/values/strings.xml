@@ -53,6 +53,16 @@
     <string name="cancel">បោះបង់</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
+    <string name="required">Required</string>
+    <string name="failed_changed_password">បរាជ័យ សូមធ្វើការពិនិត្យឡើងវិញ</string>
+    <string name="failed_limit_changed_password">លើសចំនួនកំណត់នៃការប្ដូរលេខសម្ងាត់ សូមព្យាយាមនៅពេលក្រោយ</string>
+    <string name="success_changed_password">លេខសម្ងាត់ត្រូវបានប្ដូរដោយជោគជ័យ</string>
+    <string name="not_match">មិនត្រូវគ្នា</string>
+    <string name="change_password">ប្ដូរលេខសម្ងាត់</string>
+    <string name="change">ប្ដូរ</string>
+    <string name="current_password">លេខសម្ងាត់​បច្ចុប្បន្ន</string>
+    <string name="new_password">លេខសម្ងាត់ថ្មី</string>
+    <string name="confirm_new_password">បញ្ជាក់លេខសម្ងាត់ថ្មី</string>
     <string name="username_eng">Username</string>
     <string name="username">គណនី</string>
     <string name="password">លេខសម្ងាត់</string>
