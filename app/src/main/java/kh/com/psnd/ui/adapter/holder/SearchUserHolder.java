@@ -3,13 +3,13 @@ package kh.com.psnd.ui.adapter.holder;
 import java.util.List;
 
 import core.lib.base.BaseViewHolder;
-import kh.com.psnd.databinding.ItemUserSearchBinding;
+import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserSearch;
 import kh.com.psnd.ui.fragment.UserManagementFragment;
 
-public class UserSearchHolder extends BaseViewHolder<UserManagementFragment, ItemUserSearchBinding, UserSearch> {
+public class SearchUserHolder extends BaseViewHolder<UserManagementFragment, ItemSearchUserBinding, UserSearch> {
 
-    public UserSearchHolder(UserManagementFragment fragment, ItemUserSearchBinding binding) {
+    public SearchUserHolder(UserManagementFragment fragment, ItemSearchUserBinding binding) {
         super(fragment, binding);
     }
 

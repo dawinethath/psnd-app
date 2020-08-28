@@ -14,57 +14,57 @@ import core.lib.base.BaseFragment;
 import core.lib.helper.CoreRecyclerView;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
-import kh.com.psnd.databinding.LayoutUserSearchBarBinding;
-import kh.com.psnd.databinding.LayoutUserSearchResultBinding;
+import kh.com.psnd.databinding.LayoutSearchResultBinding;
+import kh.com.psnd.databinding.LayoutSearchStaffBarBinding;
 import kh.com.psnd.network.model.StaffFilter;
-import kh.com.psnd.network.request.RequestUserSearch;
-import kh.com.psnd.network.response.ResponseUserSearch;
-import kh.com.psnd.network.task.TaskUserSearch;
-import kh.com.psnd.ui.adapter.UserSearchAdapter;
-import kh.com.psnd.ui.fragment.UserManagementFragment;
+import kh.com.psnd.network.request.RequestSearchStaff;
+import kh.com.psnd.network.response.ResponseSearchStaff;
+import kh.com.psnd.network.task.TaskSearchStaff;
+import kh.com.psnd.ui.adapter.SearchStaffAdapter;
+import kh.com.psnd.ui.fragment.SearchFragment;
 import lombok.val;
 import retrofit2.Response;
 
-public class UserSearchResultView extends FrameLayout {
+public class SearchStaffResultView extends FrameLayout {
 
-    private LayoutUserSearchResultBinding binding          = null;
-    private UserSearchAdapter             adapter          = null;
-    private BaseFragment                  fragment         = null;
-    private RequestUserSearch             requestSearch    = null;
-    private LayoutUserSearchBarBinding    searchBarBinding = null;
+    private LayoutSearchResultBinding binding  = null;
+    private SearchStaffAdapter        adapter  = null;
+    private BaseFragment              fragment = null;
+    private RequestSearchStaff          requestSearchStaff = null;
+    private LayoutSearchStaffBarBinding searchBarBinding   = null;
 
-    public UserSearchResultView(@NonNull Context context) {
+    public SearchStaffResultView(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public UserSearchResultView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SearchStaffResultView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public UserSearchResultView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SearchStaffResultView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init() {
-        binding = LayoutUserSearchResultBinding.inflate(LayoutInflater.from(getContext()), this, true);
+        binding = LayoutSearchResultBinding.inflate(LayoutInflater.from(getContext()), this, true);
         if (isInEditMode()) {
 
         }
     }
 
-    public void setupUI(@NonNull UserManagementFragment fragment, @NonNull UserSearchBarView searchBarView) {
+    public void setupUI(@NonNull SearchFragment fragment, @NonNull SearchStaffBarView searchBarView) {
         this.fragment = fragment;
         this.searchBarBinding = searchBarView.getBinding();
-        adapter = new UserSearchAdapter(fragment);
+        adapter = new SearchStaffAdapter(fragment);
         binding.recyclerView.setupUI(false, new CoreRecyclerView.Callback() {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                Log.i("Page : " + page + "    totalItemsCount : " + totalItemsCount + "   " + requestSearch);
-                if (requestSearch != null) {
-                    val nextPage = requestSearch.getPage() + 1;
+                Log.i("Page : " + page + "    totalItemsCount : " + totalItemsCount + "   " + requestSearchStaff);
+                if (requestSearchStaff != null) {
+                    val nextPage = requestSearchStaff.getPage() + 1;
                     loadMore(nextPage);
                 }
             }
@@ -94,23 +94,23 @@ public class UserSearchResultView extends FrameLayout {
 
     public void doSearch(StaffFilter filter) {
         val page = 1;
-        requestSearch = new RequestUserSearch(null, page);
+        requestSearchStaff = new RequestSearchStaff(null, filter, page);
         loadMore(page);
     }
 
     public void doSearch(String search) {
         val page = 1;
-        requestSearch = new RequestUserSearch(search, page);
+        requestSearchStaff = new RequestSearchStaff(search, null, page);
         loadMore(page);
     }
 
     private void loadMore(int page) {
         Log.i("Sent request to server...");
-        requestSearch.setPage(page);
+        requestSearchStaff.setPage(page);
 
         val compositeDisposable = fragment.getCompositeDisposable();
         compositeDisposable.clear();
-        val task = new TaskUserSearch(requestSearch);
+        val task = new TaskSearchStaff(requestSearchStaff);
         searchBarBinding.progressBar.setVisibility(VISIBLE);
         compositeDisposable.add(task.start(task.new SimpleObserver() {
 
@@ -123,10 +123,10 @@ public class UserSearchResultView extends FrameLayout {
             public void onNext(@io.reactivex.annotations.NonNull Response result) {
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
-                    val data = (ResponseUserSearch) result.body();
+                    val data = (ResponseSearchStaff) result.body();
                     Log.i(data);
                     if (data != null) {
-                        if (requestSearch.getPage() == 1) {
+                        if (requestSearchStaff.getPage() == 1) {
                             adapter.clear();
                         }
                         if (data.getResult() != null) {

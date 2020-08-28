@@ -16,40 +16,40 @@ import core.lib.base.BaseFragment;
 import core.lib.listener.MyTextWatcher;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
-import kh.com.psnd.databinding.LayoutSearchBarBinding;
+import kh.com.psnd.databinding.LayoutSearchStaffBarBinding;
 import kh.com.psnd.network.model.StaffFilter;
 import kh.com.psnd.ui.fragment.SearchOptionFragment;
 import lombok.Getter;
 import lombok.Setter;
 
-public class SearchBarView extends FrameLayout {
+public class SearchStaffBarView extends FrameLayout {
 
-    private final long                   TIME_DELAY           = 500L;
+    private final long                        TIME_DELAY           = 500L;
     @Getter
-    private       LayoutSearchBarBinding binding              = null;
-    private       Callback               callback             = null;
-    private       BaseFragment           fragment             = null;
-    private       Handler                handler              = new Handler();
-    private       MyRunnable             runnable             = new MyRunnable();
-    private       SearchOptionFragment   searchOptionFragment = null;
+    private       LayoutSearchStaffBarBinding binding              = null;
+    private       Callback                    callback             = null;
+    private       BaseFragment                fragment             = null;
+    private       Handler                     handler              = new Handler();
+    private       MyRunnable                  runnable             = new MyRunnable();
+    private       SearchOptionFragment        searchOptionFragment = null;
 
-    public SearchBarView(@NonNull Context context) {
+    public SearchStaffBarView(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public SearchBarView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SearchStaffBarView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public SearchBarView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SearchStaffBarView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init() {
-        binding = LayoutSearchBarBinding.inflate(LayoutInflater.from(getContext()), this, true);
+        binding = LayoutSearchStaffBarBinding.inflate(LayoutInflater.from(getContext()), this, true);
 
         if (isInEditMode()) {
 

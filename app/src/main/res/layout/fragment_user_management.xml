@@ -8,14 +8,14 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragment.SearchFragment">
 
-        <kh.com.psnd.ui.view.UserSearchBarView
+        <kh.com.psnd.ui.view.SearchUserBarView
             android:id="@+id/searchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <kh.com.psnd.ui.view.UserSearchResultView
+        <kh.com.psnd.ui.view.SearchUserResultView
             android:id="@+id/searchResult"
             android:layout_width="match_parent"
             android:layout_height="0dp"

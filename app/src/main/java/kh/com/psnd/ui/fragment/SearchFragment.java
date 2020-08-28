@@ -17,7 +17,7 @@ import kh.com.psnd.databinding.FragmentSearchBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.StaffFilter;
-import kh.com.psnd.ui.view.SearchBarView;
+import kh.com.psnd.ui.view.SearchStaffBarView;
 import lombok.Setter;
 import lombok.val;
 
@@ -59,7 +59,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
         binding.searchBar.onResume();
     }
 
-    private SearchBarView.Callback callback = new SearchBarView.Callback() {
+    private SearchStaffBarView.Callback callback = new SearchStaffBarView.Callback() {
         @Override
         public void doSearch(StaffFilter filter) {
             binding.searchBar.clearTextBox();

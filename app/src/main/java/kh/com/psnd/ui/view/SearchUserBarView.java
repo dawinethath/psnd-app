@@ -16,38 +16,38 @@ import core.lib.base.BaseFragment;
 import core.lib.listener.MyTextWatcher;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
-import kh.com.psnd.databinding.LayoutUserSearchBarBinding;
+import kh.com.psnd.databinding.LayoutSearchUserBarBinding;
 import kh.com.psnd.network.model.StaffFilter;
 import lombok.Getter;
 import lombok.Setter;
 
-public class UserSearchBarView extends FrameLayout {
+public class SearchUserBarView extends FrameLayout {
 
     private final long                       TIME_DELAY = 500L;
     @Getter
-    private       LayoutUserSearchBarBinding binding    = null;
+    private       LayoutSearchUserBarBinding binding    = null;
     private       Callback                   callback   = null;
     private       BaseFragment               fragment   = null;
     private       Handler                    handler    = new Handler();
     private       MyRunnable                 runnable   = new MyRunnable();
 
-    public UserSearchBarView(@NonNull Context context) {
+    public SearchUserBarView(@NonNull Context context) {
         super(context);
         init();
     }
 
-    public UserSearchBarView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SearchUserBarView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public UserSearchBarView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SearchUserBarView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
     private void init() {
-        binding = LayoutUserSearchBarBinding.inflate(LayoutInflater.from(getContext()), this, true);
+        binding = LayoutSearchUserBarBinding.inflate(LayoutInflater.from(getContext()), this, true);
 
         if (isInEditMode()) {
 
