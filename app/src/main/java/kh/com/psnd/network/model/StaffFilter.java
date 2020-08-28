@@ -13,7 +13,7 @@ import lombok.var;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class SearchFilter extends BaseParam {
+public class StaffFilter extends BaseParam {
 
     private static final String CACHE_NAME = "SearchFilter";
 
@@ -107,10 +107,10 @@ public class SearchFilter extends BaseParam {
         this.position_label_9 = position;
     }
 
-    public static SearchFilter getLastFilter() {
+    public static StaffFilter getLastFilter() {
         try {
             String json   = FileManager.readTextFileInContext(BaseApp.context, CACHE_NAME);
-            var    search = new Gson().fromJson(json, SearchFilter.class);
+            var    search = new Gson().fromJson(json, StaffFilter.class);
             return search;
         } catch (Exception e) {
         }

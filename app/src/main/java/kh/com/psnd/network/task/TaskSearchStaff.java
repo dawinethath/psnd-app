@@ -6,22 +6,22 @@ import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.adapter.PsndService;
-import kh.com.psnd.network.request.RequestRank_label_8;
-import kh.com.psnd.network.response.ResponseRank_Label_8;
+import kh.com.psnd.network.request.RequestSearchStaff;
+import kh.com.psnd.network.response.ResponseSearchStaff;
 import lombok.val;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class TaskRank_label_8 extends BaseTask<RequestRank_label_8, Response, ResponseRank_Label_8> {
+public class TaskSearchStaff extends BaseTask<RequestSearchStaff, Response, ResponseSearchStaff> {
 
-    public TaskRank_label_8() {
+    public TaskSearchStaff(RequestSearchStaff requestSearchStaff) {
         super(new HttpHeader(BaseNetwork.getToken(), LoginManager.getUserToken()));
-        setData(new RequestRank_label_8());
+        setData(requestSearchStaff);
     }
 
     @Override
-    protected Response onExecute(Retrofit retrofit, RequestRank_label_8 param) throws Exception {
+    protected Response onExecute(Retrofit retrofit, RequestSearchStaff param) throws Exception {
         val service = retrofit.create(PsndService.class);
-        return service.rank_Label_8(param).execute();
+        return service.searchStaff(param).execute();
     }
 }

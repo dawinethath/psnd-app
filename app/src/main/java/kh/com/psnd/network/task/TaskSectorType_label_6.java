@@ -4,6 +4,7 @@ package kh.com.psnd.network.task;
 import core.lib.network.base.BaseNetwork;
 import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
+import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestSectorType_label_6;
 import kh.com.psnd.network.response.ResponseSectorType_Label_6;
@@ -14,7 +15,7 @@ import retrofit2.Retrofit;
 public class TaskSectorType_label_6 extends BaseTask<RequestSectorType_label_6, Response, ResponseSectorType_Label_6> {
 
     public TaskSectorType_label_6() {
-        super(new HttpHeader(BaseNetwork.getToken()));
+        super(new HttpHeader(BaseNetwork.getToken(), LoginManager.getUserToken()));
         setData(new RequestSectorType_label_6());
     }
 

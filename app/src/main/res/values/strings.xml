@@ -17,7 +17,7 @@
 
     <!--    User Management-->
     <string name="add_new_user">បង្កើតគណនី</string>
-    <string name="search_user">អត្តលេខ ឬ ឈ្មោះគណនី</string>
+    <string name="search_user">អត្តលេខ ឬ ឈ្មោះគណនីអ្នកប្រើប្រាស់</string>
     <string name="create">បង្កើតគណនី</string>
     <string name="generate_password">Generate</string>
     <string name="user_role">User\'s role</string>

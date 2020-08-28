@@ -4,6 +4,7 @@ package kh.com.psnd.network.task;
 import core.lib.network.base.BaseNetwork;
 import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
+import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestOfficeType_label_4;
 import kh.com.psnd.network.response.ResponseOfficeType_Label_4;
@@ -14,7 +15,7 @@ import retrofit2.Retrofit;
 public class TaskOfficeType_label_4 extends BaseTask<RequestOfficeType_label_4, Response, ResponseOfficeType_Label_4> {
 
     public TaskOfficeType_label_4(RequestOfficeType_label_4 request) {
-        super(new HttpHeader(BaseNetwork.getToken()));
+        super(new HttpHeader(BaseNetwork.getToken(), LoginManager.getUserToken()));
         setData(request);
     }
 

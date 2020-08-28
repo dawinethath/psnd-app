@@ -6,22 +6,22 @@ import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.adapter.PsndService;
-import kh.com.psnd.network.request.RequestRank_label_8;
-import kh.com.psnd.network.response.ResponseRank_Label_8;
+import kh.com.psnd.network.request.RequestUserRolePrivilege;
+import kh.com.psnd.network.response.ResponseUserRolePrivilege;
 import lombok.val;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class TaskRank_label_8 extends BaseTask<RequestRank_label_8, Response, ResponseRank_Label_8> {
+public class TaskUserRolePrivilege extends BaseTask<RequestUserRolePrivilege, Response, ResponseUserRolePrivilege> {
 
-    public TaskRank_label_8() {
+    public TaskUserRolePrivilege() {
         super(new HttpHeader(BaseNetwork.getToken(), LoginManager.getUserToken()));
-        setData(new RequestRank_label_8());
+        setData(new RequestUserRolePrivilege());
     }
 
     @Override
-    protected Response onExecute(Retrofit retrofit, RequestRank_label_8 param) throws Exception {
+    protected Response onExecute(Retrofit retrofit, RequestUserRolePrivilege param) throws Exception {
         val service = retrofit.create(PsndService.class);
-        return service.rank_Label_8(param).execute();
+        return service.userRolePrivilege(param).execute();
     }
 }

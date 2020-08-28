@@ -2,6 +2,7 @@ package kh.com.psnd.helper;
 
 import androidx.annotation.NonNull;
 
+import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amplifyframework.core.Amplify;
 import com.google.gson.Gson;
 
@@ -12,7 +13,7 @@ import core.lib.utils.FileManager;
 import core.lib.utils.Log;
 import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.internal.MobileInternal;
-import kh.com.psnd.network.model.SearchFilter;
+import kh.com.psnd.network.model.StaffFilter;
 import kh.com.psnd.network.model.UserProfile;
 import lombok.val;
 
@@ -40,7 +41,7 @@ public class LoginManager {
         FileManager.writeTextToFileInContext(BaseApp.context, SECRET, "");
         // clear cache
         SearchHistoryDao.clearCache();
-        SearchFilter.clearLastFilter();
+        StaffFilter.clearLastFilter();
         ActivityHelper.openLoginActivity(activity);
         activity.finish();
 
@@ -73,4 +74,11 @@ public class LoginManager {
         return null;
     }
 
+    public static String getUserToken() {
+        try {
+            return AWSMobileClient.getInstance().getTokens().getIdToken().getTokenString();
+        } catch (Throwable e) {
+            return null;
+        }
+    }
 }

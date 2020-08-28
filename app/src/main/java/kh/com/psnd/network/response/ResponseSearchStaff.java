@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class ResponseSearch extends BaseResponse {
+public class ResponseSearchStaff extends BaseResponse {
 
     @SerializedName("result")
     private List<SearchStaff> result;

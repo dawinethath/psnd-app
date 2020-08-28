@@ -15,7 +15,7 @@ import core.lib.databinding.ChipEntryBinding;
 import core.lib.utils.Log;
 import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.databinding.LayoutHistoryChipGroupBinding;
-import kh.com.psnd.network.model.SearchFilter;
+import kh.com.psnd.network.model.StaffFilter;
 import lombok.val;
 
 public class SearchHistoryChipGroupView extends FrameLayout {
@@ -61,14 +61,14 @@ public class SearchHistoryChipGroupView extends FrameLayout {
                 binding.chipGroup.addView(chip);
             }
             else if (SearchHistoryDao.LAST_FILTER.equals(label)) {
-                val filter = SearchFilter.getLastFilter();
+                val filter = StaffFilter.getLastFilter();
                 if (filter != null) {
                     val labelChip = filter.getLabelChip();
                     if (!TextUtils.isEmpty(labelChip)) {
                         val chip = makeChip(labelChip);
                         chip.setOnClickListener(__ -> callback.showSearchOption(filter));
                         chip.setOnCloseIconClickListener(__ -> {
-                            SearchFilter.clearLastFilter();
+                            StaffFilter.clearLastFilter();
                             setupUI(callback);
                         });
                         binding.chipGroup.addView(chip);
@@ -90,6 +90,6 @@ public class SearchHistoryChipGroupView extends FrameLayout {
     interface Callback {
         void clicked(Object object);
 
-        void showSearchOption(SearchFilter filter);
+        void showSearchOption(StaffFilter filter);
     }
 }

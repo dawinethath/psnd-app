@@ -25,7 +25,7 @@ import kh.com.psnd.network.model.OfficeName_label_5;
 import kh.com.psnd.network.model.OfficeType_label_4;
 import kh.com.psnd.network.model.Position_label_9;
 import kh.com.psnd.network.model.Rank_label_8;
-import kh.com.psnd.network.model.SearchFilter;
+import kh.com.psnd.network.model.StaffFilter;
 import kh.com.psnd.network.model.SectorName_label_7;
 import kh.com.psnd.network.model.SectorType_label_6;
 import kh.com.psnd.network.request.RequestDepartmentType_label_2;
@@ -83,7 +83,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
         super.dismiss();
     }
 
-    public void show(SearchFilter filter) {
+    public void show(StaffFilter filter) {
         checkLastFilter(filter);
         super.show();
     }
@@ -113,7 +113,7 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
             val obj9 = (Position_label_9) binding.searchSelect9.getTag();
 
             if (obj1 != null && obj2 != null && obj3 != null && obj4 != null && obj5 != null) {
-                val filter = new SearchFilter();
+                val filter = new StaffFilter();
                 filter.setGeneralComm_label_1(obj1);
                 filter.setDepartmentType_label_2(obj2);
                 filter.setDepartment_label_3(obj3);
@@ -140,14 +140,14 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     private void checkLastFilter() {
-        val filter = SearchFilter.getLastFilter();
+        val filter = StaffFilter.getLastFilter();
         if (filter != null) {
             checkLastFilter(filter);
         }
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void checkLastFilter(@androidx.annotation.NonNull SearchFilter filter) {
+    private void checkLastFilter(@androidx.annotation.NonNull StaffFilter filter) {
         new AsyncTask<Void, Void, Void>() {
 
             List<GeneralComm_label_1> listGeneral = null;
@@ -962,6 +962,6 @@ public class SearchOptionFragment extends BaseDialog<FragmentSearchOptionBinding
     }
 
     public interface Callback {
-        void onSearch(SearchFilter filter);
+        void onSearch(StaffFilter filter);
     }
 }

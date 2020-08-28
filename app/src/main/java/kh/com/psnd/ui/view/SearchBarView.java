@@ -17,7 +17,7 @@ import core.lib.listener.MyTextWatcher;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutSearchBarBinding;
-import kh.com.psnd.network.model.SearchFilter;
+import kh.com.psnd.network.model.StaffFilter;
 import kh.com.psnd.ui.fragment.SearchOptionFragment;
 import lombok.Getter;
 import lombok.Setter;
@@ -69,13 +69,13 @@ public class SearchBarView extends FrameLayout {
                 binding.txtSearch.setText(object.toString());
                 binding.txtSearch.setSelection(binding.txtSearch.getText().length());
             }
-            else if (object instanceof SearchFilter) {
-                callback.doSearch((SearchFilter) object);
+            else if (object instanceof StaffFilter) {
+                callback.doSearch((StaffFilter) object);
             }
         }
 
         @Override
-        public void showSearchOption(SearchFilter filter) {
+        public void showSearchOption(StaffFilter filter) {
             searchOptionFragment.show(filter);
         }
     };
@@ -150,7 +150,7 @@ public class SearchBarView extends FrameLayout {
 
         void doSearch(CharSequence search);
 
-        void doSearch(SearchFilter filter);
+        void doSearch(StaffFilter filter);
 
         void onClickedClear();
     }

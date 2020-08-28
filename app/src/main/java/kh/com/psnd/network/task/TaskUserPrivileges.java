@@ -4,6 +4,7 @@ package kh.com.psnd.network.task;
 import core.lib.network.base.BaseNetwork;
 import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
+import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestUserPrivilege;
 import kh.com.psnd.network.response.ResponseUserPrivileges;
@@ -14,7 +15,7 @@ import retrofit2.Retrofit;
 public class TaskUserPrivileges extends BaseTask<RequestUserPrivilege, Response, ResponseUserPrivileges> {
 
     public TaskUserPrivileges() {
-        super(new HttpHeader(BaseNetwork.getToken()));
+        super(new HttpHeader(BaseNetwork.getToken(), LoginManager.getUserToken()));
         setData(new RequestUserPrivilege());
     }
 

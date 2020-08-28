@@ -11,14 +11,20 @@ import kh.com.psnd.network.request.RequestOfficeType_label_4;
 import kh.com.psnd.network.request.RequestPosition_label_9;
 import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.request.RequestRank_label_8;
-import kh.com.psnd.network.request.RequestSearch;
+import kh.com.psnd.network.request.RequestSearchStaff;
+import kh.com.psnd.network.request.RequestSearchUser;
 import kh.com.psnd.network.request.RequestSectorName_label_7;
 import kh.com.psnd.network.request.RequestSectorType_label_6;
 import kh.com.psnd.network.request.RequestSignUpVerify;
 import kh.com.psnd.network.request.RequestStaff;
+import kh.com.psnd.network.request.RequestUserAdd;
+import kh.com.psnd.network.request.RequestUserDisable;
 import kh.com.psnd.network.request.RequestUserPrivilege;
+import kh.com.psnd.network.request.RequestUserProfile;
 import kh.com.psnd.network.request.RequestUserRole;
+import kh.com.psnd.network.request.RequestUserRolePrivilege;
 import kh.com.psnd.network.request.RequestUserSearch;
+import kh.com.psnd.network.request.RequestUserUpdateRole;
 import kh.com.psnd.network.response.ResponseConfig;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
 import kh.com.psnd.network.response.ResponseDepartment_Label_3;
@@ -28,31 +34,42 @@ import kh.com.psnd.network.response.ResponseOfficeName_Label_5;
 import kh.com.psnd.network.response.ResponseOfficeType_Label_4;
 import kh.com.psnd.network.response.ResponsePosition_Label_9;
 import kh.com.psnd.network.response.ResponseRank_Label_8;
-import kh.com.psnd.network.response.ResponseSearch;
+import kh.com.psnd.network.response.ResponseSearchStaff;
+import kh.com.psnd.network.response.ResponseSearchUser;
 import kh.com.psnd.network.response.ResponseSectionName_Label_7;
 import kh.com.psnd.network.response.ResponseSectorType_Label_6;
 import kh.com.psnd.network.response.ResponseSignUpVerify;
 import kh.com.psnd.network.response.ResponseStaff;
+import kh.com.psnd.network.response.ResponseUserDisable;
 import kh.com.psnd.network.response.ResponseUserPrivileges;
+import kh.com.psnd.network.response.ResponseUserProfile;
+import kh.com.psnd.network.response.ResponseUserRolePrivilege;
 import kh.com.psnd.network.response.ResponseUserRoles;
 import kh.com.psnd.network.response.ResponseUserSearch;
+import kh.com.psnd.network.response.ResponseUserUpdateRole;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
-/**
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/general_comm
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/dep_type_from_departments
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/departments
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/office_type_id
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/offices_name
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/sec_type_id
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/sectors_name
- * <p>
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/search_staffs
- * POST - https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/get_staff
- */
 public interface PsndService {
+
+    @POST("user/profile")
+    Call<ResponseUserProfile> userProfile(@Body RequestUserProfile requestUserProfile);
+
+    @POST("user/roles_privileges")
+    Call<ResponseUserRolePrivilege> userRolePrivilege(@Body RequestUserRolePrivilege requestUserRolePrivilege);
+
+    @POST("user/disable_user")
+    Call<ResponseUserDisable> userDisable(@Body RequestUserDisable requestUserDisable);
+
+    @POST("user/update_role")
+    Call<ResponseUserUpdateRole> userUpdateRole(@Body RequestUserUpdateRole requestUserUpdateRole);
+
+    @POST("user/add_new")
+    Call<ResponseSearchUser> userAdd(@Body RequestUserAdd requestUserAdd);
+
+    @POST("user/list_search")
+    Call<ResponseSearchUser> searchUser(@Body RequestSearchUser requestSearchUser);
 
     @POST("user_privilege")
     Call<ResponseUserPrivileges> userPrivileges(@Body RequestUserPrivilege requestUserPrivilege);
@@ -61,13 +78,13 @@ public interface PsndService {
     Call<ResponseUserRoles> userRoles(@Body RequestUserRole requestUserRole);
 
     @POST("user_search")
-    Call<ResponseUserSearch> userSearch(@Body RequestUserSearch requestUserSearch);
+    Call<ResponseUserSearch> searchUser(@Body RequestUserSearch requestUserSearch);
 
     @POST("sign_up_authentication")
     Call<ResponseSignUpVerify> signUpVerify(@Body RequestSignUpVerify requestSignUpVerify);
 
     @POST("search_staffs")
-    Call<ResponseSearch> search(@Body RequestSearch requestSearch);
+    Call<ResponseSearchStaff> searchStaff(@Body RequestSearchStaff requestSearchStaff);
 
     @POST("get_staff_by_qrcode")
     Call<ResponseStaff> qrcode(@Body RequestQRCode requestQRCode);
