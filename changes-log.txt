@@ -51,5 +51,6 @@ Next version
  - Call api (general_comm) from service to avoid conflict action
 
 Server side
+ - Need to field (staffNumberEn) in search staff result
  - Search with English text
  - User management

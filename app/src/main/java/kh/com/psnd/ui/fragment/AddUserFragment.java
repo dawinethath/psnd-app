@@ -27,6 +27,7 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         binding.fullName.setText(searchStaff.getFullName());
         binding.staffNumber.setText(searchStaff.getStaffNumber());
         binding.imageProfile.setImageURI(searchStaff.getPhoto());
+        binding.username.setText(searchStaff.getStaffNumberEn());
 
         binding.username.requestFocus();
         binding.username.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.username), 600);
