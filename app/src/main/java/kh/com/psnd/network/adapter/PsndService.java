@@ -19,11 +19,8 @@ import kh.com.psnd.network.request.RequestSignUpVerify;
 import kh.com.psnd.network.request.RequestStaff;
 import kh.com.psnd.network.request.RequestUserAdd;
 import kh.com.psnd.network.request.RequestUserDisable;
-import kh.com.psnd.network.request.RequestUserPrivilege;
 import kh.com.psnd.network.request.RequestUserProfile;
-import kh.com.psnd.network.request.RequestUserRole;
 import kh.com.psnd.network.request.RequestUserRolePrivilege;
-import kh.com.psnd.network.request.RequestUserSearch;
 import kh.com.psnd.network.request.RequestUserUpdateRole;
 import kh.com.psnd.network.response.ResponseConfig;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
@@ -41,11 +38,8 @@ import kh.com.psnd.network.response.ResponseSectorType_Label_6;
 import kh.com.psnd.network.response.ResponseSignUpVerify;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.network.response.ResponseUserDisable;
-import kh.com.psnd.network.response.ResponseUserPrivileges;
 import kh.com.psnd.network.response.ResponseUserProfile;
 import kh.com.psnd.network.response.ResponseUserRolePrivilege;
-import kh.com.psnd.network.response.ResponseUserRoles;
-import kh.com.psnd.network.response.ResponseUserSearch;
 import kh.com.psnd.network.response.ResponseUserUpdateRole;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -70,15 +64,6 @@ public interface PsndService {
 
     @POST("user/list_search")
     Call<ResponseSearchUser> searchUser(@Body RequestSearchUser requestSearchUser);
-
-    @POST("user_privilege")
-    Call<ResponseUserPrivileges> userPrivileges(@Body RequestUserPrivilege requestUserPrivilege);
-
-    @POST("user_roles")
-    Call<ResponseUserRoles> userRoles(@Body RequestUserRole requestUserRole);
-
-    @POST("user_search")
-    Call<ResponseUserSearch> searchUser(@Body RequestUserSearch requestUserSearch);
 
     @POST("sign_up_authentication")
     Call<ResponseSignUpVerify> signUpVerify(@Body RequestSignUpVerify requestSignUpVerify);

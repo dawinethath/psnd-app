@@ -16,12 +16,12 @@ import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutSearchResultBinding;
 import kh.com.psnd.databinding.LayoutSearchUserBarBinding;
-import kh.com.psnd.network.model.StaffFilter;
-import kh.com.psnd.network.request.RequestUserSearch;
+import kh.com.psnd.network.model.UserFilter;
+import kh.com.psnd.network.request.RequestSearchUser;
 import kh.com.psnd.network.response.ResponseUserSearch;
-import kh.com.psnd.network.task.TaskUserSearch;
+import kh.com.psnd.network.task.TaskSearchUser;
 import kh.com.psnd.ui.adapter.SearchUserAdapter;
-import kh.com.psnd.ui.fragment.UserManagementFragment;
+import kh.com.psnd.ui.fragment.SearchUserFragment;
 import lombok.val;
 import retrofit2.Response;
 
@@ -30,7 +30,7 @@ public class SearchUserResultView extends FrameLayout {
     private LayoutSearchResultBinding  binding          = null;
     private SearchUserAdapter          adapter          = null;
     private BaseFragment               fragment         = null;
-    private RequestUserSearch          requestSearch    = null;
+    private RequestSearchUser          requestSearch    = null;
     private LayoutSearchUserBarBinding searchBarBinding = null;
 
     public SearchUserResultView(@NonNull Context context) {
@@ -55,7 +55,7 @@ public class SearchUserResultView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull UserManagementFragment fragment, @NonNull SearchUserBarView searchBarView) {
+    public void setupUI(@NonNull SearchUserFragment fragment, @NonNull SearchUserBarView searchBarView) {
         this.fragment = fragment;
         this.searchBarBinding = searchBarView.getBinding();
         adapter = new SearchUserAdapter(fragment);
@@ -92,15 +92,15 @@ public class SearchUserResultView extends FrameLayout {
         searchBarBinding.progressBar.setVisibility(GONE);
     }
 
-    public void doSearch(StaffFilter filter) {
+    public void doSearch(UserFilter filter) {
         val page = 1;
-        requestSearch = new RequestUserSearch(null, page);
+        requestSearch = new RequestSearchUser(null, filter, page);
         loadMore(page);
     }
 
     public void doSearch(String search) {
         val page = 1;
-        requestSearch = new RequestUserSearch(search, page);
+        requestSearch = new RequestSearchUser(search, null, page);
         loadMore(page);
     }
 
@@ -110,7 +110,7 @@ public class SearchUserResultView extends FrameLayout {
 
         val compositeDisposable = fragment.getCompositeDisposable();
         compositeDisposable.clear();
-        val task = new TaskUserSearch(requestSearch);
+        val task = new TaskSearchUser(requestSearch);
         searchBarBinding.progressBar.setVisibility(VISIBLE);
         compositeDisposable.add(task.start(task.new SimpleObserver() {
 

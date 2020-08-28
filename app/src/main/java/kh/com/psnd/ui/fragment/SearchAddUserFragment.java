@@ -35,7 +35,7 @@ public class SearchAddUserFragment extends BaseDialog<FragmentSearchAddUserBindi
     public void show() {
         val fragment = fragmentManager.findFragmentById(R.id.searchAddUserFragment);
         if (fragment != null) {
-            ((SearchFragment) fragment).setParentCallBack(this);
+            ((SearchStaffFragment) fragment).setParentCallBack(this);
         }
         super.show();
     }

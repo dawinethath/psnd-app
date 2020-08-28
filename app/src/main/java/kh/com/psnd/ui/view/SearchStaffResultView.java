@@ -21,7 +21,7 @@ import kh.com.psnd.network.request.RequestSearchStaff;
 import kh.com.psnd.network.response.ResponseSearchStaff;
 import kh.com.psnd.network.task.TaskSearchStaff;
 import kh.com.psnd.ui.adapter.SearchStaffAdapter;
-import kh.com.psnd.ui.fragment.SearchFragment;
+import kh.com.psnd.ui.fragment.SearchStaffFragment;
 import lombok.val;
 import retrofit2.Response;
 
@@ -55,7 +55,7 @@ public class SearchStaffResultView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull SearchFragment fragment, @NonNull SearchStaffBarView searchBarView) {
+    public void setupUI(@NonNull SearchStaffFragment fragment, @NonNull SearchStaffBarView searchBarView) {
         this.fragment = fragment;
         this.searchBarBinding = searchBarView.getBinding();
         adapter = new SearchStaffAdapter(fragment);

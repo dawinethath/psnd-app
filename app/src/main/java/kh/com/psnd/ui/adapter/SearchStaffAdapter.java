@@ -9,12 +9,12 @@ import core.lib.base.BaseRecyclerView;
 import kh.com.psnd.databinding.ItemSearchStaffBinding;
 import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.ui.adapter.holder.SearchStaffHolder;
-import kh.com.psnd.ui.fragment.SearchFragment;
+import kh.com.psnd.ui.fragment.SearchStaffFragment;
 
 
-public class SearchStaffAdapter extends BaseRecyclerView<SearchFragment, SearchStaffHolder, SearchStaff> {
+public class SearchStaffAdapter extends BaseRecyclerView<SearchStaffFragment, SearchStaffHolder, SearchStaff> {
 
-    public SearchStaffAdapter(@NonNull SearchFragment fragment) {
+    public SearchStaffAdapter(@NonNull SearchStaffFragment fragment) {
         super(fragment);
     }
 

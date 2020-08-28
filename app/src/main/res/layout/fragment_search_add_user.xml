@@ -22,7 +22,7 @@
 
         <fragment
             android:id="@+id/searchAddUserFragment"
-            android:name="kh.com.psnd.ui.fragment.SearchFragment"
+            android:name="kh.com.psnd.ui.fragment.SearchStaffFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

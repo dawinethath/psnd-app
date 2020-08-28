@@ -5,11 +5,11 @@ import java.util.List;
 import core.lib.base.BaseViewHolder;
 import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserSearch;
-import kh.com.psnd.ui.fragment.UserManagementFragment;
+import kh.com.psnd.ui.fragment.SearchUserFragment;
 
-public class SearchUserHolder extends BaseViewHolder<UserManagementFragment, ItemSearchUserBinding, UserSearch> {
+public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSearchUserBinding, UserSearch> {
 
-    public SearchUserHolder(UserManagementFragment fragment, ItemSearchUserBinding binding) {
+    public SearchUserHolder(SearchUserFragment fragment, ItemSearchUserBinding binding) {
         super(fragment, binding);
     }
 

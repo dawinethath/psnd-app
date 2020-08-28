@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.SearchFragment">
+        tools:context=".ui.fragment.SearchStaffFragment">
 
         <kh.com.psnd.ui.view.SearchUserBarView
             android:id="@+id/searchBar"

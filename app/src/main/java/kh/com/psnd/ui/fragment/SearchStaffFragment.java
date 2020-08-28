@@ -13,7 +13,7 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.database.dao.SearchHistoryDao;
-import kh.com.psnd.databinding.FragmentSearchBinding;
+import kh.com.psnd.databinding.FragmentSearchStaffBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.StaffFilter;
@@ -21,7 +21,7 @@ import kh.com.psnd.ui.view.SearchStaffBarView;
 import lombok.Setter;
 import lombok.val;
 
-public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
+public class SearchStaffFragment extends BaseFragment<FragmentSearchStaffBinding> {
 
     @Setter
     private Object parentCallBack = null;
@@ -94,7 +94,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> {
 
     @Override
     protected int layoutId() {
-        return R.layout.fragment_search;
+        return R.layout.fragment_search_staff;
     }
 
     @Override

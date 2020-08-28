@@ -17,7 +17,7 @@ import core.lib.listener.MyTextWatcher;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutSearchUserBarBinding;
-import kh.com.psnd.network.model.StaffFilter;
+import kh.com.psnd.network.model.UserFilter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -119,7 +119,7 @@ public class SearchUserBarView extends FrameLayout {
 
         void doSearch(CharSequence search);
 
-        void doSearch(StaffFilter filter);
+        void doSearch(UserFilter filter);
 
         void onClickedClear();
     }

@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/nav_search"
-        android:name="kh.com.psnd.ui.fragment.SearchFragment"
+        android:name="kh.com.psnd.ui.fragment.SearchStaffFragment"
         android:label="@string/menu_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search_staff" />
 
     <fragment
         android:id="@+id/nav_user_management"
-        android:name="kh.com.psnd.ui.fragment.UserManagementFragment"
+        android:name="kh.com.psnd.ui.fragment.SearchUserFragment"
         android:label="@string/menu_user_manager"
-        tools:layout="@layout/fragment_user_management" />
+        tools:layout="@layout/fragment_search_user" />
 
     <fragment
         android:id="@+id/nav_history"
