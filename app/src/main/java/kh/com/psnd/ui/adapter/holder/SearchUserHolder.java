@@ -4,16 +4,16 @@ import java.util.List;
 
 import core.lib.base.BaseViewHolder;
 import kh.com.psnd.databinding.ItemSearchUserBinding;
-import kh.com.psnd.network.model.UserSearch;
+import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.ui.fragment.SearchUserFragment;
 
-public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSearchUserBinding, UserSearch> {
+public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSearchUserBinding, UserProfile> {
 
     public SearchUserHolder(SearchUserFragment fragment, ItemSearchUserBinding binding) {
         super(fragment, binding);
     }
 
-    public void bind(List<UserSearch> items, int position) {
+    public void bind(List<UserProfile> items, int position) {
         super.bind(items.get(position));
 //        binding.image.setImageURI(item.getPhoto());
 //        binding.name.setText(item.getFullName());

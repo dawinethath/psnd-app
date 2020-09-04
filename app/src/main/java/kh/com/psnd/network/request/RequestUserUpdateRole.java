@@ -16,14 +16,14 @@ import lombok.EqualsAndHashCode;
 public class RequestUserUpdateRole extends BaseParam {
 
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @SerializedName("key_name_role")
-    private String role;
+    private String roleName;
 
     @SerializedName("privileges")
     private List<UserPrivilege> privileges;
 
     @SerializedName("modified_by")
-    private String modified_by;
+    private String modifiedBy;
 }

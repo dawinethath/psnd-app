@@ -39,7 +39,7 @@ import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.SignUpStep1;
 import kh.com.psnd.network.model.Staff;
-import kh.com.psnd.network.model.UserProfile;
+import kh.com.psnd.network.model.LoginProfile;
 import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseStaff;
@@ -133,7 +133,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                         Log.i("Amplify : " + value);
                         if (value.isSignUpComplete()) {
                             // todo save user profile, open main screen, fetch user's token
-                            val profile = new UserProfile(username, pwd, staff, null);
+                            val profile = new LoginProfile(username, pwd, staff, null);
                             doAutoSignIn(profile);
                         }
                         else {
@@ -160,7 +160,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
         }
     }
 
-    private void doAutoSignIn(UserProfile profile) {
+    private void doAutoSignIn(LoginProfile profile) {
         Amplify.Auth.signIn(profile.getUsername(), profile.getPwd(), new Consumer<AuthSignInResult>() {
             @Override
             public void accept(@NonNull AuthSignInResult value) {
@@ -180,7 +180,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
         });
     }
 
-    private void fetchAuthSession(UserProfile profile) {
+    private void fetchAuthSession(LoginProfile profile) {
         Amplify.Auth.fetchAuthSession(
                 result -> {
                     AWSCognitoAuthSession cognitoAuthSession = (AWSCognitoAuthSession) result;

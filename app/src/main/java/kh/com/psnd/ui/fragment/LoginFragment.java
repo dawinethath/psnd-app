@@ -26,7 +26,8 @@ import kh.com.psnd.databinding.FragmentLoginBinding;
 import kh.com.psnd.eventbus.SingUpSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
-import kh.com.psnd.network.model.UserProfile;
+import kh.com.psnd.network.model.LoginProfile;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.request.RequestStaff;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.network.task.TaskStaff;
@@ -105,7 +106,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                 public void accept(@NonNull AuthSignInResult value) {
                     Log.i("result : " + value);
                     if (value.isSignInComplete()) {
-                        val profile = new UserProfile(username, password, null, null);
+                        val profile = new LoginProfile(username, password, null, null);
                         fetchAuthSession(profile);
                     }
                     else {
@@ -128,7 +129,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
         }
     }
 
-    private void fetchAuthSession(UserProfile profile) {
+    private void fetchAuthSession(LoginProfile profile) {
         Amplify.Auth.fetchAuthSession(
                 result -> {
                     AWSCognitoAuthSession cognitoAuthSession = (AWSCognitoAuthSession) result;
@@ -142,7 +143,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
         );
     }
 
-    private void fetchStaff(UserProfile profile) {
+    private void fetchStaff(LoginProfile profile) {
         try {
             val staffId = AWSMobileClient.getInstance().getUserAttributes().get("custom:staff_id");
             val task    = new TaskStaff(new RequestStaff(Integer.valueOf(staffId)));
@@ -161,7 +162,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                         val staff = data.getResult();
 
                         try {
-                            profile.setStaff(staff);
+                            profile.setStaff(new SearchStaff(staff));
                             profile.setTokens(AWSMobileClient.getInstance().getTokens());
                             LoginManager.loggedIn(profile);
                             EventBus.getDefault().post(new SingUpSuccessEventBus());

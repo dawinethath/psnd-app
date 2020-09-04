@@ -14,20 +14,20 @@ import core.lib.utils.Log;
 import kh.com.psnd.database.dao.SearchHistoryDao;
 import kh.com.psnd.internal.MobileInternal;
 import kh.com.psnd.network.model.StaffFilter;
-import kh.com.psnd.network.model.UserProfile;
+import kh.com.psnd.network.model.LoginProfile;
 import lombok.val;
 
 public class LoginManager {
 
     private static final String SECRET = "login.bin";
 
-    public static void loggedIn(@NonNull UserProfile userProfile) {
+    public static void loggedIn(@NonNull LoginProfile loginProfile) {
         Log.i("loggedIn");
-        if (userProfile == null) {
+        if (loginProfile == null) {
             throw new RuntimeException("Login cannot null");
         }
         try {
-            val json = userProfile.toJson();
+            val json = loginProfile.toJson();
             Log.i(json);
             val encrypt = CryptoUtil.encryptMsg(json, MobileInternal.secret());
             FileManager.writeTextToFileInContext(BaseApp.context, SECRET, encrypt);
@@ -55,16 +55,16 @@ public class LoginManager {
         return getUserProfile() != null;
     }
 
-    public static void updateUserProfile(@NonNull UserProfile userProfile) {
-        loggedIn(userProfile);
+    public static void updateUserProfile(@NonNull LoginProfile loginProfile) {
+        loggedIn(loginProfile);
     }
 
-    public static UserProfile getUserProfile() {
+    public static LoginProfile getUserProfile() {
         try {
             val encrypt = FileManager.readFileFromContextToBytes(BaseApp.context, SECRET);
             val decrypt = CryptoUtil.decryptMsg(encrypt, MobileInternal.secret());
             val json    = decrypt;
-            val login   = new Gson().fromJson(json, UserProfile.class);
+            val login   = new Gson().fromJson(json, LoginProfile.class);
             if (login != null && login.getTokens() != null) {
                 return login;
             }

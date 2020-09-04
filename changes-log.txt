@@ -54,3 +54,18 @@ Server side
  - Need to field (staffNumberEn) in search staff result
  - Search with English text
  - User management
+ - api
+    - Check year 001, 1899
+    - configure
+        - must store Cognito object in database (json format)
+    - user/list_search
+        - need id
+        - object staff (fullname & photo)
+        - field privileges need to convert to json object
+    - user/add_new
+        - push array object's privileges field
+    - user/update_role
+        - push array object's privileges field
+    - user/disable_user
+        - field active must be boolean type
+

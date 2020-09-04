@@ -18,13 +18,13 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentProfileBinding;
 import kh.com.psnd.helper.FingerPrintManager;
 import kh.com.psnd.helper.LoginManager;
-import kh.com.psnd.network.model.UserProfile;
+import kh.com.psnd.network.model.LoginProfile;
 import lombok.val;
 
 public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
 
-    private UserProfile profile    = LoginManager.getUserProfile();
-    private Goldfinger  goldfinger = null;
+    private LoginProfile profile    = LoginManager.getUserProfile();
+    private Goldfinger   goldfinger = null;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override

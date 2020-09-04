@@ -18,7 +18,7 @@ import kh.com.psnd.databinding.LayoutSearchResultBinding;
 import kh.com.psnd.databinding.LayoutSearchUserBarBinding;
 import kh.com.psnd.network.model.UserFilter;
 import kh.com.psnd.network.request.RequestSearchUser;
-import kh.com.psnd.network.response.ResponseUserSearch;
+import kh.com.psnd.network.response.ResponseSearchUser;
 import kh.com.psnd.network.task.TaskSearchUser;
 import kh.com.psnd.ui.adapter.SearchUserAdapter;
 import kh.com.psnd.ui.fragment.SearchUserFragment;
@@ -123,7 +123,7 @@ public class SearchUserResultView extends FrameLayout {
             public void onNext(@io.reactivex.annotations.NonNull Response result) {
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
-                    val data = (ResponseUserSearch) result.body();
+                    val data = (ResponseSearchUser) result.body();
                     Log.i(data);
                     if (data != null) {
                         if (requestSearch.getPage() == 1) {

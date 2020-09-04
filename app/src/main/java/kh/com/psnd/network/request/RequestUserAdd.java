@@ -6,6 +6,7 @@ import java.util.List;
 
 import core.lib.network.request.BaseParam;
 import kh.com.psnd.network.model.UserPrivilege;
+import kh.com.psnd.network.model.UserProfile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,11 +23,15 @@ public class RequestUserAdd extends BaseParam {
     private String username;
 
     @SerializedName("key_name_role")
-    private String role;
+    private String roleName;
 
     @SerializedName("privileges")
     private List<UserPrivilege> privileges;
 
     @SerializedName("created_by")
-    private String created_by;
+    private String createdBy;
+
+    public void setCreatedBy(UserProfile userProfile) {
+        this.createdBy = userProfile.getId();
+    }
 }

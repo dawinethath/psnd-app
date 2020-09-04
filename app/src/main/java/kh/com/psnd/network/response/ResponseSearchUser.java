@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 import core.lib.network.response.BaseResponse;
-import kh.com.psnd.network.model.User;
+import kh.com.psnd.network.model.UserProfile;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -15,6 +15,6 @@ import lombok.EqualsAndHashCode;
 public class ResponseSearchUser extends BaseResponse {
 
     @SerializedName("result")
-    private List<User> result;
+    private List<UserProfile> result;
 
 }

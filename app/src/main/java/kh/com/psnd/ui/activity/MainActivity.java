@@ -43,7 +43,7 @@ import kh.com.psnd.eventbus.CognitoFetchSessionFailureEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.SearchStaff;
-import kh.com.psnd.network.model.UserProfile;
+import kh.com.psnd.network.model.LoginProfile;
 import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseStaff;
@@ -132,10 +132,10 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
     }
 
     private void bindViewHeader() {
-        UserProfile profile = LoginManager.getUserProfile();
+        LoginProfile profile = LoginManager.getUserProfile();
         Log.i(profile);
 
-        val staffId  = (profile.getStaff() == null ? "" : profile.getStaff().getId());
+        val staffId  = (profile.getStaff() == null ? "" : profile.getStaff().getStaffNumber());
         val fullName = (profile != null && profile.getStaff() != null) ? profile.getStaff().getFullName() : "";
         val image    = profile.getStaff() == null ? null : profile.getStaff().getPhoto();
 

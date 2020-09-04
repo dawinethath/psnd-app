@@ -13,12 +13,12 @@ import lombok.EqualsAndHashCode;
 public class RequestUserDisable extends BaseParam {
 
     @SerializedName("id")
-    private int id;
+    private String id;
 
     @SerializedName("active")
     private boolean active;
 
     @SerializedName("modified_by")
-    private String modified_by;
+    private String modifiedBy;
 
 }
