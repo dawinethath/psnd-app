@@ -21,7 +21,7 @@ import kh.com.psnd.network.request.RequestSearchUser;
 import kh.com.psnd.network.response.ResponseSearchUser;
 import kh.com.psnd.network.task.TaskSearchUser;
 import kh.com.psnd.ui.adapter.SearchUserAdapter;
-import kh.com.psnd.ui.fragment.SearchUserFragment;
+import kh.com.psnd.ui.fragment.user.SearchUserFragment;
 import lombok.val;
 import retrofit2.Response;
 

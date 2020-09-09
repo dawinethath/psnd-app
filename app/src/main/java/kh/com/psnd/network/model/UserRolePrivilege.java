@@ -12,6 +12,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class UserRolePrivilege extends BaseGson {
 
+    public static final String EXTRA = "UserRolePrivilege";
+
+    @SerializedName("app_role_default")
+    private UserRole defaultRole;
+
     @SerializedName("app_privileges")
     private List<UserPrivilege> privileges;
 

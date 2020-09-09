@@ -8,8 +8,8 @@ public class PasswordGeneratorUtil {
 
     public static PasswordGenerator getPasswordGenerator() {
         return new PasswordGenerator.Builder()
-                .useLower(true)
-                .useUpper(true)
+                .useLower(false)
+                .useUpper(false)
                 .useDigits(true)
                 .usePunctuation(false)
                 .build();

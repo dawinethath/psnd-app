@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import core.lib.databinding.TextOutlineBinding;
-import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutPrivilegesChipGroupBinding;
 import kh.com.psnd.network.model.UserPrivilege;
@@ -48,7 +47,6 @@ public class UserPrivilegesChipGroupView extends FrameLayout {
         binding.chipGroup.removeAllViews();
         val privileges = userProfile.getPrivileges();
         for (val privilege : privileges) {
-            Log.i("privilege : " + privilege);
             val chip = makeChip(privilege);
             binding.chipGroup.addView(chip);
         }

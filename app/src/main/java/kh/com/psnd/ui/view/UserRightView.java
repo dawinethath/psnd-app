@@ -11,10 +11,12 @@ import androidx.annotation.Nullable;
 import com.google.android.material.chip.Chip;
 
 import core.lib.databinding.ChipActionBinding;
+import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutUserRightBinding;
 import kh.com.psnd.network.model.UserRole;
-import kh.com.psnd.ui.fragment.AddUserFragment;
-import kh.com.psnd.ui.fragment.SelectUserRightFragment;
+import kh.com.psnd.network.model.UserRolePrivilege;
+import kh.com.psnd.ui.fragment.user.AddUserFragment;
+import kh.com.psnd.ui.fragment.user.SelectUserRightFragment;
 import lombok.val;
 
 public class UserRightView extends FrameLayout {
@@ -44,10 +46,11 @@ public class UserRightView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull AddUserFragment fragment, @NonNull UserRole userRole) {
+    public void setupUI(@NonNull AddUserFragment fragment, @NonNull UserRolePrivilege userRolePrivilege, @NonNull UserRole userRole) {
+        Log.i("Current User Role : " + userRole);
         binding.btnEdit.setOnClickListener(__ -> {
-            val selectUserRightFragment = SelectUserRightFragment.newInstance(userRole);
-            selectUserRightFragment.setCallback(currentUserRole -> setupUI(fragment, currentUserRole));
+            val selectUserRightFragment = SelectUserRightFragment.newInstance(userRolePrivilege, userRole);
+            selectUserRightFragment.setCallback(currentUserRole -> setupUI(fragment, userRolePrivilege, currentUserRole));
             selectUserRightFragment.show(fragment.getActivity().getSupportFragmentManager(), "");
         });
         setTag(userRole);

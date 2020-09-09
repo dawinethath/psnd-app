@@ -19,6 +19,7 @@ import kh.com.psnd.databinding.FragmentProfileBinding;
 import kh.com.psnd.helper.FingerPrintManager;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.LoginProfile;
+import kh.com.psnd.ui.fragment.user.StaffChangePasswordFragment;
 import lombok.val;
 
 public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {

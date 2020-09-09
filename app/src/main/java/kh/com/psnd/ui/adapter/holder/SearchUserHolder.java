@@ -5,7 +5,7 @@ import java.util.List;
 import core.lib.base.BaseViewHolder;
 import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserProfile;
-import kh.com.psnd.ui.fragment.SearchUserFragment;
+import kh.com.psnd.ui.fragment.user.SearchUserFragment;
 import lombok.val;
 
 public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSearchUserBinding, UserProfile> {

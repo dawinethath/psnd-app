@@ -68,7 +68,7 @@ public class SearchUserBarView extends FrameLayout {
         binding.txtSearch.requestFocus();
         binding.txtSearch.addTextChangedListener(onTextChangeListener);
         binding.txtSearch.setText("");
-        binding.txtSearch.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.txtSearch), 600);
+        // binding.txtSearch.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.txtSearch), 600);
         binding.textField.setEndIconOnClickListener(__ -> {
             binding.txtSearch.setText("");
             ApplicationUtil.showKeyboard(getContext(), binding.txtSearch);

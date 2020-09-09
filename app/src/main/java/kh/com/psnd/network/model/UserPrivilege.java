@@ -12,17 +12,17 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class UserPrivilege extends BaseGson {
 
-    @SerializedName("id")
-    private int id;
-
-    @SerializedName("name")
-    private String name;
+    @SerializedName("key_name")
+    private String keyName;
 
     @SerializedName("type")
     private String type;
 
+    @SerializedName("name")
+    private String name;
+
     public UserPrivilege clone() {
-        return new UserPrivilege(id, name, type);
+        return new UserPrivilege(keyName, type, name);
     }
 
     @Override

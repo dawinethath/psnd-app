@@ -1,4 +1,4 @@
-package kh.com.psnd.ui.fragment;
+package kh.com.psnd.ui.fragment.user;
 
 import android.os.Bundle;
 import android.text.TextUtils;

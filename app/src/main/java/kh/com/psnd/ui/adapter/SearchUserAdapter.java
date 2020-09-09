@@ -9,7 +9,7 @@ import core.lib.base.BaseRecyclerView;
 import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.ui.adapter.holder.SearchUserHolder;
-import kh.com.psnd.ui.fragment.SearchUserFragment;
+import kh.com.psnd.ui.fragment.user.SearchUserFragment;
 
 
 public class SearchUserAdapter extends BaseRecyclerView<SearchUserFragment, SearchUserHolder, UserProfile> {

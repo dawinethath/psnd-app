@@ -9,27 +9,28 @@ import kh.com.psnd.network.model.UserRole;
 
 public class MockUsers {
 
-    private static final String PRIVILEGE_TYPE_FIELD    = "field";
-    private static final String PRIVILEGE_TYPE_POLICY   = "policy";
-    public static final  int    ROLE_CUSTOM_ID          = -1;
-    public static final  int    PRIVILEGE_BASIC_INFO_ID = -1;
+    private static final String PRIVILEGE_TYPE_FIELD            = "field";
+    private static final String PRIVILEGE_TYPE_POLICY           = "policy";
+    public static final  String ROLE_CUSTOM_ID                  = "custom";
+    public static final  String PRIVILEGE_DEFAULT_BASIC_INFO_ID = "basic_info";
+    public static final  String ROLE_DEFAULT_ID                 = "user";
 
-    private static final UserPrivilege privilege_basic_info    = new UserPrivilege(PRIVILEGE_BASIC_INFO_ID, "Basic Info", PRIVILEGE_TYPE_FIELD);
-    private static final UserPrivilege privilege_date_of_birth = new UserPrivilege(1, "Date of Birth", PRIVILEGE_TYPE_FIELD);
-    private static final UserPrivilege privilege_phone         = new UserPrivilege(2, "Phone", PRIVILEGE_TYPE_FIELD);
-    private static final UserPrivilege privilege_history       = new UserPrivilege(3, "History", PRIVILEGE_TYPE_FIELD);
-    private static final UserPrivilege privilege_add_user      = new UserPrivilege(4, "Add User", PRIVILEGE_TYPE_POLICY);
-    private static final UserPrivilege privilege_edit_user     = new UserPrivilege(5, "Edit User", PRIVILEGE_TYPE_POLICY);
-    private static final UserPrivilege privilege_disable_user  = new UserPrivilege(6, "Disable User", PRIVILEGE_TYPE_POLICY);
+    private static final UserPrivilege privilege_basic_info    = new UserPrivilege(PRIVILEGE_DEFAULT_BASIC_INFO_ID, "Basic Info", PRIVILEGE_TYPE_FIELD);
+    private static final UserPrivilege privilege_date_of_birth = new UserPrivilege("date_of_birth", "Date of Birth", PRIVILEGE_TYPE_FIELD);
+    private static final UserPrivilege privilege_phone         = new UserPrivilege("phone", "Phone", PRIVILEGE_TYPE_FIELD);
+    private static final UserPrivilege privilege_history       = new UserPrivilege("history", "History", PRIVILEGE_TYPE_FIELD);
+    private static final UserPrivilege privilege_add_user      = new UserPrivilege("add_user", "Add User", PRIVILEGE_TYPE_POLICY);
+    private static final UserPrivilege privilege_edit_user     = new UserPrivilege("edit_user", "Edit User", PRIVILEGE_TYPE_POLICY);
+    private static final UserPrivilege privilege_disable_user  = new UserPrivilege("disable_user", "Disable User", PRIVILEGE_TYPE_POLICY);
 
-    public static final  UserRole userRole_user  = new UserRole(1, "User", null).addPrivilege(privilege_basic_info.clone());
-    private static final UserRole userRole_admin = new UserRole(2, "Admin", null)
+    public static final  UserRole userRole_user  = new UserRole("user", "User", null).addPrivilege(privilege_basic_info.clone());
+    private static final UserRole userRole_admin = new UserRole("admin", "Admin", null)
             .addPrivilege(privilege_basic_info.clone())
             .addPrivilege(privilege_date_of_birth.clone())
             .addPrivilege(privilege_phone.clone())
             .addPrivilege(privilege_history.clone());
 
-    private static final UserRole userRole_super_admin = new UserRole(3, "Super Admin", null)
+    private static final UserRole userRole_super_admin = new UserRole("super_admin", "Super Admin", null)
             .addPrivilege(privilege_basic_info.clone())
             .addPrivilege(privilege_date_of_birth.clone())
             .addPrivilege(privilege_phone.clone())

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_user_management"
-        android:name="kh.com.psnd.ui.fragment.SearchUserFragment"
+        android:name="kh.com.psnd.ui.fragment.user.SearchUserFragment"
         android:label="@string/menu_user_manager"
         tools:layout="@layout/fragment_search_user" />
 

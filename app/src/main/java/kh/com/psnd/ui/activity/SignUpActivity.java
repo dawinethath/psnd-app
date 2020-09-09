@@ -5,7 +5,7 @@ import android.os.Bundle;
 import core.lib.base.BaseFragmentActivity;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivityFragmentBinding;
-import kh.com.psnd.ui.fragment.SignUpFragment;
+import kh.com.psnd.ui.fragment.user.SignUpFragment;
 
 public class SignUpActivity extends BaseFragmentActivity<ActivityFragmentBinding> {
 

@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class DetailStaffEntity {
 
-    public static final long INTERVAL_CHECK_NEW_DATA = 1000 * 60 * 1; // 1mn
+    public static final long INTERVAL_CHECK_NEW_DATA = 1_000 * 60 * 1; // 1mn
 
     @PrimaryKey
     public int staffId;

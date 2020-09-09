@@ -1,4 +1,4 @@
-package kh.com.psnd.ui.fragment;
+package kh.com.psnd.ui.fragment.user;
 
 import android.content.Context;
 
@@ -11,6 +11,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchAddUserBinding;
 import kh.com.psnd.network.model.SearchStaff;
+import kh.com.psnd.ui.fragment.SearchStaffFragment;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.val;

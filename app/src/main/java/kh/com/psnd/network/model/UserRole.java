@@ -18,8 +18,8 @@ public class UserRole extends BaseGson {
 
     public static final String EXTRA = "UserRole";
 
-    @SerializedName("id")
-    private int id;
+    @SerializedName("key_name")
+    private String keyName;
 
     @SerializedName("name")
     private String name;
@@ -28,7 +28,7 @@ public class UserRole extends BaseGson {
     private List<UserPrivilege> privileges;
 
     public UserRole clone() {
-        val role = new UserRole(id, name, new ArrayList<>());
+        val role = new UserRole(keyName, name, new ArrayList<>());
         if (privileges != null) {
             for (val item : privileges) {
                 role.addPrivilege(item);
@@ -43,7 +43,7 @@ public class UserRole extends BaseGson {
         }
         boolean exist = false;
         for (val item : privileges) {
-            if (item.getId() == privilege.getId()) {
+            if (item.getKeyName().equals(privilege.getKeyName())) {
                 exist = true;
                 break;
             }
@@ -57,7 +57,7 @@ public class UserRole extends BaseGson {
     public void removePrivilege(UserPrivilege privilege) {
         if (privilege != null) {
             for (int i = 0; i < privileges.size(); i++) {
-                if (privileges.get(i).getId() == privilege.getId()) {
+                if (privileges.get(i).getKeyName().equals(privilege.getKeyName())) {
                     privileges.remove(i);
                     break;
                 }

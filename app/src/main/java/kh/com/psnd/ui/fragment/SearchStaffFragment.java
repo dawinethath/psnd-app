@@ -17,6 +17,7 @@ import kh.com.psnd.databinding.FragmentSearchStaffBinding;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.StaffFilter;
+import kh.com.psnd.ui.fragment.user.SearchAddUserFragment;
 import kh.com.psnd.ui.view.SearchStaffBarView;
 import lombok.Setter;
 import lombok.val;

@@ -1,25 +1,62 @@
-package kh.com.psnd.ui.fragment;
+package kh.com.psnd.ui.fragment.user;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import core.lib.base.BaseFragment;
+import core.lib.dialog.DialogProgress;
 import core.lib.utils.ApplicationUtil;
+import core.lib.utils.Log;
+import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchUserBinding;
 import kh.com.psnd.network.model.UserFilter;
+import kh.com.psnd.network.response.ResponseUserRolePrivilege;
+import kh.com.psnd.network.task.TaskUserRolePrivilege;
 import kh.com.psnd.ui.view.SearchUserBarView;
 import lombok.val;
+import retrofit2.Response;
 
 public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> {
 
+    private DialogProgress progress;
+
     @Override
     public void setupUI() {
-        binding.addNewUser.setOnClickListener(__ -> {
-            val fragment = new AddUserFragment();
-            fragment.show(getParentFragmentManager(), "");
-        });
+        progress = new DialogProgress(getContext(), true, dialogInterface -> getCompositeDisposable().clear());
+        binding.addNewUser.setOnClickListener(__ -> loadRolePrivilege());
         binding.searchBar.setupUI(this, callback);
         binding.searchResult.setupUI(this, binding.searchBar);
+
+//        loadRolePrivilege();
+    }
+
+    private void loadRolePrivilege() {
+        progress.show();
+        val task = new TaskUserRolePrivilege();
+        new CompositeDisposable().add(task.start(task.new SimpleObserver() {
+
+            @Override
+            public Class<?> clazzResponse() {
+                return null;
+            }
+
+            @Override
+            public void onNext(Response result) {
+                Log.i("LOG >> onNext >> result : " + result);
+                if (result.isSuccessful()) {
+                    val data     = (ResponseUserRolePrivilege) result.body();
+                    val fragment = AddUserFragment.newInstance(data.getResult());
+                    fragment.show(getParentFragmentManager(), "");
+                }
+                progress.dismiss();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(e);
+                progress.dismiss();
+            }
+        }));
     }
 
     @Override
