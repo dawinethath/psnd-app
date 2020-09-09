@@ -24,4 +24,9 @@ public class UserPrivilege extends BaseGson {
     public UserPrivilege clone() {
         return new UserPrivilege(id, name, type);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -13,8 +13,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class LoginProfile extends UserProfile {
 
-    @SerializedName("username")
-    private String username;
     @SerializedName("pwd")
     private String pwd;
     @SerializedName("Tokens")
@@ -24,7 +22,7 @@ public class LoginProfile extends UserProfile {
     }
 
     public LoginProfile(@NonNull String username, @NonNull String pwd, @Nullable Staff staff, @Nullable Tokens tokens) {
-        this.username = username;
+        setUsername(username);
         this.pwd = pwd;
         this.tokens = tokens;
         if (staff == null) {

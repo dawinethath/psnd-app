@@ -2,7 +2,6 @@ package kh.com.psnd.ui.view;
 
 import android.content.Context;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -67,13 +66,13 @@ public class SearchUserBarView extends FrameLayout {
         this.callback = callback;
 
         binding.txtSearch.requestFocus();
+        binding.txtSearch.addTextChangedListener(onTextChangeListener);
+        binding.txtSearch.setText("");
         binding.txtSearch.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.txtSearch), 600);
         binding.textField.setEndIconOnClickListener(__ -> {
             binding.txtSearch.setText("");
             ApplicationUtil.showKeyboard(getContext(), binding.txtSearch);
-            callback.onClickedClear();
         });
-        binding.txtSearch.addTextChangedListener(onTextChangeListener);
         binding.txtSearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             switch (actionId) {
                 case EditorInfo.IME_ACTION_DONE:
@@ -96,13 +95,8 @@ public class SearchUserBarView extends FrameLayout {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             Log.i(charSequence);
-            if (TextUtils.isEmpty(binding.txtSearch.getText().toString())) {
-                callback.onClickedClear();
-            }
-            else {
-                handler.removeCallbacks(runnable);
-                handler.postDelayed(runnable, TIME_DELAY);
-            }
+            handler.removeCallbacks(runnable);
+            handler.postDelayed(runnable, TIME_DELAY);
         }
     };
 
@@ -121,7 +115,6 @@ public class SearchUserBarView extends FrameLayout {
 
         void doSearch(UserFilter filter);
 
-        void onClickedClear();
     }
 
     public void onPause() {

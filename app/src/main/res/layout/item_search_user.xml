@@ -22,7 +22,7 @@
             app:roundedCornerRadius="@dimen/cardCornerRadius" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/name"
+            android:id="@+id/username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_08dp"
@@ -34,22 +34,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintTop_toTopOf="@id/image"
-            tools:text="យ៉ាវ ណាលីនដាវីដ" />
+            tools:text="root" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/id"
+            android:id="@+id/role"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_15sp"
-            app:layout_constraintBottom_toTopOf="@id/department"
-            app:layout_constraintEnd_toEndOf="@id/name"
-            app:layout_constraintStart_toStartOf="@id/name"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            tools:text="90193" />
+            android:drawableTint="@color/textViewColor"
+            android:drawablePadding="@dimen/space_08dp"
+            android:drawableStart="@drawable/ic_outline_local_offer_24"
+            app:layout_constraintBottom_toTopOf="@id/privileges"
+            app:layout_constraintEnd_toEndOf="@id/username"
+            app:layout_constraintStart_toStartOf="@id/username"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            tools:text="Admin" />
 
-        <core.lib.widget.MyTextView
-            android:id="@+id/department"
+        <kh.com.psnd.ui.view.UserPrivilegesChipGroupView
+            android:id="@+id/privileges"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -57,19 +60,9 @@
             android:textColor="@color/textViewColor"
             android:textSize="@dimen/text_size_15sp"
             app:layout_constraintBottom_toBottomOf="@id/image"
-            app:layout_constraintEnd_toEndOf="@id/name"
-            app:layout_constraintStart_toStartOf="@id/name"
+            app:layout_constraintEnd_toEndOf="@id/username"
+            app:layout_constraintStart_toStartOf="@id/username"
             tools:text="នាយកដ្ឋានបុគ្គលិក" />
-
-        <core.lib.widget.MyImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha=".4"
-            android:tint="@color/textViewColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/name"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
         <View
             android:layout_width="0dp"
@@ -77,7 +70,7 @@
             android:background="@drawable/recycler_divider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/name" />
+            app:layout_constraintStart_toStartOf="@id/username" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/space_04dp"
+        android:paddingEnd="@dimen/space_14dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/chipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_outline_radius_10"
+                android:text="Date of birth" />
+
+        </LinearLayout>
+
+        <!--        <core.lib.widget.MyChipGroup-->
+        <!--            android:id="@+id/chipGroup"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:singleLine="false"-->
+        <!--            app:singleSelection="true">-->
+
+        <!--            <core.lib.widget.MyChip-->
+        <!--                style="@style/Widget.MaterialComponents.Chip.Action"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="88888"-->
+        <!--                android:textColor="@color/textViewHeaderColor"-->
+        <!--                android:textSize="@dimen/text_size_13sp"-->
+        <!--                app:ensureMinTouchTargetSize="false" />-->
+
+        <!--            <core.lib.widget.MyChip-->
+        <!--                style="@style/Widget.MaterialComponents.Chip.Action"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="77777"-->
+        <!--                android:textColor="@color/textViewHeaderColor"-->
+        <!--                android:textSize="@dimen/text_size_13sp"-->
+        <!--                app:ensureMinTouchTargetSize="false" />-->
+
+        <!--        </core.lib.widget.MyChipGroup>-->
+    </HorizontalScrollView>
+
+</layout>

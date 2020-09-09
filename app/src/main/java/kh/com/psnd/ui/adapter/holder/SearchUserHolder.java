@@ -6,6 +6,7 @@ import core.lib.base.BaseViewHolder;
 import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.ui.fragment.SearchUserFragment;
+import lombok.val;
 
 public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSearchUserBinding, UserProfile> {
 
@@ -15,10 +16,13 @@ public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSea
 
     public void bind(List<UserProfile> items, int position) {
         super.bind(items.get(position));
-//        binding.image.setImageURI(item.getPhoto());
-//        binding.name.setText(item.getFullName());
-//        binding.department.setText(item.getDepartment());
-//        binding.id.setText(item.getStaffNumber());
-//        binding.getRoot().setOnClickListener(__ -> fragment.onClickedItem(items, position));
+        val username = item.getStaff() == null ? item.getUsername() : item.getStaff().getFullName();
+        binding.username.setText(username);
+        binding.image.setImageURI((item.getStaff() != null) ? item.getStaff().getPhoto() : null);
+        binding.role.setText(item.getRole().getName());
+        binding.privileges.setupUI(item);
+        binding.getRoot().setOnClickListener(__ -> {
+//            fragment.onClickedItem(items, position)
+        });
     }
 }

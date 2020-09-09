@@ -1,12 +1,9 @@
 package kh.com.psnd.ui.fragment;
 
-import android.text.TextUtils;
-
 import com.google.android.material.snackbar.Snackbar;
 
 import core.lib.base.BaseFragment;
 import core.lib.utils.ApplicationUtil;
-import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchUserBinding;
 import kh.com.psnd.network.model.UserFilter;
@@ -46,11 +43,6 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
 
         @Override
         public void doSearch(CharSequence search) {
-            Log.i("Search : " + search);
-            if (TextUtils.isEmpty(search)) {
-                // todo do something here
-                return;
-            }
             if (!ApplicationUtil.isOnline()) {
                 Snackbar.make(getView(), R.string.noInternetConnection, Snackbar.LENGTH_SHORT).show();
                 return;
@@ -58,11 +50,6 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
             binding.searchResult.doSearch(search.toString());
         }
 
-        @Override
-        public void onClickedClear() {
-            Log.i("onClickedClear");
-            binding.searchResult.cleanList();
-        }
     };
 
 
