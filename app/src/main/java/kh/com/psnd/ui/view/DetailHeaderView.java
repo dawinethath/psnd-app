@@ -1,6 +1,7 @@
 package kh.com.psnd.ui.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -20,6 +21,7 @@ import androidx.core.content.FileProvider;
 import androidx.core.widget.NestedScrollView;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +31,9 @@ import core.lib.base.BaseFragment;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
+import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.Staff;
+import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.utils.PdfUtil;
 import lombok.val;
 
@@ -96,14 +100,15 @@ public class DetailHeaderView extends FrameLayout {
     }
 
     private void shareImageUri(Staff staff, Uri uri) {
-        Intent sendIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TITLE, getContext().getString(R.string.detail_staff_info, staff.getFullName()));
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, staff.getTextSharing());
+        val title      = getContext().getString(R.string.detail_staff_info, staff.getFullName());
+        val sendIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TITLE, title);
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, title);
         sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
         sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         sendIntent.setType("application/pdf");
 
-        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        val shareIntent = Intent.createChooser(sendIntent, null);
         getContext().startActivity(shareIntent);
     }
 
@@ -112,8 +117,19 @@ public class DetailHeaderView extends FrameLayout {
         binding.firstNameKH.setText(staff.getFullName());
         binding.staffId.setText(staff.getId());
         binding.headerTitle.setText(staff.getGeneralCommissariat());
-        binding.share.setOnClickListener(__ -> staff.doShare(getContext()));
-        binding.screenshot.setOnClickListener(__ -> makeScreenshotAndShare(baseFragment, staff));
+        binding.share.setOnClickListener(__ -> new MaterialAlertDialogBuilder(getContext())
+                .setItems(R.array.share, (DialogInterface.OnClickListener) (dialog, which) -> {
+                    switch (which) {
+                        case 0:
+                            makeScreenshotAndShare(baseFragment, staff);
+                            break;
+                        case 1:
+                            staff.doShare(getContext());
+                            break;
+                    }
+                })
+                .show());
+
 //        binding.exportPdf.setOnClickListener(__ -> Toast.makeText(getContext(), "Clicked on Export PDF", Toast.LENGTH_SHORT).show());
 
         {

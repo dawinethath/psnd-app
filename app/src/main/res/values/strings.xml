@@ -96,8 +96,9 @@
     <string name="history">History</string>
 
     <!--    Detail-->
-    <string name="screenshot">Screenshot</string>
-    <string name="shareText">Share staff info</string>
+    <string name="share">Share</string>
+    <string name="screenshot">Take screenshot</string>
+    <string name="shareText">Share staff\'s information</string>
     <string name="exportPdf">Export PDF</string>
     <string name="detail_cv_title">ជីវប្រវត្តិមន្ត្រីនគរបាលជាតិ</string>
     <string name="detail_first_name_last_name">គោត្តនាម​ និងនាម</string>
