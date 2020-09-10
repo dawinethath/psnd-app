@@ -53,7 +53,7 @@ public interface PsndService {
     @POST("user/check")
     Call<ResponseUserCheck> userCheck(@Body RequestUserCheck requestUserCheck);
 
-    @POST("user/profile")
+    @POST("user/get_profile")
     Call<ResponseUserProfile> userProfile(@Body RequestUserProfile requestUserProfile);
 
     @POST("user/roles_privileges")
