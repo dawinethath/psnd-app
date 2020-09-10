@@ -15,4 +15,7 @@ public class ResponseUserAdd extends BaseResponse {
     @SerializedName("result")
     private UserProfile result;
 
+    public boolean isAccessDenied() {
+        return getStatusCode().equals("400");
+    }
 }

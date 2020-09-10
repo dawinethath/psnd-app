@@ -18,6 +18,9 @@ public class UserProfile extends BaseGson {
     @SerializedName("username")
     private String username;
 
+    @SerializedName("password")
+    private String password;
+
     @SerializedName("role")
     private UserRole role;
 

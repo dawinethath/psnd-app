@@ -1,10 +1,8 @@
 package kh.com.psnd.network.task;
 
 
-import core.lib.network.base.BaseNetwork;
-import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
-import kh.com.psnd.helper.LoginManager;
+import kh.com.psnd.helper.TaskHelper;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestDepartmentType_label_2;
 import kh.com.psnd.network.response.ResponseDepartmentType_Label_2;
@@ -15,7 +13,7 @@ import retrofit2.Retrofit;
 public class TaskDepartmentType_label_2 extends BaseTask<RequestDepartmentType_label_2, Response, ResponseDepartmentType_Label_2> {
 
     public TaskDepartmentType_label_2(RequestDepartmentType_label_2 request) {
-        super(new HttpHeader(BaseNetwork.getToken(), LoginManager.getUserToken()));
+        super(TaskHelper.getHttpHeader());
         setData(request);
     }
 

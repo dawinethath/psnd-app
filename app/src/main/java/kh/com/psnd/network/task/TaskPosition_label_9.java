@@ -1,10 +1,8 @@
 package kh.com.psnd.network.task;
 
 
-import core.lib.network.base.BaseNetwork;
-import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
-import kh.com.psnd.helper.LoginManager;
+import kh.com.psnd.helper.TaskHelper;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestPosition_label_9;
 import kh.com.psnd.network.response.ResponsePosition_Label_9;
@@ -15,7 +13,7 @@ import retrofit2.Retrofit;
 public class TaskPosition_label_9 extends BaseTask<RequestPosition_label_9, Response, ResponsePosition_Label_9> {
 
     public TaskPosition_label_9() {
-        super(new HttpHeader(BaseNetwork.getToken(), LoginManager.getUserToken()));
+        super(TaskHelper.getHttpHeader());
         setData(new RequestPosition_label_9());
     }
 

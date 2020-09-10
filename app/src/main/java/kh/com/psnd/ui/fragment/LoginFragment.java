@@ -27,10 +27,9 @@ import kh.com.psnd.eventbus.SingUpSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.LoginProfile;
-import kh.com.psnd.network.model.SearchStaff;
-import kh.com.psnd.network.request.RequestStaff;
-import kh.com.psnd.network.response.ResponseStaff;
-import kh.com.psnd.network.task.TaskStaff;
+import kh.com.psnd.network.request.RequestUserProfile;
+import kh.com.psnd.network.response.ResponseUserProfile;
+import kh.com.psnd.network.task.TaskUserProfile;
 import lombok.val;
 
 public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
@@ -145,8 +144,8 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
 
     private void fetchStaff(LoginProfile profile) {
         try {
-            val staffId = AWSMobileClient.getInstance().getUserAttributes().get("custom:staff_id");
-            val task    = new TaskStaff(new RequestStaff(Integer.valueOf(staffId)));
+            // val staffId = AWSMobileClient.getInstance().getUserAttributes().get("custom:staff_id");
+            val task = new TaskUserProfile(new RequestUserProfile(profile.getUsername()));
             getCompositeDisposable().add(task.start(task.new SimpleObserver() {
 
                 @Override
@@ -158,11 +157,11 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
                 public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
                     Log.i("LOG >> onNext >> result : " + result);
                     if (result.isSuccessful()) {
-                        val data  = (ResponseStaff) result.body();
-                        val staff = data.getResult();
+                        val data        = (ResponseUserProfile) result.body();
+                        val userProfile = data.getResult();
 
                         try {
-                            profile.setStaff(new SearchStaff(staff));
+                            profile.setUserProfile(userProfile);
                             profile.setTokens(AWSMobileClient.getInstance().getTokens());
                             LoginManager.loggedIn(profile);
                             EventBus.getDefault().post(new SingUpSuccessEventBus());

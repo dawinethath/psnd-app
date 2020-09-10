@@ -10,11 +10,9 @@ import lombok.EqualsAndHashCode;
 @Data
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class RequestUserAdd extends BaseParam {
-
-    @SerializedName("staff_id")
-    private int staff_id;
+public class RequestUserCheck extends BaseParam {
 
     @SerializedName("username")
     private String username;
+    
 }

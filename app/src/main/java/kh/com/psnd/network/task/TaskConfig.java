@@ -1,9 +1,8 @@
 package kh.com.psnd.network.task;
 
 
-import core.lib.network.base.BaseNetwork;
-import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
+import kh.com.psnd.helper.TaskHelper;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestConfig;
 import kh.com.psnd.network.response.ResponseConfig;
@@ -14,7 +13,7 @@ import retrofit2.Retrofit;
 public class TaskConfig extends BaseTask<RequestConfig, Response, ResponseConfig> {
 
     public TaskConfig() {
-        super(new HttpHeader(BaseNetwork.getToken()));
+        super(TaskHelper.getHttpHeader());
         setData(new RequestConfig());
     }
 

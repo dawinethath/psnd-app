@@ -54,7 +54,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        binding.password.setText(profile.getPwd());
+                        binding.password.setText(profile.getPassword());
                         break;
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:

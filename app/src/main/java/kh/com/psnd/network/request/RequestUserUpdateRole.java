@@ -23,7 +23,4 @@ public class RequestUserUpdateRole extends BaseParam {
 
     @SerializedName("privileges")
     private List<UserPrivilege> privileges;
-
-    @SerializedName("modified_by")
-    private String modifiedBy;
 }

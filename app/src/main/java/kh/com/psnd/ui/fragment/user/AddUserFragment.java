@@ -14,6 +14,7 @@ import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentAddUserBinding;
 import kh.com.psnd.network.model.SearchStaff;
+import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.network.model.UserRolePrivilege;
 import lombok.val;
 
@@ -66,7 +67,8 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         }
         if (isValidateUsername() && binding.passwordView.isValidPassword()) {
             // todo call api register cognito and our api
-
+            UserProfile userProfile = new UserProfile();
+//            userProfile.set
         }
     }
 

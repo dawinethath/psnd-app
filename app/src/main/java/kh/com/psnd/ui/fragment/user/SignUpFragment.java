@@ -37,13 +37,19 @@ import kh.com.psnd.databinding.FragmentSignupBinding;
 import kh.com.psnd.eventbus.SingUpSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
+import kh.com.psnd.network.model.LoginProfile;
 import kh.com.psnd.network.model.SignUpStep1;
 import kh.com.psnd.network.model.Staff;
-import kh.com.psnd.network.model.LoginProfile;
 import kh.com.psnd.network.request.RequestQRCode;
+import kh.com.psnd.network.request.RequestUserAdd;
+import kh.com.psnd.network.request.RequestUserCheck;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseStaff;
+import kh.com.psnd.network.response.ResponseUserAdd;
+import kh.com.psnd.network.response.ResponseUserCheck;
 import kh.com.psnd.network.task.TaskQRCode;
+import kh.com.psnd.network.task.TaskUserAdd;
+import kh.com.psnd.network.task.TaskUserCheck;
 import lombok.val;
 import retrofit2.Response;
 
@@ -107,61 +113,131 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
      * 2 : check username from cognito server
      */
     private void doSignUp() {
-        if (binding.passwordView.isValidPassword() && !TextUtils.isEmpty(binding.username.getText())) {
+        val username = binding.username.getText().toString();
+        val pwd      = binding.passwordView.getPassword();
+        if (binding.passwordView.isValidPassword() && !TextUtils.isEmpty(username)) {
             if (!ApplicationUtil.isOnline()) {
                 Toast.makeText(getContext(), R.string.noInternetConnection, Toast.LENGTH_LONG).show();
                 return;
             }
-
             {
-                binding.msg.setText("");
+                // Check existing user in database server
                 progress.show();
-                val username       = binding.username.getText().toString();
-                val pwd            = binding.passwordView.getPassword();
-                val userAttributes = new ArrayList<AuthUserAttribute>();
-                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.name(), staff.getFullName()));
-                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.picture(), staff.getPhoto()));
-                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.address(), staff.getAddress()));
-                userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.custom("custom:staff_id"), staff.getStaffId() + ""));
+                val task = new TaskUserCheck(new RequestUserCheck(username));
+                getCompositeDisposable().add(task.start(task.new SimpleObserver() {
 
-                val signUpOption = AuthSignUpOptions.builder()
-                        .userAttributes(userAttributes)
-                        .build();
-                Amplify.Auth.signUp(username, pwd, signUpOption, new Consumer<AuthSignUpResult>() {
                     @Override
-                    public void accept(@NonNull AuthSignUpResult value) {
-                        Log.i("Amplify : " + value);
-                        if (value.isSignUpComplete()) {
-                            // todo save user profile, open main screen, fetch user's token
-                            val profile = new LoginProfile(username, pwd, staff, null);
-                            doAutoSignIn(profile);
-                        }
-                        else {
-                            progress.dismiss();
+                    public Class<?> clazzResponse() {
+                        return null;
+                    }
+
+                    @Override
+                    public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
+                        Log.i("LOG >> onNext >> result : " + result);
+                        if (result.isSuccessful()) {
+                            val data = (ResponseUserCheck) result.body();
+                            if (data.isFound()) {
+                                binding.msg.setText(R.string.user_already_exists);
+                                progress.dismiss();
+                            }
+                            else {
+                                // signup user
+                                signUpWitCognito();
+                            }
                         }
                     }
-                }, new Consumer<AuthException>() {
+
                     @Override
-                    public void accept(@NonNull AuthException value) {
-                        Log.i("Amplify : " + value);
-                        if (value.getCause() instanceof UsernameExistsException) {
-                            binding.msg.setText(R.string.user_already_exists);
-                        }
-                        else if (value.getCause() instanceof InvalidPasswordException) {
-                            binding.msg.setText(value.getCause().getMessage());
-                        }
-                        else {
-                            binding.msg.setText(value.getMessage());
-                        }
+                    public void onError(Throwable e) {
+                        Log.e(e);
                         progress.dismiss();
                     }
-                });
+                }));
             }
         }
     }
 
+    private void signUpWitCognito() {
+        val username = binding.username.getText().toString();
+        val pwd      = binding.passwordView.getPassword();
+        binding.msg.setText("");
+        val userAttributes = new ArrayList<AuthUserAttribute>();
+        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.name(), staff.getFullName()));
+        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.picture(), staff.getPhoto()));
+        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.address(), staff.getAddress()));
+        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.custom("custom:staff_id"), staff.getStaffId() + ""));
+
+        val signUpOption = AuthSignUpOptions.builder()
+                .userAttributes(userAttributes)
+                .build();
+        Amplify.Auth.signUp(username, pwd, signUpOption, new Consumer<AuthSignUpResult>() {
+            @Override
+            public void accept(@NonNull AuthSignUpResult value) {
+                Log.i("Amplify : " + value);
+                if (value.isSignUpComplete()) {
+                    // todo save user profile, open main screen, fetch user's token
+                    createUserInCognito();
+                }
+                else {
+                    progress.dismiss();
+                }
+            }
+        }, new Consumer<AuthException>() {
+            @Override
+            public void accept(@NonNull AuthException value) {
+                Log.i("Amplify : " + value);
+                if (value.getCause() instanceof UsernameExistsException) {
+                    binding.msg.setText(R.string.user_already_exists);
+                }
+                else if (value.getCause() instanceof InvalidPasswordException) {
+                    binding.msg.setText(value.getCause().getMessage());
+                }
+                else {
+                    binding.msg.setText(value.getMessage());
+                }
+                progress.dismiss();
+            }
+        });
+    }
+
+    private void createUserInCognito() {
+        val username = binding.username.getText().toString();
+        val task     = new TaskUserAdd(new RequestUserAdd(staff.getStaffId(), username));
+        getCompositeDisposable().add(task.start(task.new SimpleObserver() {
+
+            @Override
+            public Class<?> clazzResponse() {
+                return null;
+            }
+
+            @Override
+            public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
+                Log.i("LOG >> onNext >> result : " + result);
+                if (result.isSuccessful()) {
+                    val data = (ResponseUserAdd) result.body();
+                    if (data.isAccessDenied()) {
+                        binding.msg.setText(data.getMessage());
+                        progress.dismiss();
+                    }
+                    else {
+                        val profile = new LoginProfile(data.getResult());
+                        doAutoSignIn(profile);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(e);
+                progress.dismiss();
+            }
+        }));
+    }
+
     private void doAutoSignIn(LoginProfile profile) {
-        Amplify.Auth.signIn(profile.getUsername(), profile.getPwd(), new Consumer<AuthSignInResult>() {
+        val username = binding.username.getText().toString();
+        val pwd      = binding.passwordView.getPassword();
+        Amplify.Auth.signIn(username, pwd, new Consumer<AuthSignInResult>() {
             @Override
             public void accept(@NonNull AuthSignInResult value) {
                 Log.i("result : " + value);

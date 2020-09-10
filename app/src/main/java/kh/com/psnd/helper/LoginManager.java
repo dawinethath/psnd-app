@@ -78,7 +78,11 @@ public class LoginManager {
         try {
             return AWSMobileClient.getInstance().getTokens().getIdToken().getTokenString();
         } catch (Throwable e) {
-            return null;
+            return "";
         }
+    }
+
+    public static String getUserId() {
+        return "";
     }
 }

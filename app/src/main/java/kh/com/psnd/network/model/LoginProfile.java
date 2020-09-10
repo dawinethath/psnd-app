@@ -13,17 +13,19 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class LoginProfile extends UserProfile {
 
-    @SerializedName("pwd")
-    private String pwd;
     @SerializedName("Tokens")
     private Tokens tokens;
 
     public LoginProfile() {
     }
 
+    public LoginProfile(@NonNull UserProfile userProfile) {
+        setUserProfile(userProfile);
+    }
+
     public LoginProfile(@NonNull String username, @NonNull String pwd, @Nullable Staff staff, @Nullable Tokens tokens) {
         setUsername(username);
-        this.pwd = pwd;
+        setPassword(pwd);
         this.tokens = tokens;
         if (staff == null) {
             setStaff(null);
@@ -31,6 +33,20 @@ public class LoginProfile extends UserProfile {
         else {
             setStaff(new SearchStaff(staff));
         }
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        // setPassword(userProfile.getPassword());
+        setId(userProfile.getId());
+        setUsername(userProfile.getUsername());
+        setRole(userProfile.getRole());
+        setPrivileges(userProfile.getPrivileges());
+        setCreatedAt(userProfile.getCreatedAt());
+        setCreateBy(userProfile.getCreateBy());
+        setModifiedAt(userProfile.getModifiedAt());
+        setModifiedBy(userProfile.getModifiedBy());
+        setActive(userProfile.isActive());
+        setStaff(userProfile.getStaff());
     }
 
     // Security

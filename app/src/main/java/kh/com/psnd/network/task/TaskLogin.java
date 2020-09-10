@@ -1,9 +1,8 @@
 package kh.com.psnd.network.task;
 
 
-import core.lib.network.base.BaseNetwork;
-import core.lib.network.base.HttpHeader;
 import core.lib.network.task.BaseTask;
+import kh.com.psnd.helper.TaskHelper;
 import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestLogin;
 import kh.com.psnd.network.response.ResponseLogin;
@@ -14,7 +13,7 @@ import retrofit2.Retrofit;
 public class TaskLogin extends BaseTask<RequestLogin, Response, ResponseLogin> {
 
     public TaskLogin(RequestLogin requestLogin) {
-        super(new HttpHeader(BaseNetwork.getToken()));
+        super(TaskHelper.getHttpHeader());
         setData(requestLogin);
     }
 
