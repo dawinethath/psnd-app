@@ -1,6 +1,7 @@
 package kh.com.psnd.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -37,6 +38,7 @@ public class ProfileFragment extends BaseFragment<FragmentProfileBinding> {
         val fullName = (profile != null && profile.getStaff() != null) ? profile.getStaff().getFullName() : "";
         val image    = profile.getStaff() == null ? null : profile.getStaff().getPhoto();
 
+        binding.fullName.setVisibility(TextUtils.isEmpty(fullName) ? View.GONE : View.VISIBLE);
         binding.fullName.setText(fullName);
         binding.username.setText(profile.getUsername());
         binding.password.setOnClickListener(__ -> {

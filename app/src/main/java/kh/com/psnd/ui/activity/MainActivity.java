@@ -136,7 +136,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
         Log.i(profile);
 
         val staffId  = (profile.getStaff() == null ? "" : profile.getStaff().getStaffNumber());
-        val fullName = (profile != null && profile.getStaff() != null) ? profile.getStaff().getFullName() : "";
+        val fullName = (profile != null && profile.getStaff() != null) ? profile.getStaff().getFullName() : profile.getUsername();
         val image    = profile.getStaff() == null ? null : profile.getStaff().getPhoto();
 
         val header = NavHeaderMainBinding.bind(binding.navView.getHeaderView(0));
