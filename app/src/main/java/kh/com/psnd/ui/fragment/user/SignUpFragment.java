@@ -303,13 +303,14 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                 if (result.isSuccessful()) {
                     val data  = (ResponseStaff) result.body();
                     val staff = data.getResult();
-                    updateUI(staff);
                     Log.i(staff);
+                    if (staff != null) {
+                        updateUI(staff);
+                        return;
+                    }
                 }
-                else {
-                    getActivity().finish();
-                    Toast.makeText(getContext(), R.string.msg_scan_wrong_qrcode, Toast.LENGTH_LONG).show();
-                }
+                getActivity().finish();
+                Toast.makeText(getContext(), R.string.msg_scan_wrong_qrcode, Toast.LENGTH_LONG).show();
             }
 
             @Override
