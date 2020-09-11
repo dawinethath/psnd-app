@@ -83,6 +83,10 @@ public class LoginManager {
     }
 
     public static String getUserId() {
-        return "";
+        val profile = getUserProfile();
+        if (profile == null) {
+            return "";
+        }
+        return profile.getId();
     }
 }

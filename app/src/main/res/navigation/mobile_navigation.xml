@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_search"
         android:name="kh.com.psnd.ui.fragment.SearchStaffFragment"
-        android:label="@string/menu_search"
+        android:label="@string/menu_search_staff"
         tools:layout="@layout/fragment_search_staff" />
 
     <fragment

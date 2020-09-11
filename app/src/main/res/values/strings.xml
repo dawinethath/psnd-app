@@ -9,6 +9,7 @@
     <string name="noData">គ្មានទិន័យ</string>
     <string name="noInternetConnection">គ្មានអ៊ីនធើណេត សូមធ្វើការពិនិត្យឡើងវិញ</string>
 
+    <string name="menu_search_staff">ស្វែងរកបុគ្គលិក</string>
     <string name="menu_search">ស្វែងរក</string>
     <string name="menu_user_manager">ការគ្រប់គ្រងអ្នកប្រើប្រាស់</string>
     <string name="menu_about">អំពីកម្មវិធី</string>
