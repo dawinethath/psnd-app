@@ -24,6 +24,7 @@
     <string name="user_role">User\'s role</string>
     <string name="choose_user_privilege">Choose user\'s privileges</string>
     <string name="choose_user_role">Choose user\'s roles</string>
+    <string name="msg_created_user_success">The user has been created successful!</string>
 
     <!--    About-->
     <string name="copyright_by">© រក្សាសិទ្ធដោយ</string>

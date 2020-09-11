@@ -12,10 +12,7 @@ import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.services.cognitoidentityprovider.model.InvalidPasswordException;
 import com.amazonaws.services.cognitoidentityprovider.model.UsernameExistsException;
 import com.amplifyframework.auth.AuthException;
-import com.amplifyframework.auth.AuthUserAttribute;
-import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
-import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.auth.result.AuthSignInResult;
 import com.amplifyframework.auth.result.AuthSignUpResult;
 import com.amplifyframework.core.Amplify;
@@ -24,8 +21,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.ArrayList;
 
 import core.lib.base.BaseFragment;
 import core.lib.dialog.DialogProgress;
@@ -36,6 +31,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSignupBinding;
 import kh.com.psnd.eventbus.SingUpSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
+import kh.com.psnd.helper.CognitoHelper;
 import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.LoginProfile;
 import kh.com.psnd.network.model.SignUpStep1;
@@ -161,22 +157,14 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
         val username = binding.username.getText().toString();
         val pwd      = binding.passwordView.getPassword();
         binding.msg.setText("");
-        val userAttributes = new ArrayList<AuthUserAttribute>();
-        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.name(), staff.getFullName()));
-        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.picture(), staff.getPhoto()));
-        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.address(), staff.getAddress()));
-        userAttributes.add(new AuthUserAttribute(AuthUserAttributeKey.custom("custom:staff_id"), staff.getStaffId() + ""));
-
-        val signUpOption = AuthSignUpOptions.builder()
-                .userAttributes(userAttributes)
-                .build();
+        val signUpOption = CognitoHelper.getAuthSignUpOptions(staff);
         Amplify.Auth.signUp(username, pwd, signUpOption, new Consumer<AuthSignUpResult>() {
             @Override
             public void accept(@NonNull AuthSignUpResult value) {
                 Log.i("Amplify : " + value);
                 if (value.isSignUpComplete()) {
                     // todo save user profile, open main screen, fetch user's token
-                    createUserInCognito();
+                    createUserInServer();
                 }
                 else {
                     progress.dismiss();
@@ -200,7 +188,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
         });
     }
 
-    private void createUserInCognito() {
+    private void createUserInServer() {
         val username = binding.username.getText().toString();
         val task     = new TaskUserAdd(new RequestUserAdd(staff.getStaffId(), username));
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
