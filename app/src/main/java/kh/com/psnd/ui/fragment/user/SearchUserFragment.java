@@ -2,6 +2,9 @@ package kh.com.psnd.ui.fragment.user;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import core.lib.base.BaseFragment;
 import core.lib.dialog.DialogProgress;
 import core.lib.utils.ApplicationUtil;
@@ -9,6 +12,7 @@ import core.lib.utils.Log;
 import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchUserBinding;
+import kh.com.psnd.eventbus.CreateAccountSuccessEventBus;
 import kh.com.psnd.network.model.UserFilter;
 import kh.com.psnd.network.response.ResponseUserRolePrivilege;
 import kh.com.psnd.network.task.TaskUserRolePrivilege;
@@ -28,6 +32,12 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
         binding.searchResult.setupUI(this, binding.searchBar);
 
 //        loadRolePrivilege();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onCreateAccountSuccessEventBus(CreateAccountSuccessEventBus event) {
+        Log.i(event);
+        binding.searchResult.addNewUser(event.getUserProfile());
     }
 
     private void loadRolePrivilege() {

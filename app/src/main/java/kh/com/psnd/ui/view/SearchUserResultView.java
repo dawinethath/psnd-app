@@ -17,6 +17,7 @@ import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutSearchResultBinding;
 import kh.com.psnd.databinding.LayoutSearchUserBarBinding;
 import kh.com.psnd.network.model.UserFilter;
+import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.network.request.RequestSearchUser;
 import kh.com.psnd.network.response.ResponseSearchUser;
 import kh.com.psnd.network.task.TaskSearchUser;
@@ -68,7 +69,13 @@ public class SearchUserResultView extends FrameLayout {
                     loadMore(nextPage);
                 }
             }
+
+            @Override
+            public void onRefresh() {
+                loadMore(1);
+            }
         });
+        binding.recyclerView.enableSwipeRefresh(true);
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -84,6 +91,11 @@ public class SearchUserResultView extends FrameLayout {
                 }
             }
         });
+    }
+
+    public void addNewUser(@NonNull UserProfile userProfile) {
+        adapter.addItemFirst(userProfile);
+        adapter.notifyDataSetChanged();
     }
 
     public void cleanList() {
@@ -112,6 +124,7 @@ public class SearchUserResultView extends FrameLayout {
         compositeDisposable.clear();
         val task = new TaskSearchUser(requestSearch);
         searchBarBinding.progressBar.setVisibility(VISIBLE);
+        binding.recyclerView.setRefreshing(false);
         compositeDisposable.add(task.start(task.new SimpleObserver() {
 
             @Override
@@ -132,7 +145,9 @@ public class SearchUserResultView extends FrameLayout {
                         if (data.getResult() != null) {
                             Log.i("data.getResult() : " + data.getResult().size());
                             for (val item : data.getResult()) {
-                                adapter.addItem(item);
+                                if (!adapter.isAdded(item)) {
+                                    adapter.addItem(item);
+                                }
                             }
                         }
                         adapter.notifyDataSetChanged();

@@ -50,6 +50,8 @@ Next version
  - Detail screen
     - long click on staff name or ID to copy clipboard
  - Call api (general_comm) from service to avoid conflict action
+ - List user
+    - should show or not
 
 Server side
  - Need to field (staffNumberEn) in search staff result

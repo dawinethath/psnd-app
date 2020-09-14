@@ -10,6 +10,7 @@ import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.ui.adapter.holder.SearchUserHolder;
 import kh.com.psnd.ui.fragment.user.SearchUserFragment;
+import lombok.val;
 
 
 public class SearchUserAdapter extends BaseRecyclerView<SearchUserFragment, SearchUserHolder, UserProfile> {
@@ -28,4 +29,12 @@ public class SearchUserAdapter extends BaseRecyclerView<SearchUserFragment, Sear
         holder.bind(objects, position);
     }
 
+    public boolean isAdded(@NonNull UserProfile userProfile) {
+        for (val item : objects) {
+            if (item.getId().equals(userProfile.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

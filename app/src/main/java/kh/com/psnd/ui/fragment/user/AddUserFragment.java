@@ -13,6 +13,8 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.Consumer;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.greenrobot.eventbus.EventBus;
+
 import core.lib.base.BaseBottomSheetDialogFragment;
 import core.lib.dialog.DialogProgress;
 import core.lib.listener.MyTextWatcher;
@@ -20,6 +22,7 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentAddUserBinding;
+import kh.com.psnd.eventbus.CreateAccountSuccessEventBus;
 import kh.com.psnd.helper.CognitoHelper;
 import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.UserProfile;
@@ -136,7 +139,7 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
                     Looper.prepare();
                     Toast.makeText(getContext(), R.string.msg_created_user_success, Toast.LENGTH_LONG).show();
                     dismiss();
-                    // todo need to paste object profile to list search
+                    EventBus.getDefault().postSticky(new CreateAccountSuccessEventBus(userProfile));
                 }
             }
         }, new Consumer<AuthException>() {
