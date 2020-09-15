@@ -17,6 +17,7 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <!--    User Management-->
+    <string name="user_info">ព័ត៌អ្នកប្រើប្រាស់</string>
     <string name="add_new_user">បង្កើតគណនី</string>
     <string name="search_user">អត្តលេខ ឬ ឈ្មោះគណនីអ្នកប្រើប្រាស់</string>
     <string name="create">បង្កើតគណនី</string>
@@ -121,6 +122,7 @@
     <string name="detail_label_11">ទូរស័ព្ទ</string>
     <string name="detail_label_12">អាស័យដ្ឋាន</string>
     <string name="detail_label_13">ឋានៈ</string>
+    <string name="detail_label_14">អង្គភាព</string>
 
     <!--    Detail Tab-->
     <string name="detail_label_tab_1">ព័ត៌មានផ្ទាល់ខ្លួន</string>

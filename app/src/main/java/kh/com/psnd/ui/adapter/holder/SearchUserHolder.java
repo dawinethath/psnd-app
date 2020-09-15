@@ -6,6 +6,7 @@ import core.lib.base.BaseViewHolder;
 import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.ui.fragment.user.SearchUserFragment;
+import kh.com.psnd.ui.fragment.user.UserInfoFragment;
 import lombok.val;
 
 public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSearchUserBinding, UserProfile> {
@@ -22,7 +23,8 @@ public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSea
         binding.role.setText(item.getRole().getName());
         binding.privileges.setupUI(item);
         binding.getRoot().setOnClickListener(__ -> {
-//            fragment.onClickedItem(items, position)
+            val userInfoFragment = UserInfoFragment.newInstance(item);
+            userInfoFragment.show(fragment.getBaseFragmentActivity().getSupportFragmentManager(), "");
         });
     }
 }
