@@ -10,13 +10,18 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.chip.Chip;
 
+import java.util.List;
+
 import core.lib.databinding.ChipActionBinding;
 import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutUserRightBinding;
+import kh.com.psnd.network.model.UserPrivilege;
+import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.network.model.UserRole;
 import kh.com.psnd.network.model.UserRolePrivilege;
 import kh.com.psnd.ui.fragment.user.AddUserFragment;
 import kh.com.psnd.ui.fragment.user.SelectUserRightFragment;
+import kh.com.psnd.ui.fragment.user.UserInfoFragment;
 import lombok.val;
 
 public class UserRightView extends FrameLayout {
@@ -57,17 +62,29 @@ public class UserRightView extends FrameLayout {
         binding.currentUserRole.setText(userRole.getName());
         binding.groupUserPrivileges.removeAllViews();
         if (userRole.getPrivileges() != null) {
-            for (val privilege : userRole.getPrivileges()) {
-                if (privilege != null) {
-                    val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
-                    val chip        = (Chip) chipBinding.getRoot();
-                    chip.setText(privilege.getName());
-                    chip.setCheckable(false);
-                    chip.setClickable(false);
-                    binding.groupUserPrivileges.addView(chip);
-                }
-            }
+            generatePrivilegeUI(userRole.getPrivileges());
         }
     }
 
+    public void setupUI(@NonNull UserInfoFragment fragment, @NonNull UserProfile userProfile) {
+        binding.btnEdit.setVisibility(GONE);
+        binding.currentUserRole.setText(userProfile.getRole().getName());
+        binding.groupUserPrivileges.removeAllViews();
+        if (userProfile.getPrivileges() != null) {
+            generatePrivilegeUI(userProfile.getPrivileges());
+        }
+    }
+
+    private void generatePrivilegeUI(List<UserPrivilege> privileges) {
+        for (val privilege : privileges) {
+            if (privilege != null) {
+                val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
+                val chip        = (Chip) chipBinding.getRoot();
+                chip.setText(privilege.getName());
+                chip.setCheckable(false);
+                chip.setClickable(false);
+                binding.groupUserPrivileges.addView(chip);
+            }
+        }
+    }
 }

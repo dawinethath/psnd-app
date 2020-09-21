@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import core.lib.utils.Log;
@@ -37,6 +38,12 @@ public class ActivityHelper {
         intent.putExtra(SearchStaff.EXTRA_LIST, (Serializable) items);
         intent.putExtra(SearchStaff.EXTRA_POSITION, position);
         context.startActivity(intent);
+    }
+
+    public static void openDetailActivity(@NonNull Context context, @NonNull SearchStaff searchStaff) {
+        List<SearchStaff> items = new ArrayList<>();
+        items.add(searchStaff);
+        openDetailActivity(context, items, 0);
     }
 
     public static void openLoginActivity(@NonNull Context context) {

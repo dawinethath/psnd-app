@@ -20,5 +20,9 @@
         <item>@string/screenshot</item>
         <item>@string/shareText</item>
     </string-array>
+    <string-array name="userEdit">
+        <item>@string/change_password</item>
+        <item>@string/change_user_role</item>
+    </string-array>
 
 </resources>

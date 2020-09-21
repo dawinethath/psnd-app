@@ -9,19 +9,48 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout style="@style/TopBarTitle">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/TopBarTitle"
+            android:layout_height="wrap_content">
 
             <core.lib.widget.MyImageView
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_08dp"
+                android:layout_marginTop="@dimen/space_08dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="@dimen/space_08dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:tint="@android:color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+            <core.lib.widget.MyImageView
+                android:id="@+id/btnDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_08dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="@dimen/space_08dp"
+                android:tint="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                app:layout_constraintEnd_toStartOf="@id/btnSuspend"
+                app:layout_constraintTop_toTopOf="@id/btnBack"
+                app:srcCompat="@drawable/ic_baseline_list_alt_24" />
+
+            <core.lib.widget.MyImageView
+                android:id="@+id/btnSuspend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_08dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="@dimen/space_08dp"
+                android:tint="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                app:layout_constraintEnd_toStartOf="@id/btnEdit"
+                app:layout_constraintTop_toTopOf="@id/btnBack"
+                app:srcCompat="@drawable/ic_user_suspend" />
 
             <core.lib.widget.MyImageView
                 android:id="@+id/btnEdit"
@@ -30,22 +59,92 @@
                 android:layout_marginEnd="@dimen/space_08dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:padding="@dimen/space_08dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:tint="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@id/btnBack"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btnBack"
                 app:srcCompat="@drawable/ic_outline_edit_24" />
 
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/image"
+                style="@style/ProfilePhoto"
+                android:layout_width="@dimen/widthImageSearch"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16dp"
+                android:layout_marginTop="@dimen/space_24dp"
+                android:layout_marginEnd="@dimen/space_16dp"
+                android:layout_marginBottom="@dimen/space_32dp"
+                app:backgroundImage="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnBack"
+                app:roundingBorderColor="@android:color/white"
+                app:roundingBorderWidth="1dp" />
+
             <core.lib.widget.MyTextView
+                android:id="@+id/staffName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_12dp"
-                android:text="@string/user_info"
+                android:drawablePadding="@dimen/space_08dp"
+                android:gravity="center_vertical"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/text_size_21sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btnBack"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:drawableLeftCompat="@drawable/ic_outline_featured_video_24"
+                app:drawableTint="@color/transparentWhite90"
+                app:fontFamily="@string/font_family_medium"
+                app:layout_constraintStart_toStartOf="@id/username"
+                app:layout_constraintTop_toTopOf="@id/image"
+                tools:text="គង់ សុនីដា" />
+
+            <core.lib.widget.MyTextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16dp"
+                android:layout_marginTop="@dimen/space_06dp"
+                android:drawablePadding="@dimen/space_08dp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_19sp"
+                app:drawableLeftCompat="@drawable/ic_outline_perm_identity_24"
+                app:drawableTint="@color/transparentWhite90"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/staffName"
+                tools:text="root" />
+
+            <core.lib.widget.MyTextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_06dp"
+                android:drawablePadding="@dimen/space_08dp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_15sp"
+                app:drawableLeftCompat="@drawable/ic_baseline_radio_button_checked_24"
+                app:drawableTint="@color/transparentWhite90"
+                app:layout_constraintStart_toStartOf="@id/staffName"
+                app:layout_constraintTop_toBottomOf="@id/username"
+                tools:text="@string/active" />
+
+            <core.lib.widget.MyTextView
+                android:id="@+id/signup_since"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_06dp"
+                android:text="@string/date_created"
+                android:textColor="@color/transparentWhite80"
+                android:textSize="@dimen/text_size_15sp"
+                app:layout_constraintStart_toStartOf="@id/staffName"
+                app:layout_constraintTop_toBottomOf="@id/status" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <kh.com.psnd.ui.view.UserRightView
+            android:id="@+id/userRight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_16dp" />
 
     </LinearLayout>
 </layout>

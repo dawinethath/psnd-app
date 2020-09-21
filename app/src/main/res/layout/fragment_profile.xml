@@ -94,13 +94,13 @@
                 <core.lib.widget.MyTextView
                     android:id="@+id/fullName"
                     style="@style/SettingItem"
-                    app:drawableLeftCompat="@drawable/ic_outline_perm_identity_24"
+                    app:drawableLeftCompat="@drawable/ic_outline_featured_video_24"
                     tools:text="Sondia Kong" />
 
                 <core.lib.widget.MyTextView
                     android:id="@+id/username"
                     style="@style/SettingItem"
-                    app:drawableLeftCompat="@drawable/ic_outline_featured_video_24"
+                    app:drawableLeftCompat="@drawable/ic_outline_perm_identity_24"
                     tools:text="88814" />
 
                 <FrameLayout

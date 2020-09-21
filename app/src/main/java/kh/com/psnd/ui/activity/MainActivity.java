@@ -27,9 +27,6 @@ import com.google.zxing.integration.android.IntentResult;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import core.lib.base.BaseFragmentActivity;
 import core.lib.dialog.DialogProgress;
 import core.lib.utils.ApplicationUtil;
@@ -42,8 +39,8 @@ import kh.com.psnd.databinding.NavHeaderMainBinding;
 import kh.com.psnd.eventbus.CognitoFetchSessionFailureEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.helper.LoginManager;
-import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.model.LoginProfile;
+import kh.com.psnd.network.model.SearchStaff;
 import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.response.ResponseStaff;
@@ -232,9 +229,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
                     AppDatabase.getInstance().detailStaffDao().insertAll(new DetailStaffEntity(staff));
 
-                    List<SearchStaff> items = new ArrayList<>();
-                    items.add(search);
-                    ActivityHelper.openDetailActivity(context, items, 0);
+                    ActivityHelper.openDetailActivity(context, search);
                 }
                 progress.dismiss();
             }
