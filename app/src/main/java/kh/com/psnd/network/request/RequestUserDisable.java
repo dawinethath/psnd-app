@@ -18,7 +18,4 @@ public class RequestUserDisable extends BaseParam {
     @SerializedName("active")
     private boolean active;
 
-    @SerializedName("modified_by")
-    private String modifiedBy;
-
 }

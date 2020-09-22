@@ -10,7 +10,6 @@ import core.lib.utils.Log;
 import io.reactivex.annotations.NonNull;
 import kh.com.psnd.network.request.RequestConfig;
 import kh.com.psnd.network.response.ResponseConfig;
-import kh.com.psnd.network.response.ResponseLogin;
 import kh.com.psnd.network.task.TaskConfig;
 import lombok.val;
 import retrofit2.Response;
@@ -33,7 +32,7 @@ public class ConfigService extends BaseIntentService {
 
             @Override
             public Class<?> clazzResponse() {
-                return ResponseLogin.class;
+                return null;
             }
 
             @Override

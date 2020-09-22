@@ -111,7 +111,7 @@
                         android:id="@+id/password"
                         style="@style/SettingItem"
                         android:text="*****"
-                        app:drawableLeftCompat="@drawable/ic_outline_security_24" />
+                        app:drawableLeftCompat="@drawable/ic_outline_lock_24" />
 
                     <core.lib.widget.MyImageView
                         android:id="@+id/btnViewPassword"

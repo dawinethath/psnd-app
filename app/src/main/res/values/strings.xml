@@ -30,6 +30,8 @@
     <string name="active">Active</string>
     <string name="suspend">Suspend</string>
     <string name="date_created">Signup since : %s</string>
+    <string name="msg_ask_suspend">Do you want to suspend this user?</string>
+    <string name="msg_ask_active">Do you want to active this user?</string>
 
     <!--    About-->
     <string name="copyright_by">© រក្សាសិទ្ធដោយ</string>
@@ -59,6 +61,7 @@
     <!--    Login -->
     <string name="session_expired">Session expired!</string>
     <string name="cancel">បោះបង់</string>
+    <string name="ok">យល់ព្រម</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
     <string name="required">Required</string>
