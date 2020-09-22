@@ -98,6 +98,11 @@ public class SearchUserResultView extends FrameLayout {
         adapter.notifyDataSetChanged();
     }
 
+    public void updateUser(@NonNull UserProfile userProfile) {
+        adapter.updateUser(userProfile);
+        adapter.notifyDataSetChanged();
+    }
+
     public void cleanList() {
         adapter.clear();
         adapter.notifyDataSetChanged();

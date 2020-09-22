@@ -40,11 +40,11 @@
             android:id="@+id/role"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_outline_local_offer_24"
+            android:drawablePadding="@dimen/space_08dp"
+            android:drawableTint="@color/textViewColor"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_15sp"
-            android:drawableTint="@color/textViewColor"
-            android:drawablePadding="@dimen/space_08dp"
-            android:drawableStart="@drawable/ic_outline_local_offer_24"
             app:layout_constraintBottom_toTopOf="@id/privileges"
             app:layout_constraintEnd_toEndOf="@id/username"
             app:layout_constraintStart_toStartOf="@id/username"
@@ -71,6 +71,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/username" />
+
+        <core.lib.widget.MyTextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_08dp"
+            android:drawablePadding="@dimen/space_08dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/textViewHeaderColor"
+            android:textSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toBottomOf="@id/username"
+            app:layout_constraintEnd_toEndOf="@id/username"
+            app:layout_constraintTop_toTopOf="@id/username"
+            tools:text="@string/active" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

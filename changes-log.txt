@@ -40,9 +40,10 @@ v1.0.4 Beta (4)
     - Take screenshot (pdf) and share with staff's info
 
 Next version
- - scan card, if valid -> alert dialog
+ + scan card, if valid -> alert dialog
  - Need to check user's session from Cognito api, if false logout with alert message
  - User management
+ - Only root user can change password all users
  - Generate PDF like web (from webview)
  - Forget password
  - Security improvement

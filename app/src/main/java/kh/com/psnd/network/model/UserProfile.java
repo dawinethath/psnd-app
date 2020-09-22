@@ -44,6 +44,9 @@ public class UserProfile extends BaseGson {
     @SerializedName("active")
     private boolean active;
 
+    @SerializedName("active_color")
+    private String activeColor;
+
     @SerializedName("staff")
     private SearchStaff staff;
 

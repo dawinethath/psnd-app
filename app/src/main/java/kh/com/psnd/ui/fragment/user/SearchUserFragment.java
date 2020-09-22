@@ -13,6 +13,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchUserBinding;
 import kh.com.psnd.eventbus.CreateAccountSuccessEventBus;
+import kh.com.psnd.eventbus.UpdateAccountSuccessEventBus;
 import kh.com.psnd.network.model.UserFilter;
 import kh.com.psnd.network.response.ResponseUserRolePrivilege;
 import kh.com.psnd.network.task.TaskUserRolePrivilege;
@@ -38,6 +39,12 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
     public void onCreateAccountSuccessEventBus(CreateAccountSuccessEventBus event) {
         Log.i(event);
         binding.searchResult.addNewUser(event.getUserProfile());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUpdateAccountSuccessEventBus(UpdateAccountSuccessEventBus event) {
+        Log.i(event);
+        binding.searchResult.updateUser(event.getUserProfile());
     }
 
     private void loadRolePrivilege() {

@@ -37,4 +37,19 @@ public class SearchUserAdapter extends BaseRecyclerView<SearchUserFragment, Sear
         }
         return false;
     }
+
+    public int getItemPosition(@NonNull UserProfile userProfile) {
+        for (val item : objects) {
+            if (item.getId().equals(userProfile.getId())) {
+                return objects.indexOf(item);
+            }
+        }
+        return 0;
+    }
+
+    public void updateUser(@NonNull UserProfile userProfile) {
+        val position = getItemPosition(userProfile);
+        objects.remove(position);
+        objects.add(position, userProfile);
+    }
 }

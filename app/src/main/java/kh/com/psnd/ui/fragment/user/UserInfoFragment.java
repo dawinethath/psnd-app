@@ -1,5 +1,6 @@
 package kh.com.psnd.ui.fragment.user;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.greenrobot.eventbus.EventBus;
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.format.DateTimeFormat;
 
@@ -17,6 +19,7 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentUserInfoBinding;
+import kh.com.psnd.eventbus.UpdateAccountSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.network.request.RequestUserDisable;
@@ -58,16 +61,22 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
             binding.staffName.setText(userProfile.getStaff().getFullName());
             binding.image.setImageURI(userProfile.getStaff().getPhoto());
         }
-        if (userProfile.isActive()) {
-            binding.btnSuspend.setImageResource(R.drawable.ic_user_suspend);
-            binding.status.setText(R.string.active);
-            binding.status.setTextColor(getResources().getColor(R.color.greenLight));
+
+        {
+            try {
+                binding.status.setTextColor(Color.parseColor(userProfile.getActiveColor()));
+            } catch (Throwable e) {
+            }
+            if (userProfile.isActive()) {
+                binding.btnSuspend.setImageResource(R.drawable.ic_user_suspend);
+                binding.status.setText(R.string.active);
+            }
+            else {
+                binding.btnSuspend.setImageResource(R.drawable.ic_user_active);
+                binding.status.setText(R.string.suspend);
+            }
         }
-        else {
-            binding.btnSuspend.setImageResource(R.drawable.ic_user_active);
-            binding.status.setText(R.string.suspend);
-            binding.status.setTextColor(getResources().getColor(R.color.redLight));
-        }
+
         binding.username.setText(userProfile.getUsername());
         binding.userRight.setupUI(this, userProfile);
 
@@ -127,11 +136,14 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
                     val data = (ResponseUserDisable) result.body();
                     if (data != null) {
                         // set active or suspend then update UI
-                        userProfile.setActive(!userProfile.isActive());
+                        userProfile.setActive(data.getResult().isActive());
+                        userProfile.setActiveColor(data.getResult().getActiveColor());
+
                         val bundle = new Bundle();
                         bundle.putSerializable(UserProfile.EXTRA, userProfile);
                         setArguments(bundle);
                         updateUI();
+                        EventBus.getDefault().postSticky(new UpdateAccountSuccessEventBus(userProfile));
                     }
                 }
                 progress.hide();

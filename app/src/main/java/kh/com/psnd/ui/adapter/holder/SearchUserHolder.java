@@ -1,8 +1,11 @@
 package kh.com.psnd.ui.adapter.holder;
 
+import android.graphics.Color;
+
 import java.util.List;
 
 import core.lib.base.BaseViewHolder;
+import kh.com.psnd.R;
 import kh.com.psnd.databinding.ItemSearchUserBinding;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.ui.fragment.user.SearchUserFragment;
@@ -22,6 +25,13 @@ public class SearchUserHolder extends BaseViewHolder<SearchUserFragment, ItemSea
         binding.image.setImageURI((item.getStaff() != null) ? item.getStaff().getPhoto() : null);
         binding.role.setText(item.getRole().getName());
         binding.privileges.setupUI(item);
+
+        binding.status.setText(item.isActive() ? R.string.active : R.string.suspend);
+        try {
+            binding.status.setTextColor(Color.parseColor(item.getActiveColor()));
+        } catch (Throwable e) {
+        }
+
         binding.getRoot().setOnClickListener(__ -> {
             val userInfoFragment = UserInfoFragment.newInstance(item);
             userInfoFragment.show(fragment.getBaseFragmentActivity().getSupportFragmentManager(), "");
