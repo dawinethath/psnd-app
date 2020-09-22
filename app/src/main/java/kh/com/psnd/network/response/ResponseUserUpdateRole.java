@@ -8,5 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class ResponseUserUpdateRole extends BaseResponse {
-
+    public boolean isSuccess() {
+        return getStatusCode().equals("200");
+    }
 }

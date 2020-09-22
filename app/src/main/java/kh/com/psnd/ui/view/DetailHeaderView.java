@@ -1,7 +1,6 @@
 package kh.com.psnd.ui.view;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,8 +11,10 @@ import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +22,6 @@ import androidx.core.content.FileProvider;
 import androidx.core.widget.NestedScrollView;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,9 +31,7 @@ import core.lib.base.BaseFragment;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.LayoutDetailHeaderBinding;
-import kh.com.psnd.helper.LoginManager;
 import kh.com.psnd.network.model.Staff;
-import kh.com.psnd.ui.activity.MainActivity;
 import kh.com.psnd.utils.PdfUtil;
 import lombok.val;
 
@@ -117,18 +115,25 @@ public class DetailHeaderView extends FrameLayout {
         binding.firstNameKH.setText(staff.getFullName());
         binding.staffId.setText(staff.getId());
         binding.headerTitle.setText(staff.getGeneralCommissariat());
-        binding.share.setOnClickListener(__ -> new MaterialAlertDialogBuilder(getContext())
-                .setItems(R.array.share, (DialogInterface.OnClickListener) (dialog, which) -> {
-                    switch (which) {
-                        case 0:
-                            makeScreenshotAndShare(baseFragment, staff);
-                            break;
-                        case 1:
-                            staff.doShare(getContext());
-                            break;
-                    }
-                })
-                .show());
+        binding.share.setOnClickListener(v -> {
+                    PopupMenu    popup    = new PopupMenu(getContext(), v);
+                    MenuInflater inflater = popup.getMenuInflater();
+                    inflater.inflate(R.menu.menu_share, popup.getMenu());
+                    popup.setOnMenuItemClickListener(item -> {
+                        switch (item.getItemId()) {
+                            case R.id.screenshot:
+                                makeScreenshotAndShare(baseFragment, staff);
+                                break;
+                            case R.id.shareText:
+                                staff.doShare(getContext());
+                                break;
+                        }
+                        return false;
+                    });
+                    popup.show();
+                }
+        );
+
 
 //        binding.exportPdf.setOnClickListener(__ -> Toast.makeText(getContext(), "Clicked on Export PDF", Toast.LENGTH_SHORT).show());
 

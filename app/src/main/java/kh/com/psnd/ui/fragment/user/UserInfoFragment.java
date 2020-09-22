@@ -2,7 +2,9 @@ package kh.com.psnd.ui.fragment.user;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 
@@ -17,14 +19,22 @@ import core.lib.dialog.BaseDialogFragment;
 import core.lib.dialog.DialogProgress;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
+import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
+import kh.com.psnd.base.App;
 import kh.com.psnd.databinding.FragmentUserInfoBinding;
 import kh.com.psnd.eventbus.UpdateAccountSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.UserProfile;
+import kh.com.psnd.network.model.UserRole;
 import kh.com.psnd.network.request.RequestUserDisable;
+import kh.com.psnd.network.request.RequestUserUpdateRole;
 import kh.com.psnd.network.response.ResponseUserDisable;
+import kh.com.psnd.network.response.ResponseUserRolePrivilege;
+import kh.com.psnd.network.response.ResponseUserUpdateRole;
 import kh.com.psnd.network.task.TaskUserDisable;
+import kh.com.psnd.network.task.TaskUserRolePrivilege;
+import kh.com.psnd.network.task.TaskUserUpdateRole;
 import lombok.val;
 import retrofit2.Response;
 
@@ -50,7 +60,7 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
     private void updateUI() {
         val userProfile = (UserProfile) getArguments().getSerializable(UserProfile.EXTRA);
         binding.btnBack.setOnClickListener(__ -> dismiss());
-        binding.btnEdit.setOnClickListener(__ -> clickedOnEdit(userProfile));
+        binding.btnEdit.setOnClickListener(v -> clickedOnEdit(v, userProfile));
         binding.btnSuspend.setOnClickListener(__ -> clickedOnSuspend(userProfile));
         binding.btnDetail.setOnClickListener(__ -> ActivityHelper.openDetailActivity(getContext(), userProfile.getStaff()));
         binding.staffName.setVisibility(View.GONE);
@@ -86,19 +96,108 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
         binding.signupSince.setText(getString(R.string.date_created, createAt));
     }
 
-    private void clickedOnEdit(UserProfile userProfile) {
-        new MaterialAlertDialogBuilder(getContext())
-                .setItems(R.array.userEdit, (dialog, which) -> {
-                    switch (which) {
-                        case 0:
-                            // todo change password
-                            break;
-                        case 1:
-                            // todo change user's role
-                            break;
+    private void clickedOnEdit(@NonNull View view, @NonNull UserProfile userProfile) {
+        PopupMenu    popup    = new PopupMenu(getContext(), view);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu_user_edit, popup.getMenu());
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.change_password:
+                    // todo change password
+                    break;
+                case R.id.change_user_role:
+                    // todo change user role
+                    loadRolePrivilege(userProfile);
+                    break;
+            }
+            return false;
+        });
+        popup.show();
+    }
+
+    private void loadRolePrivilege(@NonNull UserProfile userProfile) {
+        progress.show();
+        val task = new TaskUserRolePrivilege();
+        new CompositeDisposable().add(task.start(task.new SimpleObserver() {
+
+            @Override
+            public Class<?> clazzResponse() {
+                return null;
+            }
+
+            @Override
+            public void onNext(Response result) {
+                Log.i("LOG >> onNext >> result : " + result);
+                progress.dismiss();
+                if (result.isSuccessful()) {
+                    val data = (ResponseUserRolePrivilege) result.body();
+                    if (data != null) {
+                        val userRole = userProfile.getRole().clone();
+                        userRole.setPrivileges(userProfile.getPrivileges());
+                        val fragment = SelectUserRightFragment.newInstance(data.getResult(), userRole);
+                        fragment.setCallback(currentUserRole -> updateUserRole(userProfile, currentUserRole));
+                        fragment.show(getActivity().getSupportFragmentManager(), "");
                     }
-                })
-                .show();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.e(e);
+                progress.dismiss();
+            }
+        }));
+    }
+
+    private void updateUserRole(@NonNull UserProfile userProfile, @NotNull UserRole newUserRole) {
+        Log.i(newUserRole);
+        String jsonOldRole       = App.getGson().toJson(userProfile.getRole());
+        String jsonOldPrivileges = App.getGson().toJson(userProfile.getPrivileges());
+
+        String jsonNewRole       = App.getGson().toJson(new UserRole(newUserRole.getKeyName(), newUserRole.getName(), null));
+        String jsonNewPrivileges = App.getGson().toJson(newUserRole.getPrivileges());
+
+        // check if user's role or privileges changed, then we call api
+        if (jsonOldRole.length() != jsonNewRole.length() || jsonOldPrivileges.length() != jsonNewPrivileges.length()) {
+            binding.progressBar.setVisibility(View.VISIBLE);
+            val request = new RequestUserUpdateRole(userProfile.getId(), newUserRole.getKeyName(), newUserRole.getPrivileges());
+            val task    = new TaskUserUpdateRole(request);
+            new CompositeDisposable().add(task.start(task.new SimpleObserver() {
+
+                @Override
+                public Class<?> clazzResponse() {
+                    return null;
+                }
+
+                @Override
+                public void onNext(Response result) {
+                    Log.i("LOG >> onNext >> result : " + result);
+                    if (result.isSuccessful()) {
+                        val data = (ResponseUserUpdateRole) result.body();
+                        if (data.isSuccess()) {
+                            userProfile.setPrivileges(newUserRole.getPrivileges());
+                            userProfile.setRole(newUserRole.clone());
+                            userProfile.getRole().setPrivileges(null);
+                            updateBroadcast(userProfile);
+                            Snackbar.make(getView(), R.string.successful, Snackbar.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Snackbar.make(getView(), data.getMessage(), Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                    binding.progressBar.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.e(e);
+                    binding.progressBar.setVisibility(View.GONE);
+                }
+            }));
+        }
+        else {
+            Log.i("User role no changes");
+        }
     }
 
     private void clickedOnSuspend(UserProfile userProfile) {
@@ -138,12 +237,7 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
                         // set active or suspend then update UI
                         userProfile.setActive(data.getResult().isActive());
                         userProfile.setActiveColor(data.getResult().getActiveColor());
-
-                        val bundle = new Bundle();
-                        bundle.putSerializable(UserProfile.EXTRA, userProfile);
-                        setArguments(bundle);
-                        updateUI();
-                        EventBus.getDefault().postSticky(new UpdateAccountSuccessEventBus(userProfile));
+                        updateBroadcast(userProfile);
                     }
                 }
                 progress.hide();
@@ -155,6 +249,14 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
                 progress.hide();
             }
         }));
+    }
+
+    private void updateBroadcast(UserProfile userProfile) {
+        val bundle = new Bundle();
+        bundle.putSerializable(UserProfile.EXTRA, userProfile);
+        setArguments(bundle);
+        updateUI();
+        EventBus.getDefault().postSticky(new UpdateAccountSuccessEventBus(userProfile));
     }
 
     @Override

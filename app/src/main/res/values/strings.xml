@@ -68,6 +68,7 @@
     <string name="failed_changed_password">បរាជ័យ សូមធ្វើការពិនិត្យឡើងវិញ</string>
     <string name="failed_limit_changed_password">លើសចំនួនកំណត់នៃការប្ដូរលេខសម្ងាត់ សូមព្យាយាមនៅពេលក្រោយ</string>
     <string name="success_changed_password">លេខសម្ងាត់ត្រូវបានប្ដូរដោយជោគជ័យ</string>
+    <string name="successful">ជោគជ័យ</string>
     <string name="not_match">មិនត្រូវគ្នា</string>
     <string name="change_password">ប្ដូរលេខសម្ងាត់</string>
     <string name="change">ប្ដូរ</string>

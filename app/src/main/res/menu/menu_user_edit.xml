@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/change_password"
+        android:title="@string/change_password"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/change_user_role"
+        android:title="@string/change_user_role"
+        app:showAsAction="ifRoom" />
+</menu>
