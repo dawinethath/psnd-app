@@ -66,6 +66,7 @@
 
         <service android:name=".service.ConfigService" />
         <service android:name=".service.CognitoService" />
+        <service android:name=".service.LoadRolePrivilegeService" />
     </application>
 
 </manifest>

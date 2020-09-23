@@ -17,18 +17,20 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutSearchUserBarBinding;
 import kh.com.psnd.network.model.UserFilter;
+import kh.com.psnd.ui.fragment.user.UserFilterFragment;
 import lombok.Getter;
 import lombok.Setter;
 
 public class SearchUserBarView extends FrameLayout {
 
-    private final long                       TIME_DELAY = 500L;
+    private final long                       TIME_DELAY         = 500L;
     @Getter
-    private       LayoutSearchUserBarBinding binding    = null;
-    private       Callback                   callback   = null;
-    private       BaseFragment               fragment   = null;
-    private       Handler                    handler    = new Handler();
-    private       MyRunnable                 runnable   = new MyRunnable();
+    private       LayoutSearchUserBarBinding binding            = null;
+    private       Callback                   callback           = null;
+    private       BaseFragment               fragment           = null;
+    private       Handler                    handler            = new Handler();
+    private       MyRunnable                 runnable           = new MyRunnable();
+    private       UserFilterFragment         userFilterFragment = null;
 
     public SearchUserBarView(@NonNull Context context) {
         super(context);
@@ -64,6 +66,8 @@ public class SearchUserBarView extends FrameLayout {
     public void setupUI(@NonNull BaseFragment fragment, @NonNull Callback callback) {
         this.fragment = fragment;
         this.callback = callback;
+        userFilterFragment = new UserFilterFragment(getContext(), filter -> callback.doSearch(filter), fragment.getCompositeDisposable());
+        userFilterFragment.setPercentWidthDialog(0.99f);
 
         binding.txtSearch.requestFocus();
         binding.txtSearch.addTextChangedListener(onTextChangeListener);
@@ -72,6 +76,9 @@ public class SearchUserBarView extends FrameLayout {
         binding.textField.setEndIconOnClickListener(__ -> {
             binding.txtSearch.setText("");
             ApplicationUtil.showKeyboard(getContext(), binding.txtSearch);
+        });
+        binding.textField.setStartIconOnClickListener(__ -> {
+            userFilterFragment.show();
         });
         binding.txtSearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             switch (actionId) {
@@ -83,6 +90,10 @@ public class SearchUserBarView extends FrameLayout {
             }
             return false;
         });
+    }
+
+    public void showFilter(boolean enabled) {
+        binding.textField.setStartIconVisible(enabled);
     }
 
     public void clearTextBox() {

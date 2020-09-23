@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,6 +28,7 @@ import kh.com.psnd.eventbus.UpdateAccountSuccessEventBus;
 import kh.com.psnd.helper.ActivityHelper;
 import kh.com.psnd.network.model.UserProfile;
 import kh.com.psnd.network.model.UserRole;
+import kh.com.psnd.network.model.UserRolePrivilege;
 import kh.com.psnd.network.request.RequestUserDisable;
 import kh.com.psnd.network.request.RequestUserUpdateRole;
 import kh.com.psnd.network.response.ResponseUserDisable;
@@ -40,12 +42,16 @@ import retrofit2.Response;
 
 public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding> {
 
-    private DialogProgress progress;
+    private DialogProgress    progress;
+    private UserRolePrivilege rolePrivilege;
 
-    public static UserInfoFragment newInstance(@NonNull UserProfile userProfile) {
+    public static UserInfoFragment newInstance(@NonNull UserProfile userProfile, @Nullable UserRolePrivilege rolePrivilege) {
         val fragment = new UserInfoFragment();
         val bundle   = new Bundle();
         bundle.putSerializable(UserProfile.EXTRA, userProfile);
+        if (rolePrivilege != null) {
+            bundle.putSerializable(UserRolePrivilege.EXTRA, rolePrivilege);
+        }
         fragment.setArguments(bundle);
         fragment.setEnableFullscreen(true);
         return fragment;
@@ -54,6 +60,7 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
     @Override
     public void setupUI() {
         progress = new DialogProgress(getContext(), false, dialogInterface -> getCompositeDisposable().clear());
+        rolePrivilege = (UserRolePrivilege) getArguments().getSerializable(UserRolePrivilege.EXTRA);
         updateUI();
     }
 
@@ -106,13 +113,25 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
                     // todo change password
                     break;
                 case R.id.change_user_role:
-                    // todo change user role
-                    loadRolePrivilege(userProfile);
+                    if (rolePrivilege == null) {
+                        loadRolePrivilege(userProfile);
+                    }
+                    else {
+                        showForm_ChangeUserRightFragment(userProfile, rolePrivilege);
+                    }
                     break;
             }
             return false;
         });
         popup.show();
+    }
+
+    private void showForm_ChangeUserRightFragment(@NonNull UserProfile userProfile, @NonNull UserRolePrivilege rolePrivilege) {
+        val userRole = userProfile.getRole().clone();
+        userRole.setPrivileges(userProfile.getPrivileges());
+        val fragment = SelectUserRightFragment.newInstance(rolePrivilege, userRole);
+        fragment.setCallback(currentUserRole -> updateUserRole(userProfile, currentUserRole));
+        fragment.show(getActivity().getSupportFragmentManager(), "");
     }
 
     private void loadRolePrivilege(@NonNull UserProfile userProfile) {
@@ -132,11 +151,7 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
                 if (result.isSuccessful()) {
                     val data = (ResponseUserRolePrivilege) result.body();
                     if (data != null) {
-                        val userRole = userProfile.getRole().clone();
-                        userRole.setPrivileges(userProfile.getPrivileges());
-                        val fragment = SelectUserRightFragment.newInstance(data.getResult(), userRole);
-                        fragment.setCallback(currentUserRole -> updateUserRole(userProfile, currentUserRole));
-                        fragment.show(getActivity().getSupportFragmentManager(), "");
+                        showForm_ChangeUserRightFragment(userProfile, data.getResult());
                     }
                 }
             }

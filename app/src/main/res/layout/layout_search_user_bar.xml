@@ -38,7 +38,8 @@
             android:paddingEnd="@dimen/space_12dp"
             app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
             app:endIconMode="clear_text"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_filter_list_24">
 
             <core.lib.widget.MyTextInputEditText
                 android:id="@+id/txtSearch"

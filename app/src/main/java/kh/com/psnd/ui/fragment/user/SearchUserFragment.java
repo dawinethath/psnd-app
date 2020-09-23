@@ -9,30 +9,39 @@ import core.lib.base.BaseFragment;
 import core.lib.dialog.DialogProgress;
 import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
-import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentSearchUserBinding;
 import kh.com.psnd.eventbus.CreateAccountSuccessEventBus;
+import kh.com.psnd.eventbus.LoadRolePrivilegeEventBus;
 import kh.com.psnd.eventbus.UpdateAccountSuccessEventBus;
 import kh.com.psnd.network.model.UserFilter;
-import kh.com.psnd.network.response.ResponseUserRolePrivilege;
-import kh.com.psnd.network.task.TaskUserRolePrivilege;
+import kh.com.psnd.network.model.UserProfile;
+import kh.com.psnd.network.model.UserRolePrivilege;
+import kh.com.psnd.service.LoadRolePrivilegeService;
 import kh.com.psnd.ui.view.SearchUserBarView;
 import lombok.val;
-import retrofit2.Response;
 
 public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> {
 
-    private DialogProgress progress;
+    private DialogProgress    progress;
+    private UserRolePrivilege rolePrivilege;
 
     @Override
     public void setupUI() {
+        LoadRolePrivilegeService.start(getContext(), "SearchUserFragment");
         progress = new DialogProgress(getContext(), true, dialogInterface -> getCompositeDisposable().clear());
-        binding.addNewUser.setOnClickListener(__ -> loadRolePrivilege());
+        binding.addNewUser.setOnClickListener(__ -> {
+            if (rolePrivilege == null) {
+                progress.show();
+                LoadRolePrivilegeService.start(getContext(), "AddUserFragment");
+            }
+            else {
+                showForm_AddUserFragment(rolePrivilege);
+            }
+        });
         binding.searchBar.setupUI(this, callback);
+        binding.searchBar.showFilter(false);
         binding.searchResult.setupUI(this, binding.searchBar);
-
-//        loadRolePrivilege();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -47,33 +56,29 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
         binding.searchResult.updateUser(event.getUserProfile());
     }
 
-    private void loadRolePrivilege() {
-        progress.show();
-        val task = new TaskUserRolePrivilege();
-        new CompositeDisposable().add(task.start(task.new SimpleObserver() {
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoadRolePrivilegeEventBus(LoadRolePrivilegeEventBus event) {
+        Log.i(event);
+        rolePrivilege = event.getRolePrivilege();
+        switch (event.getClazzName()) {
+            case "AddUserFragment":
+                showForm_AddUserFragment(rolePrivilege);
+                break;
+            case "SearchUserFragment":
+                break;
+        }
+        binding.searchBar.showFilter(rolePrivilege != null);
+        progress.dismiss();
+    }
 
-            @Override
-            public Class<?> clazzResponse() {
-                return null;
-            }
+    private void showForm_AddUserFragment(UserRolePrivilege rolePrivilege) {
+        val fragment = AddUserFragment.newInstance(rolePrivilege);
+        fragment.show(getParentFragmentManager(), "");
+    }
 
-            @Override
-            public void onNext(Response result) {
-                Log.i("LOG >> onNext >> result : " + result);
-                if (result.isSuccessful()) {
-                    val data     = (ResponseUserRolePrivilege) result.body();
-                    val fragment = AddUserFragment.newInstance(data.getResult());
-                    fragment.show(getParentFragmentManager(), "");
-                }
-                progress.dismiss();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.e(e);
-                progress.dismiss();
-            }
-        }));
+    public void showForm_UserInfoFragment(UserProfile userProfile) {
+        val userInfoFragment = UserInfoFragment.newInstance(userProfile, rolePrivilege);
+        userInfoFragment.show(getBaseFragmentActivity().getSupportFragmentManager(), "");
     }
 
     @Override
@@ -105,7 +110,6 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
         }
 
     };
-
 
     @Override
     protected void initToolbar() {

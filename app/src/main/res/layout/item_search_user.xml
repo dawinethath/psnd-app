@@ -13,7 +13,7 @@
             style="@style/ProfilePhoto"
             android:layout_width="@dimen/widthImageSearch"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_08dp"
+            android:layout_marginStart="@dimen/space_16dp"
             android:layout_marginTop="@dimen/space_08dp"
             android:layout_marginBottom="@dimen/space_08dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_08dp"
-            android:layout_marginEnd="@dimen/space_08dp"
+            android:layout_marginEnd="@dimen/space_16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/textViewHeaderColor"
@@ -37,19 +37,19 @@
             tools:text="root" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/role"
-            android:layout_width="0dp"
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_outline_local_offer_24"
             android:drawablePadding="@dimen/space_08dp"
-            android:drawableTint="@color/textViewColor"
+            android:gravity="center_vertical"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_15sp"
+            app:drawableLeftCompat="@drawable/ic_baseline_radio_button_checked_24"
+            app:drawableTint="@color/textViewColor"
             app:layout_constraintBottom_toTopOf="@id/privileges"
-            app:layout_constraintEnd_toEndOf="@id/username"
             app:layout_constraintStart_toStartOf="@id/username"
             app:layout_constraintTop_toBottomOf="@id/username"
-            tools:text="Admin" />
+            tools:text="@string/active" />
 
         <kh.com.psnd.ui.view.UserPrivilegesChipGroupView
             android:id="@+id/privileges"
@@ -73,18 +73,16 @@
             app:layout_constraintStart_toStartOf="@id/username" />
 
         <core.lib.widget.MyTextView
-            android:id="@+id/status"
+            android:id="@+id/role"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/space_08dp"
-            android:drawablePadding="@dimen/space_08dp"
-            android:gravity="center_vertical"
+            android:fontFamily="@string/font_family_medium"
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_15sp"
             app:layout_constraintBottom_toBottomOf="@id/username"
             app:layout_constraintEnd_toEndOf="@id/username"
             app:layout_constraintTop_toTopOf="@id/username"
-            tools:text="@string/active" />
+            tools:text="Admin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
