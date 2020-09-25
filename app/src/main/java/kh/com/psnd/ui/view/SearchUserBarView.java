@@ -17,6 +17,7 @@ import core.lib.utils.ApplicationUtil;
 import core.lib.utils.Log;
 import kh.com.psnd.databinding.LayoutSearchUserBarBinding;
 import kh.com.psnd.network.model.UserFilter;
+import kh.com.psnd.network.model.UserRolePrivilege;
 import kh.com.psnd.ui.fragment.user.UserFilterFragment;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +32,8 @@ public class SearchUserBarView extends FrameLayout {
     private       Handler                    handler            = new Handler();
     private       MyRunnable                 runnable           = new MyRunnable();
     private       UserFilterFragment         userFilterFragment = null;
+    @Setter
+    private       UserFilter                 filter;
 
     public SearchUserBarView(@NonNull Context context) {
         super(context);
@@ -63,7 +66,7 @@ public class SearchUserBarView extends FrameLayout {
         return binding.txtSearch.getText().toString();
     }
 
-    public void setupUI(@NonNull BaseFragment fragment, @NonNull Callback callback) {
+    public void setupUI(@NonNull BaseFragment fragment, @Nullable UserRolePrivilege rolePrivilege, @NonNull Callback callback) {
         this.fragment = fragment;
         this.callback = callback;
         userFilterFragment = new UserFilterFragment(getContext(), filter -> callback.doSearch(filter), fragment.getCompositeDisposable());
@@ -78,7 +81,9 @@ public class SearchUserBarView extends FrameLayout {
             ApplicationUtil.showKeyboard(getContext(), binding.txtSearch);
         });
         binding.textField.setStartIconOnClickListener(__ -> {
-            userFilterFragment.show();
+            if (rolePrivilege != null) {
+                userFilterFragment.show();
+            }
         });
         binding.txtSearch.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             switch (actionId) {

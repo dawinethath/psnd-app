@@ -39,7 +39,7 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
                 showForm_AddUserFragment(rolePrivilege);
             }
         });
-        binding.searchBar.setupUI(this, callback);
+        binding.searchBar.setupUI(this, rolePrivilege, callback);
         binding.searchBar.showFilter(false);
         binding.searchResult.setupUI(this, binding.searchBar);
     }

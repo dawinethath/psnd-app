@@ -10,6 +10,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.FragmentUserFilterBinding;
 import kh.com.psnd.network.model.UserFilter;
+import kh.com.psnd.network.model.UserRolePrivilege;
 import lombok.Setter;
 
 public class UserFilterFragment extends BaseDialog<FragmentUserFilterBinding> {
@@ -22,7 +23,7 @@ public class UserFilterFragment extends BaseDialog<FragmentUserFilterBinding> {
         this.callback = callback;
     }
 
-    public void show(UserFilter filter) {
+    public void show(@androidx.annotation.NonNull UserFilter filter, @androidx.annotation.NonNull UserRolePrivilege rolePrivilege) {
 //        checkLastFilter(filter);
         super.show();
     }
@@ -47,7 +48,7 @@ public class UserFilterFragment extends BaseDialog<FragmentUserFilterBinding> {
 
     @Override
     protected int layoutId() {
-        return R.layout.fragment_search_option;
+        return R.layout.fragment_user_filter;
     }
 
     public interface Callback {
