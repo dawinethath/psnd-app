@@ -3,7 +3,7 @@
 
 JNIEXPORT jstring JNICALL
 Java_kh_com_psnd_internal_MobileInternal_url(JNIEnv *env, jobject thiz) {
-    return (*env)->NewStringUTF(env, "https://246chazd1d.execute-api.ap-southeast-1.amazonaws.com/dev/");
+    return (*env)->NewStringUTF(env, "https://api.psnd.app/");
 }
 
 JNIEXPORT jstring JNICALL
