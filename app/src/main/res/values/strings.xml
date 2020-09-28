@@ -39,7 +39,7 @@
     <string name="promote_2">ឯកឧត្ដម នាយឧត្តមសេនីយ៌ <b>ប៉ែន វិបុល</b></string>
 
     <!--    SignUp-->
-    <string name="signup">ចុះឈ្មោះ</string>
+    <string name="signup">ចុះឈ្មោះប្រើប្រាស់</string>
     <string name="first_name_khmer">គោត្តនាម (ភាសាខ្មែរ)</string>
     <string name="last_name_khmer">នាម (ភាសាខ្មែរ)</string>
     <string name="staff_id">អត្តលេខ</string>

@@ -104,6 +104,30 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
         // super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private boolean isValidateUsername() {
+        binding.msg.setText("");
+        if (TextUtils.isEmpty(binding.username.getText())) {
+            binding.textInputLayoutUserName.setError(getString(R.string.username_error));
+            return false;
+        }
+        binding.textInputLayoutUserName.setError(null);
+        return true;
+    }
+
+    private boolean isValidatePhoneNumber() {
+        binding.msg.setText("");
+        if (TextUtils.isEmpty(binding.phoneNumber.getText())) {
+            binding.textInputLayoutPhoneNumber.setError(getString(R.string.phone_number_error));
+            return false;
+        }
+        binding.textInputLayoutPhoneNumber.setError(null);
+        return true;
+    }
+
+    private boolean isFormValid() {
+        return isValidateUsername() && isValidatePhoneNumber() && binding.passwordView.isValidPassword();
+    }
+
     /**
      * 1 : check username from server
      * 2 : check username from cognito server
@@ -111,7 +135,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
     private void doSignUp() {
         val username = binding.username.getText().toString();
         val pwd      = binding.passwordView.getPassword();
-        if (binding.passwordView.isValidPassword() && !TextUtils.isEmpty(username)) {
+        if (isFormValid()) {
             if (!ApplicationUtil.isOnline()) {
                 Toast.makeText(getContext(), R.string.noInternetConnection, Toast.LENGTH_LONG).show();
                 return;
@@ -276,7 +300,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
             return;
         }
         progress.show();
-        val task = new TaskQRCode(new RequestQRCode(qrcode));
+        val task = new TaskQRCode(new RequestQRCode(qrcode), this);
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
 
             @Override

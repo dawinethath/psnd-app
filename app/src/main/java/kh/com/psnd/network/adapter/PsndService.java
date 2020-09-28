@@ -77,6 +77,9 @@ public interface PsndService {
     @POST("search_staffs")
     Call<ResponseSearchStaff> searchStaff(@Body RequestSearchStaff requestSearchStaff);
 
+    @POST("get_staff_by_qrcode_no_auth")
+    Call<ResponseStaff> qrcodeNonAuth(@Body RequestQRCode requestQRCode);
+
     @POST("get_staff_by_qrcode")
     Call<ResponseStaff> qrcode(@Body RequestQRCode requestQRCode);
 

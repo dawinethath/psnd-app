@@ -211,7 +211,7 @@ public class MainActivity extends BaseFragmentActivity<ActivityMainBinding> {
 
     private void loadDetailByQRCode(String qrcode) {
         progress.show();
-        val task = new TaskQRCode(new RequestQRCode(qrcode));
+        val task = new TaskQRCode(new RequestQRCode(qrcode), this);
         getCompositeDisposable().add(task.start(task.new SimpleObserver() {
 
             @Override
