@@ -10,7 +10,8 @@
         <core.lib.widget.MyViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        
+            android:layout_height="match_parent"
+            app:swipeEnabled="@{false}" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

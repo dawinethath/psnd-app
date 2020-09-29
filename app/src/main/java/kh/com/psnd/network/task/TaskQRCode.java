@@ -7,7 +7,7 @@ import kh.com.psnd.network.adapter.PsndService;
 import kh.com.psnd.network.request.RequestQRCode;
 import kh.com.psnd.network.response.ResponseStaff;
 import kh.com.psnd.ui.activity.MainActivity;
-import kh.com.psnd.ui.fragment.user.SignUpFragment;
+import kh.com.psnd.ui.fragment.user.SignUpStep1Fragment;
 import lombok.val;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -28,7 +28,7 @@ public class TaskQRCode extends BaseTask<RequestQRCode, Response, ResponseStaff>
         if (from instanceof MainActivity) {
             return service.qrcode(param).execute();
         }
-        else if (from instanceof SignUpFragment) {
+        else if (from instanceof SignUpStep1Fragment) {
             return service.qrcodeNonAuth(param).execute();
         }
         return null;

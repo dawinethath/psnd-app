@@ -121,6 +121,27 @@
 
             </core.lib.widget.MyTextInputLayout>
 
+            <core.lib.widget.MyTextInputLayout
+                android:id="@+id/textInputLayoutPhoneNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:hint="@string/phone_number"
+                app:errorEnabled="true"
+                app:helperText="eg: +85511xxxxxx"
+                app:prefixText="+855">
+
+                <core.lib.widget.MyTextInputEditText
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:textColor="@color/textViewHeaderColor" />
+
+            </core.lib.widget.MyTextInputLayout>
+
             <kh.com.psnd.ui.view.ButtonPasswordView
                 android:id="@+id/passwordView"
                 android:layout_width="match_parent"

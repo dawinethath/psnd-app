@@ -84,6 +84,7 @@
     <string name="label_document_office_personnel_department">ការិយាល័យគ្រប់គ្រង​​ឯកសារ (ក៨)</string>
     <string name="username_error">ត្រូវការ username</string>
     <string name="password_error">ត្រូវការ password</string>
+    <string name="password_not_match">Those passwords didn\'t match. Try again.</string>
     <string name="last_login">Last login: %s</string>
     <string name="msg_ask_logout">Do you want to logout?</string>
     <string name="password_eng">Password</string>

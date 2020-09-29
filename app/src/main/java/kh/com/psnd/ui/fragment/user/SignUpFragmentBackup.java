@@ -49,12 +49,12 @@ import kh.com.psnd.network.task.TaskUserCheck;
 import lombok.val;
 import retrofit2.Response;
 
-public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
+public class SignUpFragmentBackup extends BaseFragment<FragmentSignupBinding> {
     private DialogProgress progress = null;
     private Staff          staff    = null;
 
-    public static SignUpFragment newInstance(SignUpStep1 signUpStep1) {
-        val fragment = new SignUpFragment();
+    public static SignUpFragmentBackup newInstance(SignUpStep1 signUpStep1) {
+        val fragment = new SignUpFragmentBackup();
         val bundle   = new Bundle();
         bundle.putSerializable(SignUpStep1.EXTRA, signUpStep1);
         fragment.setArguments(bundle);
@@ -152,7 +152,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
                     }
 
                     @Override
-                    public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
+                    public void onNext(@io.reactivex.annotations.NonNull Response result) {
                         Log.i("LOG >> onNext >> result : " + result);
                         if (result.isSuccessful()) {
                             val data = (ResponseUserCheck) result.body();
@@ -223,7 +223,7 @@ public class SignUpFragment extends BaseFragment<FragmentSignupBinding> {
             }
 
             @Override
-            public void onNext(@io.reactivex.annotations.NonNull retrofit2.Response result) {
+            public void onNext(@io.reactivex.annotations.NonNull Response result) {
                 Log.i("LOG >> onNext >> result : " + result);
                 if (result.isSuccessful()) {
                     val data = (ResponseUserAdd) result.body();

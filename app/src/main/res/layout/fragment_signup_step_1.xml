@@ -3,135 +3,206 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:padding="@dimen/space_26dp">
+        android:background="@android:color/white">
 
-        <LinearLayout
+        <core.lib.widget.MyTextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="@dimen/cardElevation"
+            android:gravity="center"
+            android:paddingStart="@dimen/space_26dp"
+            android:paddingTop="50dp"
+            android:paddingEnd="@dimen/space_26dp"
+            android:paddingBottom="50dp"
+            android:text="@string/signup"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_29sp"
+            app:fontFamily="@string/font_family_medium"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <core.lib.widget.MyImageView
+            android:id="@+id/btnQRCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_08dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:elevation="99dp"
+            android:padding="@dimen/space_08dp"
+            android:tint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            app:srcCompat="@drawable/ic_qr_code" />
+
+        <LinearLayout
+            android:id="@+id/layoutTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_26dp"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/title">
 
-            <core.lib.widget.MyTextView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signup"
-                android:textColor="@color/textViewHeaderColor"
-                android:textSize="@dimen/text_size_29sp"
-                app:fontFamily="@string/font_family_medium" />
+                android:orientation="vertical"
+                android:paddingTop="@dimen/space_08dp"
+                android:paddingBottom="@dimen/space_16dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+                <core.lib.widget.MyCardView
+                    android:id="@+id/cardImageProfile"
+                    style="@style/Widget.MaterialComponents.CardView.Default"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:contentPadding="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/textViewHeaderColor"
+                    app:strokeWidth="1dp">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/imageProfile"
+                        style="@style/ProfilePhoto"
+                        android:layout_width="@dimen/logo_header_width"
+                        android:layout_height="wrap_content"
+                        app:backgroundImage="@android:color/white" />
+
+                </core.lib.widget.MyCardView>
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/staffName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_16dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cardImageProfile"
+                    app:layout_constraintTop_toTopOf="@id/cardImageProfile"
+                    tools:text="User Name" />
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/office"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_08dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_17sp"
+                    app:layout_constraintBottom_toTopOf="@id/department"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/staffName"
+                    app:layout_constraintTop_toBottomOf="@id/staffName"
+                    tools:text="ការិយាល័យគ្រប់គ្រងឯកសារ" />
+
+                <core.lib.widget.MyTextView
+                    android:id="@+id/department"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_08dp"
+                    android:textColor="@color/textViewHeaderColor"
+                    android:textSize="@dimen/text_size_17sp"
+                    app:layout_constraintBottom_toBottomOf="@id/cardImageProfile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/staffName"
+                    app:layout_constraintTop_toBottomOf="@id/office"
+                    tools:text="នាយកដ្ឋានបុគ្គលិក" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <core.lib.widget.MyTextInputLayout
-                android:id="@+id/textInputLayoutFirstName"
+                android:id="@+id/textInputLayoutUserName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_16dp"
-                android:hint="@string/first_name_khmer"
-                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
-                app:endIconMode="clear_text"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:hint="@string/username_eng"
                 app:errorEnabled="true">
 
                 <core.lib.widget.MyTextInputEditText
-                    android:id="@+id/firstName"
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
+                    android:enabled="false"
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
             </core.lib.widget.MyTextInputLayout>
 
             <core.lib.widget.MyTextInputLayout
-                android:id="@+id/textInputLayoutLastName"
+                android:id="@+id/textInputLayoutPassword"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_08dp"
-                android:hint="@string/last_name_khmer"
-                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
-                app:endIconMode="clear_text"
-                app:errorEnabled="true">
-
-                <core.lib.widget.MyTextInputEditText
-                    android:id="@+id/lastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textColor="@color/textViewHeaderColor" />
-
-            </core.lib.widget.MyTextInputLayout>
-
-            <core.lib.widget.MyTextInputLayout
-                android:id="@+id/textInputLayoutStaffNumber"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_08dp"
-                android:hint="@string/staff_id"
-                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
-                app:endIconMode="clear_text"
-                app:errorEnabled="true">
-
-                <core.lib.widget.MyTextInputEditText
-                    android:id="@+id/staffNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:textColor="@color/textViewHeaderColor" />
-
-            </core.lib.widget.MyTextInputLayout>
-
-            <core.lib.widget.MyTextInputLayout
-                android:id="@+id/textInputLayoutPhoneNumber"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_08dp"
-                android:hint="@string/phone_number"
-                app:endIconDrawable="@drawable/ic_baseline_clear_black_24"
-                app:endIconMode="clear_text"
+                android:hint="@string/password_eng"
+                android:visibility="gone"
+                app:counterEnabled="true"
+                app:counterMaxLength="6"
+                app:endIconTint="@color/textViewColor"
                 app:errorEnabled="true"
-                app:prefixText="+855">
+                app:passwordToggleEnabled="true"
+                tools:visibility="visible">
 
                 <core.lib.widget.MyTextInputEditText
-                    android:id="@+id/phoneNumber"
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberPassword"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textColor="@color/textViewHeaderColor" />
+
+            </core.lib.widget.MyTextInputLayout>
+
+            <core.lib.widget.MyTextInputLayout
+                android:id="@+id/textInputLayoutConfirmPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.AppDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_08dp"
+                android:hint="@string/password_confirm_eng"
+                android:visibility="gone"
+                app:counterEnabled="true"
+                app:counterMaxLength="6"
+                app:endIconTint="@color/textViewColor"
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true"
+                tools:visibility="visible">
+
+                <core.lib.widget.MyTextInputEditText
+                    android:id="@+id/confirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
-                    android:inputType="number"
+                    android:inputType="numberPassword"
+                    android:maxLength="6"
                     android:singleLine="true"
                     android:textColor="@color/textViewHeaderColor" />
 
             </core.lib.widget.MyTextInputLayout>
-
-            <core.lib.widget.MyTextView
-                android:id="@+id/msg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/space_08dp"
-                android:paddingBottom="@dimen/space_08dp"
-                android:textColor="@color/design_default_color_error"
-                android:textSize="@dimen/text_size_14sp"
-                android:visibility="invisible"
-                tools:text="Error message"
-                tools:visibility="visible" />
 
         </LinearLayout>
 
         <core.lib.widget.MyButton
-            android:id="@+id/next"
+            android:id="@+id/btnNext"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton.Blue"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginTop="@dimen/space_08dp"
-            android:text="@string/next" />
-    </FrameLayout>
+            android:text="@string/next"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/layoutTop"
+            app:layout_constraintTop_toBottomOf="@id/layoutTop"
+            app:layout_constraintWidth_percent=".3"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
