@@ -64,6 +64,10 @@ public class ButtonPasswordView extends FrameLayout {
         binding.password.addTextChangedListener(textWatcher);
     }
 
+    public void requestFocusPassword(){
+        binding.password.requestFocus();
+    }
+
     public boolean isValidPassword() {
         val pwd    = binding.password.getText().toString();
         val length = pwd.length();

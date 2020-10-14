@@ -8,12 +8,15 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.chip.Chip;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import core.lib.base.BaseApp;
 import core.lib.base.BaseBottomSheetDialogFragment;
-import core.lib.databinding.ChipActionBinding;
-import core.lib.databinding.ChipEntryBinding;
 import core.lib.utils.Log;
 import kh.com.psnd.R;
+import kh.com.psnd.databinding.ChipActionAdminBinding;
+import kh.com.psnd.databinding.ChipEntryAdminBinding;
 import kh.com.psnd.databinding.FragmentSelectUserRightBinding;
 import kh.com.psnd.mock.MockUsers;
 import kh.com.psnd.network.model.UserPrivilege;
@@ -34,16 +37,41 @@ public class SelectUserRightFragment extends BaseBottomSheetDialogFragment<Fragm
     }
 
     @Setter
-    private Callback callback;
+    private Callback       callback;
+    private List<UserRole> allRoles = new ArrayList<>();
 
     @Override
     public void setupUI() {
         val currentRole       = (UserRole) getArguments().getSerializable(UserRole.EXTRA);
         val userRolePrivilege = (UserRolePrivilege) getArguments().getSerializable(UserRolePrivilege.EXTRA);
+        allRoles.clear();
+        if (currentRole.getKeyName().toLowerCase().equals("vip")) {
+            for (val role : userRolePrivilege.getRoles()) {
+                if (role.getKeyName().toLowerCase().equals("vip")) {
+                    allRoles.add(role);
+                    break;
+                }
+            }
+        }
+        else {
+            for (val role : userRolePrivilege.getRoles()) {
+                if (!role.getKeyName().toLowerCase().equals("vip")) {
+                    allRoles.add(role);
+                }
+            }
+        }
 
-        initUserRole(userRolePrivilege, currentRole);
-        loadChooseUserPrivileges(userRolePrivilege);
-        loadChooseUserRoles(userRolePrivilege);
+        UserRole selectedUserRole = null;
+        for (val role : userRolePrivilege.getRoles()) {
+            if (role.getKeyName().toLowerCase().equals(currentRole.getKeyName().toLowerCase())) {
+                selectedUserRole = role;
+                break;
+            }
+        }
+
+        initUserRole(currentRole);
+        loadChooseUserRoles();
+        loadChooseUserPrivileges(selectedUserRole);
     }
 
     @Override
@@ -55,107 +83,90 @@ public class SelectUserRightFragment extends BaseBottomSheetDialogFragment<Fragm
         }
     }
 
-    private UserRole getCustomUserRole(UserRolePrivilege userRolePrivilege) {
-        for (val item : userRolePrivilege.getRoles()) {
-            if (item.getKeyName().equals(MockUsers.ROLE_CUSTOM_ID)) {
-                return item;
-            }
-        }
-        return null;
-    }
-
-    private void initUserRole(UserRolePrivilege userRolePrivilege, UserRole userRole) {
-        val     jsonUserRolePrivilege = BaseApp.getGson().toJson(userRole.getPrivileges());
-        boolean found                 = false;
-        for (val item : userRolePrivilege.getRoles()) {
+    private void initUserRole(UserRole userRole) {
+        val jsonUserRolePrivilege = BaseApp.getGson().toJson(userRole.getPrivileges());
+        for (val item : allRoles) {
             val jsonPrivilege = BaseApp.getGson().toJson(item.getPrivileges());
             if (jsonPrivilege.length() == jsonUserRolePrivilege.length()) {
                 userRole.setKeyName(item.getKeyName());
                 userRole.setName(item.getName());
-                found = true;
                 break;
-            }
-        }
-        if (!found) {
-            val customUserRole = getCustomUserRole(userRolePrivilege);
-            if (customUserRole != null) {
-                userRole.setKeyName(customUserRole.getKeyName());
-                userRole.setName(customUserRole.getName());
             }
         }
 
         val item = userRole.clone();
         binding.currentUserRole.setTag(item);
         binding.currentUserRole.setText(item.getName());
-        loadUserPrivileges(userRolePrivilege, item);
+        loadUserPrivileges(item);
     }
 
-    private void selectedRole(UserRolePrivilege userRolePrivilege, UserRole userRole) {
+    private void selectedRole(UserRole userRole) {
         Log.i(userRole);
-        initUserRole(userRolePrivilege, userRole);
+        initUserRole(userRole);
+        loadChooseUserPrivileges(userRole);
     }
 
-    private void selectedPrivilege(UserRolePrivilege userRolePrivilege, UserPrivilege privilege) {
+    private void selectedPrivilege(UserRole userRole, UserPrivilege privilege) {
         Log.i(privilege);
         val currentUserRole = (UserRole) binding.currentUserRole.getTag();
         currentUserRole.addPrivilege(privilege.clone());
-        initUserRole(userRolePrivilege, currentUserRole);
+        initUserRole(currentUserRole);
     }
 
-    private void removedPrivilege(UserRolePrivilege userRolePrivilege, UserPrivilege privilege) {
+    private void removedPrivilege(UserPrivilege privilege) {
         Log.i(privilege);
         val currentUserRole = (UserRole) binding.currentUserRole.getTag();
         currentUserRole.removePrivilege(privilege.clone());
-        initUserRole(userRolePrivilege, currentUserRole);
+        initUserRole(currentUserRole);
     }
 
-    private void loadUserPrivileges(UserRolePrivilege userRolePrivilege, UserRole currentUserRole) {
+    private void loadUserPrivileges(UserRole currentUserRole) {
         binding.groupUserPrivileges.removeAllViews();
         if (currentUserRole.getPrivileges() != null) {
             for (val privilege : currentUserRole.getPrivileges()) {
                 if (privilege != null) {
                     Chip chip = null;
                     if (privilege.getKeyName().equals(MockUsers.PRIVILEGE_DEFAULT_BASIC_INFO_ID)) {
-                        val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
+                        val chipBinding = ChipActionAdminBinding.inflate(LayoutInflater.from(getContext()));
                         chip = (Chip) chipBinding.getRoot();
                     }
                     else {
-                        val chipBinding = ChipEntryBinding.inflate(LayoutInflater.from(getContext()));
+                        val chipBinding = ChipEntryAdminBinding.inflate(LayoutInflater.from(getContext()));
                         chip = (Chip) chipBinding.getRoot();
                         chip.setCheckable(false);
                     }
                     chip.setClickable(false);
                     chip.setText(privilege.getName());
                     chip.setTag(privilege);
-                    chip.setOnCloseIconClickListener(__ -> removedPrivilege(userRolePrivilege, privilege));
+                    chip.setOnCloseIconClickListener(__ -> removedPrivilege(privilege));
                     binding.groupUserPrivileges.addView(chip);
                 }
             }
         }
     }
 
-    private void loadChooseUserPrivileges(UserRolePrivilege userRolePrivilege) {
+    private void loadChooseUserPrivileges(UserRole userRole) {
         binding.groupChooseUserPrivileges.removeAllViews();
-        for (val privilege : userRolePrivilege.getPrivileges()) {
-            if (privilege != null && !privilege.getKeyName().equals(MockUsers.PRIVILEGE_DEFAULT_BASIC_INFO_ID)) {
-                val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
-                val chip        = (Chip) chipBinding.getRoot();
-                chip.setText(privilege.getName());
-                chip.setTag(privilege);
-                chip.setOnClickListener(__ -> selectedPrivilege(userRolePrivilege, privilege));
-                binding.groupChooseUserPrivileges.addView(chip);
-            }
+        for (val privilege : userRole.getPrivileges()) {
+//            if (privilege != null && !privilege.getKeyName().equals(MockUsers.PRIVILEGE_DEFAULT_BASIC_INFO_ID)) {
+            val chipBinding = ChipActionAdminBinding.inflate(LayoutInflater.from(getContext()));
+            val chip        = (Chip) chipBinding.getRoot();
+            chip.setText(privilege.getName());
+            chip.setTag(privilege);
+            chip.setOnClickListener(__ -> selectedPrivilege(userRole, privilege));
+            binding.groupChooseUserPrivileges.addView(chip);
+//            }
         }
     }
 
-    private void loadChooseUserRoles(UserRolePrivilege userRolePrivilege) {
+    private void loadChooseUserRoles() {
         binding.groupChooseUserRoles.removeAllViews();
-        for (val userRole : userRolePrivilege.getRoles()) {
-            val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
+        for (val userRole : allRoles) {
+            val chipBinding = ChipActionAdminBinding.inflate(LayoutInflater.from(getContext()));
             val chip        = (Chip) chipBinding.getRoot();
             chip.setText(userRole.getName());
             chip.setTag(userRole);
-            chip.setOnClickListener(__ -> selectedRole(userRolePrivilege, userRole));
+            chip.setOnClickListener(__ -> selectedRole(userRole));
             binding.groupChooseUserRoles.addView(chip);
         }
     }

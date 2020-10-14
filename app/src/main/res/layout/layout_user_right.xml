@@ -33,6 +33,7 @@
             android:text="User"
             android:textColor="@android:color/white"
             app:chipBackgroundColor="@color/textViewHeaderColor"
+            app:chipCornerRadius="@dimen/chipCornerRadius"
             app:layout_constraintBottom_toBottomOf="@id/label_1"
             app:layout_constraintStart_toEndOf="@id/label_1"
             app:layout_constraintTop_toTopOf="@id/label_1" />
@@ -70,7 +71,11 @@
                     android:checkable="false"
                     android:clickable="false"
                     android:text="User"
-                    android:textColor="@color/textViewHeaderColor" />
+                    android:textColor="@color/textViewHeaderColor"
+                    app:chipCornerRadius="@dimen/chipCornerRadius"
+                    app:chipMinTouchTargetSize="40dp"
+                    app:textEndPadding="@dimen/space_02dp"
+                    app:textStartPadding="@dimen/space_02dp" />
 
                 <core.lib.widget.MyChip
                     android:id="@+id/chip2"
@@ -80,7 +85,9 @@
                     android:checkable="false"
                     android:clickable="false"
                     android:text="Editor"
-                    android:textColor="@color/textViewHeaderColor" />
+                    android:textColor="@color/textViewHeaderColor"
+                    app:textEndPadding="@dimen/space_02dp"
+                    app:textStartPadding="@dimen/space_02dp" />
 
                 <core.lib.widget.MyChip
                     android:id="@+id/chip3"
@@ -90,7 +97,9 @@
                     android:checkable="false"
                     android:clickable="false"
                     android:text="Admin"
-                    android:textColor="@color/textViewHeaderColor" />
+                    android:textColor="@color/textViewHeaderColor"
+                    app:textEndPadding="@dimen/space_02dp"
+                    app:textStartPadding="@dimen/space_02dp" />
 
                 <core.lib.widget.MyChip
                     android:id="@+id/chip4"
@@ -100,7 +109,9 @@
                     android:checkable="false"
                     android:clickable="false"
                     android:text="Super Admin"
-                    android:textColor="@color/textViewHeaderColor" />
+                    android:textColor="@color/textViewHeaderColor"
+                    app:textEndPadding="@dimen/space_02dp"
+                    app:textStartPadding="@dimen/space_02dp" />
 
                 <core.lib.widget.MyChip
                     android:id="@+id/chip5"
@@ -110,7 +121,9 @@
                     android:checkable="false"
                     android:clickable="false"
                     android:text="Super Admin"
-                    android:textColor="@color/textViewHeaderColor" />
+                    android:textColor="@color/textViewHeaderColor"
+                    app:textEndPadding="@dimen/space_02dp"
+                    app:textStartPadding="@dimen/space_02dp" />
 
                 <core.lib.widget.MyChip
                     android:id="@+id/chip6"
@@ -120,7 +133,9 @@
                     android:checkable="false"
                     android:clickable="false"
                     android:text="Super Admin"
-                    android:textColor="@color/textViewHeaderColor" />
+                    android:textColor="@color/textViewHeaderColor"
+                    app:textEndPadding="@dimen/space_02dp"
+                    app:textStartPadding="@dimen/space_02dp" />
 
             </core.lib.widget.MyChipGroup>
         </FrameLayout>

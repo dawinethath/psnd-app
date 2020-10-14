@@ -23,14 +23,14 @@ public class MockUsers {
     private static final UserPrivilege privilege_edit_user     = new UserPrivilege("edit_user", "Edit User", PRIVILEGE_TYPE_POLICY);
     private static final UserPrivilege privilege_disable_user  = new UserPrivilege("disable_user", "Disable User", PRIVILEGE_TYPE_POLICY);
 
-    public static final  UserRole userRole_user  = new UserRole("user", "User", null).addPrivilege(privilege_basic_info.clone());
-    private static final UserRole userRole_admin = new UserRole("admin", "Admin", null)
+    public static final  UserRole userRole_user  = new UserRole("user", "User", 1, null).addPrivilege(privilege_basic_info.clone());
+    private static final UserRole userRole_admin = new UserRole("admin", "Admin", 1, null)
             .addPrivilege(privilege_basic_info.clone())
             .addPrivilege(privilege_date_of_birth.clone())
             .addPrivilege(privilege_phone.clone())
             .addPrivilege(privilege_history.clone());
 
-    private static final UserRole userRole_super_admin = new UserRole("super_admin", "Super Admin", null)
+    private static final UserRole userRole_super_admin = new UserRole("super_admin", "Super Admin", 1, null)
             .addPrivilege(privilege_basic_info.clone())
             .addPrivilege(privilege_date_of_birth.clone())
             .addPrivilege(privilege_phone.clone())
@@ -39,7 +39,7 @@ public class MockUsers {
             .addPrivilege(privilege_edit_user.clone())
             .addPrivilege(privilege_disable_user.clone());
 
-    private static final UserRole userRole_custom = new UserRole(ROLE_CUSTOM_ID, "Custom", null).addPrivilege(privilege_basic_info.clone());
+    private static final UserRole userRole_custom = new UserRole(ROLE_CUSTOM_ID, "Custom", 1, null).addPrivilege(privilege_basic_info.clone());
 
     public static final List<UserPrivilege> userPrivileges = new ArrayList<UserPrivilege>(
             Arrays.asList(

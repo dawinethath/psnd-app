@@ -26,6 +26,13 @@
                 android:orientation="vertical"
                 android:padding="@dimen/space_16dp">
 
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="fakeInputLayoutFullName, cardImageProfile, textInputLayoutFullName, textInputLayoutStaffNumber" />
+
                 <androidx.constraintlayout.widget.Barrier
                     android:id="@+id/barrier"
                     android:layout_width="wrap_content"

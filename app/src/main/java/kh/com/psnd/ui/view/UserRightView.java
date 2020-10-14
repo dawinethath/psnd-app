@@ -12,8 +12,8 @@ import com.google.android.material.chip.Chip;
 
 import java.util.List;
 
-import core.lib.databinding.ChipActionBinding;
 import core.lib.utils.Log;
+import kh.com.psnd.databinding.ChipActionAdminBinding;
 import kh.com.psnd.databinding.LayoutUserRightBinding;
 import kh.com.psnd.network.model.UserPrivilege;
 import kh.com.psnd.network.model.UserProfile;
@@ -51,11 +51,11 @@ public class UserRightView extends FrameLayout {
         }
     }
 
-    public void setupUI(@NonNull AddUserFragment fragment, @NonNull UserRolePrivilege userRolePrivilege, @NonNull UserRole userRole) {
+    public void setupUI(@NonNull AddUserFragment fragment, @NonNull UserRolePrivilege userRolePrivilege, @NonNull UserRole userRole, @NonNull String createUserType) {
         Log.i("Current User Role : " + userRole);
         binding.btnEdit.setOnClickListener(__ -> {
             val selectUserRightFragment = SelectUserRightFragment.newInstance(userRolePrivilege, userRole);
-            selectUserRightFragment.setCallback(currentUserRole -> setupUI(fragment, userRolePrivilege, currentUserRole));
+            selectUserRightFragment.setCallback(currentUserRole -> setupUI(fragment, userRolePrivilege, currentUserRole, createUserType));
             selectUserRightFragment.show(fragment.getActivity().getSupportFragmentManager(), "");
         });
         setTag(userRole);
@@ -78,7 +78,7 @@ public class UserRightView extends FrameLayout {
     private void generatePrivilegeUI(List<UserPrivilege> privileges) {
         for (val privilege : privileges) {
             if (privilege != null) {
-                val chipBinding = ChipActionBinding.inflate(LayoutInflater.from(getContext()));
+                val chipBinding = ChipActionAdminBinding.inflate(LayoutInflater.from(getContext()));
                 val chip        = (Chip) chipBinding.getRoot();
                 chip.setText(privilege.getName());
                 chip.setCheckable(false);

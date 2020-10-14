@@ -98,6 +98,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
         if (isValidateUsername() && isValidatePassword()) {
             val username = binding.username.getText().toString();
             val password = binding.password.getText().toString();
+
             progress.show();
 
             Amplify.Auth.signIn(username, password, new Consumer<AuthSignInResult>() {

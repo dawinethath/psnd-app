@@ -169,7 +169,7 @@ public class UserInfoFragment extends BaseDialogFragment<FragmentUserInfoBinding
         String jsonOldRole       = App.getGson().toJson(userProfile.getRole());
         String jsonOldPrivileges = App.getGson().toJson(userProfile.getPrivileges());
 
-        String jsonNewRole       = App.getGson().toJson(new UserRole(newUserRole.getKeyName(), newUserRole.getName(), null));
+        String jsonNewRole       = App.getGson().toJson(new UserRole(newUserRole.getKeyName(), newUserRole.getName(), 1, null));
         String jsonNewPrivileges = App.getGson().toJson(newUserRole.getPrivileges());
 
         // check if user's role or privileges changed, then we call api

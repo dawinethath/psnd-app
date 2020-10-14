@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <core.lib.widget.MyChip
+        style="@style/Widget.MaterialComponents.Chip.Entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkable="false"
+        android:textColor="@color/textViewHeaderColor"
+        android:textSize="@dimen/text_size_14sp"
+        app:chipBackgroundColor="@android:color/transparent"
+        app:chipCornerRadius="@dimen/chipCornerRadius"
+        app:chipMinTouchTargetSize="40dp"
+        app:chipStrokeColor="@color/textViewColor"
+        app:chipStrokeWidth="1px"
+        app:closeIconTint="@color/textViewColor"
+        app:textEndPadding="@dimen/space_02dp"
+        app:textStartPadding="@dimen/space_02dp"
+        tools:text="LOVE" />
+
+</layout>

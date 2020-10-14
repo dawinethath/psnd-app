@@ -20,7 +20,10 @@ import lombok.val;
 @EqualsAndHashCode(callSuper = false)
 public class Staff extends BaseGson {
 
-    public static final String EXTRA = "Staff";
+    public static final String EXTRA              = "Staff";
+    public static final String EXTRA_USER_NAME    = "USER_NAME";
+    public static final String EXTRA_PASSWORD     = "PASSWORD";
+    public static final String EXTRA_PHONE_NUMBER = "PHONE_NUMBER";
 
     @SerializedName("staffID")
     private int          staffId;

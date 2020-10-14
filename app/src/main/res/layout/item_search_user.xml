@@ -45,7 +45,7 @@
             android:textColor="@color/textViewHeaderColor"
             android:textSize="@dimen/text_size_15sp"
             app:drawableLeftCompat="@drawable/ic_baseline_radio_button_checked_24"
-            app:drawableTint="@color/textViewColor"
+            app:drawableTint="@color/grayLight"
             app:layout_constraintBottom_toTopOf="@id/privileges"
             app:layout_constraintStart_toStartOf="@id/username"
             app:layout_constraintTop_toBottomOf="@id/username"

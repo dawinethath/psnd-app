@@ -32,6 +32,8 @@
     <string name="date_created">Signup since : %s</string>
     <string name="msg_ask_suspend">Do you want to suspend this user?</string>
     <string name="msg_ask_active">Do you want to active this user?</string>
+    <string name="create_user">បង្កើតគណនីអ្នកប្រើប្រាស់</string>
+    <string name="create_user_vip">បង្កើតគណនី VIP</string>
 
     <!--    About-->
     <string name="copyright_by">© រក្សាសិទ្ធដោយ</string>
@@ -39,14 +41,26 @@
     <string name="promote_2">ឯកឧត្ដម នាយឧត្តមសេនីយ៌ <b>ប៉ែន វិបុល</b></string>
 
     <!--    SignUp-->
+    <string name="OTP_code">OTP code</string>
+    <string name="enter_OTP_code">បញ្ចូល OTP code</string>
+    <string name="description_OTP">We have sent you a verification code to %s.\nPlease make sure that SIM card is in this device.</string>
+    <string name="not_receive_code">Did not receive code?</string>
+    <string name="description_put_phone">For your security, PSND wants to make sure it\'s really you. PSND will send a text message with a 6-digit verification code.</string>
+    <string name="resend">resend</string>
+    <string name="verify_phone_number">ផ្ទៀងផ្ទាត់លេខទូរសព្ទ</string>
+    <string name="fill_phone_number_to_verify">បំពេញលេខទូរសព្ទ</string>
     <string name="signup">ចុះឈ្មោះប្រើប្រាស់</string>
     <string name="first_name_khmer">គោត្តនាម (ភាសាខ្មែរ)</string>
     <string name="last_name_khmer">នាម (ភាសាខ្មែរ)</string>
     <string name="staff_id">អត្តលេខ</string>
     <string name="phone_number">លេខទូរសព្ទ</string>
     <string name="first_name_last_name">នាម គោត្តនាម</string>
-    <string name="verify">Verify</string>
+    <string name="verify">ផ្ទៀងផ្ទាត់</string>
+    <string name="waiting">second left</string>
+    <string name="code_expired">Expired</string>
+    <string name="digit_6">Code 6 digit</string>
     <string name="next">បន្ទាប់</string>
+    <string name="back">ត្រលប់ក្រោយ</string>
     <string name="first_name_khmer_error">ត្រូវការ គោត្តនាម</string>
     <string name="last_name_khmer_error">ត្រូវការ នាម</string>
     <string name="staff_id_error">ត្រូវការ អត្តលេខ</string>

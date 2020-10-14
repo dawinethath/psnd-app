@@ -1,5 +1,7 @@
 package kh.com.psnd.ui.fragment.user;
 
+import android.widget.PopupMenu;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -25,23 +27,43 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
 
     private DialogProgress    progress;
     private UserRolePrivilege rolePrivilege;
+    private String            createUserType = "";
 
     @Override
     public void setupUI() {
         LoadRolePrivilegeService.start(getContext(), "SearchUserFragment");
         progress = new DialogProgress(getContext(), true, dialogInterface -> getCompositeDisposable().clear());
-        binding.addNewUser.setOnClickListener(__ -> {
-            if (rolePrivilege == null) {
-                progress.show();
-                LoadRolePrivilegeService.start(getContext(), "AddUserFragment");
-            }
-            else {
-                showForm_AddUserFragment(rolePrivilege);
-            }
+        binding.addNewUser.setOnClickListener(view -> {
+            val popup    = new PopupMenu(getContext(), view);
+            val inflater = popup.getMenuInflater();
+            inflater.inflate(R.menu.menu_create_user, popup.getMenu());
+            popup.setOnMenuItemClickListener(item -> {
+                switch (item.getItemId()) {
+                    case R.id.create_user:
+                        showPopupCreateUser(UserRolePrivilege.UserType_normal);
+                        break;
+                    case R.id.create_user_vip:
+                        showPopupCreateUser(UserRolePrivilege.UserType_vip);
+                        break;
+                }
+                return false;
+            });
+            popup.show();
         });
         binding.searchBar.setupUI(this, rolePrivilege, callback);
         binding.searchBar.showFilter(false);
         binding.searchResult.setupUI(this, binding.searchBar);
+    }
+
+    private void showPopupCreateUser(String createUserType) {
+        this.createUserType = createUserType;
+        if (rolePrivilege == null) {
+            progress.show();
+            LoadRolePrivilegeService.start(getContext(), "AddUserFragment");
+        }
+        else {
+            showForm_AddUserFragment(rolePrivilege);
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -72,7 +94,7 @@ public class SearchUserFragment extends BaseFragment<FragmentSearchUserBinding> 
     }
 
     private void showForm_AddUserFragment(UserRolePrivilege rolePrivilege) {
-        val fragment = AddUserFragment.newInstance(rolePrivilege);
+        val fragment = AddUserFragment.newInstance(rolePrivilege, createUserType);
         fragment.show(getParentFragmentManager(), "");
     }
 

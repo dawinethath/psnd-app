@@ -45,7 +45,7 @@ ext {
     multidex = "2.0.1"
     constraintlayout = "2.0.0-beta6"
     cardview = "1.0.0"
-    material = "1.3.0-alpha02"
+    material = "1.3.0-alpha03"
     lombok = "1.18.8"
     databinding = "3.6.0-alpha12"
     permissionsdispatcher = "4.6.0"

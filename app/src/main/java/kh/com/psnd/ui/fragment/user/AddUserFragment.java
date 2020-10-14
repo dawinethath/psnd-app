@@ -3,6 +3,7 @@ package kh.com.psnd.ui.fragment.user;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,10 +41,11 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
     private DialogProgress        progress              = null;
     private SearchStaff           mSearchStaff          = null;
 
-    public static AddUserFragment newInstance(@NonNull UserRolePrivilege userRolePrivilege) {
+    public static AddUserFragment newInstance(@NonNull UserRolePrivilege userRolePrivilege, @NonNull String createUserType) {
         val fragment = new AddUserFragment();
         val bundle   = new Bundle();
         bundle.putSerializable(UserRolePrivilege.EXTRA, userRolePrivilege);
+        bundle.putString(UserRolePrivilege.EXTRA_CREATE_USER_TYPE, createUserType);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -55,8 +57,23 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         searchAddUserFragment.setPercentWidthDialog(0.99f);
 
         val userRolePrivilege = (UserRolePrivilege) getArguments().getSerializable(UserRolePrivilege.EXTRA);
+        val createUserType    = getArguments().getString(UserRolePrivilege.EXTRA_CREATE_USER_TYPE);
 
-        binding.userRight.setupUI(this, userRolePrivilege, userRolePrivilege.getDefaultRole());
+        switch (createUserType) {
+            case UserRolePrivilege.UserType_normal:
+                binding.groupProfile.setVisibility(View.VISIBLE);
+                binding.userRight.setupUI(this, userRolePrivilege, userRolePrivilege.getDefaultRole(), createUserType);
+                binding.username.setEnabled(false);
+                binding.textInputLayoutUserName.setEndIconCheckable(false);
+                binding.textInputLayoutUserName.setEndIconVisible(false);
+                binding.textInputLayoutUserName.setOnClickListener(__ -> searchAddUserFragment.show());
+                break;
+            case UserRolePrivilege.UserType_vip:
+                binding.groupProfile.setVisibility(View.GONE);
+                binding.userRight.setupUI(this, userRolePrivilege, userRolePrivilege.getDefaultRoleVip(), createUserType);
+                binding.username.requestFocus();
+                break;
+        }
         loadingUserRight();
 
         binding.fakeInputLayoutFullName.setOnClickListener(__ -> searchAddUserFragment.show());
@@ -160,7 +177,7 @@ public class AddUserFragment extends BaseBottomSheetDialogFragment<FragmentAddUs
         binding.imageProfile.setImageURI(searchStaff.getPhoto());
         binding.username.setTextWithEndCursor(searchStaff.getStaffNumberEn());
 
-        binding.username.requestFocus();
+        binding.passwordView.requestFocusPassword();
 //        binding.username.postDelayed(() -> ApplicationUtil.showKeyboard(getContext(), binding.username), 600);
     }
 

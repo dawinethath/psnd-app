@@ -24,11 +24,14 @@ public class UserRole extends BaseGson {
     @SerializedName("name")
     private String name;
 
+    @SerializedName("priority")
+    private int priority;
+
     @SerializedName("privileges")
     private List<UserPrivilege> privileges;
 
     public UserRole clone() {
-        val role = new UserRole(keyName, name, new ArrayList<>());
+        val role = new UserRole(keyName, name, priority, new ArrayList<>());
         if (privileges != null) {
             for (val item : privileges) {
                 role.addPrivilege(item);

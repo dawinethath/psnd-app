@@ -10,6 +10,7 @@ import java.util.List;
 
 import core.lib.base.BaseFragmentActivity;
 import core.lib.base.PagerAdapter;
+import core.lib.listener.MyOnPageChangeListener;
 import core.lib.utils.ApplicationUtil;
 import kh.com.psnd.R;
 import kh.com.psnd.databinding.ActivitySignupBinding;
@@ -40,10 +41,26 @@ public class SignUpActivity extends BaseFragmentActivity<ActivitySignupBinding> 
         adapter = new PagerAdapter(context, getSupportFragmentManager(), fragments, null);
         binding.viewPager.setOffscreenPageLimit(fragments.size());
         binding.viewPager.setAdapter(adapter);
+        binding.viewPager.addOnPageChangeListener(new MyOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                    case 1: {
+                        val fragment = ((SignUpStep3Fragment) adapter.getItem(2));
+                        fragment.stopCircleProgress();
+                    }
+                    break;
+                    case 2:
+                        break;
+                }
+            }
+        });
     }
 
     public void goToFirstScreen() {
-        binding.viewPager.setCurrentItem(1);
+        binding.viewPager.setCurrentItem(0);
+        ApplicationUtil.dismissKeyboard(this);
     }
 
     public void goToSecondScreen(@NonNull Staff staff, @NonNull String username, @NonNull String password) {
@@ -53,7 +70,16 @@ public class SignUpActivity extends BaseFragmentActivity<ActivitySignupBinding> 
         ApplicationUtil.dismissKeyboard(this);
     }
 
-    public void goToThirdScreen() {
+    public void goToSecondScreen() {
         binding.viewPager.setCurrentItem(1);
+        ApplicationUtil.dismissKeyboard(this);
+    }
+
+    public void goToThirdScreen(@NonNull Staff staff, @NonNull String username, @NonNull String password, @NonNull String phoneNumber) {
+        binding.viewPager.setCurrentItem(2);
+        val fragment = ((SignUpStep3Fragment) adapter.getItem(2));
+        fragment.updateUI(staff, username, password, phoneNumber);
+        fragment.runCircleProgress();
+        ApplicationUtil.dismissKeyboard(this);
     }
 }
